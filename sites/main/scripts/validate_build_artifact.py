@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import ipaddress
 from pathlib import Path
 import re
 import sys
@@ -18,12 +19,8 @@ CANONICAL_PAGES = (
     "github/index.html",
 )
 COMPATIBILITY_PAGES = ("privacy.html", "security.html", "repositories.html", "404.html")
-PRIVATE_IP_PATTERNS = (
-    re.compile(r"\b10(?:\.\d{1,3}){3}\\b"),
-    re.compile(r"\b192\\.168(?:\.\d{1,3}){2}\\b"),
-    re.compile(r"\b172\\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\\b"),
-    re.compile(r"\b100\\.(?:6[4-9]|[7-9]\d|1[01]\d|12[0-7])(?:\.\d{1,3}){2}\\b"),
-)
+IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+CGNAT = ipaddress.ip_network("100.64.0.0/10")
 STALE_CURRENT_MARKERS = (
     "Seven systems. Seven distinct responsibilities.",
     "seven Integral Platform Systems",
@@ -38,6 +35,17 @@ STALE_CURRENT_MARKERS = (
     "privacy.goreecloud.com",
     "security.goreecloud.com",
 )
+
+
+def contains_private_address(text: str) -> bool:
+    for token in IP_RE.findall(text):
+        try:
+            address = ipaddress.ip_address(token)
+        except ValueError:
+            continue
+        if address.is_private or address in CGNAT:
+            return True
+    return False
 
 
 def main() -> int:
@@ -82,9 +90,8 @@ def main() -> int:
         for stale in STALE_CURRENT_MARKERS:
             if stale in text:
                 errors.append(f"{page} contains stale current-state marker: {stale}")
-        for pattern in PRIVATE_IP_PATTERNS:
-            if pattern.search(text):
-                errors.append(f"{page} contains private-range address material")
+        if contains_private_address(text):
+            errors.append(f"{page} contains private-range address material")
 
     headers = (DIST / "_headers").read_text(encoding="utf-8") if (DIST / "_headers").is_file() else ""
     for marker in (
