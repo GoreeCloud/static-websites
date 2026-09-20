@@ -19,10 +19,10 @@ CANONICAL_PAGES = (
 )
 COMPATIBILITY_PAGES = ("privacy.html", "security.html", "repositories.html", "404.html")
 PRIVATE_IP_PATTERNS = (
-    re.compile(r"\\b10(?:\\.\\d{1,3}){3}\\b"),
-    re.compile(r"\\b192\\.168(?:\\.\\d{1,3}){2}\\b"),
-    re.compile(r"\\b172\\.(?:1[6-9]|2\\d|3[01])(?:\\.\\d{1,3}){2}\\b"),
-    re.compile(r"\\b100\\.(?:6[4-9]|[7-9]\\d|1[01]\\d|12[0-7])(?:\\.\\d{1,3}){2}\\b"),
+    re.compile(r"\b10(?:\.\d{1,3}){3}\\b"),
+    re.compile(r"\b192\\.168(?:\.\d{1,3}){2}\\b"),
+    re.compile(r"\b172\\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\\b"),
+    re.compile(r"\b100\\.(?:6[4-9]|[7-9]\d|1[01]\d|12[0-7])(?:\.\d{1,3}){2}\\b"),
 )
 STALE_CURRENT_MARKERS = (
     "Seven systems. Seven distinct responsibilities.",
