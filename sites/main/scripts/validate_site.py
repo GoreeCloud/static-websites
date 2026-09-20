@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from collections import Counter
 from html.parser import HTMLParser
+import ipaddress
 from pathlib import Path
 import re
 import sys
@@ -37,11 +38,19 @@ STALE_MARKERS = (
     "blog.goreecloud.com",
     "archive.goreecloud.com",
 )
-PRIVATE_IP_PATTERNS = (
-    re.compile(r"\b10(?:\.\d{1,3}){3}\\b"),
-    re.compile(r"\b192\\.168(?:\.\d{1,3}){2}\\b"),
-    re.compile(r"\b172\\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\\b"),
-)
+IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+CGNAT = ipaddress.ip_network("100.64.0.0/10")
+
+
+def contains_private_address(text: str) -> bool:
+    for token in IP_RE.findall(text):
+        try:
+            address = ipaddress.ip_address(token)
+        except ValueError:
+            continue
+        if address.is_private or address in CGNAT:
+            return True
+    return False
 
 
 class Audit(HTMLParser):
@@ -102,9 +111,8 @@ def audit_page(relative: str, expected_canonical: str | None, errors: list[str])
     for stale in STALE_MARKERS:
         if stale in text:
             errors.append(f"{relative} contains stale current-state text: {stale}")
-    for pattern in PRIVATE_IP_PATTERNS:
-        if pattern.search(text):
-            errors.append(f"{relative} exposes private-range address material")
+    if contains_private_address(text):
+        errors.append(f"{relative} exposes private-range address material")
     for marker in (
         'data-glaze-version="1.6.0"',
         'name="goreecloud-glaze-ui" content="1.6.0"',
@@ -126,7 +134,7 @@ def main() -> int:
     for relative in COMPATIBILITY:
         result = audit_page(relative, None, errors)
         if result:
-            text, audit = result
+            _, audit = result
             if "noindex" not in audit.robots.lower():
                 errors.append(f"{relative} must be noindex compatibility content")
             audited[relative] = result
@@ -188,11 +196,17 @@ def main() -> int:
             errors.append(f"firefox page missing current source: {marker}")
 
     github = audited.get("github/index.html", ("", Audit()))[0]
-    for marker in ("Load current public repositories", "does not publish private repository names", "api.github.com"):
-        if marker not in github and marker != "api.github.com":
+    for marker in ("Load current public repositories", "does not publish private repository names"):
+        if marker not in github:
             errors.append(f"github page missing privacy/currentness marker: {marker}")
-    if re.search(r"\b\\d+\s+(?:total|public)\s+repositories\\b", github, re.IGNORECASE):
+    if re.search(r"\b\d+\s+(?:total|public)\s+repositories\b", github, re.IGNORECASE):
         errors.append("github page must not hard-code a repository total")
+
+    github_js = (ROOT / "js/site-v8.js").read_text(encoding="utf-8")
+    if "https://api.github.com/orgs/GoreeCloud/repos" not in github_js:
+        errors.append("GitHub catalog must use the public GoreeCloud organization API")
+    if "data-load-github" not in github or "addEventListener(\"click\"" not in github_js:
+        errors.append("GitHub public catalog must remain visitor-triggered rather than automatic")
 
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
     if "posthog.com" in headers:
