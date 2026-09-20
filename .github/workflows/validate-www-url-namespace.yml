@@ -81,8 +81,8 @@ jobs:
               raise SystemExit('provider cutover inventory must be empty after Firefox production acceptance')
 
           redirected = [site for site in registry['sites'] if site.get('legacy_redirect')]
-          if len(redirected) != 14:
-              raise SystemExit(f'legacy informational compatibility inventory must contain 14 hosts, found {len(redirected)}')
+          if len(redirected) != 13:
+              raise SystemExit(f'legacy informational compatibility inventory must contain 13 hosts after Firefox legacy-host retirement, found {len(redirected)}')
 
           manager = next(site for site in registry['sites'] if site['id'] == 'manager')
           if manager.get('current_public_host') != 'manage.goreecloud.com':
@@ -102,10 +102,14 @@ jobs:
               raise SystemExit('mounted Manager artifact still publishes the legacy informational canonical URL')
 
           firefox = next(site for site in registry['sites'] if site['id'] == 'firefox')
-          if firefox.get('current_public_host') != 'firefox.goreecloud.com' or not firefox.get('legacy_redirect'):
-              raise SystemExit('Firefox Extensions legacy hostname must remain a compatibility redirect source')
+          if firefox.get('current_public_host') is not None:
+              raise SystemExit('Firefox Extensions must not declare a separate public host after legacy-host retirement')
+          if firefox.get('legacy_redirect'):
+              raise SystemExit('Firefox Extensions must not require a redirect from the retired firefox.goreecloud.com host')
+          if firefox.get('legacy_host_state') != 'retired':
+              raise SystemExit('Firefox Extensions legacy host must be recorded as retired')
           if firefox.get('cutover_state') != 'provider-cutover-verified':
-              raise SystemExit('Firefox Extensions must record the verified provider cutover')
+              raise SystemExit('Firefox Extensions must preserve the verified www cutover history')
           mounted_firefox = Path('dist/firefox-extensions/index.html').read_text(encoding='utf-8')
           expected_firefox_canonical = '<link rel="canonical" href="https://www.goreecloud.com/firefox-extensions/">'
           if expected_firefox_canonical not in mounted_firefox:
@@ -113,4 +117,4 @@ jobs:
           if '<link rel="canonical" href="https://firefox.goreecloud.com/">' in mounted_firefox:
               raise SystemExit('mounted Firefox Extensions artifact still publishes the legacy informational canonical URL')
 
-          print('Provider cutover is verified for all governed informational paths; 14 legacy compatibility hosts and application-host boundaries are preserved')
+          print('Provider cutover remains verified for the retained www namespace; Firefox legacy host is retired; 13 remaining legacy compatibility hosts and application-host boundaries are recorded')
