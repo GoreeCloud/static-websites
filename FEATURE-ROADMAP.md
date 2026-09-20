@@ -3,7 +3,7 @@
 **Status:** Active roadmap control  
 **As of:** 2026-09-15  
 **Authoritative project record:** Project Record — Public Websites  
-**Canonical repository:** GoreeCloud/goreecloud-static-websites  
+**Canonical repository:** GoreeCloud/static-websites
 **Drive control:** `GoreeCloud/Feature Roadmap/GoreeCloud Public Websites/FEATURE-ROADMAP.md`
 
 ## Purpose

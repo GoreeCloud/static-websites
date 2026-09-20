@@ -1,6 +1,6 @@
 # Static Website Consolidation Status
 
-**Canonical target:** `GoreeCloud/goreecloud-static-websites`  
+**Canonical target:** `GoreeCloud/static-websites`
 **Reviewed:** 2026-09-12  
 **GLAZE UI source/build baseline:** V1.3 / 1.3.0  
 **Verified Security production revision:** `256daf235066b4fd1f931e50e45e366fa92f45e7`  
@@ -26,7 +26,7 @@ Production verification is independent per site and per materially changed publi
 
 ## Mandatory consolidation rule
 
-Every GoreeCloud standalone static public website must be stored, maintained, and referenced from `GoreeCloud/goreecloud-static-websites` unless an explicit governed architectural exception is approved.
+Every GoreeCloud standalone static public website must be stored, maintained, and referenced from `GoreeCloud/static-websites` unless an explicit governed architectural exception is approved.
 
 Application frontends, authenticated product UIs, extension pages, generated artifacts, test fixtures, internal/debug pages, demos, reference pages, and inherited upstream documentation are not reclassified as standalone websites merely because they contain browser-renderable files.
 

@@ -15,7 +15,7 @@ for needle in (
     "private infrastructure or security-sensitive work is omitted",
     "GLAZE UI V1.3 / 1.3.0 is the current official Stable consumer target",
     "14 registered website packages",
-    "GoreeCloud/goreecloud-static-websites",
+    "GoreeCloud/static-websites",
     "Seven systems, seven authority boundaries",
     "GoreeCloud Manager, Privacy Shield, Wardveil Security, Everkeep, GLAZE UI, GoreeCloud Mesh, and GoreeCloud Identity",
     "45 verified GoreeCloud products across nine functional product groups",

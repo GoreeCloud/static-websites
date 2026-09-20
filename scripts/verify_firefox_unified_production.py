@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the unified Firefox Extensions publication and compatibility redirect."""
+"""Verify the Firefox Extensions publication within the retained www.goreecloud.com namespace."""
 
 from __future__ import annotations
 
@@ -15,8 +15,6 @@ from urllib.request import HTTPRedirectHandler, HTTPSHandler, Request, build_ope
 
 ROOT = Path(__file__).resolve().parents[1]
 MOUNTED = ROOT / "dist" / "firefox-extensions"
-CANONICAL = "https://www.goreecloud.com/firefox-extensions/"
-LEGACY = "https://firefox.goreecloud.com/"
 VERIFY_ORIGIN = os.environ.get("FIREFOX_VERIFY_ORIGIN", "https://www.goreecloud.com").rstrip("/")
 VERIFY_ROOT = VERIFY_ORIGIN + "/firefox-extensions/"
 VERIFY_HOST = urlparse(VERIFY_ORIGIN).hostname
@@ -50,7 +48,7 @@ class NoRedirect(HTTPRedirectHandler):
 
 def _allowed(url: str) -> bool:
     parsed = urlparse(url)
-    allowed_hosts = {"www.goreecloud.com", "firefox.goreecloud.com"}
+    allowed_hosts = {"www.goreecloud.com"}
     if VERIFY_HOST:
         allowed_hosts.add(VERIFY_HOST)
     return parsed.scheme == "https" and parsed.hostname in allowed_hosts
@@ -190,28 +188,12 @@ def verify_missing_path(errors: list[str]) -> None:
     require(response.status == 404, f"Firefox publication missing path returned HTTP {response.status}; expected 404", errors)
 
 
-def verify_redirect(errors: list[str]) -> None:
-    root = fetch(LEGACY, follow=False)
-    require(root.status == 301, f"legacy Firefox root returned HTTP {root.status}; expected 301", errors)
-    require(root.headers.get("location") == CANONICAL, f"legacy Firefox root redirect target drifted: {root.headers.get('location')}", errors)
-    suffix_source = LEGACY + "__goreecloud_firefox_verifier__/missing?migration=1"
-    suffix_target = CANONICAL + "__goreecloud_firefox_verifier__/missing?migration=1"
-    suffix = fetch(suffix_source, follow=False)
-    require(suffix.status == 301, f"legacy Firefox suffix redirect returned HTTP {suffix.status}; expected 301", errors)
-    require(
-        suffix.headers.get("location") == suffix_target,
-        f"legacy Firefox suffix/query preservation drifted: {suffix.headers.get('location')}",
-        errors,
-    )
-
-
 def main() -> int:
     errors: list[str] = []
     try:
         verify_exact_bytes(errors)
         verify_root(errors)
         verify_missing_path(errors)
-        verify_redirect(errors)
     except (RuntimeError, ValueError) as error:
         errors.append(str(error))
     if errors:
@@ -221,8 +203,8 @@ def main() -> int:
         return 1
     print(
         f"Unified Firefox publication verification passed for {VERIFY_ORIGIN}: exact deployed bytes, "
-        "render-safe asset media types, canonical URL, Glaze UI 1.4.1, security headers, explicit 404, "
-        "and 301 legacy redirect with suffix/query preservation are verified."
+        "render-safe asset media types, canonical URL, Glaze UI 1.4.1, security headers, and explicit 404 "
+        "are verified within the retained main-site namespace."
     )
     return 0
 

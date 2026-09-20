@@ -1,7 +1,7 @@
 # GoreeCloud Public Website — PostHog Telemetry Review
 
 **Status:** Activation candidate / production verification pending
-**Canonical source:** `GoreeCloud/goreecloud-static-websites/sites/main`
+**Canonical source:** `GoreeCloud/static-websites/sites/main`
 **Provider:** PostHog US Cloud
 **PostHog project:** Project 606430
 **Telemetry schema:** 0.1

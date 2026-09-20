@@ -230,7 +230,7 @@ def main() -> int:
     for marker in (
         "GitHub organization",
         "authoritative for current inventory",
-        "goreecloud-static-websites",
+        "static-websites",
         "goreecloud-health",
         "goreecloud-reader",
         "goreecloud-router-os",

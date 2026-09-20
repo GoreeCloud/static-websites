@@ -13,6 +13,7 @@ MANIFEST = ROOT / "sites" / "manifest.json"
 EXPECTED_STATE = "provider-cutover-verified"
 EXPECTED_PENDING_CUTOVERS: set[str] = set()
 CENTRAL_NATIVE_SITE_IDS = {"firefox"}
+RETIRED_LEGACY_SITE_IDS = {"firefox"}
 EXPECTED_PATHS = {
     "main": "/",
     "projects": "/projects",
@@ -47,7 +48,7 @@ def main() -> None:
 
     if registry.get("schema_version") != "1.0":
         fail("schema_version must be 1.0")
-    if registry.get("repository") != "GoreeCloud/goreecloud-static-websites":
+    if registry.get("repository") != "GoreeCloud/static-websites":
         fail("repository authority is incorrect")
     if registry.get("canonical_origin") != "https://www.goreecloud.com":
         fail("canonical origin must be https://www.goreecloud.com")
@@ -132,8 +133,12 @@ def main() -> None:
             if not isinstance(artifact, str) or not artifact.startswith("sites/"):
                 fail(f"{site_id} has invalid artifact_path")
 
-    if redirect_count != 14:
-        fail(f"legacy informational compatibility inventory must contain 14 hosts after adding Firefox, found {redirect_count}")
+    expected_redirect_count = len(EXPECTED_PATHS) - 1 - len(RETIRED_LEGACY_SITE_IDS)
+    if redirect_count != expected_redirect_count:
+        fail(
+            "legacy informational compatibility inventory does not match the governed retained/retired host model: "
+            f"expected {expected_redirect_count}, found {redirect_count}"
+        )
 
     main_site = next(entry for entry in sites if entry["id"] == "main")
     if main_site.get("current_public_host") != "www.goreecloud.com" or main_site.get("legacy_redirect"):
@@ -152,17 +157,20 @@ def main() -> None:
         fail("manager.goreecloud.com must remain reserved as the Manager web-application boundary")
 
     firefox = next(entry for entry in sites if entry["id"] == "firefox")
-    if firefox.get("current_public_host") != "firefox.goreecloud.com":
-        fail("Firefox Extensions legacy informational host must remain firefox.goreecloud.com until redirect retirement")
-    if not firefox.get("legacy_redirect"):
-        fail("firefox.goreecloud.com must remain marked for compatibility redirect to /firefox-extensions")
+    if firefox.get("current_public_host") is not None:
+        fail("Firefox Extensions must not declare a separate current_public_host after legacy-host retirement")
+    if firefox.get("legacy_redirect"):
+        fail("Firefox Extensions legacy redirect must remain disabled after firefox.goreecloud.com retirement")
+    if firefox.get("legacy_host_state") != "retired":
+        fail("Firefox Extensions legacy host state must be retired")
     if firefox.get("cutover_state") != EXPECTED_STATE:
-        fail(f"Firefox Extensions cutover state must be {EXPECTED_STATE} after verified provider cutover")
+        fail(f"Firefox Extensions cutover state must preserve the verified {EXPECTED_STATE} history")
 
     print(
         f"URL namespace registry valid: {len(sites)} informational websites -> https://www.goreecloud.com paths; "
         f"state={EXPECTED_STATE}; pending_cutovers={sorted(EXPECTED_PENDING_CUTOVERS)}; "
-        f"central_native={sorted(CENTRAL_NATIVE_SITE_IDS)}; legacy compatibility hosts={redirect_count}"
+        f"central_native={sorted(CENTRAL_NATIVE_SITE_IDS)}; retired_legacy={sorted(RETIRED_LEGACY_SITE_IDS)}; "
+        f"legacy compatibility hosts={redirect_count}"
     )
 
 

@@ -38,7 +38,7 @@ def main() -> None:
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
     if data.get("schema_version") != "1.0":
         fail("schema_version must be 1.0")
-    if data.get("repository") != "GoreeCloud/goreecloud-static-websites":
+    if data.get("repository") != "GoreeCloud/static-websites":
         fail("repository authority is incorrect")
     if set(data.get("states", [])) != ALLOWED_STATES:
         fail("declared migration-state vocabulary drifted")
@@ -79,7 +79,7 @@ def main() -> None:
             fail(f"{site_id} has invalid migration state: {state}")
         if not target.startswith("sites/") or target == "sites/manifest.json":
             fail(f"{site_id} has invalid central target path")
-        if repo == "GoreeCloud/goreecloud-static-websites":
+        if repo == "GoreeCloud/static-websites":
             fail(f"{site_id} legacy repository cannot be the central repository")
         if not repo.startswith("GoreeCloud/"):
             fail(f"{site_id} legacy repository is outside GoreeCloud")

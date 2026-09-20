@@ -24,7 +24,7 @@ readme = (SITE / "README.md").read_text(encoding="utf-8")
 for marker in (
     "GLAZE UI V1.3",
     "1.3.0",
-    "GoreeCloud/goreecloud-static-websites",
+    "GoreeCloud/static-websites",
     "design.goreecloud.com",
     "goreecloud-design.pages.dev",
     GLAZE_REVISION,
