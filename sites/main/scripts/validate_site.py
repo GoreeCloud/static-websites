@@ -38,9 +38,9 @@ STALE_MARKERS = (
     "archive.goreecloud.com",
 )
 PRIVATE_IP_PATTERNS = (
-    re.compile(r"\\b10(?:\\.\\d{1,3}){3}\\b"),
-    re.compile(r"\\b192\\.168(?:\\.\\d{1,3}){2}\\b"),
-    re.compile(r"\\b172\\.(?:1[6-9]|2\\d|3[01])(?:\\.\\d{1,3}){2}\\b"),
+    re.compile(r"\b10(?:\.\d{1,3}){3}\\b"),
+    re.compile(r"\b192\\.168(?:\.\d{1,3}){2}\\b"),
+    re.compile(r"\b172\\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\\b"),
 )
 
 
@@ -173,7 +173,7 @@ def main() -> int:
         errors.append(f"suite must contain 45 current products; found {suite[1].classes['product']}")
 
     office = audited.get("office-suite/index.html", ("", Audit()))[0]
-    for marker in ("This does", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):
+    for marker in ("not yet implemented", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):
         if marker not in office:
             errors.append(f"office-suite missing implementation/planning boundary marker: {marker}")
 
@@ -191,7 +191,7 @@ def main() -> int:
     for marker in ("Load current public repositories", "does not publish private repository names", "api.github.com"):
         if marker not in github and marker != "api.github.com":
             errors.append(f"github page missing privacy/currentness marker: {marker}")
-    if re.search(r"\\b\\d+\\s+(?:total|public)\\s+repositories\\b", github, re.IGNORECASE):
+    if re.search(r"\b\\d+\s+(?:total|public)\s+repositories\\b", github, re.IGNORECASE):
         errors.append("github page must not hard-code a repository total")
 
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
