@@ -37,7 +37,7 @@ The website must not publish private repository names or fixed private-repositor
 
 ## Glaze UI V1.6 migration
 
-This rebuild targets the current Official Stable Glaze UI 1.6.0 contract. The shared Glaze UI release is consumer-eligible, but downstream website conformance is not inherited automatically. The website therefore records its state as `migration-candidate-unaccepted` until exact-revision repository-local rendered, accessibility, performance, and other required acceptance evidence is completed.
+This rebuild targets the current Official Stable Glaze UI 1.6.0 contract. Stable lifecycle authority is pinned at `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`; the separately recorded accepted published release source is `a7180679ea851389e0f3004515f9a25f420e716d`. The shared Glaze UI release is consumer-eligible, but downstream website conformance is not inherited automatically. The website therefore records its state as `migration-candidate-unaccepted` until exact-revision repository-local rendered, accessibility, performance, and other required acceptance evidence is completed.
 
 The rebuild uses local, same-origin presentation code. It does not require remote Glaze UI runtime execution in the browser.
 
