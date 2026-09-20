@@ -1,4 +1,4 @@
-name: Verify Firefox unified production
+name: Verify Firefox publication on retained www
 
 on:
   pull_request:
@@ -66,9 +66,9 @@ jobs:
             origin="https://www.goreecloud.com"
           fi
           echo "FIREFOX_VERIFY_ORIGIN=$origin" >> "$GITHUB_ENV"
-          echo "Firefox acceptance target: $origin/firefox-extensions/"
+          echo "Firefox retained-main-site acceptance target: $origin/firefox-extensions/"
 
-      - name: Verify exact Firefox publication
+      - name: Verify exact Firefox publication on retained main-site namespace
         shell: bash
         run: |
           set -euo pipefail
