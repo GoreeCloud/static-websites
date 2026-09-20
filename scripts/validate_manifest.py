@@ -40,6 +40,14 @@ def main() -> None:
         fail("schema_version must be 1.0")
     if data.get("repository") != "GoreeCloud/static-websites":
         fail("repository authority is incorrect")
+    if data.get("record_role") != "historical-migration-retirement-evidence":
+        fail("manifest must be explicitly classified as historical migration/retirement evidence")
+    if data.get("current_website_authority") is not False:
+        fail("historical manifest must not claim current website authority")
+    if data.get("current_website") != "www.goreecloud.com":
+        fail("historical manifest must identify the one current website")
+    if "not a current website inventory" not in data.get("current_state_note", ""):
+        fail("historical manifest must state that it is not a current website inventory")
     if set(data.get("states", [])) != ALLOWED_STATES:
         fail("declared migration-state vocabulary drifted")
 
@@ -103,7 +111,7 @@ def main() -> None:
     if not required_ids.issubset(ids):
         fail(f"known migration inventory missing: {sorted(required_ids - ids)}")
 
-    print(f"Static website migration manifest valid: {len(sites)} sites")
+    print(f"Historical website migration/retirement manifest valid: {len(sites)} preserved site records; current website authority remains www.goreecloud.com")
 
 
 if __name__ == "__main__":
