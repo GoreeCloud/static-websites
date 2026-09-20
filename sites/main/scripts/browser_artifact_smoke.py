@@ -175,6 +175,34 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if width <= 900 and nav_toggle_state.get("display") == "none":
         raise BrowserError(f"{path} hides the mobile Menu control at {width}px: {nav_toggle_state}")
 
+    semantics = execute(session, """
+      const button=document.querySelector('[data-nav-toggle]');
+      const nav=document.querySelector('[data-nav]');
+      const skip=document.querySelector('.skip-link');
+      const main=document.querySelector('#main');
+      const theme=document.querySelector('[data-theme-toggle]');
+      const beforeTheme=document.documentElement.dataset.theme;
+      const beforeLabel=theme?.getAttribute('aria-label')||'';
+      if(theme) theme.click();
+      const afterTheme=document.documentElement.dataset.theme;
+      const afterLabel=theme?.getAttribute('aria-label')||'';
+      if(theme) theme.click();
+      return {
+        navId:nav?.id||'',
+        controls:button?.getAttribute('aria-controls')||'',
+        expanded:button?.getAttribute('aria-expanded')||'',
+        skipHref:skip?.getAttribute('href')||'',
+        mainId:main?.id||'',
+        beforeTheme,afterTheme,beforeLabel,afterLabel,
+      };
+    """)
+    if semantics.get("navId") != "primary-navigation" or semantics.get("controls") != "primary-navigation":
+        raise BrowserError(f"{path} navigation toggle is not semantically bound to the primary navigation: {semantics}")
+    if semantics.get("skipHref") != "#main" or semantics.get("mainId") != "main":
+        raise BrowserError(f"{path} skip-link/main target is invalid: {semantics}")
+    if semantics.get("beforeTheme") == semantics.get("afterTheme") or semantics.get("beforeLabel") == semantics.get("afterLabel"):
+        raise BrowserError(f"{path} theme control does not expose a coherent state change: {semantics}")
+
     target_state = execute(session, """
       const selectors=['.brand','.nav a','.nav-actions button','.button','.search','.card a.stretched','.footer-links a'];
       const elements=selectors.flatMap(selector=>[...document.querySelectorAll(selector)]);
@@ -223,6 +251,18 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
             raise BrowserError(f"{path} mobile navigation overflows viewport: {nav_state}")
         if float(nav_state.get("minHeight", 0)) < 47.5:
             raise BrowserError(f"{path} mobile navigation target below the 48px floor: {nav_state}")
+        escape_state = execute(session, """
+          const button=document.querySelector('[data-nav-toggle]');
+          const nav=document.querySelector('[data-nav]');
+          document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+          return {
+            expanded:button?.getAttribute('aria-expanded'),
+            open:nav?.dataset.open||'',
+            focused:document.activeElement===button,
+          };
+        """)
+        if escape_state.get("expanded") != "false" or escape_state.get("open") == "true" or not escape_state.get("focused"):
+            raise BrowserError(f"{path} Escape does not close mobile navigation and restore focus: {escape_state}")
 
 
 def main() -> int:
