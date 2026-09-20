@@ -37,6 +37,9 @@ STALE_MARKERS = (
     "roadmap.goreecloud.com",
     "blog.goreecloud.com",
     "archive.goreecloud.com",
+    "This replaces the older multi-website model.",
+    "This rebuild targets the current Official Stable Glaze UI contract.",
+    "Migration candidate — acceptance pending",
 )
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 CGNAT = ipaddress.ip_network("100.64.0.0/10")
@@ -152,7 +155,7 @@ def main() -> int:
         "One public website",
         "45 verified product surfaces",
         "Nine cross-cutting authorities",
-        "Current design target: V1.6.0",
+        "Current Stable design system: V1.6.0",
         "/platform-systems/",
         "/suite/",
         "/office-suite/",
@@ -196,7 +199,12 @@ def main() -> int:
             errors.append(f"firefox page missing current source: {marker}")
 
     github = audited.get("github/index.html", ("", Audit()))[0]
-    for marker in ("Load current public repositories", "does not publish private repository names"):
+    for marker in (
+        "Load current public repositories",
+        "does not publish private repository names",
+        "Fresh metadata without publishing private inventory.",
+        "Ready when you are",
+    ):
         if marker not in github:
             errors.append(f"github page missing privacy/currentness marker: {marker}")
     if re.search(r"\b\d+\s+(?:total|public)\s+repositories\b", github, re.IGNORECASE):
