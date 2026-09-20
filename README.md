@@ -31,6 +31,7 @@ This repository is **not** authority to publish additional GoreeCloud websites. 
 
 ```text
 sites/
+  url-namespace.json
   manifest.json
   main/
   <historical-or-retirement packages>
@@ -38,7 +39,7 @@ docs/
   migration-status.md
 ```
 
-`sites/main/` is the source package associated with the retained `www.goreecloud.com` website.
+`sites/main/` is the source package associated with the retained `www.goreecloud.com` website. `sites/url-namespace.json` is the current route registry for that one website and its path-based sections. `sites/manifest.json` is retained migration/retirement evidence and is not a current website inventory.
 
 Other `sites/<site-id>/` packages may remain temporarily for history, recovery, migration, or retirement cleanup. Their presence in the repository or in `sites/manifest.json` is not a current-site inventory and must not be interpreted as proof that the corresponding hostname, Cloudflare Pages project, redirect, or public deployment still exists.
 
