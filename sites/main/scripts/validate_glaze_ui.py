@@ -83,7 +83,7 @@ def main() -> int:
         "prefers-reduced-transparency",
         "prefers-contrast:more",
         "forced-colors:active",
-        "min-height:44px",
+        "min-height:48px",
     ):
         if marker not in css:
             errors.append(f"website V1.6 migration CSS missing accessibility/adaptive marker: {marker}")
