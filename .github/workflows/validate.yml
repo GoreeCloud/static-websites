@@ -26,10 +26,14 @@ jobs:
 
       - name: Compile retained-site governance checks
         run: |
-          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py
+          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py \
+            scripts/validate_url_namespace.py \
+            scripts/validate_manifest.py
 
       - name: Validate one current public website model
         run: |
+          python scripts/validate_url_namespace.py
+          python scripts/validate_manifest.py
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
           python sites/main/scripts/validate_glaze_ui.py
