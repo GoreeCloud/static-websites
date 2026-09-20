@@ -31,7 +31,7 @@ EXPECTED = {
 
 
 def git_blob_sha(data: bytes) -> str:
-    header = b"blob " + str(len(data)).encode("ascii") + b"\\0"
+    header = b"blob " + str(len(data)).encode("ascii") + b"\x00"
     return hashlib.sha1(header + data, usedforsecurity=False).hexdigest()
 
 
