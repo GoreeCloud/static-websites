@@ -1,5 +1,8 @@
 /repositories.html /github/ 301
-/privacy.html /platform-systems/#privacy-shield 301
-/security.html /platform-systems/#wardveil-security 301
+/repositories /github/ 301
+/repositories/* /github/ 301
+/privacy.html /platform-systems/ 301
+/security.html /platform-systems/ 301
 /firefox-extensions /firefox/ 301
-/firefox-extensions/* /firefox/:splat 301
+/firefox-extensions/ /firefox/ 301
+/firefox-extensions/* /firefox/ 301
