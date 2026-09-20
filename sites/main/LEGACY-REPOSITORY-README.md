@@ -1,3 +1,9 @@
+# Historical Legacy Repository Snapshot
+
+> **Superseded historical record.** The material below is preserved from the former `GoreeCloud/goreecloud-website` source for migration provenance. It is **not current GoreeCloud website authority**. Current source is `GoreeCloud/static-websites`; the one current website is `www.goreecloud.com`; the required current design target is GLAZE UI V1.6 / 1.6.0 Stable. Repository names, website counts, Glaze versions, deployment states, and other “current” wording inside the preserved snapshot describe an earlier period only.
+
+---
+
 # GoreeCloud Website
 
 > **Repository migration notice:** `GoreeCloud/goreecloud-website` is a transitional legacy source. The canonical repository for all GoreeCloud static websites is `GoreeCloud/goreecloud-static-websites`.
