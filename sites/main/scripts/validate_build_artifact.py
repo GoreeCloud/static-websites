@@ -28,7 +28,6 @@ STALE_CURRENT_MARKERS = (
     "14 official public website",
     "GLAZE UI V1.3",
     "GLAZE UI V1.4 / 1.4",
-    "goreecloud-glaze-ui",
     "suite.goreecloud.com",
     "firefox.goreecloud.com",
     "design.goreecloud.com",
