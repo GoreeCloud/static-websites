@@ -6,19 +6,42 @@
   const search = document.querySelector("[data-filter-input]");
 
   if (themeButton) {
+    const syncThemeLabel = () => {
+      themeButton.setAttribute(
+        "aria-label",
+        root.dataset.theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+      );
+    };
+    syncThemeLabel();
     themeButton.addEventListener("click", () => {
       const next = root.dataset.theme === "light" ? "dark" : "light";
       root.dataset.theme = next;
       localStorage.setItem("goreecloud-theme", next);
-      themeButton.setAttribute("aria-label", next === "light" ? "Switch to dark theme" : "Switch to light theme");
+      syncThemeLabel();
     });
   }
 
   if (nav && navButton) {
+    const setNavOpen = (open) => {
+      nav.dataset.open = open ? "true" : "false";
+      navButton.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
     navButton.addEventListener("click", () => {
-      const open = nav.dataset.open === "true";
-      nav.dataset.open = open ? "false" : "true";
-      navButton.setAttribute("aria-expanded", open ? "false" : "true");
+      setNavOpen(nav.dataset.open !== "true");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.dataset.open === "true") {
+        setNavOpen(false);
+        navButton.focus();
+      }
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (matchMedia("(max-width: 900px)").matches) setNavOpen(false);
+      });
     });
   }
 
