@@ -12,7 +12,10 @@
       "legacy_redirect": false,
       "source_path": "sites/main",
       "artifact_path": "sites/main/dist",
-      "build_command": ["python", "sites/main/scripts/build_public_site.py"]
+      "build_command": [
+        "python",
+        "sites/main/scripts/build_public_site.py"
+      ]
     },
     {
       "id": "projects",
@@ -21,7 +24,10 @@
       "legacy_redirect": true,
       "source_path": "sites/projects",
       "artifact_path": "sites/projects/dist",
-      "build_command": ["python", "sites/projects/build.py"]
+      "build_command": [
+        "python",
+        "sites/projects/build.py"
+      ]
     },
     {
       "id": "roadmap",
@@ -30,7 +36,11 @@
       "legacy_redirect": true,
       "source_path": "sites/roadmap",
       "artifact_path": "sites/roadmap/dist",
-      "build_command": ["python", "scripts/build_simple_static_site.py", "sites/roadmap"]
+      "build_command": [
+        "python",
+        "scripts/build_simple_static_site.py",
+        "sites/roadmap"
+      ]
     },
     {
       "id": "blog",
@@ -39,7 +49,11 @@
       "legacy_redirect": true,
       "source_path": "sites/blog",
       "artifact_path": "sites/blog/dist",
-      "build_command": ["python", "scripts/build_simple_static_site.py", "sites/blog"]
+      "build_command": [
+        "python",
+        "scripts/build_simple_static_site.py",
+        "sites/blog"
+      ]
     },
     {
       "id": "archive",
@@ -48,7 +62,11 @@
       "legacy_redirect": true,
       "source_path": "sites/archive",
       "artifact_path": "sites/archive/dist",
-      "build_command": ["python", "scripts/build_simple_static_site.py", "sites/archive"]
+      "build_command": [
+        "python",
+        "scripts/build_simple_static_site.py",
+        "sites/archive"
+      ]
     },
     {
       "id": "suite",
@@ -57,7 +75,10 @@
       "legacy_redirect": true,
       "source_path": "sites/suite",
       "artifact_path": "sites/suite/dist",
-      "build_command": ["python", "sites/suite/scripts/build_public_site.py"]
+      "build_command": [
+        "python",
+        "sites/suite/scripts/build_public_site.py"
+      ]
     },
     {
       "id": "design",
@@ -66,7 +87,10 @@
       "legacy_redirect": true,
       "source_path": "sites/design",
       "artifact_path": "sites/design/website/dist",
-      "build_command": ["python", "sites/design/website/build_v14.py"]
+      "build_command": [
+        "python",
+        "sites/design/website/build_v14.py"
+      ]
     },
     {
       "id": "privacy",
@@ -75,7 +99,10 @@
       "legacy_redirect": true,
       "source_path": "sites/privacy",
       "artifact_path": "sites/privacy/website/dist",
-      "build_command": ["python", "sites/privacy/website/build.py"]
+      "build_command": [
+        "python",
+        "sites/privacy/website/build.py"
+      ]
     },
     {
       "id": "security",
@@ -84,7 +111,10 @@
       "legacy_redirect": true,
       "source_path": "sites/security",
       "artifact_path": "sites/security/website/dist",
-      "build_command": ["python", "sites/security/website/build.py"]
+      "build_command": [
+        "python",
+        "sites/security/website/build.py"
+      ]
     },
     {
       "id": "everkeep",
@@ -93,7 +123,10 @@
       "legacy_redirect": true,
       "source_path": "sites/everkeep",
       "artifact_path": "sites/everkeep/dist",
-      "build_command": ["python", "sites/everkeep/scripts/build_public_site.py"]
+      "build_command": [
+        "python",
+        "sites/everkeep/scripts/build_public_site.py"
+      ]
     },
     {
       "id": "identity",
@@ -123,7 +156,10 @@
       "reserved_application_host": "manager.goreecloud.com",
       "source_path": "sites/manager",
       "artifact_path": "sites/manager/dist",
-      "build_command": ["python", "sites/manager/scripts/build_public_site.py"]
+      "build_command": [
+        "python",
+        "sites/manager/scripts/build_public_site.py"
+      ]
     },
     {
       "id": "mesh",
@@ -132,7 +168,10 @@
       "legacy_redirect": true,
       "source_path": "sites/mesh",
       "artifact_path": "sites/mesh/dist",
-      "build_command": ["python", "sites/mesh/scripts/build_public_site.py"]
+      "build_command": [
+        "python",
+        "sites/mesh/scripts/build_public_site.py"
+      ]
     },
     {
       "id": "labs",
@@ -141,17 +180,24 @@
       "legacy_redirect": true,
       "source_path": "sites/labs",
       "artifact_path": "sites/labs/dist",
-      "build_command": ["python", "sites/labs/build.py"]
+      "build_command": [
+        "python",
+        "sites/labs/build.py"
+      ]
     },
     {
       "id": "firefox",
       "canonical_path": "/firefox-extensions",
-      "current_public_host": "firefox.goreecloud.com",
-      "legacy_redirect": true,
+      "current_public_host": null,
+      "legacy_redirect": false,
       "cutover_state": "provider-cutover-verified",
       "source_path": "sites/firefox",
       "artifact_path": "sites/firefox/dist",
-      "build_command": ["python", "sites/firefox/build.py"]
+      "build_command": [
+        "python",
+        "sites/firefox/build.py"
+      ],
+      "legacy_host_state": "retired"
     }
   ]
 }
