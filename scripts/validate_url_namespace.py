@@ -47,7 +47,7 @@ def main() -> None:
 
     if registry.get("schema_version") != "1.0":
         fail("schema_version must be 1.0")
-    if registry.get("repository") != "GoreeCloud/goreecloud-static-websites":
+    if registry.get("repository") != "GoreeCloud/static-websites":
         fail("repository authority is incorrect")
     if registry.get("canonical_origin") != "https://www.goreecloud.com":
         fail("canonical origin must be https://www.goreecloud.com")

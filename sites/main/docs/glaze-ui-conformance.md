@@ -44,6 +44,6 @@ GLAZE UI governs presentation and interaction. It does not grant privacy authori
 
 ## Deployment boundary
 
-This record establishes the reviewed V1.4 source/build target in `GoreeCloud/goreecloud-static-websites`. It does not by itself prove the exact deployed V1.4 revision at `www.goreecloud.com` or mark the Main website Stable. Exact Cloudflare deployment, responsive rendering, accessibility behavior, navigation behavior, and production PostHog consent behavior remain independent verification gates.
+This record establishes the reviewed V1.4 source/build target in `GoreeCloud/static-websites`. It does not by itself prove the exact deployed V1.4 revision at `www.goreecloud.com` or mark the Main website Stable. Exact Cloudflare deployment, responsive rendering, accessibility behavior, navigation behavior, and production PostHog consent behavior remain independent verification gates.
 
 Historical Glaze releases remain exact-revision evidence for their time. They are not current consumer-target authority.

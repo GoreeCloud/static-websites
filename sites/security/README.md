@@ -1,6 +1,6 @@
 # GoreeCloud Wardveil Security Static Website
 
-Canonical source repository: `GoreeCloud/goreecloud-static-websites`
+Canonical source repository: `GoreeCloud/static-websites`
 
 - Site root: `sites/security`
 - Canonical domain: `security.goreecloud.com`

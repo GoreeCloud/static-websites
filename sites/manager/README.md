@@ -22,7 +22,7 @@ The public site remains `noindex,nofollow,noarchive` until its independent publi
 
 - Cloudflare Pages project: `goreecloud-manager`
 - Pages namespace: `goreecloud-manager.pages.dev`
-- Repository: `GoreeCloud/goreecloud-static-websites`
+- Repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Root directory: `sites/manager`
 - Build command: `python3 scripts/build_public_site.py`

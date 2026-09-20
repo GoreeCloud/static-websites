@@ -1,6 +1,6 @@
 # GoreeCloud Mesh Center Static Website
 
-Canonical static website repository: `GoreeCloud/goreecloud-static-websites`
+Canonical static website repository: `GoreeCloud/static-websites`
 
 - Site root: `sites/mesh`
 - Canonical domain: `mesh.goreecloud.com`
@@ -22,7 +22,7 @@ The governed central deployment target is:
 
 - Pages project: `goreecloud-mesh`
 - Pages namespace: `goreecloud-mesh.pages.dev`
-- Git repository: `GoreeCloud/goreecloud-static-websites`
+- Git repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Framework preset: `None`
 - Root directory: `sites/mesh`

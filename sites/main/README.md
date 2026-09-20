@@ -1,6 +1,6 @@
 # GoreeCloud Main Website
 
-Canonical static website repository: `GoreeCloud/goreecloud-static-websites`
+Canonical static website repository: `GoreeCloud/static-websites`
 
 - Site root: `sites/main`
 - Canonical public domain: `https://www.goreecloud.com/`
@@ -28,7 +28,7 @@ The approved centralized publication contract is:
 
 - Cloudflare Pages project: `goreecloud-website`
 - Pages namespace: `goreecloud-website.pages.dev`
-- Repository: `GoreeCloud/goreecloud-static-websites`
+- Repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Root directory: `sites/main`
 - Build command: `python3 scripts/build_public_site.py`

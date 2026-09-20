@@ -4,7 +4,7 @@ Canonical centralized static source for `design.goreecloud.com`.
 
 ## Repository and publication contract
 
-- Canonical repository: `GoreeCloud/goreecloud-static-websites`
+- Canonical repository: `GoreeCloud/static-websites`
 - Site root: `sites/design/website`
 - Build command: `python3 build_v14.py`
 - Build output directory: `dist`
@@ -58,4 +58,4 @@ The GitHub workflow exposes canonical-host verification only on `workflow_dispat
 
 ## Production boundary
 
-The central package is not production-authoritative merely because it is build-valid. Keep the migration registry fail-closed until Cloudflare Pages is verified to use `GoreeCloud/goreecloud-static-websites`, branch `main`, root `sites/design/website`, build command `python3 build_v14.py`, output `dist`, and the canonical domain passes exact deployed-content and rendered-browser acceptance. Legacy-source retirement remains a separate final migration gate.
+The central package is not production-authoritative merely because it is build-valid. Keep the migration registry fail-closed until Cloudflare Pages is verified to use `GoreeCloud/static-websites`, branch `main`, root `sites/design/website`, build command `python3 build_v14.py`, output `dist`, and the canonical domain passes exact deployed-content and rendered-browser acceptance. Legacy-source retirement remains a separate final migration gate.

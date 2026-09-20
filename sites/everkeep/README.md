@@ -1,6 +1,6 @@
 # GoreeCloud Everkeep Static Website
 
-Canonical source repository: `GoreeCloud/goreecloud-static-websites`
+Canonical source repository: `GoreeCloud/static-websites`
 
 - Site root: `sites/everkeep`
 - Canonical domain: `everkeep.goreecloud.com`
@@ -16,7 +16,7 @@ This package contains the Continuity Center public static source, approved Everk
 
 When the Continuity Center Cloudflare Pages project is cut over to the central static-site repository, the deployment contract is:
 
-- Repository: `GoreeCloud/goreecloud-static-websites`
+- Repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Root directory: `sites/everkeep`
 - Build command: `python3 scripts/build_public_site.py`

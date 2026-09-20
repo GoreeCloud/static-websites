@@ -15,7 +15,7 @@ Production acceptance is fail-closed and revision-specific. The unified publicat
 
 ## Publication contract
 
-- Canonical repository: `GoreeCloud/goreecloud-static-websites`
+- Canonical repository: `GoreeCloud/static-websites`
 - Production branch target: `main`
 - Site root: `sites/firefox`
 - Build command: `python3 build.py`

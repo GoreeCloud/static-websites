@@ -26,7 +26,7 @@ The approved centralized publication contract is:
 
 - Cloudflare Pages project: `goreecloud-archive`
 - Pages namespace: `goreecloud-archive.pages.dev`
-- Repository: `GoreeCloud/goreecloud-static-websites`
+- Repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Root directory: repository root (leave the Cloudflare Root directory setting blank)
 - Build command: `python3 scripts/build_simple_static_site.py sites/archive`

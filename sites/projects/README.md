@@ -4,7 +4,7 @@ Canonical static source for `projects.goreecloud.com`.
 
 ## Repository contract
 
-- Canonical repository: `GoreeCloud/goreecloud-static-websites`
+- Canonical repository: `GoreeCloud/static-websites`
 - Site root: `sites/projects`
 - Build command: `python3 build.py`
 - Build output directory: `dist`
@@ -15,7 +15,7 @@ Canonical static source for `projects.goreecloud.com`.
 - Migration source: `GoreeCloud/goreecloud-website` at `sites/projects`
 - Reviewed legacy source tree: `2f7f5d096707bcc001e0e0ae46eb718c5ea3ab3f`
 
-The Cloudflare project identity and Pages namespace are verified from legacy `GoreeCloud/goreecloud-website` deployment evidence. The desired central Pages source is `GoreeCloud/goreecloud-static-websites`, branch `main`, root `sites/projects`, build command `python3 build.py`, and output `dist`. Recording that target does not establish that the provider has already been reconnected or that production serves the reviewed central revision.
+The Cloudflare project identity and Pages namespace are verified from legacy `GoreeCloud/goreecloud-website` deployment evidence. The desired central Pages source is `GoreeCloud/static-websites`, branch `main`, root `sites/projects`, build command `python3 build.py`, and output `dist`. Recording that target does not establish that the provider has already been reconnected or that production serves the reviewed central revision.
 
 The publication artifact is deterministic and generated from the reviewed Projects source plus the exact pinned GLAZE UI Stable source. `_headers` defines the public security-header baseline. The site remains dependency-minimized and uses local browser runtime code.
 

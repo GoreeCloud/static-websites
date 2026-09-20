@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "repository": "GoreeCloud/goreecloud-static-websites",
+  "repository": "GoreeCloud/static-websites",
   "canonical_origin": "https://www.goreecloud.com",
   "state": "provider-cutover-verified",
   "pending_cutovers": [],

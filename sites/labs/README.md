@@ -4,7 +4,7 @@ Canonical centralized static source for `labs.goreecloud.com`.
 
 ## Publication contract
 
-- Canonical repository: `GoreeCloud/goreecloud-static-websites`
+- Canonical repository: `GoreeCloud/static-websites`
 - Production branch target: `main`
 - Site root: `sites/labs`
 - Build command: `python3 build.py`

@@ -65,7 +65,7 @@ jobs:
         run: node --check sites/labs/site.js
       - name: Assert publication contract
         run: |
-          grep -F 'Canonical repository: `GoreeCloud/goreecloud-static-websites`' sites/labs/README.md
+          grep -F 'Canonical repository: `GoreeCloud/static-websites`' sites/labs/README.md
           grep -F 'Production branch target: `main`' sites/labs/README.md
           grep -F 'Site root: `sites/labs`' sites/labs/README.md
           grep -F 'Build command: `python3 build.py`' sites/labs/README.md

@@ -9,7 +9,7 @@ The Roadmap is a public, evidence-scoped view of GoreeCloud development directio
 - GLAZE UI: **V1.3 / 1.3.0 Stable**
 - Exact Stable source revision: `8354308445da9ac35ced2b37a7f503a08a0aaf72`
 - Consumer state: `source-migrated-rendered-acceptance-pending`
-- Canonical static-site repository: `GoreeCloud/goreecloud-static-websites`
+- Canonical static-site repository: `GoreeCloud/static-websites`
 - Current authoritative registered package scope: **14 websites**
 - Labs: integrated as the fourteenth authoritative-main static-site package; Cloudflare source cutover, exact deployed-revision verification, production acceptance, and indexing release remain separate gates
 
@@ -21,7 +21,7 @@ The approved centralized publication contract is:
 
 - Cloudflare Pages project: `goreecloud-roadmap`
 - Pages namespace: `goreecloud-roadmap.pages.dev`
-- Repository: `GoreeCloud/goreecloud-static-websites`
+- Repository: `GoreeCloud/static-websites`
 - Production branch: `main`
 - Root directory: repository root (leave the Cloudflare Root directory setting blank)
 - Build command: `python3 scripts/build_simple_static_site.py sites/roadmap`

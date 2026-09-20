@@ -4,7 +4,7 @@ Canonical source repository for every GoreeCloud-controlled static website.
 
 ## Mandatory repository policy
 
-**All GoreeCloud static websites MUST be stored, maintained, and referenced from `GoreeCloud/goreecloud-static-websites`.** This repository is the single authoritative source location for static website source across the GoreeCloud ecosystem.
+**All GoreeCloud static websites MUST be stored, maintained, and referenced from `GoreeCloud/static-websites`.** This repository is the single authoritative source location for static website source across the GoreeCloud ecosystem.
 
 This requirement includes, without limitation:
 
@@ -18,7 +18,7 @@ This requirement includes, without limitation:
 - static websites currently embedded in individual application, service, system, or historical repositories; and
 - every new GoreeCloud static website created in the future.
 
-Other GoreeCloud repositories may reference or deploy a site from this repository, but they must not remain the authoritative home of separate static website copies after migration. Repository documentation, deployment configuration, build references, automation, and other source references must be cut over to the corresponding package in `goreecloud-static-websites` as each migration is completed.
+Other GoreeCloud repositories may reference or deploy a site from this repository, but they must not remain the authoritative home of separate static website copies after migration. Repository documentation, deployment configuration, build references, automation, and other source references must be cut over to the corresponding package in `static-websites` as each migration is completed.
 
 ## Repository role
 
@@ -59,7 +59,7 @@ Deletion is permitted only after:
 
 1. every static website currently stored in `goreecloud-website` has been successfully migrated here;
 2. static websites embedded in other GoreeCloud application, service, system, design-system, or historical repositories have also been migrated here;
-3. all required build, deployment, documentation, automation, and repository references have been updated to use `goreecloud-static-websites`;
+3. all required build, deployment, documentation, automation, and repository references have been updated to use `static-websites`;
 4. the migrated sites have passed their required central validation and production verification gates where applicable;
 5. obsolete website copies have been retired from their previous repositories; and
 6. no required source, asset, configuration, dependency, deployment, or reference remains dependent on `goreecloud-website`.

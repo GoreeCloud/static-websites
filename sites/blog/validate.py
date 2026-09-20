@@ -29,7 +29,7 @@ required = (
     "GoreeCloud Health, Reader, Router OS, Social, Home, and Home Security",
     "without turning portfolio membership into a Stable or production claim",
     "14 registered static website packages",
-    "GoreeCloud/goreecloud-static-websites",
+    "GoreeCloud/static-websites",
     "Labs is integrated as the fourteenth authoritative-main package",
     "production acceptance, and indexing release remain separate gates",
 )

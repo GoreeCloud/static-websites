@@ -33,7 +33,7 @@ jobs:
         run: node --check sites/firefox/site.js
       - name: Assert production publication contract
         run: |
-          grep -F 'Canonical repository: `GoreeCloud/goreecloud-static-websites`' sites/firefox/README.md
+          grep -F 'Canonical repository: `GoreeCloud/static-websites`' sites/firefox/README.md
           grep -F 'Site root: `sites/firefox`' sites/firefox/README.md
           grep -F 'Build command: `python3 build.py`' sites/firefox/README.md
           grep -F 'Build output directory: `dist`' sites/firefox/README.md

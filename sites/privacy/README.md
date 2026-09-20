@@ -1,6 +1,6 @@
 # GoreeCloud Privacy Shield Static Website
 
-Canonical source repository: `GoreeCloud/goreecloud-static-websites`
+Canonical source repository: `GoreeCloud/static-websites`
 
 - Site root: `sites/privacy`
 - Canonical domain: `privacy.goreecloud.com`
