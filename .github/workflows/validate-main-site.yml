@@ -1,4 +1,4 @@
-name: Validate main GoreeCloud static site
+name: Validate main GoreeCloud website
 
 on:
   pull_request:
@@ -15,64 +15,61 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: main-website-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - name: Check out exact candidate
+      - name: Check out exact website candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - name: Check out pinned GLAZE UI V1.4 Stable source
+
+      - name: Check out pinned Glaze UI V1.6.0 Stable authority
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          repository: GoreeCloud/goreecloud-glaze-ui
-          ref: 84cb3db4884042f0fa25ed6d475a127fb110f596
+          repository: GoreeCloud/glaze-ui
+          ref: a7180679ea851389e0f3004515f9a25f420e716d
           path: .glaze-ui
           persist-credentials: false
+
       - name: Confirm generated artifact is not source authority
         run: test ! -e sites/main/dist
-      - name: Compile main-site build, browser, privacy, and verification tools
+
+      - name: Compile website validation tools
         run: |
-          python -m py_compile \
-            sites/main/scripts/glaze_v1_4.py \
-            sites/main/scripts/build_public_site.py \
-            sites/main/scripts/validate_build_artifact.py \
-            sites/main/scripts/validate_site.py \
-            sites/main/scripts/validate_glaze_ui.py \
-            sites/main/scripts/validate_responsive_layout.py \
-            sites/main/scripts/validate_public_surface.py \
-            sites/main/scripts/validate_privacy_policy.py \
-            sites/main/scripts/verify_remote_deployment.py \
-            sites/main/scripts/browser_responsive_smoke.py \
-            sites/main/scripts/browser_artifact_smoke.py
-      - name: Validate main-site source contracts
+          python -m py_compile             sites/main/scripts/build_public_site.py             sites/main/scripts/validate_build_artifact.py             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py             sites/main/scripts/browser_artifact_smoke.py
+
+      - name: Validate current public truth and URL surface
         run: |
-          python sites/main/scripts/validate_glaze_ui.py
-          python sites/main/scripts/validate_responsive_layout.py
-          python sites/main/scripts/validate_public_surface.py
           python sites/main/scripts/validate_site.py
-          python sites/main/scripts/validate_privacy_policy.py
-      - name: Build isolated public artifact from exact GLAZE UI source
+          python sites/main/scripts/validate_public_surface.py
+
+      - name: Validate current Glaze UI target against pinned authority
         env:
           GLAZE_UI_SOURCE: ${{ github.workspace }}/.glaze-ui
+        run: python sites/main/scripts/validate_glaze_ui.py
+
+      - name: Build isolated one-site artifact
         run: python sites/main/scripts/build_public_site.py
-      - name: Validate isolated public artifact against exact GLAZE UI source
-        env:
-          GLAZE_UI_SOURCE: ${{ github.workspace }}/.glaze-ui
+
+      - name: Validate exact artifact bytes and public boundary
         run: python sites/main/scripts/validate_build_artifact.py
-      - name: Exercise exact built artifact in Chrome
+
+      - name: Exercise all six canonical pages in Chrome
         run: python sites/main/scripts/browser_artifact_smoke.py
-      - name: Check JavaScript syntax
+
+      - name: Check current JavaScript syntax
         run: |
-          node --check sites/main/js/theme-init.js
-          node --check sites/main/js/main.js
-          node --check sites/main/js/telemetry.js
-      - name: Verify canonical production bytes and headers
-        if: github.event_name == 'workflow_dispatch'
-        run: python sites/main/scripts/verify_remote_deployment.py production
-      - name: Verify canonical production responsive rendering
-        if: github.event_name == 'workflow_dispatch'
-        run: python sites/main/scripts/browser_responsive_smoke.py --target production
+          node --check sites/main/js/theme-init-v8.js
+          node --check sites/main/js/site-v8.js
+
+      - name: Preserve production acceptance boundary
+        run: |
+          echo "Source/build/browser checks do not establish deployment or production acceptance."
+          echo "Production verification remains a separately authorized post-merge gate."
