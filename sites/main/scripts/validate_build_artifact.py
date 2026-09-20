@@ -1,100 +1,103 @@
 #!/usr/bin/env python3
-"""Validate that Main dist/ is exactly the reviewed source plus pinned V1.4 CSS."""
+"""Validate the exact GoreeCloud retained-site build artifact."""
 
 from __future__ import annotations
 
 from pathlib import Path
+import re
 import sys
 
-from build_public_site import DIST, PUBLIC_FILES, ROOT, render_public_html
-from glaze_v1_4 import GLAZE_CONSUMER_STATE, GLAZE_ENTRYPOINT, GLAZE_PROMOTION_REVISION, GLAZE_VERSION, collect_glaze_css
-from render_repository_portfolio import load_manifest
+from build_public_site import DIST, PUBLIC_FILES, ROOT
 
-FORBIDDEN_NAMES = {".git", ".github", ".gitignore", "README.md", "SECURITY.md", "scripts", "docs"}
+CANONICAL_PAGES = (
+    "index.html",
+    "platform-systems/index.html",
+    "suite/index.html",
+    "office-suite/index.html",
+    "firefox/index.html",
+    "github/index.html",
+)
+COMPATIBILITY_PAGES = ("privacy.html", "security.html", "repositories.html", "404.html")
+PRIVATE_IP_PATTERNS = (
+    re.compile(r"\\b10(?:\\.\\d{1,3}){3}\\b"),
+    re.compile(r"\\b192\\.168(?:\\.\\d{1,3}){2}\\b"),
+    re.compile(r"\\b172\\.(?:1[6-9]|2\\d|3[01])(?:\\.\\d{1,3}){2}\\b"),
+    re.compile(r"\\b100\\.(?:6[4-9]|[7-9]\\d|1[01]\\d|12[0-7])(?:\\.\\d{1,3}){2}\\b"),
+)
+STALE_CURRENT_MARKERS = (
+    "Seven systems. Seven distinct responsibilities.",
+    "seven Integral Platform Systems",
+    "Fourteen official surfaces",
+    "14 official public website",
+    "GLAZE UI V1.3",
+    "GLAZE UI V1.4 / 1.4",
+    "goreecloud-glaze-ui",
+    "suite.goreecloud.com",
+    "firefox.goreecloud.com",
+    "design.goreecloud.com",
+    "privacy.goreecloud.com",
+    "security.goreecloud.com",
+)
 
 
 def main() -> int:
     errors: list[str] = []
-    if not DIST.exists() or not DIST.is_dir() or DIST.is_symlink():
-        print("Build artifact validation failed: dist/ is missing or unsafe; run build_public_site.py first.")
+    if not DIST.is_dir() or DIST.is_symlink():
+        print("Build artifact validation failed: dist/ is missing or unsafe.")
         return 1
 
-    try:
-        glaze_css = collect_glaze_css(ROOT)
-        manifest = load_manifest(ROOT)
-    except (OSError, ValueError) as exc:
-        print(f"Build artifact validation failed: {exc}")
-        return 1
-
-    source_expected = {Path(relative) for relative in PUBLIC_FILES}
-    glaze_expected = {Path("css") / name for name in glaze_css}
-    expected = source_expected | glaze_expected
+    expected = {Path(item) for item in PUBLIC_FILES}
     actual = {path.relative_to(DIST) for path in DIST.rglob("*") if path.is_file()}
+
+    for path in sorted(expected - actual):
+        errors.append(f"expected file missing from dist: {path}")
+    for path in sorted(actual - expected):
+        errors.append(f"unexpected file present in dist: {path}")
 
     for path in DIST.rglob("*"):
         if path.is_symlink():
-            errors.append(f"Build artifact must not contain symlinks: {path.relative_to(DIST)}")
-    for path in sorted(expected - actual):
-        errors.append(f"Expected public file is missing from dist/: {path}")
-    for path in sorted(actual - expected):
-        errors.append(f"Unexpected file is present in dist/: {path}")
+            errors.append(f"artifact contains symlink: {path.relative_to(DIST)}")
 
-    for path in sorted(expected & actual):
-        built = DIST / path
-        if path.parts[:1] == ("css",) and path.name in glaze_css:
-            expected_bytes = glaze_css[path.name]
-        else:
-            source = ROOT / path
-            if not source.is_file() or source.is_symlink():
-                errors.append(f"Allowlisted source is invalid: {path}")
-                continue
-            if path.suffix == ".html":
-                expected_bytes = render_public_html(str(path), source.read_text(encoding="utf-8"), manifest).encode("utf-8")
-            else:
-                expected_bytes = source.read_bytes()
-        if expected_bytes != built.read_bytes():
-            errors.append(f"Built file differs from reviewed/pinned contract: {path}")
+    for relative in sorted(expected & actual):
+        source = ROOT / relative
+        built = DIST / relative
+        if source.read_bytes() != built.read_bytes():
+            errors.append(f"built bytes differ from reviewed source: {relative}")
 
-    for forbidden in sorted(FORBIDDEN_NAMES & {path.parts[0] for path in actual if path.parts}):
-        errors.append(f"Repository-only content leaked into deploy artifact: {forbidden}")
-
-    required = {
-        Path("index.html"), Path("repositories.html"), Path("404.html"), Path("privacy.html"),
-        Path("security.html"), Path("_headers"), Path("robots.txt"), Path("sitemap.xml"),
-        Path("site.webmanifest"), Path(".well-known/security.txt"), Path("css/glaze.css"),
-        Path("css/glaze-polish.css"), Path("css/glaze-v1.4-main.css"), Path("css") / GLAZE_ENTRYPOINT,
-        Path("js/theme-init.js"), Path("js/main.js"), Path("js/telemetry.js"),
-    }
-    for path in sorted(required - actual):
-        errors.append(f"Required runtime file is missing from dist/: {path}")
-
-    for page in ("index.html", "repositories.html", "404.html", "privacy.html", "security.html"):
+    for page in CANONICAL_PAGES + COMPATIBILITY_PAGES:
         path = DIST / page
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
         for marker in (
-            f'data-glaze-version="{GLAZE_VERSION}"',
-            f'name="goreecloud-glaze-ui" content="{GLAZE_VERSION}"',
-            f'name="goreecloud-glaze-source-revision" content="{GLAZE_PROMOTION_REVISION}"',
-            f'name="goreecloud-glaze-consumer-state" content="{GLAZE_CONSUMER_STATE}"',
-            f'{GLAZE_ENTRYPOINT}" data-glaze-ui="{GLAZE_VERSION}"',
-            'css/glaze-v1.4-main.css',
-            'data-glaze-optical-v14="adaptive-optical"',
+            'data-glaze-version="1.6.0"',
+            'name="goreecloud-glaze-ui" content="1.6.0"',
+            'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
+            "/css/site-v8.css",
+            "/js/theme-init-v8.js",
+            "/js/site-v8.js",
         ):
             if marker not in text:
-                errors.append(f"Built {page} missing V1.4 marker: {marker}")
-        for stale in (
-            'data-glaze-version="1.3.0"',
-            'goreecloud-glaze-ui" content="1.3.0"',
-            'glaze-v1.3.0.css" data-glaze-ui="1.3.0"',
-            "glaze-ui-2.1.0.css",
-            "glaze-2.2.0.css",
-            'data-glaze-ui="2.1.0"',
-            'data-glaze-ui="2.2.0"',
-        ):
+                errors.append(f"{page} missing current V1.6 migration marker: {marker}")
+        for stale in STALE_CURRENT_MARKERS:
             if stale in text:
-                errors.append(f"Built {page} still activates superseded Glaze: {stale}")
+                errors.append(f"{page} contains stale current-state marker: {stale}")
+        for pattern in PRIVATE_IP_PATTERNS:
+            if pattern.search(text):
+                errors.append(f"{page} contains private-range address material")
+
+    headers = (DIST / "_headers").read_text(encoding="utf-8") if (DIST / "_headers").is_file() else ""
+    for marker in (
+        "Content-Security-Policy:",
+        "Referrer-Policy: no-referrer",
+        "X-Content-Type-Options: nosniff",
+        "https://api.github.com",
+    ):
+        if marker not in headers:
+            errors.append(f"_headers missing required marker: {marker}")
+    for stale in ("posthog.com", "us-assets.i.posthog.com"):
+        if stale in headers:
+            errors.append(f"_headers still permits retired analytics dependency: {stale}")
 
     if errors:
         print("Build artifact validation failed:")
@@ -103,7 +106,7 @@ def main() -> int:
         return 1
 
     total_bytes = sum((DIST / path).stat().st_size for path in actual)
-    print(f"Build artifact validation passed: {len(actual)} files, {total_bytes} bytes, exact GLAZE UI V1.4 closure active.")
+    print(f"Build artifact validation passed: {len(actual)} files, {total_bytes} bytes, one retained website.")
     return 0
 
 
