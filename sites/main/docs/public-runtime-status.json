@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "as_of": "2026-08-31",
-  "purpose": "Repository-only current-state authority that separates GoreeCloud product/source lifecycle from the live production runtime or predecessor that remains authoritative during controlled migrations.",
+  "purpose": "Historical 2026-08-31 website review snapshot retained for provenance. Live product repositories and governed project records, not this dated snapshot, control current lifecycle/runtime state.",
   "services": {
     "goreecloud-memos": {
       "public_name": "GoreeCloud Memos",
