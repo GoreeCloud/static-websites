@@ -156,6 +156,25 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if int(state.get("bodyText", 0)) < 80:
         raise BrowserError(f"{path} rendered unexpectedly little content: {state}")
 
+    nav_toggle_state = execute(session, """
+      const button=document.querySelector('[data-nav-toggle]');
+      const style=button?getComputedStyle(button):null;
+      const r=button?.getBoundingClientRect();
+      return {
+        exists:!!button,
+        display:style?.display||'',
+        visibility:style?.visibility||'',
+        width:r?.width||0,
+        height:r?.height||0,
+      };
+    """)
+    if not isinstance(nav_toggle_state, dict) or not nav_toggle_state.get("exists"):
+        raise BrowserError(f"{path} is missing the responsive navigation toggle")
+    if width > 900 and nav_toggle_state.get("display") != "none":
+        raise BrowserError(f"{path} exposes the mobile Menu control on desktop at {width}px: {nav_toggle_state}")
+    if width <= 900 and nav_toggle_state.get("display") == "none":
+        raise BrowserError(f"{path} hides the mobile Menu control at {width}px: {nav_toggle_state}")
+
     target_state = execute(session, """
       const selectors=['.brand','.nav a','.nav-actions button','.button','.search','.card a.stretched','.footer-links a'];
       const elements=selectors.flatMap(selector=>[...document.querySelectorAll(selector)]);
