@@ -203,8 +203,8 @@ def main() -> int:
     redirects = (ROOT / "_redirects").read_text(encoding="utf-8")
     for marker in (
         "/repositories.html /github/ 301",
-        "/privacy.html /platform-systems/#privacy-shield 301",
-        "/security.html /platform-systems/#wardveil-security 301",
+        "/privacy.html /platform-systems/ 301",
+        "/security.html /platform-systems/ 301",
         "/firefox-extensions /firefox/ 301",
     ):
         if marker not in redirects:
