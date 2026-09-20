@@ -534,5 +534,8 @@
         }
       ]
     }
-  ]
+  ],
+  "record_role": "historical-snapshot",
+  "current_authority": false,
+  "current_authority_note": "Historical 2026-09-01 Suite review snapshot retained for provenance only. The current website uses the later reconciled 45-product Suite registry and does not publish this older icon/status snapshot as current portfolio authority."
 }
