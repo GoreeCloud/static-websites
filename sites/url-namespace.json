@@ -1,203 +1,28 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "repository": "GoreeCloud/static-websites",
   "canonical_origin": "https://www.goreecloud.com",
-  "state": "provider-cutover-verified",
-  "pending_cutovers": [],
-  "sites": [
-    {
-      "id": "main",
-      "canonical_path": "/",
-      "current_public_host": "www.goreecloud.com",
-      "legacy_redirect": false,
-      "source_path": "sites/main",
-      "artifact_path": "sites/main/dist",
-      "build_command": [
-        "python",
-        "sites/main/scripts/build_public_site.py"
-      ]
-    },
-    {
-      "id": "projects",
-      "canonical_path": "/projects",
-      "current_public_host": "projects.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/projects",
-      "artifact_path": "sites/projects/dist",
-      "build_command": [
-        "python",
-        "sites/projects/build.py"
-      ]
-    },
-    {
-      "id": "roadmap",
-      "canonical_path": "/roadmap",
-      "current_public_host": "roadmap.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/roadmap",
-      "artifact_path": "sites/roadmap/dist",
-      "build_command": [
-        "python",
-        "scripts/build_simple_static_site.py",
-        "sites/roadmap"
-      ]
-    },
-    {
-      "id": "blog",
-      "canonical_path": "/blog",
-      "current_public_host": "blog.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/blog",
-      "artifact_path": "sites/blog/dist",
-      "build_command": [
-        "python",
-        "scripts/build_simple_static_site.py",
-        "sites/blog"
-      ]
-    },
-    {
-      "id": "archive",
-      "canonical_path": "/archive",
-      "current_public_host": "archive.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/archive",
-      "artifact_path": "sites/archive/dist",
-      "build_command": [
-        "python",
-        "scripts/build_simple_static_site.py",
-        "sites/archive"
-      ]
-    },
-    {
-      "id": "suite",
-      "canonical_path": "/suite",
-      "current_public_host": "suite.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/suite",
-      "artifact_path": "sites/suite/dist",
-      "build_command": [
-        "python",
-        "sites/suite/scripts/build_public_site.py"
-      ]
-    },
-    {
-      "id": "design",
-      "canonical_path": "/glaze-ui",
-      "current_public_host": "design.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/design",
-      "artifact_path": "sites/design/website/dist",
-      "build_command": [
-        "python",
-        "sites/design/website/build_v14.py"
-      ]
-    },
-    {
-      "id": "privacy",
-      "canonical_path": "/privacy-shield",
-      "current_public_host": "privacy.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/privacy",
-      "artifact_path": "sites/privacy/website/dist",
-      "build_command": [
-        "python",
-        "sites/privacy/website/build.py"
-      ]
-    },
-    {
-      "id": "security",
-      "canonical_path": "/wardveil",
-      "current_public_host": "security.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/security",
-      "artifact_path": "sites/security/website/dist",
-      "build_command": [
-        "python",
-        "sites/security/website/build.py"
-      ]
-    },
-    {
-      "id": "everkeep",
-      "canonical_path": "/everkeep",
-      "current_public_host": "everkeep.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/everkeep",
-      "artifact_path": "sites/everkeep/dist",
-      "build_command": [
-        "python",
-        "sites/everkeep/scripts/build_public_site.py"
-      ]
-    },
-    {
-      "id": "identity",
-      "canonical_path": "/identity",
-      "current_public_host": "id.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/identity",
-      "artifact_path": null,
-      "build_command": null,
-      "static_allowlist": [
-        "index.html",
-        "404.html",
-        "_headers",
-        "app.js",
-        "style.css",
-        "glaze-v1.3-consumer.css",
-        "robots.txt",
-        "sitemap.xml",
-        "assets"
-      ]
-    },
-    {
-      "id": "manager",
-      "canonical_path": "/manager",
-      "current_public_host": "manage.goreecloud.com",
-      "legacy_redirect": true,
-      "reserved_application_host": "manager.goreecloud.com",
-      "source_path": "sites/manager",
-      "artifact_path": "sites/manager/dist",
-      "build_command": [
-        "python",
-        "sites/manager/scripts/build_public_site.py"
-      ]
-    },
-    {
-      "id": "mesh",
-      "canonical_path": "/mesh",
-      "current_public_host": "mesh.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/mesh",
-      "artifact_path": "sites/mesh/dist",
-      "build_command": [
-        "python",
-        "sites/mesh/scripts/build_public_site.py"
-      ]
-    },
-    {
-      "id": "labs",
-      "canonical_path": "/labs",
-      "current_public_host": "labs.goreecloud.com",
-      "legacy_redirect": true,
-      "source_path": "sites/labs",
-      "artifact_path": "sites/labs/dist",
-      "build_command": [
-        "python",
-        "sites/labs/build.py"
-      ]
-    },
-    {
-      "id": "firefox",
-      "canonical_path": "/firefox-extensions",
-      "current_public_host": null,
-      "legacy_redirect": false,
-      "cutover_state": "provider-cutover-verified",
-      "source_path": "sites/firefox",
-      "artifact_path": "sites/firefox/dist",
-      "build_command": [
-        "python",
-        "sites/firefox/build.py"
-      ],
-      "legacy_host_state": "retired"
-    }
-  ]
+  "state": "single-retained-website",
+  "website": {
+    "id": "main",
+    "current_public_host": "www.goreecloud.com",
+    "source_path": "sites/main",
+    "artifact_path": "sites/main/dist",
+    "build_command": ["python", "sites/main/scripts/build_public_site.py"]
+  },
+  "canonical_paths": [
+    {"id":"home","path":"/","source":"sites/main/index.html"},
+    {"id":"platform-systems","path":"/platform-systems/","source":"sites/main/platform-systems/index.html"},
+    {"id":"suite","path":"/suite/","source":"sites/main/suite/index.html"},
+    {"id":"office-suite","path":"/office-suite/","source":"sites/main/office-suite/index.html"},
+    {"id":"firefox","path":"/firefox/","source":"sites/main/firefox/index.html"},
+    {"id":"github","path":"/github/","source":"sites/main/github/index.html"}
+  ],
+  "compatibility_paths": [
+    {"from":"/repositories.html","to":"/github/"},
+    {"from":"/privacy.html","to":"/platform-systems/"},
+    {"from":"/security.html","to":"/platform-systems/"},
+    {"from":"/firefox-extensions","to":"/firefox/"}
+  ],
+  "historical_boundary": "sites/manifest.json and former sites/<site-id> packages are migration/retirement history, not current website inventory or deployment authority."
 }
