@@ -43,10 +43,12 @@ jobs:
 
       - name: Compile website validation tools
         run: |
-          python -m py_compile             sites/main/scripts/build_public_site.py             sites/main/scripts/validate_build_artifact.py             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py             sites/main/scripts/browser_artifact_smoke.py
+          python -m py_compile             sites/main/scripts/build_public_site.py             sites/main/scripts/validate_build_artifact.py             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py             sites/main/scripts/browser_artifact_smoke.py \
+            scripts/validate_url_namespace.py
 
       - name: Validate current public truth and URL surface
         run: |
+          python scripts/validate_url_namespace.py
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
 
