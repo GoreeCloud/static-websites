@@ -123,6 +123,16 @@ def audit_page(relative: str, expected_canonical: str | None, errors: list[str])
     ):
         if marker not in text:
             errors.append(f"{relative} missing current Glaze migration marker: {marker}")
+    if expected_canonical:
+        for marker in (
+            'id="primary-navigation"',
+            'aria-controls="primary-navigation"',
+            'aria-expanded="false"',
+            'class="skip-link" href="#main"',
+            'id="main"',
+        ):
+            if marker not in text:
+                errors.append(f"{relative} missing required navigation/accessibility marker: {marker}")
     return text, audit
 
 
@@ -204,6 +214,10 @@ def main() -> int:
         "does not publish private repository names",
         "Fresh metadata without publishing private inventory.",
         "Ready when you are",
+        'role="status"',
+        'aria-live="polite"',
+        'aria-controls="github-repository-list"',
+        'id="github-repository-list"',
     ):
         if marker not in github:
             errors.append(f"github page missing privacy/currentness marker: {marker}")
