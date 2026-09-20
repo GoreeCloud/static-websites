@@ -127,7 +127,30 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if abs(int(state.get("width", 0)) - width) > 1 or abs(int(state.get("height", 0)) - height) > 1:
         raise BrowserError(f"{path} viewport mismatch: {state}")
     if int(state.get("scrollWidth", width + 2)) > width + 1:
-        raise BrowserError(f"{path} overflows horizontally at {width}px: {state}")
+        overflow = execute(session, """
+          const width=window.innerWidth;
+          return [...document.querySelectorAll('body *')]
+            .map((el) => {
+              const r=el.getBoundingClientRect();
+              const style=getComputedStyle(el);
+              return {
+                tag:el.tagName.toLowerCase(),
+                id:el.id||'',
+                className:typeof el.className==='string'?el.className:'',
+                left:Math.round(r.left*100)/100,
+                right:Math.round(r.right*100)/100,
+                width:Math.round(r.width*100)/100,
+                scrollWidth:el.scrollWidth,
+                whiteSpace:style.whiteSpace,
+                overflowX:style.overflowX,
+                text:(el.textContent||'').trim().replace(/\\s+/g,' ').slice(0,120),
+              };
+            })
+            .filter((item) => item.width > 0 && (item.left < -1 || item.right > width + 1 || item.scrollWidth > Math.ceil(item.width) + 1))
+            .sort((a,b) => Math.max(b.right-width,b.scrollWidth-b.width)-Math.max(a.right-width,a.scrollWidth-a.width))
+            .slice(0,12);
+        """)
+        raise BrowserError(f"{path} overflows horizontally at {width}px: {state}; offenders={overflow}")
     if int(state.get("h1Count", 0)) != 1 or not state.get("h1Text"):
         raise BrowserError(f"{path} must render exactly one visible h1: {state}")
     if int(state.get("bodyText", 0)) < 80:
