@@ -156,6 +156,34 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if int(state.get("bodyText", 0)) < 80:
         raise BrowserError(f"{path} rendered unexpectedly little content: {state}")
 
+    target_state = execute(session, """
+      const selectors=['.brand','.nav a','.nav-actions button','.button','.search','.card a.stretched','.footer-links a'];
+      const elements=selectors.flatMap(selector=>[...document.querySelectorAll(selector)]);
+      const seen=new Set();
+      const visible=elements.filter(el=>{
+        if(seen.has(el)) return false;
+        seen.add(el);
+        const style=getComputedStyle(el);
+        const r=el.getBoundingClientRect();
+        return style.display!=='none' && style.visibility!=='hidden' && r.width>0 && r.height>0;
+      });
+      const undersized=visible.map(el=>{
+        const r=el.getBoundingClientRect();
+        return {
+          tag:el.tagName.toLowerCase(),
+          className:typeof el.className==='string'?el.className:'',
+          text:(el.textContent||el.getAttribute('aria-label')||'').trim().replace(/\\s+/g,' ').slice(0,80),
+          width:Math.round(r.width*100)/100,
+          height:Math.round(r.height*100)/100,
+        };
+      }).filter(item=>item.height<47.5);
+      return {count:visible.length,undersized};
+    """)
+    if not isinstance(target_state, dict):
+        raise BrowserError(f"{path} could not evaluate interactive target sizing at {width}px")
+    if target_state.get("undersized"):
+        raise BrowserError(f"{path} contains interactive targets below the 48px floor at {width}px: {target_state}")
+
     if width <= 900:
         nav_state = execute(session, """
           const button=document.querySelector('[data-nav-toggle]');
@@ -174,8 +202,8 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
             raise BrowserError(f"{path} mobile navigation did not open: {nav_state}")
         if float(nav_state.get("left", -2)) < -1 or float(nav_state.get("right", width + 2)) > width + 1:
             raise BrowserError(f"{path} mobile navigation overflows viewport: {nav_state}")
-        if float(nav_state.get("minHeight", 0)) < 43.5:
-            raise BrowserError(f"{path} mobile navigation target below 44px: {nav_state}")
+        if float(nav_state.get("minHeight", 0)) < 47.5:
+            raise BrowserError(f"{path} mobile navigation target below the 48px floor: {nav_state}")
 
 
 def main() -> int:
