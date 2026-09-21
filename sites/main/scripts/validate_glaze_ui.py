@@ -20,6 +20,9 @@ PAGES = (
     ROOT / "firefox/index.html",
     ROOT / "github/index.html",
     ROOT / "contact/index.html",
+    ROOT / "design/index.html",
+    ROOT / "security/index.html",
+    ROOT / "privacy/index.html",
 )
 EXPECTED = {
     "version": "1.6.0",

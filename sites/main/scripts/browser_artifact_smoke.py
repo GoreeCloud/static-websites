@@ -21,7 +21,7 @@ DRIVER_BASE = f"http://{DRIVER_HOST}:{DRIVER_PORT}"
 WEB_HOST = "127.0.0.1"
 WEB_PORT = 8770
 WEB_BASE = f"http://{WEB_HOST}:{WEB_PORT}"
-PAGES = ("/", "/platform-systems/", "/suite/", "/office-suite/", "/firefox/", "/github/", "/contact/")
+PAGES = ("/", "/platform-systems/", "/suite/", "/office-suite/", "/firefox/", "/github/", "/contact/", "/design/", "/security/", "/privacy/")
 VIEWPORTS = ((1180, 900), (768, 900), (390, 844), (320, 844))
 
 
@@ -104,6 +104,13 @@ def set_viewport(session: str, width: int, height: int) -> None:
 def validate_page(session: str, path: str, width: int, height: int) -> None:
     request("POST", f"/session/{session}/url", {"url": WEB_BASE + path})
     set_viewport(session, width, height)
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        if execute(session, "return document.readyState") == "complete":
+            break
+        time.sleep(0.1)
+    else:
+        raise BrowserError(f"{path} did not finish loading within the bounded readiness wait")
     state = execute(session, """
       const h1=document.querySelector('h1');
       const header=document.querySelector('.site-header');
@@ -304,7 +311,7 @@ def main() -> int:
             for path in PAGES:
                 validate_page(session, path, width, height)
 
-        print("Browser smoke passed for all seven canonical pages at desktop, tablet, and mobile viewports.")
+        print("Browser smoke passed for all ten canonical pages at desktop, tablet, and mobile viewports.")
         return 0
     except Exception as exc:
         print(f"Browser smoke failed: {exc}")

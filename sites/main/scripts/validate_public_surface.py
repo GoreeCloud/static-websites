@@ -20,6 +20,9 @@ PAGES = (
     "firefox/index.html",
     "github/index.html",
     "contact/index.html",
+    "design/index.html",
+    "security/index.html",
+    "privacy/index.html",
     "privacy.html",
     "security.html",
     "repositories.html",
@@ -33,6 +36,9 @@ CANONICAL = {
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
     "contact/index.html": "https://www.goreecloud.com/contact/",
+    "design/index.html": "https://www.goreecloud.com/design/",
+    "security/index.html": "https://www.goreecloud.com/security/",
+    "privacy/index.html": "https://www.goreecloud.com/privacy/",
 }
 
 
@@ -152,7 +158,7 @@ def main() -> int:
                     except ValueError:
                         errors.append(f"sitemap entry has invalid lastmod: {url}")
             if urls != expected_urls:
-                errors.append(f"sitemap must contain exactly the six canonical pages; found {sorted(urls)}")
+                errors.append(f"sitemap must contain exactly the ten canonical pages; found {sorted(urls)}")
         except ElementTree.ParseError as exc:
             errors.append(f"invalid sitemap XML: {exc}")
 
@@ -165,7 +171,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Public surface validation passed: seven canonical pages and compatibility routes are internally coherent.")
+    print("Public surface validation passed: ten canonical pages and compatibility routes are internally coherent.")
     return 0
 
 

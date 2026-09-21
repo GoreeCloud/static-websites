@@ -17,12 +17,15 @@
     {"id":"office-suite","path":"/office-suite/","source":"sites/main/office-suite/index.html"},
     {"id":"firefox","path":"/firefox/","source":"sites/main/firefox/index.html"},
     {"id":"github","path":"/github/","source":"sites/main/github/index.html"},
-    {"id":"contact","path":"/contact/","source":"sites/main/contact/index.html"}
+    {"id":"contact","path":"/contact/","source":"sites/main/contact/index.html"},
+    {"id":"design","path":"/design/","source":"sites/main/design/index.html"},
+    {"id":"security","path":"/security/","source":"sites/main/security/index.html"},
+    {"id":"privacy","path":"/privacy/","source":"sites/main/privacy/index.html"}
   ],
   "compatibility_paths": [
     {"from":"/repositories.html","to":"/github/"},
-    {"from":"/privacy.html","to":"/platform-systems/"},
-    {"from":"/security.html","to":"/platform-systems/"},
+    {"from":"/privacy.html","to":"/privacy/"},
+    {"from":"/security.html","to":"/security/"},
     {"from":"/firefox-extensions","to":"/firefox/"}
   ],
   "historical_boundary": "sites/manifest.json and former sites/<site-id> packages are migration/retirement history, not current website inventory or deployment authority."
