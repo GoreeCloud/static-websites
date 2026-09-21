@@ -18,6 +18,7 @@ CANONICAL = {
     "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
+    "contact/index.html": "https://www.goreecloud.com/contact/",
 }
 COMPATIBILITY = ("privacy.html", "security.html", "repositories.html")
 STALE_MARKERS = (
@@ -171,6 +172,7 @@ def main() -> int:
         "/office-suite/",
         "/firefox/",
         "/github/",
+        "/contact/",
     ):
         if marker not in home:
             errors.append(f"homepage missing current-state marker: {marker}")
@@ -201,6 +203,7 @@ def main() -> int:
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
+        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
@@ -239,6 +242,17 @@ def main() -> int:
     if re.search(r"\b\d+\s+(?:total|public)\s+repositories\b", github, re.IGNORECASE):
         errors.append("github page must not hard-code a repository total")
 
+    contact = audited.get("contact/index.html", ("", Audit()))[0]
+    for marker in (
+        "Instagram", "@goreecloud", "Threads", "TikTok", "@GoreeCloud",
+        "Reddit", "u/goreecloud", "Pinterest", "security@goreecloud.com",
+        "personal phone numbers", "private email accounts", "residential or mailing addresses",
+    ):
+        if marker not in contact:
+            errors.append(f"contact page missing verified public-contact/privacy marker: {marker}")
+    if "334-" in contact or "slickkredd@" in contact or "goreeboy@" in contact:
+        errors.append("contact page must not publish private owner contact records")
+
     github_js = (ROOT / "js/site-v8.js").read_text(encoding="utf-8")
     if "https://api.github.com/orgs/GoreeCloud/repos" not in github_js:
         errors.append("GitHub catalog must use the public GoreeCloud organization API")
@@ -266,7 +280,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: one current website, six canonical public pages, nine platform systems, and 45 Suite products.")
+    print("Website validation passed: one current website, seven canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 

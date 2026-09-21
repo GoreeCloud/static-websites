@@ -21,7 +21,7 @@ DRIVER_BASE = f"http://{DRIVER_HOST}:{DRIVER_PORT}"
 WEB_HOST = "127.0.0.1"
 WEB_PORT = 8770
 WEB_BASE = f"http://{WEB_HOST}:{WEB_PORT}"
-PAGES = ("/", "/platform-systems/", "/suite/", "/office-suite/", "/firefox/", "/github/")
+PAGES = ("/", "/platform-systems/", "/suite/", "/office-suite/", "/firefox/", "/github/", "/contact/")
 VIEWPORTS = ((1180, 900), (768, 900), (390, 844), (320, 844))
 
 
@@ -304,7 +304,7 @@ def main() -> int:
             for path in PAGES:
                 validate_page(session, path, width, height)
 
-        print("Browser smoke passed for all six canonical pages at desktop, tablet, and mobile viewports.")
+        print("Browser smoke passed for all seven canonical pages at desktop, tablet, and mobile viewports.")
         return 0
     except Exception as exc:
         print(f"Browser smoke failed: {exc}")

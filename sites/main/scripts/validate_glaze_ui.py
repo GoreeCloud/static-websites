@@ -19,6 +19,7 @@ PAGES = (
     ROOT / "office-suite/index.html",
     ROOT / "firefox/index.html",
     ROOT / "github/index.html",
+    ROOT / "contact/index.html",
 )
 EXPECTED = {
     "version": "1.6.0",

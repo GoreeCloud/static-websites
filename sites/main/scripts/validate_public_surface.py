@@ -19,6 +19,7 @@ PAGES = (
     "office-suite/index.html",
     "firefox/index.html",
     "github/index.html",
+    "contact/index.html",
     "privacy.html",
     "security.html",
     "repositories.html",
@@ -31,6 +32,7 @@ CANONICAL = {
     "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
+    "contact/index.html": "https://www.goreecloud.com/contact/",
 }
 
 
@@ -163,7 +165,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Public surface validation passed: six canonical pages and compatibility routes are internally coherent.")
+    print("Public surface validation passed: seven canonical pages and compatibility routes are internally coherent.")
     return 0
 
 

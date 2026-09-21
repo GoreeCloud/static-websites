@@ -16,7 +16,8 @@
     {"id":"suite","path":"/suite/","source":"sites/main/suite/index.html"},
     {"id":"office-suite","path":"/office-suite/","source":"sites/main/office-suite/index.html"},
     {"id":"firefox","path":"/firefox/","source":"sites/main/firefox/index.html"},
-    {"id":"github","path":"/github/","source":"sites/main/github/index.html"}
+    {"id":"github","path":"/github/","source":"sites/main/github/index.html"},
+    {"id":"contact","path":"/contact/","source":"sites/main/contact/index.html"}
   ],
   "compatibility_paths": [
     {"from":"/repositories.html","to":"/github/"},
