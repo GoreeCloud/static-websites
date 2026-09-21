@@ -92,6 +92,26 @@ Record the technology and environment used. Do not substitute DOM inspection or 
 
 Confirm the branch preview remains responsive during ordinary navigation and interaction on a representative environment. Verify no material jank, unusable delay, persistent loading failure, or resource behavior makes the website impractical to use. Hosted CI timing alone is not representative performance acceptance.
 
+## Production deployment and final acceptance
+
+**Status: PASSED — final production acceptance recorded.**
+
+- Production canonical origin: `https://www.goreecloud.com`
+- Accepted public-source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
+- Production merge revision: `4e03d06f7e6681b5a3517da5d7cbfc11cabc5834`
+- PR #109: merged at the exact confirmed head into the production merge revision above.
+- Post-merge repository validation: run `35553525040` — passed.
+- Post-merge main-website validation: run `35553525021` — passed.
+- Cloudflare Pages check: `106192624194` — passed for exact revision `4e03d06f7e6681b5a3517da5d7cbfc11cabc5834`.
+- Cloudflare deployment id: `25316db3-9595-49b2-a3ab-ebd2eacd29a2`
+- Cloudflare exact-revision preview: `https://25316db3.goreecloud-website.pages.dev`
+- Public-source/production comparison: only `sites/main/acceptance/HUMAN-REVIEW.md` and `sites/main/acceptance/glaze-ui-v1.6-consumer-acceptance.json` differ between the accepted public-source revision and the production merge revision; no public website source file changed after owner acceptance.
+- Canonical production readback: current one-site navigation/content observed on `www.goreecloud.com`.
+- Final production authority: GoreeCloud project owner
+- Approved at: `2026-09-21T02:21:19.050Z`
+
+The owner explicitly confirmed final production acceptance and authorization for this acceptance-only follow-up record/merge. This section records release evidence only; it does not alter public website bytes.
+
 ## Acceptance rule
 
-Every applicable human review lane and representative performance review is now recorded as passed for the current seven-destination candidate, so the Glaze UI V1.6 consumer record is accepted. Merge, production publication, deployed-byte verification, and final production acceptance remain separate governed transitions.
+Every applicable human review lane and representative performance review is recorded as passed, the Glaze UI V1.6 consumer record is accepted, PR #109 is merged, the exact production revision passed post-merge validation and Cloudflare deployment, canonical production readback is recorded, and final production acceptance is approved by the GoreeCloud project owner.
