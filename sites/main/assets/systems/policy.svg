@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud Policy — Decision Gate</title><desc id="desc">Three governed rule paths enter a decision gate and leave through one explicit authorized outcome.</desc>
+<defs><linearGradient id="a" x1="36" y1="32" x2="218" y2="226"><stop stop-color="#54C9FF"/><stop offset=".52" stop-color="#4B72F1"/><stop offset="1" stop-color="#7046D9"/></linearGradient></defs>
+<rect x="18" y="18" width="220" height="220" rx="58" fill="url(#a)"/>
+<path d="M50 77h57l26 26M50 128h70M50 179h57l26-26" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="50" cy="77" r="12" fill="#fff"/><circle cx="50" cy="128" r="12" fill="#fff"/><circle cx="50" cy="179" r="12" fill="#fff"/>
+<path d="m128 86 44 26v50l-44 26-44-26v-50Z" fill="#12204A" fill-opacity=".82" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+<path d="m111 136 12 12 25-30" fill="none" stroke="#85F2E2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 137h35" stroke="#fff" stroke-width="10" stroke-linecap="round"/><path d="m196 124 14 13-14 13" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
