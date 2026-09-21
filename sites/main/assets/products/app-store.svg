@@ -1,17 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title id="title">GoreeCloud App Store</title>
-  <defs>
-    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#3B82F6"/>
-      <stop offset="1" stop-color="#174EA6"/>
-    </linearGradient>
-    <linearGradient id="bag" x1="16" y1="18" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#DCEBFF"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
-  <path d="M19 24h26l2 25H17l2-25Z" fill="url(#bag)"/>
-  <path d="M25 25v-3a7 7 0 0 1 14 0v3" fill="none" stroke="#B6D8FF" stroke-width="3" stroke-linecap="round"/>
-  <path d="M32 31v10m-4-4 4 4 4-4" fill="none" stroke="#174EA6" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud App Store — Package Portal</title><desc id="desc">Four application tiles fold into an open delivery portal with a descending package.</desc>
+<defs><linearGradient id="bg" x1="28" y1="20" x2="226" y2="236"><stop stop-color="#5B9CFF"/><stop offset=".52" stop-color="#3567F2"/><stop offset="1" stop-color="#174EA6"/></linearGradient><linearGradient id="pkg" x1="95" y1="84" x2="165" y2="173"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#DDEAFF"/></linearGradient></defs>
+<rect width="256" height="256" rx="58" fill="url(#bg)"/>
+<g fill="#fff" opacity=".94"><rect x="55" y="55" width="50" height="50" rx="15"/><rect x="151" y="55" width="50" height="50" rx="15"/><rect x="55" y="151" width="50" height="50" rx="15"/><rect x="151" y="151" width="50" height="50" rx="15"/></g>
+<g fill="#4E78EE"><circle cx="80" cy="80" r="7"/><path d="m168 72 8 16 9-16" fill="none" stroke="#4E78EE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M68 176h24M80 164v24" stroke="#4E78EE" stroke-width="6" stroke-linecap="round"/><path d="m166 176 8 8 13-17" fill="none" stroke="#4E78EE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M128 74c19 20 34 31 51 38v43c-18 16-34 26-51 33-17-7-33-17-51-33v-43c17-7 32-18 51-38Z" fill="#10275A" fill-opacity=".9" stroke="#fff" stroke-width="5"/>
+<path d="m128 103 29 17-29 17-29-17Z" fill="url(#pkg)"/><path d="M99 120v30l29 17 29-17v-30" fill="#DCE9FF"/><path d="M128 137v30" stroke="#8CAEF8" stroke-width="5"/>
+<path d="M128 84v16" stroke="#8FF2E5" stroke-width="7" stroke-linecap="round"/><path d="m118 94 10 10 10-10" fill="none" stroke="#8FF2E5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
