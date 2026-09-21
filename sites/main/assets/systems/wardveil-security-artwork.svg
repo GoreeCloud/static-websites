@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+<title id="title">Wardveil Security presentation artwork</title><desc id="desc">Sentinel Fold planes expand into layered protection arcs, evidence nodes, and a guarded runtime core.</desc>
+<defs><linearGradient id="bg" x1="76" y1="54" x2="644" y2="468"><stop stop-color="#DDF8FF"/><stop offset=".48" stop-color="#D7E0FF"/><stop offset="1" stop-color="#E4D9FF"/></linearGradient><linearGradient id="left" x1="190" y1="112" x2="356" y2="390"><stop stop-color="#22D3EE"/><stop offset=".55" stop-color="#2563EB"/><stop offset="1" stop-color="#4F46E5"/></linearGradient><linearGradient id="right" x1="530" y1="112" x2="364" y2="390"><stop stop-color="#60A5FA"/><stop offset=".55" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs>
+<rect x="58" y="48" width="604" height="424" rx="60" fill="url(#bg)" stroke="#8DCDEA" stroke-opacity=".48"/>
+<circle cx="360" cy="260" r="164" fill="none" stroke="#3B78C8" stroke-opacity=".16" stroke-width="4"/><circle cx="360" cy="260" r="118" fill="none" stroke="#4E55D7" stroke-opacity=".18" stroke-width="4"/><circle cx="360" cy="260" r="78" fill="none" stroke="#6F4FDB" stroke-opacity=".20" stroke-width="4"/>
+<path d="M240 128c48 12 85 37 120 77l-29 37c-28 34-45 73-48 123-40-19-66-48-80-88-16-46-14-101 2-149 8-24 20-36 35-38Z" fill="url(#left)"/>
+<path d="M480 128c-48 12-85 37-120 77l29 37c28 34 45 73 48 123 40-19 66-48 80-88 16-46 14-101-2-149-8-24-20-36-35-38Z" fill="url(#right)"/>
+<path d="m360 210 54 45-15 65-39 34-39-34-15-65Z" fill="#10172F" stroke="#B9D9FF" stroke-width="10" stroke-linejoin="round"/><path d="m360 232 27 24-7 39-20 18-20-18-7-39Z" fill="#EAF5FF"/>
+<circle cx="164" cy="146" r="13" fill="#fff"/><circle cx="558" cy="156" r="13" fill="#fff"/><circle cx="170" cy="372" r="13" fill="#fff"/><circle cx="550" cy="374" r="13" fill="#fff"/>
+<path d="M177 151c55 15 87 30 112 54M545 161c-55 15-87 30-112 54M184 367c48-13 77-27 103-50M536 369c-48-13-77-27-103-50" fill="none" stroke="#426CAC" stroke-opacity=".35" stroke-width="5" stroke-linecap="round"/>
+</svg>
