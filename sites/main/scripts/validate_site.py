@@ -212,7 +212,7 @@ def main() -> int:
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
         "design/index.html": ("identity-stage", "material-stack", "component-stage", "/assets/systems/glaze-ui.svg"),
         "security/index.html": ("identity-stage", "showcase-card", "/assets/systems/wardveil-security.svg", "Protected by Wardveil"),
-        "privacy/index.html": ("identity-stage", "showcase-card", "/assets/systems/privacy-shield.svg", "ALLOW_WITH_CONSTRAINTS"),
+        "privacy/index.html": ("identity-stage", "showcase-card", "/assets/systems/privacy-shield.svg", "ALLOW WITH CONSTRAINTS"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
