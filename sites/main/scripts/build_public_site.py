@@ -37,6 +37,7 @@ PUBLIC_FILES = (
     "robots.txt",
     "security.html",
     "site.webmanifest",
+    "stable/index.html",
     "sitemap.xml",
     "suite/index.html",
     "assets/brand/goreecloud-logo.svg",

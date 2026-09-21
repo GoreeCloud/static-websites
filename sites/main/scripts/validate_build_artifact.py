@@ -17,6 +17,7 @@ CANONICAL_PAGES = (
     "office-suite/index.html",
     "firefox/index.html",
     "github/index.html",
+    "stable/index.html",
     "contact/index.html",
 )
 COMPATIBILITY_PAGES = ("privacy.html", "security.html", "repositories.html", "404.html")
