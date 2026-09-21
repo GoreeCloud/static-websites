@@ -1,54 +1,36 @@
 # GoreeCloud Website — Human Production Review
 
-This record tracks human acceptance for the GoreeCloud Website Glaze UI V1.6 consumer surface. Acceptance is exact-revision scoped. An earlier owner acceptance does not automatically transfer to later public website bytes.
+This record tracks human acceptance for the GoreeCloud Website Glaze UI V1.6 consumer surface. Acceptance is exact-revision scoped. Earlier approval or deployed evidence does not automatically transfer to later public website bytes.
 
 ## Current status
 
-**PENDING — fresh owner review is required for the deployed visual-identity remediation.**
+**PENDING — fresh owner review is required for PR #119 and the new Stable showcase.**
 
-Current exact production revision:
+Current exact public-source candidate:
 
-- Source / merged main: `ca3f0f8674c10fe258db1548f38198b7f2b92cd4`
-- Website remediation PR: #113
-- Canonical branding authority revision: `398d354e6eefe8ce0c3a74c316b1344c9bb7db5c`
-- Branding PR: GoreeCloud/branding-assets #21
-- Cloudflare Pages deployment id: `025999b1-defd-4663-8249-bd6d17678937`
-- Exact-revision preview: `https://025999b1.goreecloud-website.pages.dev`
-- Canonical origin: `https://www.goreecloud.com`
+- Source candidate: `0db8e4fc0757bb3c177ec9deb10baa317a97024e`
+- Website PR: #119 — Add Stable release showcase at /stable
+- Canonical destination added: `/stable/`
+- Canonical origin after an accepted production deployment: `https://www.goreecloud.com/stable/`
+- Exact provider preview: **not verified**
+- Merge: **not completed**
+- Production deployment: **not verified**
+- Production acceptance: **not granted**
 
-The owner identified missing icons/logos, letter and initials placeholders, blank/generic fallback treatments, and weak visual identity in the prior production presentation. The remediation replaces those treatments with canonical GoreeCloud identity artwork and removes CSS that manufactures generic placeholder visuals.
+The candidate adds an eighth canonical public destination, adds Stable navigation across the retained website, adds a homepage entry point, and publishes an evidence-bounded catalog of six currently verified Stable release surfaces. It does not promote broader parent products whose lifecycle remains Development or otherwise separately governed.
 
-## What changed after the prior acceptance
+## Machine evidence for the exact public-source candidate
 
-The current revision changes public visual presentation after the previously accepted production revision `4e03d06f7e6681b5a3517da5d7cbfc11cabc5834`.
+The exact source candidate has passed the machine gates required before human review:
 
-The current remediation:
-
-- removes the homepage operating-principle letter tiles;
-- removes the GitHub-page P/V/G letter tiles;
-- replaces the GoreeCloud Policy initials placeholder with the dedicated Policy identity;
-- replaces the borrowed Monitor artwork used for GoreeCloud Observability with the dedicated Observability identity;
-- replaces Suite no-icon/generic-dot fallbacks for Sync, Reader, Social, Keyboard, Health, Home, Home Security, Router OS, and Website;
-- replaces Office O/W/S/P/F letter tiles with official Office-family identities;
-- replaces the Advanced Tab Manager AT placeholder with its official identity;
-- replaces the Contact @ placeholder with the GoreeCloud identity;
-- synchronizes stale App Store, Browser, Gallery, and Launcher derivatives with current canonical branding;
-- rejects prohibited placeholder identity markers in website validation.
-
-Because these are public website byte changes, the previous owner acceptance is historical evidence only for its exact revision.
-
-## Machine evidence for the current revision
-
-The current exact merged revision has passed the machine gates required before human review:
-
-- Repository validation: run `35615068041` — **passed**.
-- Main website validation: run `35615067950` — **passed**.
-- Browser smoke: **passed** for all seven canonical pages at desktop, tablet, and mobile viewports.
-- Isolated public artifact: **96 files / 265268 bytes** — exact-byte validation passed.
-- Cloudflare Pages check: `106383639456` — **passed** for exact revision `ca3f0f8674c10fe258db1548f38198b7f2b92cd4`.
-- Cloudflare deployment id: `025999b1-defd-4663-8249-bd6d17678937`.
-- Canonical readback confirmed the updated root page no longer exposes the former operating-principle letter tiles and the Suite page now exposes image elements for the remediated product cards.
-- Website product/system derivatives represented by the canonical branding catalog were verified by Git blob identity against `GoreeCloud/branding-assets`.
+- Repository validation: run `35629946739` — **passed**.
+- Main website validation: run `35629946752` — **passed**.
+- URL namespace, current-truth, public-surface, Glaze UI target, isolated-artifact, and exact-byte validation — **passed**.
+- Browser smoke — **passed** for all eight canonical pages at 1180×900, 768×900, 390×844, and 320×844.
+- Governed 48px interaction-target floor — **passed** after the initial Stable-card action-link defect was corrected.
+- Isolated public artifact — **97 files / 281372 bytes**.
+- Glaze UI consumer state remains `migration-candidate-unaccepted`.
+- No exact Cloudflare preview or production deployment is verified for this candidate.
 
 Machine evidence does not replace owner visual, keyboard, assistive-technology, or representative performance acceptance.
 
@@ -56,52 +38,56 @@ Machine evidence does not replace owner visual, keyboard, assistive-technology, 
 
 ### Visual review — PENDING
 
-Review all seven canonical destinations:
+Review all eight canonical destinations:
 
 - `/`
 - `/platform-systems/`
 - `/suite/`
 - `/office-suite/`
 - `/firefox/`
+- `/stable/`
 - `/github/`
 - `/contact/`
 
-Verify at representative desktop, tablet, modern-phone, and narrow-phone sizes, in Light and Dark appearance where practical.
+Verify representative desktop, tablet, modern-phone, and narrow-phone sizes, in Light and Dark appearance where practical.
 
-Confirm that:
+For `/stable/`, confirm that:
 
-- every required GoreeCloud product/system identity is intentional and recognizable;
-- no single-letter, initials, blank, generic-dot, fabricated, or unrelated placeholder identity remains;
-- the new identities remain clear at card/icon scale;
-- icon geometry, padding, optical weight, and color feel coherent with GoreeCloud Index and the broader canonical identity family;
-- page composition, spacing, typography, hierarchy, and Glaze UI material remain balanced;
-- no icon clips, stretches, pixelates, crowds text, or creates overflow;
+- the page looks and feels like the same Glaze UI V1.6 website rather than a detached catalog;
+- the hero, metrics, six release cards, and exclusion/boundary sections are visually balanced;
+- official GoreeCloud artwork is clear and not clipped, stretched, pixelated, or visually mismatched;
+- the Stable status chips and parent-product boundaries are legible and not misleading;
+- the action buttons remain obvious without overpowering the cards;
+- no horizontal overflow, crowding, or awkward narrow-screen stacking appears;
 - foreground/background contrast remains usable in supported appearance modes.
+
+Across the whole site, confirm that adding the Stable navigation item does not make the desktop or mobile masthead feel crowded or unbalanced.
 
 ### Keyboard review — PENDING
 
-Using keyboard input only, traverse every canonical destination. Confirm Skip to content, primary navigation, theme control, mobile Menu behavior, search/filter inputs, links, buttons, focus visibility, Escape handling, and focus restoration remain usable with no trap or unreachable control.
+Using keyboard input only, traverse every canonical destination. Confirm Skip to content, primary navigation, theme control, mobile Menu behavior, links, buttons, search/filter inputs where present, visible focus, Escape handling, and focus restoration remain usable with no trap or unreachable control.
 
 ### Assistive-technology review — PENDING
 
-Use a representative supported screen reader/assistive-technology environment. Confirm page titles, headings, landmarks, navigation state, control names, live GitHub loading status, links, and dynamically loaded repository content remain understandable.
-
-Decorative identity images should not create redundant or misleading announcements.
+Use a representative supported screen reader/assistive-technology environment. Confirm page titles, headings, landmarks, navigation state, control names, links, and dynamically loaded content remain understandable. Decorative identity images must not create redundant or misleading announcements.
 
 ### Performance and resilience review — PENDING
 
-On a representative device/browser, confirm the additional SVG identity assets do not create material jank, unusable delay, persistent loading failure, layout instability, or excessive resource behavior.
+On a representative device/browser, confirm the new Stable route and its existing SVG assets do not create material jank, unusable delay, persistent loading failure, layout instability, or excessive resource behavior.
 
-## Historical acceptance
+## Stable catalog truth boundary
 
-The prior seven-destination candidate was owner-reviewed and accepted for its exact revision:
+The current candidate intentionally showcases only these verified Stable release surfaces:
 
-- Accepted public-source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
-- Accepted production revision: `4e03d06f7e6681b5a3517da5d7cbfc11cabc5834`
-- Prior final approval: `2026-09-21T02:21:19.050Z`
+- GoreeCloud Advanced Tab Manager — Stable 0.1.11.
+- GoreeCloud Privacy Shield — Stable 0.2.0 Firefox release only.
+- GoreeCloud Redirector — accepted Stable 0.2.0; current 0.2.1 source is not automatically promoted.
+- GoreeCloud Webspaces — Stable 0.1.14.
+- GoreeCloud Download Manager Extension — Stable 0.2.12 Firefox client only.
+- Glaze UI — Official Stable 1.6.0 shared design system.
 
-That acceptance remains valid historical evidence for those exact bytes. It is not current production acceptance after PR #113.
+A Stable extension, client, or shared design-system release does not transfer Stable status to a broader parent application, service, platform system, or downstream consumer.
 
 ## Acceptance rule
 
-Restore current consumer/production acceptance only after the GoreeCloud project owner reviews the exact current revision and explicitly passes the required human review lanes. Until then, the deployed remediation remains **machine-validated and deployed, but human acceptance pending**.
+Do not merge or restore current consumer/production acceptance solely from green CI. Current acceptance may be recorded only after the GoreeCloud project owner reviews the exact current public-source candidate and explicitly passes the required human review lanes, followed by the separately governed merge, post-merge verification, deployment, and production readback steps.

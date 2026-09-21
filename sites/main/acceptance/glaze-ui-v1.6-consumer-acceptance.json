@@ -6,9 +6,9 @@
   "targetVersion": "1.6.0",
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
-  "candidateRevision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4",
-  "renderedCandidateRevision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4",
-  "renderedCandidatePreview": "https://025999b1.goreecloud-website.pages.dev",
+  "candidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+  "renderedCandidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+  "renderedCandidatePreview": null,
   "branchPreview": null,
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
@@ -17,19 +17,19 @@
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35615068041,
-      "revision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4"
+      "runId": 35629946739,
+      "revision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35615067950,
-      "revision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4"
+      "runId": 35629946752,
+      "revision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4",
-      "validationRevision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4",
-      "note": "The exact merged revision built from the allowlisted source and passed exact-byte artifact validation. Cloudflare Pages reported successful deployment of the same revision."
+      "reviewedRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+      "validationRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+      "note": "The exact PR #119 public-source candidate built from the allowlisted source and passed exact-byte artifact validation. No provider preview or production deployment is verified for this candidate."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -40,7 +40,7 @@
         "320x844"
       ],
       "checks": [
-        "seven-canonical-page-browser-matrix",
+        "eight-canonical-page-browser-matrix",
         "horizontal-overflow",
         "48px-target-floor",
         "desktop-mobile-menu-boundary",
@@ -49,12 +49,12 @@
         "theme-state-and-label",
         "mobile-escape-close-and-focus-restore"
       ],
-      "note": "Post-merge browser smoke passed for all seven canonical pages at desktop, tablet, and mobile viewports."
+      "note": "Exact-head browser smoke passed for all eight canonical pages at desktop, tablet, and mobile viewports after the Stable-card action targets were corrected to satisfy the governed 48px floor."
     },
     "isolatedArtifact": {
       "status": "passed",
-      "fileCount": 96,
-      "totalBytes": 265268
+      "fileCount": 97,
+      "totalBytes": 281372
     },
     "privacyAndSecurity": {
       "status": "passed",
@@ -85,20 +85,20 @@
       "status": "pending",
       "reviewer": "GoreeCloud project owner",
       "reviewedAt": null,
-      "notes": "Fresh owner visual review is required because PR #113 changed product/system identity artwork and removed placeholder treatments after the prior accepted revision."
+      "notes": "Fresh owner visual review is required for exact public-source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e because PR #119 adds the /stable/ destination, adds Stable navigation to every canonical page, and changes public website bytes after prior acceptance."
     },
     "keyboardReview": {
       "status": "pending",
       "reviewer": "GoreeCloud project owner",
       "reviewedAt": null,
-      "notes": "Fresh exact-revision confirmation is required before restoring current consumer acceptance, even though the remediation did not intentionally change control behavior."
+      "notes": "Fresh exact-revision keyboard confirmation is required across all eight canonical destinations, including /stable/, before current consumer acceptance can be restored."
     },
     "assistiveTechnologyReview": {
       "status": "pending",
       "reviewer": "GoreeCloud project owner",
       "reviewedAt": null,
       "technology": null,
-      "notes": "Fresh exact-revision confirmation is required before restoring current consumer acceptance."
+      "notes": "Fresh exact-revision assistive-technology confirmation is required across all eight canonical destinations, including the new Stable catalog."
     }
   },
   "performance": {
@@ -106,23 +106,23 @@
     "reviewer": "GoreeCloud project owner",
     "reviewedAt": null,
     "environment": null,
-    "note": "Automated browser smoke passed, but representative owner performance/resilience review is not yet recorded for the remediated production revision."
+    "note": "Automated exact-head browser smoke passed, but representative owner performance/resilience review is not yet recorded for PR #119 public-source candidate."
   },
   "rollback": {
     "lastKnownGoodMainRevision": "4e03d06f7e6681b5a3517da5d7cbfc11cabc5834",
     "independentlyReversible": true,
     "verifiedByGitHistory": true,
-    "note": "The prior owner-accepted production revision remains available in Git history. The current deployed visual-remediation revision is not yet owner-accepted."
+    "note": "The prior owner-accepted production revision remains available in Git history. PR #119 public-source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e is not yet owner-accepted or production-verified."
   },
   "productionApproval": {
     "approved": false,
     "authority": "GoreeCloud project owner",
     "acceptedRevision": null,
     "approvedAt": null,
-    "note": "Previous production acceptance applied only to revision 4e03d06f7e6681b5a3517da5d7cbfc11cabc5834. Public website bytes changed in PR #113, so fresh owner acceptance is required."
+    "note": "PR #119 public-source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e has not received owner human acceptance and is not approved for production by this record."
   },
   "productionEvidence": {
-    "status": "deployed-awaiting-human-acceptance",
+    "status": "prior-deployment-evidence-only",
     "canonicalOrigin": "https://www.goreecloud.com",
     "currentPublicSourceRevision": "ca3f0f8674c10fe258db1548f38198b7f2b92cd4",
     "postMergeValidation": {
@@ -143,7 +143,10 @@
       "status": "partial-passed",
       "checkedAt": "2026-09-21T14:53:00Z",
       "note": "Canonical production readback confirmed the updated root page no longer exposes the former operating-principle letter tiles and the Suite page exposes image elements for the remediated product cards. Final human visual acceptance remains pending."
-    }
+    },
+    "candidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+    "candidateDeploymentStatus": "unverified",
+    "candidateDeploymentNote": "No exact Cloudflare preview, merge, production deployment, or canonical production readback is verified for PR #119 candidate. Retained deployment fields below describe earlier recorded website evidence only and must not be applied to this candidate."
   },
   "historicalAcceptance": {
     "status": "historical-only",
