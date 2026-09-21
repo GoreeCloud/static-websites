@@ -6,18 +6,35 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 **Status: PENDING FRESH HUMAN ACCEPTANCE.**
 
-- Public-source candidate: `6c5833c27058233eacbd2d3a96c70f7f5d676ba3`
+- Rendered public-source revision: `3e20e6bc99cc0255ece7fe968440462543c3effe`
+- Machine-validation revision: `8e875954c1dcda2dd5495a40247b8a1968005d5c`
 - Pull request: #112 — Build design, security, and privacy website sections
+- Exact rendered preview: `https://a436f100.goreecloud-website.pages.dev`
+- Branch preview: `https://feature-design-security-priv.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`, `/design/`, `/security/`, `/privacy/`
-- Static website repository validation: run `35604797339` — passed.
-- Main website validation: run `35604797336` — passed.
-- Exact allowlisted artifact: 82 files / 285873 bytes — passed.
+- Static website repository validation: run `35607531962` — passed.
+- Main website validation: run `35607531749` — passed.
+- Exact allowlisted artifact: 88 files / 305833 bytes — passed.
 - Browser matrix: all ten canonical destinations at 1180×900, 768×900, 390×844, and 320×844 — passed.
-- Production state: unchanged. PR #112 is unmerged and no deployment acceptance is claimed.
+- Rendered-source to validation-head comparison: only `sites/main/scripts/build_public_site.py` and `sites/main/scripts/validate_site.py` changed; public website bytes did not.
+- Production state: unchanged. PR #112 is unmerged and no production deployment acceptance is claimed.
 
-The candidate reduces global hero and section heading scale, adds the Glaze UI design showcase, Wardveil Security, and Privacy Shield path-based destinations, and strengthens the presentation of the requested existing Suite identities without creating new official artwork. Fresh owner visual and keyboard review, representative assistive-technology review, and representative performance/resilience review are required because the public surface changed after the previously accepted seven-destination production baseline.
+### Owner-observed placeholder correction
 
-The prior seven-destination human and production evidence below remains historical evidence for the currently deployed baseline only. It does not transfer to this candidate.
+The owner reported that the prior candidate still showed empty or generic placeholder-like surfaces and did not show the requested new logos, artwork, and icons. This revision directly corrects those observations:
+
+- GoreeCloud Social now has the **Common Orbit** review-candidate product identity instead of a no-icon card.
+- GoreeCloud Home Security now has the **Hearth Sentinel** review-candidate product identity instead of a no-icon card.
+- GoreeCloud Policy now has the **Decision Gate** review-candidate platform-system mark instead of the literal `PL` placeholder.
+- GoreeCloud AI, Index, Network, DNS, Vault, Identity, and App Store now use newly authored, distinct review-candidate identities rather than the previous generic/simple marks.
+- The Glaze UI design hero now uses dedicated presentation artwork instead of the generic orbit composition.
+- Wardveil Security and Privacy Shield now use dedicated full presentation artwork in their hero panels.
+- The Glaze material hierarchy cards now contain visible miniature interface/material demonstrations rather than largely empty surfaces.
+- The design showcase includes an explicit identity-review gallery so every affected new/refreshed mark can be inspected in one place.
+
+The identity work originates in `GoreeCloud/branding-assets` PR #20. Branding candidate revision `7a63051178dbb9975132e13f2cd434622e25ba3a` passed branding-catalog validation run `35607718871`. PR #20 remains unmerged and the affected identities remain review candidates, so neither the website preview nor passing CI makes them production-approved branding.
+
+Fresh owner visual and keyboard review, representative assistive-technology review, and representative performance/resilience review remain required. The prior seven-destination production evidence below remains historical evidence for the currently deployed baseline only and does not transfer to this candidate.
 
 ## Exact review surface
 
