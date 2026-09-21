@@ -6,7 +6,7 @@ The website must resolve GoreeCloud-controlled brand assets from the canonical b
 
 ## Current canonical source
 
-The visual-identity remediation in this branch is synchronized from canonical branding main revision `398d354e6eefe8ce0c3a74c316b1344c9bb7db5c`, produced by merged branding PR #21.
+The current website identity sources are synchronized from canonical branding main revision `f61a54230b51cc45dddcb3573790ba7151ad9e08`. That revision includes the approved 2026 visual-identity revamps for Privacy Shield, Everkeep, GoreeCloud AI, and GoreeCloud Network in addition to the earlier placeholder-remediation work.
 
 The parent GoreeCloud mark used at `assets/brand/goreecloud-logo.svg` derives from `official/goreecloud-logo.svg`.
 
