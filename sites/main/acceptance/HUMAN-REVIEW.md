@@ -4,13 +4,19 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `e575d58d3efb42c163435ac11aae1f43fe2fe995`
-- Cloudflare-rendered public source revision: `e575d58d3efb42c163435ac11aae1f43fe2fe995`
-- Exact rendered preview: `https://89904e51.goreecloud-website.pages.dev`
+- Candidate source revision: `a2aeea566e4831a59348b966d5c15631c77a80cb`
+- Cloudflare-rendered public source revision: `a2aeea566e4831a59348b966d5c15631c77a80cb`
+- Exact rendered preview: `https://d1c6105a.goreecloud-website.pages.dev`
 - Branch preview alias: `https://feature-main-website-rebuild.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`
 
 This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, richer page-specific compositions, and the validated 72-file isolated public artifact.
+
+## Screenshot-driven polish checkpoint
+
+Human screenshots of all six canonical destinations on the prior visual candidate exposed several presentation defects: oversized hero typography, excessive vertical spacing, secondary text that read too small, a sticky-navigation overlap visible in the Firefox capture, and broken word wrapping on the GitHub page. Revision `a2aeea566e4831a59348b966d5c15631c77a80cb` applies a bounded shared-CSS correction for those observations. Exact-head machine validation then passed both required pull-request workflows, including all-six-page Chrome smoke coverage at desktop, tablet, modern-phone, and narrow-phone widths.
+
+This checkpoint is corrective evidence, not human acceptance. A fresh human visual review of the corrected Cloudflare preview remains required.
 
 ## Human visual review
 
