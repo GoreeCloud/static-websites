@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title>GoreeCloud AI</title><defs><linearGradient id="g" x1="8" y1="6" x2="56" y2="58"><stop stop-color="#A78BFA"/><stop offset="1" stop-color="#06B6D4"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#g)"/><circle cx="32" cy="32" r="7" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="18" cy="20" r="4" fill="#fff"/><circle cx="46" cy="19" r="4" fill="#fff"/><circle cx="48" cy="44" r="4" fill="#fff"/><circle cx="18" cy="45" r="4" fill="#fff"/><path d="M23 24l5 4M41 23l-5 5M42 38l4 4M27 38l-6 5" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M32 16v7M32 41v7" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">GoreeCloud AI — Cognitive Prism</title>
+  <desc id="desc">A faceted cognitive core with four adaptive lobes, representing reasoning, multimodal work, and controlled intelligence.</desc>
+  <defs>
+    <linearGradient id="ai-bg" x1="8" y1="7" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset=".55" stop-color="#6D5CF6"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#ai-bg)"/>
+  <path d="M32 15.5 39 22l-2.5 7.2L43 35l-4 7.8L32 48.5l-7-5.7-4-7.8 6.5-5.8L25 22l7-6.5Z" fill="none" stroke="#fff" stroke-width="3.3" stroke-linejoin="round"/>
+  <path d="M32 15.5V25M43 35l-8-2M21 35l8-2M32 48.5V39" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+  <path d="M32 25 37.5 31 32 39l-5.5-8 5.5-6Z" fill="#fff"/>
+  <circle cx="32" cy="31.5" r="2.2" fill="#6D5CF6"/>
+  <path d="M18 23.5c2.6-4 5.6-6.2 9-6.8M46 23.5c-2.6-4-5.6-6.2-9-6.8M18 40.5c2.6 4 5.6 6.2 9 6.8M46 40.5c-2.6 4-5.6 6.2-9 6.8" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".92"/>
+</svg>

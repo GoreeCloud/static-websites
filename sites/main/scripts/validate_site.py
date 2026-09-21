@@ -184,6 +184,9 @@ def main() -> int:
         "/firefox/",
         "/github/",
         "/contact/",
+        "/platform-systems/#privacy-shield",
+        "/platform-systems/#wardveil-security",
+        "/platform-systems/#glaze-ui",
     ):
         if marker not in home:
             errors.append(f"homepage missing current-state marker: {marker}")
@@ -199,6 +202,9 @@ def main() -> int:
             errors.append(f"platform-systems missing: {name}")
     if "not a tenth Integral Platform System" not in platform[0]:
         errors.append("platform-systems must preserve GoreeCloud Sync's separate-governance boundary")
+    for identifier in ('id="privacy-shield"', 'id="wardveil-security"', 'id="glaze-ui"'):
+        if identifier not in platform[0]:
+            errors.append(f"platform-systems missing direct system anchor: {identifier}")
 
     suite = audited.get("suite/index.html", ("", Audit()))
     if suite[1].classes["product-section"] != 9:
@@ -214,7 +220,7 @@ def main() -> int:
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/advanced-tab-manager.svg", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
-        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
+        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "support@goreecloud.com", "security@goreecloud.com"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
@@ -256,7 +262,7 @@ def main() -> int:
     contact = audited.get("contact/index.html", ("", Audit()))[0]
     for marker in (
         "Instagram", "@goreecloud", "Threads", "TikTok", "@GoreeCloud",
-        "Reddit", "u/goreecloud", "Pinterest", "security@goreecloud.com",
+        "Reddit", "u/goreecloud", "Pinterest", "support@goreecloud.com", "security@goreecloud.com",
         "personal phone numbers", "private email accounts", "residential or mailing addresses",
     ):
         if marker not in contact:
