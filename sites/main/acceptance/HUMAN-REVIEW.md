@@ -12,7 +12,7 @@ Current exact public-source candidate:
 - Website PR: #119 — Add Stable release showcase at /stable
 - Canonical destination added: `/stable/`
 - Canonical origin after an accepted production deployment: `https://www.goreecloud.com/stable/`
-- Exact provider preview: **not verified**
+- Exact provider preview: `https://32e5d442.goreecloud-website.pages.dev` — Cloudflare preview deployment evidence is recorded for documentation head `cbc16e6b3f3514bfb3233655bb4e5379b84388e4`; independent content readback remains pending
 - Merge: **not completed**
 - Production deployment: **not verified**
 - Production acceptance: **not granted**
@@ -28,9 +28,9 @@ The exact source candidate has passed the machine gates required before human re
 - URL namespace, current-truth, public-surface, Glaze UI target, isolated-artifact, and exact-byte validation — **passed**.
 - Browser smoke — **passed** for all eight canonical pages at 1180×900, 768×900, 390×844, and 320×844.
 - Governed 48px interaction-target floor — **passed** after the initial Stable-card action-link defect was corrected.
-- Isolated public artifact — **97 files / 281372 bytes**.
+- Isolated public artifact — **97 files / 281354 bytes**.
 - Glaze UI consumer state remains `migration-candidate-unaccepted`.
-- No exact Cloudflare preview or production deployment is verified for this candidate.
+- Cloudflare preview deployment evidence is recorded for the candidate-equivalent public bytes; production deployment and canonical production readback remain unverified.
 
 Machine evidence does not replace owner visual, keyboard, assistive-technology, or representative performance acceptance.
 
