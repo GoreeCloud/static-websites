@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="title desc">
+<title id="title">Glaze UI presentation artwork</title><desc id="desc">Layered translucent interface planes orbit the Glaze UI Facet mark.</desc>
+<defs><linearGradient id="pane1" x1="90" y1="70" x2="620" y2="450"><stop stop-color="#DDF7FF" stop-opacity=".92"/><stop offset=".5" stop-color="#D9DEFF" stop-opacity=".72"/><stop offset="1" stop-color="#CFF7EF" stop-opacity=".62"/></linearGradient><linearGradient id="pane2" x1="180" y1="80" x2="570" y2="410"><stop stop-color="#53D3FF" stop-opacity=".28"/><stop offset="1" stop-color="#8068FF" stop-opacity=".24"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#315E91" flood-opacity=".18"/></filter></defs>
+<rect x="58" y="48" width="604" height="424" rx="60" fill="url(#pane1)" stroke="#8ECDEB" stroke-opacity=".45" filter="url(#shadow)"/>
+<rect x="120" y="96" width="480" height="322" rx="46" fill="url(#pane2)" stroke="#fff" stroke-opacity=".72"/>
+<path d="M146 176h180v96H146zM394 136h158v72H394zM394 238h158v128H394zM146 300h180v80H146z" fill="#fff" fill-opacity=".56" stroke="#fff" stroke-opacity=".82"/>
+<path d="M176 206h96M176 230h70M424 166h88M424 268h86M424 292h64M176 328h104" stroke="#47749D" stroke-opacity=".30" stroke-width="10" stroke-linecap="round"/>
+<g transform="translate(280 166) scale(2.5)"><path d="M13 17 31 8l20 10-8 8-12-6-10 5 10 5-8 8-10-5Z" fill="#4D7DF6"/><path d="m51 31-8-4-12 6 10 5-10 5-10-5-8 8 18 10 20-11-8-8-12 6-10-5 10-5 12 6Z" fill="#2ED0BE"/><path d="m21 25 10-5 12 6-12 7Z" fill="#F8FAFC"/></g>
+<circle cx="104" cy="112" r="14" fill="#57CEF6"/><circle cx="622" cy="120" r="12" fill="#806AF4"/><circle cx="624" cy="404" r="13" fill="#53D7C3"/>
+</svg>
