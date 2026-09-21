@@ -6,9 +6,9 @@
   "targetVersion": "1.6.0",
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
-  "candidateRevision": "0562a9a779f0f1dae030624537c44aef64ef2f78",
-  "renderedCandidateRevision": "0562a9a779f0f1dae030624537c44aef64ef2f78",
-  "renderedCandidatePreview": "https://e495e9ba.goreecloud-website.pages.dev",
+  "candidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+  "renderedCandidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+  "renderedCandidatePreview": "https://cce68d2e.goreecloud-website.pages.dev",
   "branchPreview": "https://feature-main-website-rebuild.goreecloud-website.pages.dev",
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
@@ -17,19 +17,19 @@
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35551899111,
-      "revision": "0562a9a779f0f1dae030624537c44aef64ef2f78"
+      "runId": 35552316820,
+      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35551899102,
-      "revision": "0562a9a779f0f1dae030624537c44aef64ef2f78"
+      "runId": 35552316810,
+      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "0562a9a779f0f1dae030624537c44aef64ef2f78",
-      "validationRevision": "0562a9a779f0f1dae030624537c44aef64ef2f78",
-      "note": "The seven-destination Contact & Social expansion passed URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation before this non-public acceptance record was reconciled."
+      "reviewedRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+      "validationRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+      "note": "The Contact & Social page-scoped UI-polish revision passed the seven-destination URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation before this non-public acceptance record was reconciled."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -53,7 +53,7 @@
     "isolatedArtifact": {
       "status": "passed",
       "fileCount": 79,
-      "totalBytes": 251318
+      "totalBytes": 252216
     },
     "privacyAndSecurity": {
       "status": "passed",
@@ -83,13 +83,13 @@
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
-      "notes": "The project owner previously passed human visual review for the six-destination UI-polish candidate at a2aeea566e4831a59348b966d5c15631c77a80cb. The current candidate adds the new /contact/ Contact & Social destination and changes shared navigation/footer across the existing destinations, so a fresh human visual review of the seven-destination candidate is required. The earlier approval remains historical evidence for the prior scope."
+      "notes": "The project owner reviewed the prior seven-destination Contact & Social preview, identified a few remaining UI issues, and authorized a bounded page-scoped polish pass. The current candidate at a1c0f784db5b9ad7ee121eb00700f3155369634b requires fresh human visual approval. Earlier six-destination visual approval remains historical evidence only."
     },
     "keyboardReview": {
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
-      "notes": "The project owner previously passed human keyboard review for the six-destination candidate at 2026-09-21T01:36:24.713Z. The current candidate adds /contact/ and changes shared navigation/footer, so keyboard-only review must be repeated for the new destination and updated shared navigation before the current seven-destination candidate can be accepted. The earlier review remains historical evidence for the prior scope."
+      "notes": "The current candidate changes Contact-page presentation only and preserves shared interaction semantics, but the governed human keyboard-review lane remains pending for the seven-destination candidate until the owner rechecks the updated Contact page and shared navigation state."
     },
     "assistiveTechnologyReview": {
       "status": "pending",
@@ -101,7 +101,7 @@
   },
   "performance": {
     "status": "pending-representative-review",
-    "note": "Hosted CI/browser smoke passed the seven-destination candidate, but representative human performance and resilience review remains required."
+    "note": "Hosted CI/browser smoke passed the polished seven-destination candidate, but representative human performance and resilience review remains required."
   },
   "rollback": {
     "lastKnownGoodMainRevision": "8fad0a2393ec05d085fb7251cc90712cfcee00f3",
@@ -114,6 +114,6 @@
     "authority": "GoreeCloud project owner",
     "acceptedRevision": null,
     "approvedAt": null,
-    "note": "The public surface expanded from six to seven canonical destinations. Fresh human visual and keyboard review of the seven-destination candidate, representative assistive-technology review, representative performance review, and any other applicable acceptance evidence remain required before production approval."
+    "note": "Fresh human visual and keyboard review of the polished seven-destination candidate, representative assistive-technology review, representative performance review, and any other applicable acceptance evidence remain required before production approval."
   }
 }
