@@ -80,7 +80,7 @@ def main() -> int:
             'data-glaze-version="1.6.0"',
             'name="goreecloud-glaze-ui" content="1.6.0"',
             'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
-            "/css/site-v8.css",
+            "/css/site-v9.css",
             "/js/theme-init-v8.js",
             "/js/site-v8.js",
         ):
