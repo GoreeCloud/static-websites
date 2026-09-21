@@ -4,13 +4,13 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `1baffcd0fd9cdfe24c67c3f167284aae76cb29ac`
-- Cloudflare-rendered public source revision: `931a646d24ab64a443a234014224013e0ec44b17`
-- Exact rendered preview: `https://37ffea58.goreecloud-website.pages.dev`
+- Candidate source revision: `e575d58d3efb42c163435ac11aae1f43fe2fe995`
+- Cloudflare-rendered public source revision: `e575d58d3efb42c163435ac11aae1f43fe2fe995`
+- Exact rendered preview: `https://89904e51.goreecloud-website.pages.dev`
 - Branch preview alias: `https://feature-main-website-rebuild.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`
 
-The validation-only commit after the rendered revision changes only `sites/main/scripts/browser_artifact_smoke.py`; it does not alter public website bytes.
+This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, richer page-specific compositions, and the validated 72-file isolated public artifact.
 
 ## Human visual review
 
