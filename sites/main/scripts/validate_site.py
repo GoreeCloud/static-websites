@@ -42,6 +42,14 @@ STALE_MARKERS = (
     "This rebuild targets the current Official Stable Glaze UI contract.",
     "Migration candidate — acceptance pending",
 )
+PROHIBITED_PLACEHOLDER_MARKERS = (
+    'product-card no-icon',
+    'class="app-symbol"',
+    'extension-art generic',
+    '<div class="symbol">',
+    '<span class="initials">',
+    '<span>PL</span>',
+)
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 CGNAT = ipaddress.ip_network("100.64.0.0/10")
 
