@@ -37,6 +37,15 @@ Record **passed** only after actual human review. Automated screenshots or assis
 
 ## Human keyboard review
 
+**Status: PASSED — owner keyboard approval recorded.**
+
+- Reviewer: GoreeCloud project owner
+- Reviewed at: `2026-09-21T01:36:24.713Z`
+- Scope: all canonical website destinations in the corrected PR #109 candidate.
+- Human evidence: typing and Tab navigation worked across the websites; Skip to content worked; focus remained visible; navigation order was logical; the theme control worked; the mobile Menu opened and closed; Escape closed it and restored focus; search fields were reachable and usable; links and buttons were operable; and no keyboard traps or unreachable controls were encountered.
+
+This closes only the human keyboard-review requirement. It does **not** satisfy representative assistive-technology review, representative performance review, overall Glaze consumer acceptance, merge authorization, production publication, deployed-byte verification, or final production acceptance.
+
 Using keyboard input only, traverse every canonical destination. Confirm Skip to content works, focus remains visible, navigation order is logical, the theme control works, mobile Menu can be opened and closed, Escape closes the mobile Menu and returns focus, search fields are reachable and usable, links/buttons are operable, and no keyboard trap or unreachable control is present.
 
 Record **passed** only after actual human keyboard review.
