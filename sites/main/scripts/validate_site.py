@@ -19,6 +19,9 @@ CANONICAL = {
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
     "contact/index.html": "https://www.goreecloud.com/contact/",
+    "design/index.html": "https://www.goreecloud.com/design/",
+    "security/index.html": "https://www.goreecloud.com/security/",
+    "privacy/index.html": "https://www.goreecloud.com/privacy/",
 }
 COMPATIBILITY = ("privacy.html", "security.html", "repositories.html")
 STALE_MARKERS = (
@@ -173,6 +176,9 @@ def main() -> int:
         "/firefox/",
         "/github/",
         "/contact/",
+        "/design/",
+        "/security/",
+        "/privacy/",
     ):
         if marker not in home:
             errors.append(f"homepage missing current-state marker: {marker}")
@@ -204,6 +210,9 @@ def main() -> int:
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
+        "design/index.html": ("identity-stage", "material-stack", "component-stage", "/assets/systems/glaze-ui.svg"),
+        "security/index.html": ("identity-stage", "showcase-card", "/assets/systems/wardveil-security.svg", "Protected by Wardveil"),
+        "privacy/index.html": ("identity-stage", "showcase-card", "/assets/systems/privacy-shield.svg", "ALLOW_WITH_CONSTRAINTS"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
@@ -268,8 +277,8 @@ def main() -> int:
     redirects = (ROOT / "_redirects").read_text(encoding="utf-8")
     for marker in (
         "/repositories.html /github/ 301",
-        "/privacy.html /platform-systems/ 301",
-        "/security.html /platform-systems/ 301",
+        "/privacy.html /privacy/ 301",
+        "/security.html /security/ 301",
         "/firefox-extensions /firefox/ 301",
     ):
         if marker not in redirects:
@@ -280,7 +289,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: one current website, seven canonical public pages, nine platform systems, and 45 Suite products.")
+    print("Website validation passed: one current website, ten canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 
