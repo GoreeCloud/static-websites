@@ -38,16 +38,16 @@ Fresh owner visual and keyboard review remain required for the current candidate
 
 ## Human visual review
 
-**Current seven-destination status: PENDING. Prior six-destination review: PASSED.**
+**Current seven-destination status: PASSED.**
 
 - Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T01:27:23Z`
-- Reviewed public-source revision: `a2aeea566e4831a59348b966d5c15631c77a80cb`
-- Reviewed preview: `https://d1c6105a.goreecloud-website.pages.dev`
-- Approval scope: human visual review of the corrected screenshot-driven UI-polish candidate only.
-- Authorization evidence: the project owner explicitly confirmed recording visual approval after the risk/scope boundary was presented.
+- Reviewed at: `2026-09-21T02:03:57.769Z`
+- Reviewed public-source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
+- Reviewed preview: `https://ee9fab55.goreecloud-website.pages.dev`
+- Approval scope: all seven canonical destinations, including the polished Contact & Social page and updated shared navigation/footer.
+- Authorization evidence: the project owner explicitly reported all review lanes PASS and then confirmed the assistive-technology environment used.
 
-The owner approval recorded below applies to the prior six-destination candidate. The new `/contact/` page and shared navigation/footer changes require fresh visual review before the current seven-destination candidate can satisfy this lane.
+The current seven-destination candidate passed the owner visual review. Earlier six-destination evidence remains historical context only.
 
 Review at representative desktop, tablet, modern-phone, and narrow-phone widths in both Light and Dark appearance where practical. Confirm that content is legible; headings, cards, navigation, forms, banners, and status elements maintain clear hierarchy; no controls overlap or clip; the mobile menu is shown only when appropriate; and the interface remains understandable with reduced transparency or other applicable accessibility preferences.
 
@@ -55,14 +55,14 @@ Record **passed** only after actual human review. Automated screenshots or assis
 
 ## Human keyboard review
 
-**Current seven-destination status: PENDING. Prior six-destination review: PASSED.**
+**Current seven-destination status: PASSED.**
 
 - Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T01:36:24.713Z`
-- Scope: all canonical website destinations in the corrected PR #109 candidate.
-- Human evidence: typing and Tab navigation worked across the websites; Skip to content worked; focus remained visible; navigation order was logical; the theme control worked; the mobile Menu opened and closed; Escape closed it and restored focus; search fields were reachable and usable; links and buttons were operable; and no keyboard traps or unreachable controls were encountered.
+- Reviewed at: `2026-09-21T02:03:57.769Z`
+- Scope: all seven canonical destinations in the polished PR #109 candidate.
+- Human evidence: the project owner explicitly reported all review lanes PASS for the current seven-destination candidate.
 
-The keyboard evidence recorded below applies to the prior six-destination candidate. Because `/contact/` and the shared navigation/footer are new, keyboard-only review must be repeated for the current seven-destination candidate.
+The current seven-destination candidate passed the owner keyboard-only review. Earlier six-destination keyboard evidence remains historical context only.
 
 Using keyboard input only, traverse every canonical destination. Confirm Skip to content works, focus remains visible, navigation order is logical, the theme control works, mobile Menu can be opened and closed, Escape closes the mobile Menu and returns focus, search fields are reachable and usable, links/buttons are operable, and no keyboard trap or unreachable control is present.
 
@@ -70,14 +70,28 @@ Record **passed** only after actual human keyboard review.
 
 ## Human assistive-technology review
 
+**Status: PASSED.**
+
+- Reviewer: GoreeCloud project owner
+- Reviewed at: `2026-09-21T02:03:57.769Z`
+- Technology/environment: Orca + Firefox on Linux
+- Human evidence: the project owner explicitly reported all review lanes PASS for the current seven-destination candidate.
+
 Use an appropriate screen reader or other representative assistive technology for the supported web environment. Confirm page titles/headings and landmark structure are understandable; primary navigation is announced coherently; the Menu button exposes expanded/collapsed state and its controlled navigation; the theme control has a meaningful state-specific accessible name; the GitHub live-loading status is announced without stealing focus; controls and links have usable names; and dynamically loaded repository content remains navigable.
 
 Record the technology and environment used. Do not substitute DOM inspection or automated accessibility checks for this review.
 
 ## Performance and resilience review
 
+**Status: PASSED.**
+
+- Reviewer: GoreeCloud project owner
+- Reviewed at: `2026-09-21T02:03:57.769Z`
+- Representative environment: Firefox on Linux
+- Human evidence: the project owner explicitly reported all review lanes PASS; no material jank, unusable delay, persistent loading failure, or resource behavior was reported.
+
 Confirm the branch preview remains responsive during ordinary navigation and interaction on a representative environment. Verify no material jank, unusable delay, persistent loading failure, or resource behavior makes the website impractical to use. Hosted CI timing alone is not representative performance acceptance.
 
 ## Acceptance rule
 
-Do not change the consumer record to accepted or approve production until every applicable required review is complete and evidence is recorded against the exact accepted revision. Merge and production publication remain separate steps after acceptance.
+Every applicable human review lane and representative performance review is now recorded as passed for the current seven-destination candidate, so the Glaze UI V1.6 consumer record is accepted. Merge, production publication, deployed-byte verification, and final production acceptance remain separate governed transitions.
