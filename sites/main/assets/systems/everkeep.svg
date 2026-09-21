@@ -1,21 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
-  <title id="title">Everkeep — Continuity Orbit</title>
-  <desc id="desc">Two continuous preservation arcs orbit a protected keystone, expressing continuity, recovery, and long-term preservation.</desc>
+  <title id="title">Everkeep — Continuity Core</title>
+  <desc id="desc">A durable faceted preservation core wrapped by one continuous recovery loop, representing continuity, verified restoration, succession, and long-term survival.</desc>
   <defs>
-    <linearGradient id="ek-ring" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#21D4BD"/>
-      <stop offset=".5" stop-color="#3B82F6"/>
-      <stop offset="1" stop-color="#8B5CF6"/>
+    <linearGradient id="ek-core" x1="13" y1="10" x2="51" y2="55" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE"/>
+      <stop offset=".48" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#7C3AED"/>
     </linearGradient>
-    <linearGradient id="ek-core" x1="23" y1="20" x2="42" y2="45" gradientUnits="userSpaceOnUse">
+    <linearGradient id="ek-loop" x1="7" y1="12" x2="57" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5EEAD4"/>
+      <stop offset=".50" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#C084FC"/>
+    </linearGradient>
+    <linearGradient id="ek-jewel" x1="23" y1="21" x2="42" y2="43" gradientUnits="userSpaceOnUse">
       <stop stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#DDE8FF"/>
+      <stop offset="1" stop-color="#DDE7FF"/>
     </linearGradient>
   </defs>
-  <path d="M16.2 18.2C20.4 11.8 26 8.5 32 8.5c9.2 0 16.4 7.6 19.1 18.1" fill="none" stroke="url(#ek-ring)" stroke-width="6.5" stroke-linecap="round"/>
-  <path d="M47.8 45.8C43.6 52.2 38 55.5 32 55.5c-9.2 0-16.4-7.6-19.1-18.1" fill="none" stroke="url(#ek-ring)" stroke-width="6.5" stroke-linecap="round"/>
-  <path d="M12.9 26.6C15.6 16.1 22.8 8.5 32 8.5M51.1 37.4C48.4 47.9 41.2 55.5 32 55.5" fill="none" stroke="#8CEFE0" stroke-width="2.2" stroke-linecap="round" opacity=".8"/>
-  <path d="M32 18.5 43 26v12L32 45.5 21 38V26l11-7.5Z" fill="url(#ek-core)" stroke="url(#ek-ring)" stroke-width="3.5" stroke-linejoin="round"/>
-  <path d="M27 31.5h10M27 36h7" fill="none" stroke="#274060" stroke-width="2.8" stroke-linecap="round"/>
-  <circle cx="39.2" cy="35.8" r="2.1" fill="#4F6DFF"/>
+
+  <path d="M8.5 27.2C11.1 15.2 20.4 8 32 8c8.8 0 16.7 4.3 21.5 11.3"
+        fill="none" stroke="#102A43" stroke-opacity=".18" stroke-width="9" stroke-linecap="round"/>
+  <path d="M8.5 27.2C11.1 15.2 20.4 8 32 8c8.8 0 16.7 4.3 21.5 11.3"
+        fill="none" stroke="url(#ek-loop)" stroke-width="6.5" stroke-linecap="round"/>
+
+  <path d="M32 11.5 50 21.8v20.4L32 52.5 14 42.2V21.8L32 11.5Z" fill="url(#ek-core)"/>
+  <path d="m32 11.5 18 10.3-18 10.3-18-10.3L32 11.5Z" fill="#FFFFFF" opacity=".16"/>
+  <path d="m14 21.8 18 10.3v20.4L14 42.2V21.8Z" fill="#0F172A" opacity=".10"/>
+  <path d="m50 21.8-18 10.3v20.4l18-10.3V21.8Z" fill="#312E81" opacity=".12"/>
+
+  <path d="M32 21.5 42.5 32 32 42.5 21.5 32 32 21.5Z" fill="url(#ek-jewel)"/>
+  <path d="M32 26.2 37.8 32 32 37.8 26.2 32 32 26.2Z" fill="#315BCE"/>
+  <path d="M32 28.8 35.2 32 32 35.2 28.8 32 32 28.8Z" fill="#F8FAFC"/>
+
+  <path d="M55.5 36.8C52.9 48.8 43.6 56 32 56c-8.8 0-16.7-4.3-21.5-11.3"
+        fill="none" stroke="#102A43" stroke-opacity=".22" stroke-width="9" stroke-linecap="round"/>
+  <path d="M55.5 36.8C52.9 48.8 43.6 56 32 56c-8.8 0-16.7-4.3-21.5-11.3"
+        fill="none" stroke="url(#ek-loop)" stroke-width="6.5" stroke-linecap="round"/>
+
+  <path d="M17.8 15.2c3.6-2.5 8.1-4 13.2-4.1" fill="none" stroke="#E6FFFB" stroke-opacity=".72" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M46.2 48.8c-3.6 2.5-8.1 4-13.2 4.1" fill="none" stroke="#F3E8FF" stroke-opacity=".60" stroke-width="2.2" stroke-linecap="round"/>
 </svg>
