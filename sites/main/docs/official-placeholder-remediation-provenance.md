@@ -4,7 +4,7 @@ This record documents the source relationship for the visual assets introduced b
 
 Canonical branding authority: `GoreeCloud/branding-assets`.
 
-Branding review source: PR #19, revision `e172a8e87f795df43bd1d58c115b05f59f73b694`.
+Branding review source: PR #19, current review revision `f0592afe48a76c2cac0f0c1abfd7c35c2923a2e4`.
 
 The website copies below are synchronized publication derivatives. They must remain byte-identical to the corresponding branding review source until that branding source is visually approved and merged. Production publication of the dependent website change remains blocked until the canonical branding transition is complete.
 

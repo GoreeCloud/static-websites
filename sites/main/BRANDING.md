@@ -15,8 +15,8 @@ Branding does not establish implementation, release, privacy, security, continui
 
 ## Placeholder-remediation review candidate
 
-The current placeholder-remediation website branch synchronizes review-candidate derivatives from `GoreeCloud/branding-assets` PR #19 at source revision `e172a8e87f795df43bd1d58c115b05f59f73b694`.
+The current placeholder-remediation website branch synchronizes review-candidate derivatives from `GoreeCloud/branding-assets` PR #19 at source revision `f0592afe48a76c2cac0f0c1abfd7c35c2923a2e4`.
 
-This covers GoreeCloud Office, Writer, Spreadsheet, Presentations, Forms, Advanced Tab Manager, GoreeCloud Policy, GitHub informational artwork, and Contact conversation artwork. Existing Webspaces, Redirector, and Source Resync artwork is also being established in the canonical branding repository.
+This covers GoreeCloud Office, Writer, Spreadsheet, Presentations, Forms, Advanced Tab Manager, GoreeCloud Policy, GitHub informational artwork, Contact conversation artwork, Health, Home, Home Security, Router OS, Reader, and Social. Existing canonical Sync and Keyboard artwork is now published by the Suite, while existing Webspaces, Redirector, and Source Resync artwork is also being established in the canonical branding repository.
 
 These website-local files are synchronized publication derivatives only. They do not become an independent branding authority. Production website publication remains blocked until the branding PR is visually approved and merged, and the dependent website candidate is separately reviewed and accepted.

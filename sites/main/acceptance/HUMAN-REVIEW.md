@@ -4,13 +4,13 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
-- Cloudflare-rendered public source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
-- Exact rendered preview: `https://ee2266db.goreecloud-website.pages.dev`
+- Candidate source revision: `cb79f3b75b64c957105c570d8ffaeab355e42a32`
+- Cloudflare-rendered public source revision: `cb79f3b75b64c957105c570d8ffaeab355e42a32`
+- Exact rendered preview: `https://0a651db7.goreecloud-website.pages.dev`
 - Branch preview alias: `https://fix-official-visual-assets-p.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`
 
-This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 90-file / 260824-byte isolated public artifact.
+This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 98-file / 266698-byte isolated public artifact.
 
 ## Screenshot-driven polish checkpoint
 
@@ -38,13 +38,13 @@ Fresh owner visual and keyboard review remain required for the current candidate
 
 ## Official visual placeholder remediation checkpoint
 
-The project owner identified prohibited letter/initial placeholder visuals in the production website and authorized a governed remediation through the canonical branding source.
+The project owner identified prohibited letter/initial placeholders and later identified missing Suite artwork. The governed remediation now covers both classes of visual defect through the canonical branding source.
 
-Website source revision `409bdbc356b42b695eb2a278c0d82603ad61740c` removes all 15 audited letter/initial/generic placeholders from Home, Platform Systems, Office Suite, Firefox, GitHub, and Contact. New first-party artwork is synchronized from `GoreeCloud/branding-assets` PR #19 at review revision `e172a8e87f795df43bd1d58c115b05f59f73b694`; website-local copies remain publication derivatives only.
+Website source revision `cb79f3b75b64c957105c570d8ffaeab355e42a32` removes all 15 audited letter/initial/generic placeholders and reduces the Suite to **zero** `no-icon` product cards. Sync and Keyboard use existing canonical branding assets. New review-candidate artwork in `GoreeCloud/branding-assets` PR #19 covers Health, Home, Home Security, Router OS, Reader, Social, Office-family identities, Advanced Tab Manager, GoreeCloud Policy, GitHub informational artwork, and Contact conversation artwork. GoreeCloud Website uses the existing official GoreeCloud brand mark.
 
-Machine validation passed at repository run `35556247279` and main-website run `35556247289`. The isolated artifact contains 90 files / 260824 bytes, and browser smoke passed all seven canonical destinations at representative desktop, tablet, modern-phone, and narrow-phone widths. Cloudflare Pages deployed the exact source revision successfully to `https://ee2266db.goreecloud-website.pages.dev`.
+Branding review revision `f0592afe48a76c2cac0f0c1abfd7c35c2923a2e4` passed branding validation `35597305498`. Website machine validation passed at repository run `35597350527` and main-website run `35597350429`. The isolated artifact contains 98 files / 266698 bytes, browser smoke passed all seven canonical destinations, and Cloudflare Pages deployed the exact source revision successfully to `https://0a651db7.goreecloud-website.pages.dev`.
 
-This is a new visual-identity candidate. Fresh owner visual review, Orca/assistive-technology review, and representative performance review remain required. Keyboard-only evidence is carried forward because no focusable controls, keyboard handlers, navigation behavior, or interaction order changed. Branding PR #19 must also receive human visual approval and merge before this website candidate can become production-eligible.
+This is a new visual-identity candidate. Fresh owner visual review, Orca/assistive-technology review, and representative performance review remain required. Keyboard-only evidence is carried forward because no keyboard-operable behavior changed. Branding PR #19 must receive human visual approval and merge before this website candidate can become production-eligible.
 
 ## Human visual review
 
@@ -52,9 +52,9 @@ This is a new visual-identity candidate. Fresh owner visual review, Orca/assisti
 
 - Reviewer: pending
 - Reviewed at: pending
-- Reviewed public-source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
-- Reviewed preview: `https://ee2266db.goreecloud-website.pages.dev`
-- Approval scope: Home, Platform Systems, Office Suite, Firefox, GitHub, Contact, and shared visual consistency after placeholder remediation.
+- Reviewed public-source revision: `cb79f3b75b64c957105c570d8ffaeab355e42a32`
+- Reviewed preview: `https://0a651db7.goreecloud-website.pages.dev`
+- Approval scope: Home, Suite, Platform Systems, Office Suite, Firefox, GitHub, Contact, and shared visual consistency after complete placeholder/missing-artwork remediation.
 - Required outcome: verify the replacement artwork is intentional, recognizable, non-placeholder, correctly sized/aligned, coherent in Light/Dark appearance, and visually appropriate at representative viewport sizes.
 
 The previous owner visual approval applies to the prior production artwork and does not approve the new branding candidates.
@@ -100,7 +100,7 @@ Record the technology and environment used. Do not substitute DOM inspection or 
 - Reviewer: pending
 - Reviewed at: pending
 - Representative environment: Firefox on Linux or another representative supported environment.
-- Reason for re-review: the artifact changed from 79 files / 252216 bytes to 90 files / 260824 bytes. Hosted browser smoke passed, but representative human performance/resilience review remains required for the new asset set.
+- Reason for re-review: the artifact changed from 79 files / 252216 bytes to 98 files / 266698 bytes. Hosted browser smoke passed, but representative human performance/resilience review remains required for the complete replacement-asset set.
 
 Earlier performance evidence remains historical for the prior production revision.
 
