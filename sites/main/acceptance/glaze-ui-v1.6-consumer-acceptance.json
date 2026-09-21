@@ -83,10 +83,10 @@
       "notes": "The project owner explicitly approved the corrected screenshot-driven UI-polish candidate for public-source revision a2aeea566e4831a59348b966d5c15631c77a80cb and confirmed recording that approval. This satisfies the human visual-review requirement only. Keyboard-only review, representative assistive-technology review, representative performance review, overall consumer acceptance, merge, production publication, deployed-byte verification, and final production acceptance remain separate and pending."
     },
     "keyboardReview": {
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "notes": "Human keyboard-only navigation and focus review is required before production acceptance."
+      "status": "passed",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": "2026-09-21T01:36:24.713Z",
+      "notes": "The project owner reported successful keyboard-only use across each canonical website destination, including typing and Tab navigation, and explicitly confirmed that Skip to content worked, focus remained visible, navigation order was logical, the theme control worked, the mobile Menu opened and closed, Escape closed it and returned focus, search fields were reachable and usable, links and buttons were operable, and no keyboard traps or unreachable controls were encountered. This satisfies the human keyboard-review requirement only."
     },
     "assistiveTechnologyReview": {
       "status": "pending",
@@ -111,6 +111,6 @@
     "authority": "GoreeCloud project owner",
     "acceptedRevision": null,
     "approvedAt": null,
-    "note": "Human visual review is passed. Production approval remains blocked until the still-required keyboard-only, representative assistive-technology, representative performance, and any other applicable acceptance evidence is complete."
+    "note": "Human visual and keyboard reviews are passed. Production approval remains blocked until representative assistive-technology review, representative performance review, and any other applicable acceptance evidence is complete."
   }
 }
