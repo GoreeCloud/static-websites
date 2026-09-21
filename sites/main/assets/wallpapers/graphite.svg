@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3200" viewBox="0 0 1440 3200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0A0F16"/>
+      <stop offset="0.55" stop-color="#111923"/>
+      <stop offset="1" stop-color="#080B10"/>
+    </linearGradient>
+    <radialGradient id="blue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1040 720) rotate(140) scale(820 720)">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#174EA6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="teal" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 2580) rotate(-38) scale(760 680)">
+      <stop offset="0" stop-color="#42C9C2" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#42C9C2" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="3200" fill="url(#bg)"/>
+  <rect width="1440" height="3200" fill="url(#blue)"/>
+  <rect width="1440" height="3200" fill="url(#teal)"/>
+  <g fill="none" stroke="url(#edge)" stroke-linecap="round">
+    <path d="M-260 520 C270 80 920 170 1280 650 C1530 980 1510 1410 1180 1690" stroke-width="96"/>
+    <path d="M1510 1320 C1120 1490 820 1790 740 2190 C670 2530 810 2890 1110 3240" stroke-width="70"/>
+    <path d="M-160 2140 C260 1950 580 2010 800 2260 C1020 2510 980 2820 780 3260" stroke-width="46"/>
+  </g>
+  <g opacity="0.30" fill="#F7FAFF">
+    <circle cx="1160" cy="640" r="9"/><circle cx="1080" cy="760" r="5"/>
+    <circle cx="350" cy="2520" r="8"/><circle cx="470" cy="2410" r="4"/>
+  </g>
+</svg>
