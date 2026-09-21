@@ -1,117 +1,160 @@
 #!/usr/bin/env python3
+"""Fail-closed Glaze UI V1.6 target validation for the website migration candidate."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import os
 from pathlib import Path
 import sys
 
-from glaze_v1_4 import (
-    GLAZE_CONSUMER_STATE,
-    GLAZE_ENTRYPOINT,
-    GLAZE_ENTRYPOINT_BLOB,
-    GLAZE_PROMOTION_REVISION,
-    GLAZE_VERSION,
-    git_blob_sha,
-    load_lock,
-    render_v1_4_html,
-)
-
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = [ROOT / name for name in ("index.html", "repositories.html", "privacy.html", "security.html", "404.html")]
-ENTRYPOINT = ROOT / "css" / GLAZE_ENTRYPOINT
-CONSUMER = ROOT / "css" / "glaze-v1.4-main.css"
-POLISH = ROOT / "css" / "glaze-polish.css"
-CONFORMANCE = ROOT / "docs" / "glaze-ui-conformance.md"
-errors: list[str] = []
+LOCK = ROOT / "glaze.lock.json"
+ACCEPTANCE = ROOT / "acceptance/glaze-ui-v1.6-consumer-acceptance.json"
+PAGES = (
+    ROOT / "index.html",
+    ROOT / "platform-systems/index.html",
+    ROOT / "suite/index.html",
+    ROOT / "office-suite/index.html",
+    ROOT / "firefox/index.html",
+    ROOT / "github/index.html",
+    ROOT / "contact/index.html",
+)
+EXPECTED = {
+    "version": "1.6.0",
+    "lifecycle": "Stable",
+    "repository": "GoreeCloud/glaze-ui",
+    "stable_commit": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
+    "accepted_release_source": "a7180679ea851389e0f3004515f9a25f420e716d",
+    "entrypoint": "js/glaze-v1.6.0.mjs",
+    "entrypoint_blob": "7dfc863d6c39def97c263de80b21b73efe54db1e",
+    "consumer_state": "migration-candidate-unaccepted",
+}
 
-try:
-    load_lock(ROOT)
-except (OSError, ValueError) as exc:
-    errors.append(str(exc))
 
-if not ENTRYPOINT.is_file() or ENTRYPOINT.is_symlink():
-    errors.append("exact GLAZE UI V1.4 Stable source entrypoint is missing or unsafe")
-elif git_blob_sha(ENTRYPOINT.read_bytes()) != GLAZE_ENTRYPOINT_BLOB:
-    errors.append("committed GLAZE UI V1.4 entrypoint is not byte-identical to canonical Stable source")
+def git_blob_sha(data: bytes) -> str:
+    header = b"blob " + str(len(data)).encode("ascii") + b"\x00"
+    return hashlib.sha1(header + data, usedforsecurity=False).hexdigest()
 
-for page in PAGES:
-    if not page.is_file():
-        errors.append(f"missing Main public page: {page.name}")
-        continue
-    source = page.read_text(encoding="utf-8")
+
+def main() -> int:
+    errors: list[str] = []
     try:
-        text = render_v1_4_html(source)
-    except ValueError as exc:
-        errors.append(f"{page.name} cannot be projected to V1.4: {exc}")
-        continue
-    required = (
-        f'data-glaze-version="{GLAZE_VERSION}"',
-        f'name="goreecloud-glaze-ui" content="{GLAZE_VERSION}"',
-        f'name="goreecloud-glaze-source-revision" content="{GLAZE_PROMOTION_REVISION}"',
-        f'name="goreecloud-glaze-consumer-state" content="{GLAZE_CONSUMER_STATE}"',
-        f'{GLAZE_ENTRYPOINT}" data-glaze-ui="{GLAZE_VERSION}"',
-        "css/glaze-v1.4-main.css",
-        'data-glaze-optical-v14="adaptive-optical"',
-        "glaze-canvas",
-        'name="viewport"',
-    )
-    for marker in required:
-        if marker not in text:
-            errors.append(f"{page.name} missing V1.4 runtime marker: {marker}")
-    for stale in (
-        'data-glaze-version="1.3.0"',
-        'goreecloud-glaze-ui" content="1.3.0"',
-        'glaze-v1.3.0.css" data-glaze-ui="1.3.0"',
-        'data-glaze-ui="2.1.0"',
-        'data-glaze-ui="2.2.0"',
-        "glaze-ui-2.1.0.css",
-        "glaze-2.2.0.css",
+        lock = json.loads(LOCK.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"Glaze UI validation failed: {exc}")
+        return 1
+
+    for key, value in EXPECTED.items():
+        if lock.get(key) != value:
+            errors.append(f"glaze.lock.json {key} must be {value!r}; found {lock.get(key)!r}")
+
+    try:
+        acceptance = json.loads(ACCEPTANCE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"consumer acceptance record missing or invalid: {exc}")
+        acceptance = {}
+
+    if acceptance:
+        for key, value in (
+            ("schemaVersion", 1),
+            ("consumerName", "GoreeCloud Website"),
+            ("repository", "GoreeCloud/static-websites"),
+            ("targetVersion", "1.6.0"),
+            ("designSystemStableRevision", EXPECTED["stable_commit"]),
+        ):
+            if acceptance.get(key) != value:
+                errors.append(f"consumer acceptance {key} must be {value!r}; found {acceptance.get(key)!r}")
+
+        machine = acceptance.get("machineEvidence")
+        if not isinstance(machine, dict):
+            errors.append("consumer acceptance machineEvidence must be an object")
+        else:
+            for key in ("repositoryValidation", "websiteValidation", "renderedPublicTreeEquivalence", "responsiveAndInteraction", "isolatedArtifact", "privacyAndSecurity"):
+                item = machine.get(key)
+                if not isinstance(item, dict) or item.get("status") != "passed":
+                    errors.append(f"consumer acceptance machine evidence {key} must be passed")
+
+        human = acceptance.get("humanEvidence")
+        status = acceptance.get("status")
+        if not isinstance(human, dict):
+            errors.append("consumer acceptance humanEvidence must be an object")
+        else:
+            human_statuses = []
+            for key in ("visualReview", "keyboardReview", "assistiveTechnologyReview"):
+                item = human.get(key)
+                if not isinstance(item, dict):
+                    errors.append(f"consumer acceptance humanEvidence.{key} must be an object")
+                    continue
+                human_statuses.append(item.get("status"))
+            if status == "pending-human-acceptance":
+                if all(value == "passed" for value in human_statuses):
+                    errors.append("pending-human-acceptance must not remain after all human review lanes pass")
+            elif status == "accepted-v1":
+                if not human_statuses or any(value != "passed" for value in human_statuses):
+                    errors.append("accepted-v1 requires all human review lanes to be passed")
+                performance = acceptance.get("performance")
+                if not isinstance(performance, dict) or performance.get("status") != "passed":
+                    errors.append("accepted-v1 requires passed representative performance evidence")
+            else:
+                errors.append(f"unsupported consumer acceptance status: {status!r}")
+
+        approval = acceptance.get("productionApproval")
+        if not isinstance(approval, dict):
+            errors.append("consumer acceptance productionApproval must be an object")
+        elif status != "accepted-v1" and approval.get("approved") is not False:
+            errors.append("production approval must remain false before consumer acceptance")
+
+    source_root = os.environ.get("GLAZE_UI_SOURCE")
+    if source_root:
+        source = Path(source_root)
+        version = source / "VERSION"
+        entrypoint = source / EXPECTED["entrypoint"]
+        if not version.is_file() or version.read_text(encoding="utf-8").strip() != EXPECTED["version"]:
+            errors.append("pinned Glaze source VERSION is not 1.6.0")
+        if not entrypoint.is_file():
+            errors.append("pinned Glaze V1.6.0 runtime entrypoint is missing")
+        elif git_blob_sha(entrypoint.read_bytes()) != EXPECTED["entrypoint_blob"]:
+            errors.append("pinned Glaze V1.6.0 runtime entrypoint bytes do not match the accepted blob")
+
+    for page in PAGES:
+        if not page.is_file():
+            errors.append(f"missing V1.6 consumer page: {page.relative_to(ROOT)}")
+            continue
+        text = page.read_text(encoding="utf-8")
+        for marker in (
+            'data-glaze-version="1.6.0"',
+            'name="goreecloud-glaze-ui" content="1.6.0"',
+            'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
+        ):
+            if marker not in text:
+                errors.append(f"{page.relative_to(ROOT)} missing V1.6 target marker: {marker}")
+        for forbidden in ("consumer-state\" content=\"accepted", "production-eligible", "Glaze UI conformant"):
+            if forbidden in text:
+                errors.append(f"{page.relative_to(ROOT)} overclaims downstream Glaze acceptance: {forbidden}")
+
+    css = (ROOT / "css/site-v9.css").read_text(encoding="utf-8")
+    for marker in (
+        ":focus-visible",
+        "prefers-reduced-motion",
+        "prefers-reduced-transparency",
+        "prefers-contrast:more",
+        "forced-colors:active",
+        "min-height:48px",
     ):
-        if stale in text:
-            errors.append(f"{page.name} projected artifact still activates superseded Glaze: {stale}")
-    if "raw.githubusercontent.com" in text:
-        errors.append(f"{page.name} must not load remote GLAZE UI at runtime")
-    if "glaze-v1.4.0.mjs" in text or "glaze-v1.4-optical-engine.mjs" in text:
-        errors.append(f"{page.name} must not load the optional V1.4 Optical Engine without a separate runtime review")
+        if marker not in css:
+            errors.append(f"website V1.6 visual CSS missing accessibility/adaptive marker: {marker}")
 
-consumer = CONSUMER.read_text(encoding="utf-8") if CONSUMER.is_file() else ""
-for marker in (
-    "GLAZE UI V1.4 consumer refinement",
-    "grid-template-areas: \"brand navigation actions\"",
-    "#goreecloud-analytics-consent",
-    "@media (max-width: 1040px)",
-    "prefers-reduced-motion",
-    "prefers-reduced-transparency",
-    "forced-colors: active",
-):
-    if marker not in consumer:
-        errors.append(f"Main V1.4 navigation/consumer adaptation missing: {marker}")
+    if errors:
+        print("Glaze UI V1.6 target validation failed:")
+        for error in errors:
+            print(f"  - {error}")
+        return 1
 
-polish = POLISH.read_text(encoding="utf-8") if POLISH.is_file() else ""
-for marker in (
-    ":focus-visible",
-    "@media (pointer:coarse)",
-    "prefers-reduced-motion",
-    "prefers-reduced-transparency",
-    "prefers-contrast: more",
-    "forced-colors: active",
-    "@media print",
-):
-    if marker not in polish:
-        errors.append(f"Inherited Main accessibility adaptation missing: {marker}")
+    print("Glaze UI V1.6 target validation passed. Consumer state remains migration-candidate-unaccepted; this is not downstream acceptance.")
+    return 0
 
-conformance = CONFORMANCE.read_text(encoding="utf-8") if CONFORMANCE.is_file() else ""
-for marker in (
-    "Target GLAZE UI version: **V1.4 / 1.4.0 Stable**",
-    GLAZE_PROMOTION_REVISION,
-    GLAZE_ENTRYPOINT,
-    "same-origin",
-    "optional V1.4 JavaScript Optical Engine",
-    "Rendered, accessibility, deployment, and production acceptance: **Separate gates**",
-):
-    if marker not in conformance:
-        errors.append(f"V1.4 conformance record missing: {marker}")
 
-if errors:
-    print("GLAZE UI V1.4 consumer validation failed:")
-    for error in errors:
-        print(f"  - {error}")
-    sys.exit(1)
-print("GLAZE UI V1.4 consumer contract passed for all Main public runtime surfaces.")
+if __name__ == "__main__":
+    sys.exit(main())

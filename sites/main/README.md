@@ -1,77 +1,67 @@
 # GoreeCloud Main Website
 
-Canonical static website repository: `GoreeCloud/static-websites`
+Canonical source for GoreeCloud's one current public website.
 
+- Canonical domain: `https://www.goreecloud.com/`
+- Canonical repository: `GoreeCloud/static-websites`
 - Site root: `sites/main`
-- Canonical public domain: `https://www.goreecloud.com/`
-- Legacy deployment/source lineage: `GoreeCloud/goreecloud-website`
-- Current design target: **GLAZE UI V1.3 / 1.3.0 Stable**
-- Canonical Glaze revision: `8354308445da9ac35ced2b37a7f503a08a0aaf72`
-- Source state: `source-migrated-rendered-acceptance-pending`
-
-This package contains the directly authored public HTML, reviewed assets, exact GLAZE UI consumer lock, build tooling, validation tooling, browser acceptance tooling, deployment verification tooling, and public policy files required to reproduce the Main static artifact.
-
-## Public information contract
-
-The Main homepage is an ecosystem overview, not an independent inventory authority. Current public portfolio statements must remain synchronized with the applicable authoritative GoreeCloud records:
-
-- `Inventory — Suite Applications` controls the current Suite portfolio. The current reconciled registry is **45 verified products across 9 functional product groups**.
-- The active Suite architecture defines **7 Integral Platform Systems**: GoreeCloud Manager, GoreeCloud Identity, Glaze UI, Wardveil Security, Privacy Shield, Everkeep, and GoreeCloud Mesh. Their platform authority remains separate from ordinary Suite product counting even when Manager and Identity also expose user-facing product surfaces.
-- `Project Record — Public Websites` plus `sites/manifest.json` control the registered public static-website scope. The current centralized manifest contains **14 website packages**, with Labs integrated as the fourteenth authoritative-main package.
-- The live GoreeCloud GitHub organization is authoritative for current repository inventory and counts. Main must not publish a fragile numeric repository-total snapshot as current truth.
-
-The homepage must present GoreeCloud as the current software ecosystem rather than freezing an earlier homelab-only or personal/family-cloud phase as the current product definition. Historical origin context may remain only when it is clearly presented as history and does not override current architecture, product, lifecycle, or deployment authority.
-
-## Governed Cloudflare Pages contract
-
-The approved centralized publication contract is:
-
 - Cloudflare Pages project: `goreecloud-website`
-- Pages namespace: `goreecloud-website.pages.dev`
-- Repository: `GoreeCloud/static-websites`
-- Production branch: `main`
-- Root directory: `sites/main`
-- Build command: `python3 scripts/build_public_site.py`
-- Build output directory: `dist`
-- Canonical public domain: `www.goreecloud.com`
+- Current public model: one website with path-based sections
+- Current design target: **GLAZE UI V1.6 / 1.6.0 Stable**
+- Consumer state: **migration candidate — repository-local acceptance pending**
 
-The Pages project identity and namespace are verified from legacy `GoreeCloud/goreecloud-website` Cloudflare deployment evidence. This is the desired central source configuration for the public website. It does not establish that Cloudflare Pages has already been reconnected from the legacy source repository, that a provider deployment corresponds to the reviewed central revision, or that production acceptance has occurred.
+## Current public information architecture
 
-## Build and local acceptance
+The website is intentionally path-based rather than a collection of separate public websites:
 
-Check out `GoreeCloud/goreecloud-glaze-ui` at exact revision `8354308445da9ac35ced2b37a7f503a08a0aaf72`, then from the repository root run:
+- `/` — GoreeCloud overview
+- `/platform-systems/` — the nine Integral Platform Systems
+- `/suite/` — the reconciled 45-product GoreeCloud Suite registry
+- `/office-suite/` — GoreeCloud Office Suite
+- `/firefox/` — standalone extensions and application-owned Firefox clients
+- `/github/` — current public GitHub repository discovery
+
+Compatibility paths such as `/repositories.html`, `/privacy.html`, and `/security.html` are retained only as transition entry points and must not carry stale standalone content.
+
+## Truth and authority
+
+Public content must not manufacture current state.
+
+- The authoritative Suite inventory controls Suite membership. The current reconciled registry is 45 products across nine functional groups.
+- `Instructions — Integral Platform Systems` controls the current nine-system platform model.
+- Live GitHub is authoritative for repository existence, names, visibility, descriptions, and archive state.
+- Product implementation and lifecycle state remain controlled by each product's authoritative repository and project records.
+- Glaze UI presentation must not be presented as proof of privacy, security, deployment, production readiness, or platform integration.
+
+The website must not publish private repository names or fixed private-repository counts.
+
+## Glaze UI V1.6 migration
+
+This rebuild targets the current Official Stable Glaze UI 1.6.0 contract. Stable lifecycle authority is pinned at `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`; the separately recorded accepted published release source is `a7180679ea851389e0f3004515f9a25f420e716d`. The shared Glaze UI release is consumer-eligible, but downstream website conformance is not inherited automatically. The website therefore records its state as `migration-candidate-unaccepted` until exact-revision repository-local rendered, accessibility, performance, and other required acceptance evidence is completed.
+
+The rebuild uses local, same-origin presentation code. It does not require remote Glaze UI runtime execution in the browser.
+
+## Build and validation
+
+From the repository root:
 
 ```bash
-GLAZE_UI_SOURCE=/path/to/goreecloud-glaze-ui python sites/main/scripts/build_public_site.py
-GLAZE_UI_SOURCE=/path/to/goreecloud-glaze-ui python sites/main/scripts/validate_build_artifact.py
+python sites/main/scripts/build_public_site.py
+python sites/main/scripts/validate_build_artifact.py
+python sites/main/scripts/validate_site.py
+python sites/main/scripts/validate_public_surface.py
+python sites/main/scripts/validate_glaze_ui.py
 python sites/main/scripts/browser_artifact_smoke.py
-node --check sites/main/js/theme-init.js
-node --check sites/main/js/main.js
+node --check sites/main/js/theme-init-v8.js
+node --check sites/main/js/site-v8.js
 ```
 
-The build verifies the exact V1.3 Stable entrypoint and recursively vendors its same-origin CSS dependency closure. It does not fetch or execute a runtime design-system dependency in the browser.
+The public artifact is allowlisted and excludes repository-only documentation, tests, source history, private data, and retired website packages.
 
-The built-artifact Chrome gate exercises 1180×900, 768×900, 390×844, and 320×844 CSS viewports. It checks horizontal containment, non-overlapping header/hero composition, responsive content-column reflow, hero typography, and bounded 48px mobile navigation before a change may merge.
+## Privacy and repository catalog
 
-## Production verification
-
-Production checks are intentionally separate from source/build acceptance. After an independently authorized Cloudflare source cutover, the workflow may be dispatched manually to run:
-
-```bash
-python sites/main/scripts/verify_remote_deployment.py production
-python sites/main/scripts/browser_responsive_smoke.py --target production
-```
-
-The deployment verifier is fixed to approved GoreeCloud HTTPS hosts and compares fetchable public files—including the complete pinned GLAZE UI CSS dependency closure—against the reviewed candidate byte-for-byte. It also checks required response-security headers, 404 behavior, and the public `security.txt` contract. The production Chrome gate then re-runs the responsive acceptance conditions against the canonical live site.
-
-Provider deployment success alone is not evidence that Cloudflare is connected to the correct repository/root or that the exact reviewed revision is serving production. Those source-authority facts must be verified separately before the migration registry advances.
-
-## Repository directory policy
-
-The Main website no longer publishes a numeric claim for the "current" GoreeCloud repository total. Repository creation is continuous and the live GoreeCloud GitHub organization is authoritative for current inventory/counts. `repositories.html` is a reviewed public-safe source-role guide. `docs/repository-portfolio.json` is retained as historical/review provenance and must not be treated as current live inventory.
+The GitHub page does not contact GitHub automatically. A visitor must explicitly choose **Load current public repositories** before the browser requests public repository metadata from `api.github.com`. The page contains a direct organization link for visitors who prefer not to make that request from the GoreeCloud site.
 
 ## Acceptance boundary
 
-Central source/build migration is not production cutover. Cloudflare Pages repository/root configuration, exact deployment revision, custom-domain behavior, rendered visual review, accessibility acceptance, performance, rollback, and post-deployment verification remain separate gates. Historical production evidence for earlier source revisions remains valid within its original exact scope.
-
-Do not advance `sites/manifest.json` from `legacy-source` until the Cloudflare source configuration is verified against the central contract, the provider deployment is bound to the exact reviewed central revision, and canonical-domain HTTP/browser acceptance passes.
+Source changes, a successful build, CI success, or a Cloudflare deployment do not by themselves establish final production acceptance. Merge, deployment, exact deployed-byte verification, rendered review, accessibility acceptance, performance acceptance, rollback readiness, and current Glaze UI consumer acceptance remain separately governed transitions.

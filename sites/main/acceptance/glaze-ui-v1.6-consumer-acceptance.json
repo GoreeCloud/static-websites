@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "recordId": "goreecloud.website.glaze-ui-v1.6-consumer-acceptance",
+  "consumerName": "GoreeCloud Website",
+  "repository": "GoreeCloud/static-websites",
+  "targetVersion": "1.6.0",
+  "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
+  "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
+  "candidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+  "renderedCandidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+  "renderedCandidatePreview": "https://cce68d2e.goreecloud-website.pages.dev",
+  "branchPreview": "https://feature-main-website-rebuild.goreecloud-website.pages.dev",
+  "status": "accepted-v1",
+  "supportedPlatforms": [
+    "web"
+  ],
+  "machineEvidence": {
+    "repositoryValidation": {
+      "status": "passed",
+      "runId": 35552316820,
+      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
+    },
+    "websiteValidation": {
+      "status": "passed",
+      "runId": 35552316810,
+      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
+    },
+    "renderedPublicTreeEquivalence": {
+      "status": "passed",
+      "reviewedRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+      "validationRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
+      "note": "The Contact & Social page-scoped UI-polish revision passed the seven-destination URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation before this non-public acceptance record was reconciled."
+    },
+    "responsiveAndInteraction": {
+      "status": "passed",
+      "viewports": [
+        "1180x900",
+        "768x900",
+        "390x844",
+        "320x844"
+      ],
+      "checks": [
+        "seven-canonical-page-browser-matrix",
+        "horizontal-overflow",
+        "48px-target-floor",
+        "desktop-mobile-menu-boundary",
+        "primary-navigation-binding",
+        "skip-link",
+        "theme-state-and-label",
+        "mobile-escape-close-and-focus-restore"
+      ]
+    },
+    "isolatedArtifact": {
+      "status": "passed",
+      "fileCount": 79,
+      "totalBytes": 252216
+    },
+    "privacyAndSecurity": {
+      "status": "passed",
+      "checks": [
+        "allowlisted-public-artifact",
+        "restrictive-csp",
+        "no-retired-posthog-endpoints",
+        "no-private-repository-inventory",
+        "visitor-triggered-github-request",
+        "contact-page-private-owner-contact-exclusion"
+      ]
+    },
+    "visualIdentity": {
+      "status": "passed",
+      "checks": [
+        "canonical GoreeCloud logo",
+        "canonical GoreeCloud wallpapers",
+        "canonical product icons",
+        "canonical platform-system marks",
+        "verified social-profile icons",
+        "Glaze visual composition markers"
+      ]
+    }
+  },
+  "humanEvidence": {
+    "visualReview": {
+      "status": "passed",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": "2026-09-21T02:03:57.769Z",
+      "notes": "The project owner reviewed the polished seven-destination candidate and explicitly reported all review lanes PASS. Human visual review is therefore passed for public-source revision a1c0f784db5b9ad7ee121eb00700f3155369634b, including the updated /contact/ destination and shared navigation/footer."
+    },
+    "keyboardReview": {
+      "status": "passed",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": "2026-09-21T02:03:57.769Z",
+      "notes": "The project owner explicitly reported all review lanes PASS for the polished seven-destination candidate. This records the required keyboard-only review as passed for all seven canonical destinations, including the updated /contact/ destination and shared navigation/footer."
+    },
+    "assistiveTechnologyReview": {
+      "status": "passed",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": "2026-09-21T02:03:57.769Z",
+      "technology": "Orca + Firefox on Linux",
+      "notes": "The project owner explicitly reported all review lanes PASS and identified the representative assistive-technology environment as Orca with Firefox on Linux. The required screen-reader/assistive-technology review is therefore recorded as passed for the current seven-destination candidate."
+    }
+  },
+  "performance": {
+    "status": "passed",
+    "reviewer": "GoreeCloud project owner",
+    "reviewedAt": "2026-09-21T02:03:57.769Z",
+    "environment": "Firefox on Linux",
+    "note": "The project owner explicitly reported all review lanes PASS. Representative performance and resilience review is recorded as passed in the same Firefox-on-Linux review environment; no material jank, unusable delay, persistent loading failure, or resource behavior was reported."
+  },
+  "rollback": {
+    "lastKnownGoodMainRevision": "8fad0a2393ec05d085fb7251cc90712cfcee00f3",
+    "independentlyReversible": true,
+    "verifiedByGitHistory": true,
+    "note": "The feature branch and pull request do not replace production until merge and Cloudflare publication. Prior main history remains available for controlled rollback."
+  },
+  "productionApproval": {
+    "approved": false,
+    "authority": "GoreeCloud project owner",
+    "acceptedRevision": null,
+    "approvedAt": null,
+    "note": "Glaze UI V1.6 consumer acceptance is complete for the seven-destination website candidate. Merge, production publication, deployed-byte verification, and final production acceptance remain separate governed transitions and are not approved by this record."
+  }
+}

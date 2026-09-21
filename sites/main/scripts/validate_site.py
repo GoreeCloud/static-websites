@@ -1,320 +1,286 @@
 #!/usr/bin/env python3
-"""Validate the source-native GoreeCloud Main website and public truth boundaries."""
+"""Validate current public truth and semantic requirements for GoreeCloud Main."""
 
 from __future__ import annotations
 
 from collections import Counter
-from datetime import datetime, timezone
 from html.parser import HTMLParser
+import ipaddress
 from pathlib import Path
 import re
 import sys
 
-from normalize_homepage import normalize_homepage
-from render_repository_portfolio import load_manifest, render_public_file
-
 ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "index.html"
-SECURITY_TXT = ROOT / ".well-known" / "security.txt"
-CANONICAL = "https://www.goreecloud.com/"
-
-PRIVATE_PATTERNS = (
-    re.compile(r"\b10(?:\.\d{1,3}){3}\b"),
-    re.compile(r"\b192\.168(?:\.\d{1,3}){2}\b"),
-    re.compile(r"\b172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2}\b"),
-    re.compile(r"\b100\.(?:6[4-9]|[7-9]\d|1[01]\d|12[0-7])(?:\.\d{1,3}){2}\b"),
-)
-
-REQUIRED_MARKERS = (
-    "Software that keeps control understandable.",
-    "A software ecosystem, not a single service.",
-    "45 products across nine functional groups.",
+CANONICAL = {
+    "index.html": "https://www.goreecloud.com/",
+    "platform-systems/index.html": "https://www.goreecloud.com/platform-systems/",
+    "suite/index.html": "https://www.goreecloud.com/suite/",
+    "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
+    "firefox/index.html": "https://www.goreecloud.com/firefox/",
+    "github/index.html": "https://www.goreecloud.com/github/",
+    "contact/index.html": "https://www.goreecloud.com/contact/",
+}
+COMPATIBILITY = ("privacy.html", "security.html", "repositories.html")
+STALE_MARKERS = (
     "Seven systems. Seven distinct responsibilities.",
     "seven Integral Platform Systems",
-    "Glaze UI",
-    "Privacy Shield",
-    "Wardveil Security",
-    "Everkeep",
-    "GoreeCloud Mesh",
-    "GoreeCloud Identity",
-    "GoreeCloud Manager",
-    "mesh.goreecloud.com",
-    "id.goreecloud.com",
-    "manage.goreecloud.com",
-    "labs.goreecloud.com",
-    "GoreeCloud Labs",
-    "Fourteen official surfaces, organized by purpose.",
-    "source migration does not establish Cloudflare source cutover",
-    "GoreeCloud Home",
-    "GoreeCloud Home Security",
-    "GoreeCloud Health",
-    "Reader",
-    "GoreeCloud Router OS",
-    "GoreeCloud AI",
-    "The live GitHub organization remains the count authority",
-    "Durable control over software and data.",
-    '<section id="contact"',
-    "https://www.youtube.com/@GoreeCloud",
+    "Fourteen official surfaces",
+    "14 official public website",
+    "GLAZE UI V1.3",
+    "GLAZE UI V1.4 / 1.4",
+    "Current Official Stable · 1.4",
+    "suite.goreecloud.com",
+    "firefox.goreecloud.com",
+    "projects.goreecloud.com",
+    "design.goreecloud.com",
+    "privacy.goreecloud.com",
+    "security.goreecloud.com",
+    "roadmap.goreecloud.com",
+    "blog.goreecloud.com",
+    "archive.goreecloud.com",
+    "This replaces the older multi-website model.",
+    "This rebuild targets the current Official Stable Glaze UI contract.",
+    "Migration candidate — acceptance pending",
 )
-STALE = (
-    "current 57-repository portfolio",
-    "57 repositories",
-    "40 public repositories",
-    "17 private repositories",
-    "identity.goreecloud.com",
-    "Glaze UI 2.1",
-    "Glaze UI 2.2",
-    "Six substantive platform systems",
-    "Ten independently deployed public destinations",
-    "Eleven official surfaces",
-    "Thirteen official surfaces",
-    "Privacy-First Personal & Family Cloud",
-    "personal and family cloud",
-    "family digital foundation",
-    "More than a homelab.",
-    "Built deliberately from the beginning.",
-    "started in 2026 as a self-hosting plan",
-    "want to talk self-hosting",
-    "<h3>Home Assistant</h3>",
-    "<h3>Frigate</h3>",
-    "assets/roadmap/home-assistant.png",
-    "assets/roadmap/frigate.svg",
-)
+IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
+CGNAT = ipaddress.ip_network("100.64.0.0/10")
 
-PUBLIC_PROFILE_URLS = (
-    "https://instagram.com/goreecloud",
-    "https://www.threads.com/@goreecloud",
-    "https://www.tiktok.com/@goreecloud",
-    "https://x.com/GoreeCloud",
-    "https://www.reddit.com/user/goreecloud/",
-    "https://www.pinterest.com/goreecloud/",
-    "https://www.youtube.com/@GoreeCloud",
-    "https://github.com/GoreeCloud",
-)
+
+def contains_private_address(text: str) -> bool:
+    for token in IP_RE.findall(text):
+        try:
+            address = ipaddress.ip_address(token)
+        except ValueError:
+            continue
+        if address.is_private or address in CGNAT:
+            return True
+    return False
 
 
 class Audit(HTMLParser):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
-        self.ids = Counter()
-        self.canonical = None
-        self.og_url = None
-        self.description = None
+        self.ids: Counter[str] = Counter()
         self.h1 = 0
-        self.title_parts = []
-        self._title = False
-        self.scripts = []
-        self.styles = []
-        self.external_blank_errors = []
+        self.canonical: str | None = None
+        self.robots = ""
         self.inline_scripts = 0
         self.inline_styles = 0
-        self.missing_alt = []
+        self.missing_alt: list[str] = []
+        self.classes: Counter[str] = Counter()
 
     def handle_starttag(self, tag, attrs_list):
         attrs = {k: v or "" for k, v in attrs_list}
-        if attrs.get("id"):
-            self.ids[attrs["id"]] += 1
+        identifier = attrs.get("id")
+        if identifier:
+            self.ids[identifier] += 1
         if tag == "h1":
             self.h1 += 1
-        if tag == "title":
-            self._title = True
-        if tag == "link":
-            rel = set(attrs.get("rel", "").split())
-            if "canonical" in rel:
-                self.canonical = attrs.get("href")
-            if "stylesheet" in rel and attrs.get("href"):
-                self.styles.append(attrs["href"])
-        if tag == "meta":
-            if attrs.get("property") == "og:url":
-                self.og_url = attrs.get("content")
-            if attrs.get("name") == "description":
-                self.description = attrs.get("content")
-        if tag == "script":
-            if attrs.get("src"):
-                self.scripts.append(attrs["src"])
-            else:
-                self.inline_scripts += 1
+        for cls in attrs.get("class", "").split():
+            self.classes[cls] += 1
+        if tag == "link" and "canonical" in attrs.get("rel", "").split():
+            self.canonical = attrs.get("href")
+        if tag == "meta" and attrs.get("name", "").lower() == "robots":
+            self.robots = attrs.get("content", "")
+        if tag == "script" and not attrs.get("src"):
+            self.inline_scripts += 1
         if tag == "style":
             self.inline_styles += 1
         if tag == "img" and "alt" not in attrs:
             self.missing_alt.append(attrs.get("src", ""))
-        if attrs.get("target") == "_blank":
-            rel = set(attrs.get("rel", "").split())
-            if not {"noopener", "noreferrer"}.issubset(rel):
-                self.external_blank_errors.append(attrs.get("href", ""))
-
-    def handle_endtag(self, tag):
-        if tag == "title":
-            self._title = False
-
-    def handle_data(self, data):
-        if self._title:
-            self.title_parts.append(data)
 
 
-def rendered_homepage() -> str:
-    manifest = load_manifest(ROOT)
-    text = render_public_file("index.html", INDEX.read_text(encoding="utf-8"), manifest)
-    return normalize_homepage(text)
+def audit_page(relative: str, expected_canonical: str | None, errors: list[str]) -> tuple[str, Audit] | None:
+    path = ROOT / relative
+    if not path.is_file():
+        errors.append(f"missing public page: {relative}")
+        return None
+    text = path.read_text(encoding="utf-8")
+    audit = Audit()
+    audit.feed(text)
+
+    if audit.h1 != 1:
+        errors.append(f"{relative} must contain exactly one h1; found {audit.h1}")
+    if audit.inline_scripts or audit.inline_styles:
+        errors.append(f"{relative} contains inline script/style blocked by the site CSP")
+    if audit.missing_alt:
+        errors.append(f"{relative} has image(s) without alt attributes")
+    for identifier, count in audit.ids.items():
+        if count > 1:
+            errors.append(f"{relative} contains duplicate id: {identifier}")
+    if expected_canonical and audit.canonical != expected_canonical:
+        errors.append(f"{relative} canonical mismatch: {audit.canonical!r}")
+    if expected_canonical and "noindex" in audit.robots.lower():
+        errors.append(f"{relative} is canonical but marked noindex")
+    for stale in STALE_MARKERS:
+        if stale in text:
+            errors.append(f"{relative} contains stale current-state text: {stale}")
+    if contains_private_address(text):
+        errors.append(f"{relative} exposes private-range address material")
+    for marker in (
+        'data-glaze-version="1.6.0"',
+        'name="goreecloud-glaze-ui" content="1.6.0"',
+        'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
+    ):
+        if marker not in text:
+            errors.append(f"{relative} missing current Glaze migration marker: {marker}")
+    if expected_canonical:
+        for marker in (
+            'id="primary-navigation"',
+            'aria-controls="primary-navigation"',
+            'aria-expanded="false"',
+            'class="skip-link" href="#main"',
+            'id="main"',
+        ):
+            if marker not in text:
+                errors.append(f"{relative} missing required navigation/accessibility marker: {marker}")
+    return text, audit
 
 
 def main() -> int:
     errors: list[str] = []
-    try:
-        html = rendered_homepage()
-    except (OSError, ValueError) as exc:
-        print(f"Website validation failed: {exc}")
-        return 1
+    audited: dict[str, tuple[str, Audit]] = {}
+    for relative, canonical in CANONICAL.items():
+        result = audit_page(relative, canonical, errors)
+        if result:
+            audited[relative] = result
 
-    audit = Audit()
-    audit.feed(html)
-    if audit.canonical != CANONICAL:
-        errors.append(f"homepage canonical must be {CANONICAL}")
-    if audit.og_url != CANONICAL:
-        errors.append("homepage Open Graph URL mismatch")
-    if not audit.description:
-        errors.append("homepage description missing")
-    if audit.h1 != 1:
-        errors.append(f"homepage must contain one h1, found {audit.h1}")
-    if not "".join(audit.title_parts).strip():
-        errors.append("homepage title missing")
-    if audit.inline_scripts or audit.inline_styles:
-        errors.append("inline script/style violates self-only CSP")
-    if audit.missing_alt:
-        errors.append("all homepage images require alt attributes")
-    if audit.external_blank_errors:
-        errors.append("target=_blank links require noopener noreferrer")
-    for identifier, count in audit.ids.items():
-        if count > 1:
-            errors.append(f"duplicate homepage id: {identifier}")
+    for relative in COMPATIBILITY:
+        result = audit_page(relative, None, errors)
+        if result:
+            _, audit = result
+            if "noindex" not in audit.robots.lower():
+                errors.append(f"{relative} must be noindex compatibility content")
+            audited[relative] = result
 
-    if "js/theme-init.js" not in audit.scripts or "js/main.js" not in audit.scripts:
-        errors.append("required appearance/navigation scripts missing")
-    for required_css in (
-        "css/style.css",
-        "css/glaze.css",
-        "css/glaze-v1.3.0.css",
-        "css/glaze-polish.css",
-        "css/homepage-v7.css",
-    ):
-        if required_css not in audit.styles:
-            errors.append(f"required stylesheet missing: {required_css}")
-    if html.index('<script src="js/theme-init.js"></script>') > html.index('<link rel="stylesheet"'):
-        errors.append("theme-init must run before first stylesheet")
-    if 'class="theme-toggle" type="button"' not in html or 'title="Switch theme" hidden' not in html:
-        errors.append("progressive appearance control markup missing")
-    if '<span id="year">2026</span>' not in html:
-        errors.append("copyright fallback year missing")
+    result = audit_page("404.html", None, errors)
+    if result:
+        _, audit = result
+        if "noindex" not in audit.robots.lower():
+            errors.append("404.html must be noindex")
+        if audit.canonical:
+            errors.append("404.html must not publish a canonical URL")
 
-    for marker in REQUIRED_MARKERS:
-        if marker not in html:
-            errors.append(f"required current public marker missing: {marker}")
-    for stale in STALE:
-        if stale in html:
-            errors.append(f"superseded current-state copy remains: {stale}")
-
-    # Social discovery must exist in exactly one homepage area: the footer.
-    if 'id="follow"' in html or 'class="social-grid"' in html or 'class="social-card' in html:
-        errors.append("standalone or card-grid social presentation must not be generated on Main")
-    if html.count('class="footer-social"') != 1:
-        errors.append("generated homepage must contain exactly one footer social area")
-    if html.count('class="footer-social-link"') != 8:
-        errors.append("generated homepage must contain eight static footer profile links")
-    if 'aria-label="GoreeCloud public profiles"' not in html:
-        errors.append("generated homepage footer public-profile navigation missing")
-    for profile_url in PUBLIC_PROFILE_URLS:
-        if f'href="{profile_url}"' not in html:
-            errors.append(f"public profile missing from generated footer inventory: {profile_url}")
-
-    repo = (ROOT / "repositories.html").read_text(encoding="utf-8")
+    home = audited.get("index.html", ("", Audit()))[0]
     for marker in (
-        "GitHub organization",
-        "authoritative for current inventory",
-        "static-websites",
-        "goreecloud-health",
-        "goreecloud-reader",
-        "goreecloud-router-os",
-        "goreecloud-os-desktop",
-        "goreecloud-os-tv",
+        "One public website",
+        "45",
+        "Nine cross-cutting authorities.",
+        "Glaze UI V1.6",
+        "/platform-systems/",
+        "/suite/",
+        "/office-suite/",
+        "/firefox/",
+        "/github/",
+        "/contact/",
     ):
-        if marker not in repo:
-            errors.append(f"repository guide missing current role marker: {marker}")
-    for stale in ("57", "40 public", "17 private", "current repository portfolio"):
-        if stale in repo:
-            errors.append(f"repository guide still presents obsolete snapshot wording: {stale}")
+        if marker not in home:
+            errors.append(f"homepage missing current-state marker: {marker}")
 
-    main_js = (ROOT / "js/main.js").read_text(encoding="utf-8")
-    theme_js = (ROOT / "js/theme-init.js").read_text(encoding="utf-8")
-    polish = (ROOT / "css/glaze-polish.css").read_text(encoding="utf-8")
-    homepage_css = (ROOT / "css/homepage-v7.css").read_text(encoding="utf-8")
-    if "'system', 'light', 'dark'" not in main_js:
-        errors.append("System/Light/Dark appearance modes missing")
-    if "root.dataset.js = 'true'" not in main_js:
-        errors.append("progressive JavaScript state marker missing")
-    if "const PUBLIC_PROFILES = [" not in main_js:
-        errors.append("authoritative public-profile runtime inventory missing")
-    for profile_url in PUBLIC_PROFILE_URLS:
-        if profile_url not in main_js:
-            errors.append(f"public profile missing from Main runtime inventory: {profile_url}")
-    for marker in ("footer-social", "footer-social-links"):
-        if marker not in main_js:
-            errors.append(f"footer public-profile runtime fallback missing: {marker}")
-    for marker in (".footer-social", ".footer-social-links", ".footer-social-link", "min-height: 48px"):
-        if marker not in homepage_css:
-            errors.append(f"footer public-profile styling missing: {marker}")
-    if "localStorage.getItem(THEME_STORAGE_KEY)" not in theme_js:
-        errors.append("appearance preference restoration missing")
-    for marker in (
-        "prefers-reduced-motion",
-        "prefers-reduced-transparency",
-        "prefers-contrast: more",
-        "forced-colors: active",
-        "@media print",
+    platform = audited.get("platform-systems/index.html", ("", Audit()))
+    if platform[1].classes["system-card"] != 9:
+        errors.append(f"platform-systems must contain nine system cards; found {platform[1].classes['system-card']}")
+    for name in (
+        "GoreeCloud Manager", "Privacy Shield", "Wardveil Security", "Everkeep", "Glaze UI",
+        "GoreeCloud Mesh", "GoreeCloud Identity", "GoreeCloud Policy", "GoreeCloud Observability",
     ):
-        if marker not in polish:
-            errors.append(f"consumer accessibility fallback missing: {marker}")
+        if name not in platform[0]:
+            errors.append(f"platform-systems missing: {name}")
+    if "not a tenth Integral Platform System" not in platform[0]:
+        errors.append("platform-systems must preserve GoreeCloud Sync's separate-governance boundary")
+
+    suite = audited.get("suite/index.html", ("", Audit()))
+    if suite[1].classes["product-section"] != 9:
+        errors.append(f"suite must contain nine product groups; found {suite[1].classes['product-section']}")
+    if suite[1].classes["product-card"] != 45:
+        errors.append(f"suite must contain 45 current products; found {suite[1].classes['product-card']}")
+
+
+    visual_requirements = {
+        "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
+        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg"),
+        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg"),
+        "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg"),
+        "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
+        "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
+        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
+    }
+    for relative, markers in visual_requirements.items():
+        text_value = audited.get(relative, ("", Audit()))[0]
+        for marker in markers:
+            if marker not in text_value:
+                errors.append(f"{relative} missing required Glaze visual identity marker: {marker}")
+
+    office = audited.get("office-suite/index.html", ("", Audit()))[0]
+    for marker in ("not yet implemented", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):
+        if marker not in office:
+            errors.append(f"office-suite missing implementation/planning boundary marker: {marker}")
+
+    firefox = audited.get("firefox/index.html", ("", Audit()))
+    if firefox[1].classes["extension-card"] != 7:
+        errors.append(f"firefox page must contain seven verified extension/client cards; found {firefox[1].classes['extension-card']}")
+    for marker in (
+        "Advanced Tab Manager", "Webspaces", "Privacy Shield", "Redirector",
+        "Source Resync", "Download Manager Extension", "Bookmarks Firefox Client",
+    ):
+        if marker not in firefox[0]:
+            errors.append(f"firefox page missing current source: {marker}")
+
+    github = audited.get("github/index.html", ("", Audit()))[0]
+    for marker in (
+        "Load current public repositories",
+        "does not publish private repository names",
+        "Fresh metadata without publishing private inventory.",
+        "Ready when you are",
+        'role="status"',
+        'aria-live="polite"',
+        'aria-controls="github-repository-list"',
+        'id="github-repository-list"',
+    ):
+        if marker not in github:
+            errors.append(f"github page missing privacy/currentness marker: {marker}")
+    if re.search(r"\b\d+\s+(?:total|public)\s+repositories\b", github, re.IGNORECASE):
+        errors.append("github page must not hard-code a repository total")
+
+    contact = audited.get("contact/index.html", ("", Audit()))[0]
+    for marker in (
+        "Instagram", "@goreecloud", "Threads", "TikTok", "@GoreeCloud",
+        "Reddit", "u/goreecloud", "Pinterest", "security@goreecloud.com",
+        "personal phone numbers", "private email accounts", "residential or mailing addresses",
+    ):
+        if marker not in contact:
+            errors.append(f"contact page missing verified public-contact/privacy marker: {marker}")
+    if "334-" in contact or "slickkredd@" in contact or "goreeboy@" in contact:
+        errors.append("contact page must not publish private owner contact records")
+
+    github_js = (ROOT / "js/site-v8.js").read_text(encoding="utf-8")
+    if "https://api.github.com/orgs/GoreeCloud/repos" not in github_js:
+        errors.append("GitHub catalog must use the public GoreeCloud organization API")
+    if "data-load-github" not in github or "addEventListener(\"click\"" not in github_js:
+        errors.append("GitHub public catalog must remain visitor-triggered rather than automatic")
 
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
-    for marker in ("Content-Security-Policy:", "Referrer-Policy: no-referrer", "Origin-Agent-Cluster: ?1"):
-        if marker not in headers:
-            errors.append(f"required public header missing: {marker}")
+    if "posthog.com" in headers:
+        errors.append("retired PostHog endpoint remains in current public CSP")
+    if "connect-src 'self' https://api.github.com" not in headers:
+        errors.append("GitHub on-demand catalog endpoint is not narrowly allowed by CSP")
 
-    if not SECURITY_TXT.is_file():
-        errors.append(".well-known/security.txt missing")
-    else:
-        security = SECURITY_TXT.read_text(encoding="utf-8")
-        for marker in (
-            "Contact: mailto:security@goreecloud.com",
-            "Preferred-Languages: en",
-            "Canonical: https://www.goreecloud.com/.well-known/security.txt",
-        ):
-            if marker not in security:
-                errors.append(f"security.txt marker missing: {marker}")
-        match = re.search(r"^Expires:\s*(.+)$", security, re.MULTILINE)
-        if not match:
-            errors.append("security.txt Expires missing")
-        else:
-            try:
-                expires = datetime.fromisoformat(match.group(1).strip().replace("Z", "+00:00"))
-                if expires <= datetime.now(timezone.utc):
-                    errors.append("security.txt is expired")
-            except ValueError:
-                errors.append("security.txt Expires invalid")
-
-    for path in [INDEX, ROOT / "repositories.html", ROOT / "privacy.html", ROOT / "security.html", ROOT / "README.md", ROOT / "_headers", SECURITY_TXT]:
-        if not path.is_file():
-            continue
-        text = path.read_text(encoding="utf-8", errors="replace")
-        for pattern in PRIVATE_PATTERNS:
-            if pattern.search(text):
-                errors.append(f"private-range IP found in {path.relative_to(ROOT)}")
+    redirects = (ROOT / "_redirects").read_text(encoding="utf-8")
+    for marker in (
+        "/repositories.html /github/ 301",
+        "/privacy.html /platform-systems/ 301",
+        "/security.html /platform-systems/ 301",
+        "/firefox-extensions /firefox/ 301",
+    ):
+        if marker not in redirects:
+            errors.append(f"compatibility redirect missing: {marker}")
 
     if errors:
         print("Website validation failed:")
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: rebuilt Main public truth boundary is coherent for the GLAZE UI V1.4 build pipeline.")
+    print("Website validation passed: one current website, seven canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 

@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate-migration-registry:
+  retained-public-site:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -23,9 +23,50 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
-      - name: Validate migration registry
-        run: python scripts/validate_manifest.py
-      - name: Validate GLAZE UI V1.3 consumer hygiene
-        run: python scripts/validate_v13_hygiene.py
-      - name: Compile repository validation tools
-        run: python -m py_compile scripts/validate_manifest.py scripts/validate_v13_hygiene.py
+
+      - name: Compile retained-site governance checks
+        run: |
+          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py \
+            scripts/validate_url_namespace.py \
+            scripts/validate_manifest.py
+
+      - name: Validate one current public website model
+        run: |
+          python scripts/validate_url_namespace.py
+          python scripts/validate_manifest.py
+          python sites/main/scripts/validate_site.py
+          python sites/main/scripts/validate_public_surface.py
+          python sites/main/scripts/validate_glaze_ui.py
+
+      - name: Reject active stale multi-site and old Glaze claims in Main
+        shell: python
+        run: |
+          from pathlib import Path
+
+          root = Path("sites/main")
+          current_files = [
+              root / "index.html",
+              root / "README.md",
+              root / "platform-systems/index.html",
+              root / "suite/index.html",
+              root / "office-suite/index.html",
+              root / "firefox/index.html",
+              root / "github/index.html",
+          ]
+          stale = (
+              "Fourteen official surfaces",
+              "seven Integral Platform Systems",
+              "Current design target: **GLAZE UI V1.3",
+              "Current design target: **GLAZE UI V1.4",
+              "suite.goreecloud.com",
+              "firefox.goreecloud.com",
+          )
+          failures = []
+          for path in current_files:
+              text = path.read_text(encoding="utf-8")
+              for marker in stale:
+                  if marker in text:
+                      failures.append(f"{path}: {marker}")
+          if failures:
+              raise SystemExit("stale current-state claims remain:\n" + "\n".join(failures))
+          print("Current Main source contains no governed stale multi-site/old-Glaze claims.")

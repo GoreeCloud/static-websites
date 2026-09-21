@@ -1,10 +1,11 @@
 {
-  "schema":"goreecloud.glaze.consumer-lock.v1",
-  "version":"1.4.0",
-  "lifecycle":"Stable",
-  "repository":"GoreeCloud/goreecloud-glaze-ui",
-  "stable_commit":"84cb3db4884042f0fa25ed6d475a127fb110f596",
-  "entrypoint":"glaze-v1.4.0.css",
-  "entrypoint_blob":"d48a9bc317090d152799769271de0fb4325494c4",
-  "consumer_state":"build-migrated-rendered-acceptance-pending"
+  "schema": "goreecloud.glaze.consumer-lock.v1",
+  "version": "1.6.0",
+  "lifecycle": "Stable",
+  "repository": "GoreeCloud/glaze-ui",
+  "stable_commit": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
+  "entrypoint": "js/glaze-v1.6.0.mjs",
+  "entrypoint_blob": "7dfc863d6c39def97c263de80b21b73efe54db1e",
+  "consumer_state": "migration-candidate-unaccepted",
+  "accepted_release_source": "a7180679ea851389e0f3004515f9a25f420e716d"
 }

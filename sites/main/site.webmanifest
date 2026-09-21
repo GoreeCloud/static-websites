@@ -2,17 +2,17 @@
   "id": "/",
   "name": "GoreeCloud",
   "short_name": "GoreeCloud",
-  "description": "Privacy-first personal and family cloud focused on ownership, recoverability, open-source independence, and long-term digital preservation.",
+  "description": "Privacy-first, self-hostable software and platform systems built for durable control.",
   "lang": "en",
   "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "theme_color": "#07111f",
-  "background_color": "#07111f",
+  "theme_color": "#eef6ff",
+  "background_color": "#eef6ff",
   "icons": [
     {
-      "src": "/assets/goreecloud-logo.svg",
+      "src": "/assets/brand/goreecloud-logo.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
@@ -20,19 +20,29 @@
   ],
   "shortcuts": [
     {
-      "name": "Repositories",
-      "short_name": "Repositories",
-      "url": "/repositories.html"
+      "name": "Platform Systems",
+      "short_name": "Platform",
+      "url": "/platform-systems/"
     },
     {
-      "name": "Privacy",
-      "short_name": "Privacy",
-      "url": "/privacy.html"
+      "name": "GoreeCloud Suite",
+      "short_name": "Suite",
+      "url": "/suite/"
     },
     {
-      "name": "Security",
-      "short_name": "Security",
-      "url": "/security.html"
+      "name": "Office Suite",
+      "short_name": "Office",
+      "url": "/office-suite/"
+    },
+    {
+      "name": "Firefox",
+      "short_name": "Firefox",
+      "url": "/firefox/"
+    },
+    {
+      "name": "GitHub",
+      "short_name": "GitHub",
+      "url": "/github/"
     }
   ],
   "prefer_related_applications": false

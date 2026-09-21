@@ -1,129 +1,88 @@
 #!/usr/bin/env python3
-"""Validate the reviewed GoreeCloud Suite manifest and main-site separation."""
+"""Validate the retained historical Suite portfolio snapshot.
+
+The current website uses the later reconciled 45-product Suite registry. This
+validator preserves the 2026-09-01 snapshot as provenance only and deliberately
+does not render it into current public pages.
+"""
 
 from __future__ import annotations
 
-from hashlib import sha1
+from datetime import date
+import json
 from pathlib import Path
-import re
 import sys
 
-from normalize_homepage import normalize_homepage
-from render_repository_portfolio import load_manifest, load_suite_manifest, render_public_file
-
-ROOT = Path(__file__).resolve().parents[1]
-INDEX = ROOT / "index.html"
-REF = re.compile(r"^[0-9a-f]{40}$|^(?:main|master)$")
-STATUS_CLASSES = {"active", "growing", "planned"}
-EXPECTED_APPLICATION_COUNT = 38
-REQUIRED_NEW_CANONICAL_IDS = {"app-store", "file-manager", "maps", "index"}
-REQUIRED_FIELDS = {
-    "id", "name", "description", "role", "status", "status_class", "icon",
-    "icon_blob", "source_repository", "source_path", "source_ref",
-}
-
-
-def blob_id(raw: bytes) -> str:
-    return sha1(f"blob {len(raw)}\0".encode("ascii") + raw).hexdigest()
+ROOT=Path(__file__).resolve().parents[1]
+SNAPSHOT=ROOT / "docs" / "suite-portfolio.json"
 
 
 def main() -> int:
-    errors: list[str] = []
-    manifest = load_suite_manifest(ROOT)
-    if manifest.get("schema_version") != 1:
-        errors.append("Suite manifest schema_version must be 1.")
-    if manifest.get("section_title") != "GoreeCloud Suite":
-        errors.append("Suite section title must be 'GoreeCloud Suite'.")
-    if not str(manifest.get("section_description", "")).strip():
-        errors.append("Suite section description must be non-empty.")
+    errors: list[str]=[]
+    try:
+        data=json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+    except (OSError,json.JSONDecodeError) as exc:
+        print(f"Historical Suite snapshot validation failed: {exc}")
+        return 1
 
-    groups = manifest.get("groups")
-    if not isinstance(groups, list) or not groups:
-        errors.append("Suite manifest must contain application groups.")
-        groups = []
+    if data.get("schema_version") != 1:
+        errors.append("schema_version must remain 1")
+    if data.get("record_role") != "historical-snapshot":
+        errors.append("record_role must be historical-snapshot")
+    if data.get("current_authority") is not False:
+        errors.append("historical Suite snapshot must not claim current authority")
+    if "45-product Suite registry" not in data.get("current_authority_note",""):
+        errors.append("snapshot must identify the later 45-product registry as current website authority")
 
-    ids: set[str] = set()
-    names: set[str] = set()
-    icons: set[str] = set()
-    applications: list[dict] = []
+    as_of=data.get("as_of")
+    try:
+        reviewed=date.fromisoformat(as_of) if isinstance(as_of,str) else None
+    except ValueError:
+        reviewed=None
+    if reviewed is None or reviewed > date.today():
+        errors.append("as_of must be a valid non-future date")
+
+    groups=data.get("groups")
+    if not isinstance(groups,list) or not groups:
+        errors.append("historical groups must remain a non-empty list")
+        groups=[]
+
+    ids=[]
+    names=[]
     for group in groups:
-        if not str(group.get("id", "")).strip() or not str(group.get("label", "")).strip():
-            errors.append("Every Suite group must have a non-empty id and label.")
-        apps = group.get("applications")
-        if not isinstance(apps, list) or not apps:
-            errors.append(f"Suite group has no applications: {group.get('id')!r}")
+        apps=group.get("applications") if isinstance(group,dict) else None
+        if not isinstance(apps,list):
+            errors.append("each historical Suite group must contain an applications list")
             continue
-        applications.extend(apps)
+        for app in apps:
+            if not isinstance(app,dict):
+                errors.append("historical Suite application must be an object")
+                continue
+            app_id=app.get("id")
+            name=app.get("name")
+            if not isinstance(app_id,str) or not app_id:
+                errors.append("historical Suite application id must be non-empty")
+            else:
+                ids.append(app_id)
+            if not isinstance(name,str) or not name:
+                errors.append("historical Suite application name must be non-empty")
+            else:
+                names.append(name)
 
-    if len(applications) != EXPECTED_APPLICATION_COUNT:
-        errors.append(
-            "Suite manifest must contain exactly "
-            f"{EXPECTED_APPLICATION_COUNT} current applications/services; found {len(applications)}."
-        )
-
-    for app in applications:
-        missing = sorted(field for field in REQUIRED_FIELDS if not str(app.get(field, "")).strip())
-        if missing:
-            errors.append(f"Suite application {app.get('id')!r} is missing fields: {', '.join(missing)}")
-            continue
-        app_id = app["id"]
-        if app_id in ids:
-            errors.append(f"Duplicate Suite application id: {app_id}")
-        ids.add(app_id)
-        if app["name"] in names:
-            errors.append(f"Duplicate Suite application name: {app['name']}")
-        names.add(app["name"])
-        icon = app["icon"]
-        if icon in icons:
-            errors.append(f"Duplicate Suite icon path: {icon}")
-        icons.add(icon)
-        if not icon.startswith("assets/suite/") or not icon.endswith(".svg"):
-            errors.append(f"Suite icon must use assets/suite/*.svg: {icon}")
-        else:
-            path = ROOT / icon
-            if not path.is_file() or path.is_symlink():
-                errors.append(f"Suite icon is missing or invalid: {icon}")
-            elif blob_id(path.read_bytes()) != app["icon_blob"]:
-                errors.append(f"Suite icon bytes do not match reviewed repository-owned artwork: {icon}")
-        if app["status_class"] not in STATUS_CLASSES:
-            errors.append(f"Unsupported Suite status class for {app_id}: {app['status_class']}")
-        if not app["source_repository"].startswith("GoreeCloud/"):
-            errors.append(f"Suite source repository must be first-party GoreeCloud: {app_id}")
-        if not REF.fullmatch(app["source_ref"]):
-            errors.append(f"Suite source ref must be an immutable commit or reviewed main/master branch: {app_id}")
-
-    missing_new_ids = sorted(REQUIRED_NEW_CANONICAL_IDS - ids)
-    if missing_new_ids:
-        errors.append(
-            "Newly approved canonical Suite identities are missing from the website registry: "
-            + ", ".join(missing_new_ids)
-        )
-
-    if "quill" in ids or "GoreeCloud Quill" in names:
-        errors.append("Quill is a GoreeCloud Keyboard capability family and must not be listed as a standalone Suite application.")
-
-    source = INDEX.read_text(encoding="utf-8")
-    rendered = normalize_homepage(render_public_file("index.html", source, load_manifest(ROOT)))
-    if 'data-suite-app=' in rendered:
-        errors.append("Main homepage must not render GoreeCloud Suite application cards.")
-    if '<a href="https://suite.goreecloud.com/">Suite</a>' not in rendered:
-        errors.append("Main homepage must link to the dedicated GoreeCloud Suite website.")
-    if "suite.goreecloud.com" not in rendered:
-        errors.append("Main homepage must identify suite.goreecloud.com as the Suite destination.")
+    if len(ids) != len(set(ids)):
+        errors.append("historical Suite snapshot contains duplicate ids")
+    if len(names) != len(set(names)):
+        errors.append("historical Suite snapshot contains duplicate names")
 
     if errors:
-        print("GoreeCloud Suite validation failed:")
+        print("Historical Suite snapshot validation failed:")
         for error in errors:
             print(f"  - {error}")
         return 1
 
-    print(
-        f"GoreeCloud Suite manifest validation passed: {len(applications)} applications "
-        f"across {len(groups)} groups; newly approved canonical identities present; "
-        "main-site separation preserved."
-    )
+    print(f"Historical Suite snapshot valid for {as_of}: {len(ids)} preserved entries. Current website authority is the reconciled 45-product registry.")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    raise SystemExit(main())

@@ -1,49 +1,61 @@
-# GoreeCloud Main Website — GLAZE UI V1.4 Consumer Contract
+# GoreeCloud Main Website — GLAZE UI V1.6 Consumer Contract
 
 ## Current contract
 
-- Target GLAZE UI version: **V1.4 / 1.4.0 Stable**
-- Canonical design-system repository: `GoreeCloud/goreecloud-glaze-ui`
-- Pinned Stable release revision: `84cb3db4884042f0fa25ed6d475a127fb110f596`
-- Stable web entrypoint: `glaze-v1.4.0.css`
-- Entrypoint Git blob: `d48a9bc317090d152799769271de0fb4325494c4`
-- Consumer build state: **build-migrated-rendered-acceptance-pending**
-- Rendered, accessibility, deployment, and production acceptance: **Separate gates**
+- Target GLAZE UI version: **V1.6 / 1.6.0 Stable**
+- Canonical design-system repository: `GoreeCloud/glaze-ui`
+- Stable lifecycle authority: `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`
+- Accepted published release source: `a7180679ea851389e0f3004515f9a25f420e716d`
+- Stable runtime entrypoint: `js/glaze-v1.6.0.mjs`
+- Entrypoint Git blob: `7dfc863d6c39def97c263de80b21b73efe54db1e`
+- Website consumer state: **migration-candidate-unaccepted**
+- Production eligibility: **not established**
 
-The authoritative Glaze lifecycle registry identifies GLAZE UI V1.4 / `1.4.0` as the current Official Stable and consumer-eligible release. V1.4.1 is a separate follow-up hardening/qualification track and is not substituted for the current Stable consumer target.
+GLAZE UI V1.6.0 is the current shared Stable target. Shared Stable status does not grant downstream website conformance, deployment acceptance, or production acceptance.
 
-## Source and build model
+## Current website implementation
 
-Main is built against the exact V1.4 Stable web entrypoint and its complete relative CSS import closure. The V1.4 entrypoint is committed byte-identical to the pinned Stable release for reviewability. The isolated build resolves the entrypoint's same-origin dependency graph from the exact pinned Glaze revision and writes that closure into the deployment artifact under `css/`.
+The retained website is sourced from `GoreeCloud/static-websites/sites/main` and published only as `www.goreecloud.com` with path-based sections.
 
-During this migration, the reviewed HTML authoring templates are deterministically projected to the V1.4 runtime contract by `scripts/glaze_v1_4.py`. The build rewrites the version, source-revision, consumer-state, and Stable stylesheet markers; adds the Main V1.4 consumer stylesheet; and marks the site header for the V1.4 adaptive-optical CSS treatment. The deployed artifact must contain only V1.4 current markers. The build validator byte-compares that transformed artifact against the reviewed transformation contract.
+The current rebuild uses same-origin website presentation code and records its exact V1.6 target in `glaze.lock.json`. It does not claim that metadata, visual resemblance, or shared Glaze release status proves consumer acceptance.
 
-The browser receives only same-origin design-system and consumer assets. The build fails closed on an unexpected version, lifecycle, source revision, entrypoint name, entrypoint blob, unsafe dependency path, remote CSS import, or missing pinned dependency.
+The current interface implements the website's required adaptive and accessibility foundations, including:
 
-## V1.4 runtime boundary
+- a 48px general interaction floor for governed core controls;
+- responsive phone, tablet, and desktop layouts;
+- visible keyboard focus;
+- reduced-motion behavior;
+- reduced-transparency fallback;
+- increased-contrast treatment;
+- forced-colors support;
+- light and dark appearance;
+- bounded mobile navigation; and
+- horizontal-overflow failure checks at representative compact widths.
 
-Main adopts the Stable V1.4 CSS entrypoint. The optional V1.4 JavaScript Optical Engine is **not required by this website migration** and is not loaded by the public site. This avoids adding any new context or capability collection merely to satisfy a version label. Presentation adaptation remains CSS/local-state based, and PostHog telemetry remains governed by its independent consent-first privacy contract.
+Repository-local browser validation exercises all six canonical website pages at 1180×900, 768×900, 390×844, and 320×844. Automated validation complements rather than replaces human review.
 
-## Consumer adaptation and navigation redesign
+## Current information and authority boundary
 
-The V1.4 consumer layer preserves Main's accessibility and interaction requirements while redesigning the global header/navigation around a single aligned content grid. Desktop navigation uses a bounded Glaze navigation capsule with the brand, navigation, and appearance controls on one optical centerline. Tablet and compact layouts switch to the existing explicit menu control before the desktop navigation becomes crowded. The consent surface is aligned to the same content grid so it no longer behaves like a detached full-width banner.
+The website reflects the current nine Integral Platform Systems: GoreeCloud Manager, Privacy Shield, Wardveil Security, Everkeep, Glaze UI, GoreeCloud Mesh, GoreeCloud Identity, GoreeCloud Policy, and GoreeCloud Observability.
 
-The consumer layer retains a 48px general interaction floor, coarse-pointer/Touch Assistance behavior inherited from the established Main adaptation, visible keyboard focus, safe-area handling, bounded mobile navigation, reduced-motion behavior, reduced-transparency behavior, increased-contrast treatment, forced-colors operability, and print fallbacks.
+GoreeCloud Sync remains separately governed synchronization capability and is not a tenth Integral Platform System.
 
-Source/build validation proves that these contracts are present. It does not substitute for representative rendered review or accessibility acceptance.
+The current Suite presentation uses the reconciled 45-product registry across nine functional groups. Live GitHub remains authoritative for current repository existence, naming, visibility, descriptions, and archive state.
 
-## Public information boundary
+The website does not load PostHog or another analytics runtime in the current rebuild. The public GitHub catalog is visitor-triggered and contacts only the public GitHub API after the visitor explicitly chooses to load it.
 
-The Main homepage identifies the authoritative GoreeCloud public website surfaces and the seven Integral Platform Systems. Repository totals are intentionally not treated as live authority because repository creation is continuous; the connected GitHub organization remains authoritative for the current inventory.
+## Consumer acceptance boundary
 
-Public product direction uses first-party GoreeCloud identities. Mature third-party technology used underneath GoreeCloud products remains a bounded implementation detail unless an authoritative product record says otherwise.
+The authoritative Glaze consumer registry still requires fresh repository-local V1.6.0 acceptance for GoreeCloud Website. A separate registry-reconciliation pull request may correct repository identity without granting acceptance.
 
-## Authority boundary
+Before this consumer can be treated as accepted for the current Stable Glaze contract, the exact website candidate must complete all applicable repository-local evidence, including human visual review, keyboard review, accessibility/assistive-technology review, performance review, responsive review, and any other required acceptance lanes.
 
-GLAZE UI governs presentation and interaction. It does not grant privacy authorization, security protection, continuity state, identity authority, coordination authority, administrative authority, or application production acceptance. Privacy Shield, Wardveil Security, Everkeep, GoreeCloud Identity, GoreeCloud Mesh, GoreeCloud Manager, and each application retain their own applicable evidence and acceptance boundaries.
+If the candidate revision changes, exact-revision evidence must be revalidated. Prior V1.3, V1.4, 2.0, 2.1, or other historical website evidence does not automatically transfer.
 
 ## Deployment boundary
 
-This record establishes the reviewed V1.4 source/build target in `GoreeCloud/static-websites`. It does not by itself prove the exact deployed V1.4 revision at `www.goreecloud.com` or mark the Main website Stable. Exact Cloudflare deployment, responsive rendering, accessibility behavior, navigation behavior, and production PostHog consent behavior remain independent verification gates.
+A successful source build, GitHub Actions run, or Cloudflare branch preview is not production acceptance.
 
-Historical Glaze releases remain exact-revision evidence for their time. They are not current consumer-target authority.
+Merge authorization, exact production deployment, deployed-byte and header verification, canonical-domain behavior, rollback readiness, and final production acceptance remain separate governed transitions.
+
+Historical Glaze website migrations remain valid only as historical evidence for their exact reviewed revisions.

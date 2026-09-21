@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="3200" viewBox="0 0 1440 3200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F7FAFF"/>
+      <stop offset="0.48" stop-color="#EAF2FF"/>
+      <stop offset="1" stop-color="#DDEEF0"/>
+    </linearGradient>
+    <radialGradient id="blue" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1160 520) rotate(132) scale(760 680)">
+      <stop offset="0" stop-color="#3B82F6" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="aqua" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 2580) rotate(-38) scale(860 720)">
+      <stop offset="0" stop-color="#69D6CF" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#69D6CF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.82"/>
+      <stop offset="0.55" stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#174EA6" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <rect width="1440" height="3200" fill="url(#bg)"/>
+  <rect width="1440" height="3200" fill="url(#blue)"/>
+  <rect width="1440" height="3200" fill="url(#aqua)"/>
+  <path d="M-180 480 C260 160 810 170 1160 510 C1480 820 1480 1280 1160 1560" fill="none" stroke="url(#glass)" stroke-width="128" stroke-linecap="round"/>
+  <path d="M1490 1730 C1120 1830 900 2080 820 2430 C750 2730 860 3020 1040 3260" fill="none" stroke="#FFFFFF" stroke-opacity="0.44" stroke-width="72" stroke-linecap="round"/>
+  <path d="M-140 2350 C260 2140 570 2170 760 2410 C950 2650 900 2960 710 3260" fill="none" stroke="#174EA6" stroke-opacity="0.08" stroke-width="44" stroke-linecap="round"/>
+</svg>

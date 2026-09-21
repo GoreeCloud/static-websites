@@ -12,7 +12,14 @@
       "parent_application": "GoreeCloud Keyboard",
       "icon": "assets/suite/keyboard.svg",
       "description": "The advanced typing, writing, editing, personalization, dictionary, clipboard, and intelligent-input capability system inside GoreeCloud Keyboard.",
-      "families": ["Typing", "Writing assistance", "Editing", "Personalization", "Dictionaries", "Clipboard"],
+      "families": [
+        "Typing",
+        "Writing assistance",
+        "Editing",
+        "Personalization",
+        "Dictionaries",
+        "Clipboard"
+      ],
       "relationship": "GoreeCloud Keyboard — Powered by Quill.",
       "status": "Approved Capability Identity",
       "status_class": "active"
@@ -25,7 +32,20 @@
       "parent_application": "GoreeCloud Tasks",
       "icon": "assets/suite/tasks.svg",
       "description": "The work-management umbrella for capture, focus, planning, projects, recurring work, collaboration, operations, timelines, history, and archival experiences inside GoreeCloud Tasks.",
-      "families": ["Capture", "Focus", "Horizon", "Projects", "Rhythm", "Pulse", "Compass", "Together", "Operations", "Timeline", "Trail", "Archive"],
+      "families": [
+        "Capture",
+        "Focus",
+        "Horizon",
+        "Projects",
+        "Rhythm",
+        "Pulse",
+        "Compass",
+        "Together",
+        "Operations",
+        "Timeline",
+        "Trail",
+        "Archive"
+      ],
       "relationship": "GoreeCloud Tasks — Powered by Waypoint.",
       "status": "Approved Umbrella Identity",
       "status_class": "active"
@@ -38,7 +58,20 @@
       "parent_application": "GoreeCloud Music",
       "icon": "assets/suite/music.svg",
       "description": "The music capability system for libraries, playback, discovery, mixes, radio, playlists, lyrics, offline access, personalization, interoperability, migration, and preservation inside GoreeCloud Music.",
-      "families": ["Library", "Audio", "Player", "Discover", "Mixes", "Radio", "Playlists", "Lyrics", "Offline", "Intelligence", "Connect", "Preserve"],
+      "families": [
+        "Library",
+        "Audio",
+        "Player",
+        "Discover",
+        "Mixes",
+        "Radio",
+        "Playlists",
+        "Lyrics",
+        "Offline",
+        "Intelligence",
+        "Connect",
+        "Preserve"
+      ],
       "relationship": "GoreeCloud Music — Powered by Resonance.",
       "status": "Approved Umbrella Identity",
       "status_class": "active"
@@ -51,7 +84,15 @@
       "parent_application": "GoreeCloud Mail",
       "icon": "assets/suite/mail.svg",
       "description": "The provider-independent mail capability framework for mailbox access, inbox experiences, composition, synchronization, search, rules, attachments, and account integration inside GoreeCloud Mail.",
-      "families": ["Inbox", "Compose", "Sync", "Search", "Rules", "Attachments", "Accounts"],
+      "families": [
+        "Inbox",
+        "Compose",
+        "Sync",
+        "Search",
+        "Rules",
+        "Attachments",
+        "Accounts"
+      ],
       "relationship": "GoreeCloud Mail — Powered by Courier.",
       "status": "Approved Capability Identity",
       "status_class": "active"
@@ -64,10 +105,27 @@
       "parent_application": "GoreeCloud DNS",
       "icon": "assets/suite/dns.svg",
       "description": "The DNS capability umbrella for resolution, caching, authoritative zones, filtering, encrypted DNS, DHCP, split-horizon behavior, clustering, administration, identity, insights, and extensions inside GoreeCloud DNS.",
-      "families": ["Resolver", "Cache", "Zones", "Filtering", "Secure DNS", "DHCP", "Split Horizon", "Cluster", "Console", "API", "Identity", "Insights", "Extensions"],
+      "families": [
+        "Resolver",
+        "Cache",
+        "Zones",
+        "Filtering",
+        "Secure DNS",
+        "DHCP",
+        "Split Horizon",
+        "Cluster",
+        "Console",
+        "API",
+        "Identity",
+        "Insights",
+        "Extensions"
+      ],
       "relationship": "GoreeCloud DNS — Powered by Beacon.",
       "status": "Approved Umbrella Identity",
       "status_class": "active"
     }
-  ]
+  ],
+  "record_role": "historical-snapshot",
+  "current_authority": false,
+  "current_authority_note": "Historical 2026-08-27 capability review snapshot retained for provenance only. Current capability/product authority comes from the owning live repositories and governed GoreeCloud records."
 }
