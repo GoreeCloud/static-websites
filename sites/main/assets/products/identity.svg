@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title>GoreeCloud Identity</title><defs><linearGradient id="g" x1="8" y1="6" x2="56" y2="58"><stop stop-color="#60A5FA"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#g)"/><circle cx="32" cy="24" r="8" fill="none" stroke="#fff" stroke-width="4"/><path d="M18 48c2-9 8-13 14-13s12 4 14 13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M43 20h8v8" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud Identity — Trust Halo</title><desc id="desc">A human identity aperture sits inside an open trust halo with an independent verification facet.</desc>
+<defs><linearGradient id="bg" x1="28" y1="20" x2="226" y2="236"><stop stop-color="#64B4FF"/><stop offset=".5" stop-color="#5576F5"/><stop offset="1" stop-color="#7650DD"/></linearGradient></defs>
+<rect width="256" height="256" rx="58" fill="url(#bg)"/>
+<path d="M196 102a72 72 0 1 0 0 52" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+<path d="M183 73c14 9 25 21 33 36" fill="none" stroke="#CFF8FF" stroke-width="7" stroke-linecap="round"/>
+<circle cx="119" cy="102" r="27" fill="#F7FBFF"/>
+<path d="M72 181c6-35 24-53 47-53s41 18 47 53" fill="#F7FBFF"/>
+<path d="m189 126 17-10 17 10v20l-17 10-17-10Z" fill="#0E254D" stroke="#DDF8FF" stroke-width="5" stroke-linejoin="round"/>
+<path d="m198 136 6 6 11-13" fill="none" stroke="#79F1DF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
