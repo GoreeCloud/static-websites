@@ -4,13 +4,13 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
-- Cloudflare-rendered public source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
-- Exact rendered preview: `https://cce68d2e.goreecloud-website.pages.dev`
-- Branch preview alias: `https://feature-main-website-rebuild.goreecloud-website.pages.dev`
+- Candidate source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
+- Cloudflare-rendered public source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
+- Exact rendered preview: `https://ee2266db.goreecloud-website.pages.dev`
+- Branch preview alias: `https://fix-official-visual-assets-p.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`
 
-This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 79-file / 252216-byte isolated public artifact.
+This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 90-file / 260824-byte isolated public artifact.
 
 ## Screenshot-driven polish checkpoint
 
@@ -36,18 +36,28 @@ Machine validation passed for all seven canonical destinations at 1180×900, 768
 
 Fresh owner visual and keyboard review remain required for the current candidate.
 
+## Official visual placeholder remediation checkpoint
+
+The project owner identified prohibited letter/initial placeholder visuals in the production website and authorized a governed remediation through the canonical branding source.
+
+Website source revision `409bdbc356b42b695eb2a278c0d82603ad61740c` removes all 15 audited letter/initial/generic placeholders from Home, Platform Systems, Office Suite, Firefox, GitHub, and Contact. New first-party artwork is synchronized from `GoreeCloud/branding-assets` PR #19 at review revision `e172a8e87f795df43bd1d58c115b05f59f73b694`; website-local copies remain publication derivatives only.
+
+Machine validation passed at repository run `35556247279` and main-website run `35556247289`. The isolated artifact contains 90 files / 260824 bytes, and browser smoke passed all seven canonical destinations at representative desktop, tablet, modern-phone, and narrow-phone widths. Cloudflare Pages deployed the exact source revision successfully to `https://ee2266db.goreecloud-website.pages.dev`.
+
+This is a new visual-identity candidate. Fresh owner visual review, Orca/assistive-technology review, and representative performance review remain required. Keyboard-only evidence is carried forward because no focusable controls, keyboard handlers, navigation behavior, or interaction order changed. Branding PR #19 must also receive human visual approval and merge before this website candidate can become production-eligible.
+
 ## Human visual review
 
-**Current seven-destination status: PASSED.**
+**Current placeholder-remediation status: PENDING. Prior production visual review remains historical evidence.**
 
-- Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T02:03:57.769Z`
-- Reviewed public-source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
-- Reviewed preview: `https://ee9fab55.goreecloud-website.pages.dev`
-- Approval scope: all seven canonical destinations, including the polished Contact & Social page and updated shared navigation/footer.
-- Authorization evidence: the project owner explicitly reported all review lanes PASS and then confirmed the assistive-technology environment used.
+- Reviewer: pending
+- Reviewed at: pending
+- Reviewed public-source revision: `409bdbc356b42b695eb2a278c0d82603ad61740c`
+- Reviewed preview: `https://ee2266db.goreecloud-website.pages.dev`
+- Approval scope: Home, Platform Systems, Office Suite, Firefox, GitHub, Contact, and shared visual consistency after placeholder remediation.
+- Required outcome: verify the replacement artwork is intentional, recognizable, non-placeholder, correctly sized/aligned, coherent in Light/Dark appearance, and visually appropriate at representative viewport sizes.
 
-The current seven-destination candidate passed the owner visual review. Earlier six-destination evidence remains historical context only.
+The previous owner visual approval applies to the prior production artwork and does not approve the new branding candidates.
 
 Review at representative desktop, tablet, modern-phone, and narrow-phone widths in both Light and Dark appearance where practical. Confirm that content is legible; headings, cards, navigation, forms, banners, and status elements maintain clear hierarchy; no controls overlap or clip; the mobile menu is shown only when appropriate; and the interface remains understandable with reduced transparency or other applicable accessibility preferences.
 
@@ -55,14 +65,14 @@ Record **passed** only after actual human review. Automated screenshots or assis
 
 ## Human keyboard review
 
-**Current seven-destination status: PASSED.**
+**Current placeholder-remediation status: PASSED — carried forward for unchanged keyboard interaction scope.**
 
 - Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T02:03:57.769Z`
-- Scope: all seven canonical destinations in the polished PR #109 candidate.
-- Human evidence: the project owner explicitly reported all review lanes PASS for the current seven-destination candidate.
+- Original reviewed at: `2026-09-21T02:03:57.769Z`
+- Scope: all seven canonical destinations.
+- Carry-forward basis: the remediation changes decorative/identity artwork and image sizing only; no focusable controls, keyboard handlers, navigation behavior, menu behavior, search behavior, or interaction order changed. Exact-candidate browser interaction smoke also passed.
 
-The current seven-destination candidate passed the owner keyboard-only review. Earlier six-destination keyboard evidence remains historical context only.
+A new keyboard review is required only if subsequent remediation changes alter keyboard-operable structure or behavior.
 
 Using keyboard input only, traverse every canonical destination. Confirm Skip to content works, focus remains visible, navigation order is logical, the theme control works, mobile Menu can be opened and closed, Escape closes the mobile Menu and returns focus, search fields are reachable and usable, links/buttons are operable, and no keyboard trap or unreachable control is present.
 
@@ -70,12 +80,14 @@ Record **passed** only after actual human keyboard review.
 
 ## Human assistive-technology review
 
-**Status: PASSED.**
+**Status: PENDING for the placeholder-remediation candidate.**
 
-- Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T02:03:57.769Z`
-- Technology/environment: Orca + Firefox on Linux
-- Human evidence: the project owner explicitly reported all review lanes PASS for the current seven-destination candidate.
+- Reviewer: pending
+- Reviewed at: pending
+- Technology/environment: use Orca + Firefox on Linux or another representative supported environment.
+- Reason for re-review: visible letter placeholders were replaced with decorative image elements using empty alt text; the resulting screen-reader experience must be verified against the exact candidate.
+
+Earlier Orca + Firefox on Linux evidence remains historical for the prior production revision.
 
 Use an appropriate screen reader or other representative assistive technology for the supported web environment. Confirm page titles/headings and landmark structure are understandable; primary navigation is announced coherently; the Menu button exposes expanded/collapsed state and its controlled navigation; the theme control has a meaningful state-specific accessible name; the GitHub live-loading status is announced without stealing focus; controls and links have usable names; and dynamically loaded repository content remains navigable.
 
@@ -83,18 +95,20 @@ Record the technology and environment used. Do not substitute DOM inspection or 
 
 ## Performance and resilience review
 
-**Status: PASSED.**
+**Status: PENDING for the placeholder-remediation candidate.**
 
-- Reviewer: GoreeCloud project owner
-- Reviewed at: `2026-09-21T02:03:57.769Z`
-- Representative environment: Firefox on Linux
-- Human evidence: the project owner explicitly reported all review lanes PASS; no material jank, unusable delay, persistent loading failure, or resource behavior was reported.
+- Reviewer: pending
+- Reviewed at: pending
+- Representative environment: Firefox on Linux or another representative supported environment.
+- Reason for re-review: the artifact changed from 79 files / 252216 bytes to 90 files / 260824 bytes. Hosted browser smoke passed, but representative human performance/resilience review remains required for the new asset set.
+
+Earlier performance evidence remains historical for the prior production revision.
 
 Confirm the branch preview remains responsive during ordinary navigation and interaction on a representative environment. Verify no material jank, unusable delay, persistent loading failure, or resource behavior makes the website impractical to use. Hosted CI timing alone is not representative performance acceptance.
 
 ## Production deployment and final acceptance
 
-**Status: PASSED — final production acceptance recorded.**
+**Historical/current-production status: PASSED for the previously accepted production revision. The placeholder-remediation candidate is NOT production-approved.**
 
 - Production canonical origin: `https://www.goreecloud.com`
 - Accepted public-source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
@@ -110,8 +124,8 @@ Confirm the branch preview remains responsive during ordinary navigation and int
 - Final production authority: GoreeCloud project owner
 - Approved at: `2026-09-21T02:21:19.050Z`
 
-The owner explicitly confirmed final production acceptance and authorization for this acceptance-only follow-up record/merge. This section records release evidence only; it does not alter public website bytes.
+The owner explicitly confirmed final production acceptance for the prior production release. That acceptance remains valid for the currently deployed prior revision only and does not extend to the placeholder-remediation branch candidate.
 
 ## Acceptance rule
 
-Every applicable human review lane and representative performance review is recorded as passed, the Glaze UI V1.6 consumer record is accepted, PR #109 is merged, the exact production revision passed post-merge validation and Cloudflare deployment, canonical production readback is recorded, and final production acceptance is approved by the GoreeCloud project owner.
+The currently deployed prior production revision retains its recorded acceptance. The placeholder-remediation branch is a new candidate: machine checks are passed, keyboard evidence is carried forward for unchanged interaction scope, while fresh visual, assistive-technology, and representative performance review plus canonical branding approval/merge remain required before any new production acceptance.
