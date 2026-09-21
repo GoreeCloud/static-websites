@@ -18,6 +18,7 @@ CANONICAL = {
     "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
+    "stable/index.html": "https://www.goreecloud.com/stable/",
     "contact/index.html": "https://www.goreecloud.com/contact/",
 }
 COMPATIBILITY = ("privacy.html", "security.html", "repositories.html")
@@ -183,6 +184,7 @@ def main() -> int:
         "/office-suite/",
         "/firefox/",
         "/github/",
+        "/stable/",
         "/contact/",
         "/platform-systems/#privacy-shield",
         "/platform-systems/#wardveil-security",
@@ -220,6 +222,7 @@ def main() -> int:
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/advanced-tab-manager.svg", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
+        "stable/index.html": ("stable-card", "aura-panel", "/assets/firefox/advanced-tab-manager.svg", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg", "/assets/products/download-manager-extension.svg", "/assets/systems/privacy-shield.svg", "/assets/systems/glaze-ui.svg"),
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "support@goreecloud.com", "security@goreecloud.com"),
     }
     for relative, markers in visual_requirements.items():
@@ -242,6 +245,20 @@ def main() -> int:
     ):
         if marker not in firefox[0]:
             errors.append(f"firefox page missing current source: {marker}")
+
+    stable = audited.get("stable/index.html", ("", Audit()))
+    if stable[1].classes["stable-card"] != 6:
+        errors.append(f"stable page must contain six verified Stable release cards; found {stable[1].classes['stable-card']}")
+    for marker in (
+        "GoreeCloud Advanced Tab Manager", "GoreeCloud Privacy Shield", "GoreeCloud Redirector",
+        "GoreeCloud Webspaces", "GoreeCloud Download Manager Extension", "Glaze UI",
+        "Stable 0.1.11", "Stable 0.2.0", "Stable 0.1.14", "Stable 0.2.12", "Stable 1.6.0",
+        "standalone Advanced Download Manager application remains Development",
+        "broader Privacy Shield platform",
+        "former multi-site public website portfolio is retired",
+    ):
+        if marker not in stable[0]:
+            errors.append(f"stable page missing verified lifecycle/boundary marker: {marker}")
 
     github = audited.get("github/index.html", ("", Audit()))[0]
     for marker in (
@@ -297,7 +314,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: one current website, seven canonical public pages, nine platform systems, and 45 Suite products.")
+    print("Website validation passed: one current website, eight canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 

@@ -63,7 +63,7 @@ jobs:
       - name: Validate exact artifact bytes and public boundary
         run: python sites/main/scripts/validate_build_artifact.py
 
-      - name: Exercise all seven canonical pages in Chrome
+      - name: Exercise all eight canonical pages in Chrome
         run: python sites/main/scripts/browser_artifact_smoke.py
 
       - name: Check current JavaScript syntax
