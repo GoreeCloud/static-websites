@@ -17,6 +17,9 @@ EXPECTED_PATHS = {
     "firefox": "/firefox/",
     "github": "/github/",
     "contact": "/contact/",
+    "design": "/design/",
+    "security": "/security/",
+    "privacy": "/privacy/",
 }
 
 
@@ -83,7 +86,7 @@ def main() -> None:
     if "not current website inventory" not in boundary:
         fail("historical multi-site source must be explicitly non-current")
 
-    print("URL namespace valid: one retained website with seven canonical path-based destinations.")
+    print("URL namespace valid: one retained website with ten canonical path-based destinations.")
 
 
 if __name__ == "__main__":
