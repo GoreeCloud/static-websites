@@ -133,7 +133,7 @@ def main() -> int:
             if forbidden in text:
                 errors.append(f"{page.relative_to(ROOT)} overclaims downstream Glaze acceptance: {forbidden}")
 
-    css = (ROOT / "css/site-v8.css").read_text(encoding="utf-8")
+    css = (ROOT / "css/site-v9.css").read_text(encoding="utf-8")
     for marker in (
         ":focus-visible",
         "prefers-reduced-motion",
@@ -143,7 +143,7 @@ def main() -> int:
         "min-height:48px",
     ):
         if marker not in css:
-            errors.append(f"website V1.6 migration CSS missing accessibility/adaptive marker: {marker}")
+            errors.append(f"website V1.6 visual CSS missing accessibility/adaptive marker: {marker}")
 
     if errors:
         print("Glaze UI V1.6 target validation failed:")
