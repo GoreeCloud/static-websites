@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "recordId": "goreecloud.website.glaze-ui-v1.6-consumer-acceptance",
+  "consumerName": "GoreeCloud Website",
+  "repository": "GoreeCloud/static-websites",
+  "targetVersion": "1.6.0",
+  "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
+  "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
+  "candidateRevision": "1baffcd0fd9cdfe24c67c3f167284aae76cb29ac",
+  "renderedCandidateRevision": "931a646d24ab64a443a234014224013e0ec44b17",
+  "renderedCandidatePreview": "https://37ffea58.goreecloud-website.pages.dev",
+  "branchPreview": "https://feature-main-website-rebuild.goreecloud-website.pages.dev",
+  "status": "pending-human-acceptance",
+  "supportedPlatforms": [
+    "web"
+  ],
+  "machineEvidence": {
+    "repositoryValidation": {
+      "status": "passed",
+      "runId": 35545670803,
+      "revision": "1baffcd0fd9cdfe24c67c3f167284aae76cb29ac"
+    },
+    "websiteValidation": {
+      "status": "passed",
+      "runId": 35545670731,
+      "revision": "1baffcd0fd9cdfe24c67c3f167284aae76cb29ac"
+    },
+    "renderedPublicTreeEquivalence": {
+      "status": "passed",
+      "reviewedRevision": "931a646d24ab64a443a234014224013e0ec44b17",
+      "validationRevision": "1baffcd0fd9cdfe24c67c3f167284aae76cb29ac",
+      "note": "The only commit between the rendered candidate and validation head changes sites/main/scripts/browser_artifact_smoke.py; public website source bytes are unchanged."
+    },
+    "responsiveAndInteraction": {
+      "status": "passed",
+      "viewports": [
+        "1180x900",
+        "768x900",
+        "390x844",
+        "320x844"
+      ],
+      "checks": [
+        "horizontal-overflow",
+        "48px-target-floor",
+        "desktop-mobile-menu-boundary",
+        "primary-navigation-binding",
+        "skip-link",
+        "theme-state-and-label",
+        "mobile-escape-close-and-focus-restore"
+      ]
+    },
+    "isolatedArtifact": {
+      "status": "passed",
+      "fileCount": 22
+    },
+    "privacyAndSecurity": {
+      "status": "passed",
+      "checks": [
+        "allowlisted-public-artifact",
+        "restrictive-csp",
+        "no-retired-posthog-endpoints",
+        "no-private-repository-inventory",
+        "visitor-triggered-github-request"
+      ]
+    }
+  },
+  "humanEvidence": {
+    "visualReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "notes": "Human representative viewport review is required before production acceptance."
+    },
+    "keyboardReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "notes": "Human keyboard-only navigation and focus review is required before production acceptance."
+    },
+    "assistiveTechnologyReview": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "technology": null,
+      "notes": "Appropriate human assistive-technology review is required before production acceptance."
+    }
+  },
+  "performance": {
+    "status": "pending-representative-review",
+    "note": "Hosted CI and local browser smoke are regression evidence only; representative performance acceptance remains separate where required by the current GoreeCloud website and Glaze UI requirements."
+  },
+  "rollback": {
+    "lastKnownGoodMainRevision": "8fad0a2393ec05d085fb7251cc90712cfcee00f3",
+    "independentlyReversible": true,
+    "verifiedByGitHistory": true,
+    "note": "The feature branch and pull request do not replace production until merge and Cloudflare publication. Prior main history remains available for controlled rollback."
+  },
+  "productionApproval": {
+    "approved": false,
+    "authority": "GoreeCloud project owner",
+    "acceptedRevision": null,
+    "approvedAt": null,
+    "note": "Production approval is blocked until all required human review and remaining consumer-acceptance evidence is complete."
+  }
+}
