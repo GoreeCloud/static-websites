@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title>GoreeCloud Index</title><defs><linearGradient id="g" x1="8" y1="6" x2="56" y2="58"><stop stop-color="#A855F7"/><stop offset="1" stop-color="#4338CA"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#g)"/><path d="M17 16h25l6 5v8H17a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4Z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/><path d="M21 28h26a4 4 0 0 1 4 4v5a4 4 0 0 1-4 4H21a4 4 0 0 1-4-4v-5a4 4 0 0 1 4-4Z" fill="none" stroke="#fff" stroke-width="3.5"/><path d="M17 40h25l6 5v3H17a4 4 0 0 1-4-4 4 4 0 0 1 4-4Z" fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/><path d="M42 16v7h6M42 40v7h6" fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud Index — Index Aperture</title><desc id="desc">Layered indexed planes converge on a luminous retrieval aperture.</desc>
+<defs><linearGradient id="bg" x1="24" y1="22" x2="232" y2="232"><stop stop-color="#C054F2"/><stop offset=".52" stop-color="#6C4CF5"/><stop offset="1" stop-color="#3646B8"/></linearGradient><linearGradient id="page" x1="74" y1="62" x2="184" y2="194"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#DDE7FF"/></linearGradient></defs>
+<rect width="256" height="256" rx="58" fill="url(#bg)"/>
+<path d="M69 54h103l24 24v107c0 12-9 21-21 21H69c-12 0-21-9-21-21V75c0-12 9-21 21-21Z" fill="#fff" fill-opacity=".19"/>
+<path d="M83 68h80l19 19v84c0 11-8 19-19 19H83c-11 0-19-8-19-19V87c0-11 8-19 19-19Z" fill="url(#page)"/>
+<path d="M163 68v21h19" fill="none" stroke="#A693F8" stroke-width="6" stroke-linejoin="round"/>
+<path d="M91 104h50M91 126h37M91 148h44" stroke="#8B79E6" stroke-width="8" stroke-linecap="round" opacity=".78"/>
+<circle cx="159" cy="142" r="31" fill="#1B2250" stroke="#fff" stroke-width="6"/>
+<circle cx="159" cy="142" r="14" fill="none" stroke="#9FF5EE" stroke-width="7"/>
+<path d="m170 153 18 18" stroke="#9FF5EE" stroke-width="8" stroke-linecap="round"/>
+<circle cx="54" cy="96" r="8" fill="#E8C9FF"/><circle cx="202" cy="113" r="7" fill="#D8E0FF"/>
+</svg>
