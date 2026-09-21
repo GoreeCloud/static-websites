@@ -77,10 +77,10 @@
   },
   "humanEvidence": {
     "visualReview": {
-      "status": "pending",
-      "reviewer": null,
-      "reviewedAt": null,
-      "notes": "Human screenshots of the prior candidate identified oversized hero typography, excessive section spacing, tiny secondary text, sticky-navigation overlap in the Firefox capture, and broken word wrapping on GitHub. Revision a2aeea566e4831a59348b966d5c15631c77a80cb applies the responsive UI-polish correction. A fresh human visual review of this corrected rendered preview is still required before acceptance."
+      "status": "passed",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": "2026-09-21T01:27:23Z",
+      "notes": "The project owner explicitly approved the corrected screenshot-driven UI-polish candidate for public-source revision a2aeea566e4831a59348b966d5c15631c77a80cb and confirmed recording that approval. This satisfies the human visual-review requirement only. Keyboard-only review, representative assistive-technology review, representative performance review, overall consumer acceptance, merge, production publication, deployed-byte verification, and final production acceptance remain separate and pending."
     },
     "keyboardReview": {
       "status": "pending",
@@ -111,6 +111,6 @@
     "authority": "GoreeCloud project owner",
     "acceptedRevision": null,
     "approvedAt": null,
-    "note": "Production approval is blocked until all required human review and remaining consumer-acceptance evidence is complete."
+    "note": "Human visual review is passed. Production approval remains blocked until the still-required keyboard-only, representative assistive-technology, representative performance, and any other applicable acceptance evidence is complete."
   }
 }
