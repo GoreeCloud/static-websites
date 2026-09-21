@@ -204,15 +204,15 @@ def main() -> int:
 
     visual_requirements = {
         "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
-        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg"),
-        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg"),
+        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg", "/assets/systems/policy.svg"),
+        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg", "/assets/products/social.svg", "/assets/products/home-security.svg"),
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
-        "design/index.html": ("identity-stage", "material-stack", "component-stage", "/assets/systems/glaze-ui.svg"),
-        "security/index.html": ("identity-stage", "showcase-card", "/assets/systems/wardveil-security.svg", "Protected by Wardveil"),
-        "privacy/index.html": ("identity-stage", "showcase-card", "/assets/systems/privacy-shield.svg", "ALLOW WITH CONSTRAINTS"),
+        "design/index.html": ("identity-stage", "material-stack", "component-stage", "identity-gallery", "/assets/systems/glaze-ui-artwork.svg", "/assets/products/ai.svg", "/assets/products/social.svg"),
+        "security/index.html": ("identity-stage", "showcase-card", "/assets/systems/wardveil-security-artwork.svg", "Protected by Wardveil"),
+        "privacy/index.html": ("identity-stage", "showcase-card", "/assets/systems/privacy-shield-artwork.svg", "ALLOW WITH CONSTRAINTS"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
