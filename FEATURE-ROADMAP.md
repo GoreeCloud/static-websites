@@ -21,7 +21,7 @@ Historical source and exact-revision acceptance evidence remain history; they ar
 | WR-002 | Inventory and retire remaining secondary website exposure, including obsolete DNS/custom-domain bindings, redirects, Cloudflare Pages projects, Functions/Workers, and provider resources. | High | Complete — verified 2026-09-21 |
 | WR-003 | Reconcile website CI/CD so retired endpoints are not recreated or required by superseded checks while retained-site gates remain intact. | High | Complete — PR #115 merged and post-merge validation passed 2026-09-21 |
 | WR-004 | Preserve required source history, migration evidence, rollback/recovery material, and exact-revision acceptance evidence before deleting obsolete secondary-site resources. | High | Complete — historical source/evidence intentionally preserved |
-| WR-005 | Reconcile Drive and GitHub documentation so current-state text identifies only `www.goreecloud.com` as a website and historical multi-site records are clearly non-current. | High | In progress |
+| WR-005 | Reconcile Drive and GitHub documentation so current-state text identifies only `www.goreecloud.com` as a website and historical multi-site records are clearly non-current. | High | Complete — verified 2026-09-21 |
 | WR-006 | Remove or archive retired secondary-site source and repository references only after dependency and preservation review. | Medium | Not required for retirement completion — historical source is intentionally preserved; any later cleanup is separate maintenance |
 | WR-007 | Verify final retirement against authoritative DNS, hosting/provider, repository, documentation, index, and task state before closing the retirement program. | High | Complete — verified 2026-09-21 |
 
