@@ -83,6 +83,7 @@ PUBLIC_FILES = (
     "assets/products/forms.svg",
     "assets/products/photos.svg",
     "assets/products/search.svg",
+    "assets/products/social.svg",
     "assets/products/sync.svg",
     "assets/products/keyboard.svg",
     "assets/products/health.svg",

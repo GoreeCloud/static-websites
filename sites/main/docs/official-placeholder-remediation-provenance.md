@@ -44,3 +44,10 @@ Branding source revision: `017f93d84921d6e69f5af172134cdecfb77f042a`.
 | `assets/products/reader.svg` | `products/reader/app-icon.svg` |
 
 These remain review candidates until branding visual approval and merge.
+
+
+## Complete Suite missing-artwork closure
+
+A final Suite audit found two additional `no-icon` cards in the same remediation scope: GoreeCloud Social and GoreeCloud Website. GoreeCloud Social now uses the branding candidate at `products/social/app-icon.svg` from branding revision `f0592afe48a76c2cac0f0c1abfd7c35c2923a2e4`. GoreeCloud Website uses the existing official GoreeCloud brand mark already published from `GoreeCloud/branding-assets`.
+
+The Suite validator now requires zero `no-icon` cards, so a future missing-artwork card fails closed rather than rendering a generic dot.
