@@ -11,6 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = ROOT / "glaze.lock.json"
+ACCEPTANCE = ROOT / "acceptance/glaze-ui-v1.6-consumer-acceptance.json"
 PAGES = (
     ROOT / "index.html",
     ROOT / "platform-systems/index.html",
@@ -47,6 +48,62 @@ def main() -> int:
     for key, value in EXPECTED.items():
         if lock.get(key) != value:
             errors.append(f"glaze.lock.json {key} must be {value!r}; found {lock.get(key)!r}")
+
+    try:
+        acceptance = json.loads(ACCEPTANCE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"consumer acceptance record missing or invalid: {exc}")
+        acceptance = {}
+
+    if acceptance:
+        for key, value in (
+            ("schemaVersion", 1),
+            ("consumerName", "GoreeCloud Website"),
+            ("repository", "GoreeCloud/static-websites"),
+            ("targetVersion", "1.6.0"),
+            ("designSystemStableRevision", EXPECTED["stable_commit"]),
+        ):
+            if acceptance.get(key) != value:
+                errors.append(f"consumer acceptance {key} must be {value!r}; found {acceptance.get(key)!r}")
+
+        machine = acceptance.get("machineEvidence")
+        if not isinstance(machine, dict):
+            errors.append("consumer acceptance machineEvidence must be an object")
+        else:
+            for key in ("repositoryValidation", "websiteValidation", "renderedPublicTreeEquivalence", "responsiveAndInteraction", "isolatedArtifact", "privacyAndSecurity"):
+                item = machine.get(key)
+                if not isinstance(item, dict) or item.get("status") != "passed":
+                    errors.append(f"consumer acceptance machine evidence {key} must be passed")
+
+        human = acceptance.get("humanEvidence")
+        status = acceptance.get("status")
+        if not isinstance(human, dict):
+            errors.append("consumer acceptance humanEvidence must be an object")
+        else:
+            human_statuses = []
+            for key in ("visualReview", "keyboardReview", "assistiveTechnologyReview"):
+                item = human.get(key)
+                if not isinstance(item, dict):
+                    errors.append(f"consumer acceptance humanEvidence.{key} must be an object")
+                    continue
+                human_statuses.append(item.get("status"))
+            if status == "pending-human-acceptance":
+                if all(value == "passed" for value in human_statuses):
+                    errors.append("pending-human-acceptance must not remain after all human review lanes pass")
+            elif status == "accepted-v1":
+                if not human_statuses or any(value != "passed" for value in human_statuses):
+                    errors.append("accepted-v1 requires all human review lanes to be passed")
+                performance = acceptance.get("performance")
+                if not isinstance(performance, dict) or performance.get("status") != "passed":
+                    errors.append("accepted-v1 requires passed representative performance evidence")
+            else:
+                errors.append(f"unsupported consumer acceptance status: {status!r}")
+
+        approval = acceptance.get("productionApproval")
+        if not isinstance(approval, dict):
+            errors.append("consumer acceptance productionApproval must be an object")
+        elif status != "accepted-v1" and approval.get("approved") is not False:
+            errors.append("production approval must remain false before consumer acceptance")
 
     source_root = os.environ.get("GLAZE_UI_SOURCE")
     if source_root:
