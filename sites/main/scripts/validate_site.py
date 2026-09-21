@@ -159,6 +159,12 @@ def main() -> int:
         if result:
             audited[relative] = result
 
+    for relative in CANONICAL:
+        text_value = audited.get(relative, ("", Audit()))[0]
+        for route in ('href="/design/"', 'href="/security/"', 'href="/privacy/"'):
+            if route not in text_value:
+                errors.append(f"{relative} missing first-class Design/Security/Privacy navigation route: {route}")
+
     for relative in COMPATIBILITY:
         result = audit_page(relative, None, errors)
         if result:
