@@ -163,9 +163,9 @@ def main() -> int:
     home = audited.get("index.html", ("", Audit()))[0]
     for marker in (
         "One public website",
-        "45 verified product surfaces",
-        "Nine cross-cutting authorities",
-        "Current Stable design system: V1.6.0",
+        "45",
+        "Nine cross-cutting authorities.",
+        "Glaze UI V1.6",
         "/platform-systems/",
         "/suite/",
         "/office-suite/",
@@ -188,10 +188,25 @@ def main() -> int:
         errors.append("platform-systems must preserve GoreeCloud Sync's separate-governance boundary")
 
     suite = audited.get("suite/index.html", ("", Audit()))
-    if suite[1].classes["product-group"] != 9:
-        errors.append(f"suite must contain nine product groups; found {suite[1].classes['product-group']}")
-    if suite[1].classes["product"] != 45:
-        errors.append(f"suite must contain 45 current products; found {suite[1].classes['product']}")
+    if suite[1].classes["product-section"] != 9:
+        errors.append(f"suite must contain nine product groups; found {suite[1].classes['product-section']}")
+    if suite[1].classes["product-card"] != 45:
+        errors.append(f"suite must contain 45 current products; found {suite[1].classes['product-card']}")
+
+
+    visual_requirements = {
+        "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
+        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg"),
+        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg"),
+        "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg"),
+        "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
+        "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
+    }
+    for relative, markers in visual_requirements.items():
+        text_value = audited.get(relative, ("", Audit()))[0]
+        for marker in markers:
+            if marker not in text_value:
+                errors.append(f"{relative} missing required Glaze visual identity marker: {marker}")
 
     office = audited.get("office-suite/index.html", ("", Audit()))[0]
     for marker in ("not yet implemented", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):
