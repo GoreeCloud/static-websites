@@ -11,3 +11,12 @@ Third-party artwork, when used in a reviewed historical or compatibility context
 New or revised GoreeCloud logos, icons, artwork, wordmarks, social graphics, system identities, or product identities must be created and approved in `GoreeCloud/branding-assets` before synchronized website derivatives are updated.
 
 Branding does not establish implementation, release, privacy, security, continuity, conformance, or production-readiness claims.
+
+
+## Placeholder-remediation review candidate
+
+The current placeholder-remediation website branch synchronizes review-candidate derivatives from `GoreeCloud/branding-assets` PR #19 at source revision `e172a8e87f795df43bd1d58c115b05f59f73b694`.
+
+This covers GoreeCloud Office, Writer, Spreadsheet, Presentations, Forms, Advanced Tab Manager, GoreeCloud Policy, GitHub informational artwork, and Contact conversation artwork. Existing Webspaces, Redirector, and Source Resync artwork is also being established in the canonical branding repository.
+
+These website-local files are synchronized publication derivatives only. They do not become an independent branding authority. Production website publication remains blocked until the branding PR is visually approved and merged, and the dependent website candidate is separately reviewed and accepted.
