@@ -4,13 +4,13 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `0562a9a779f0f1dae030624537c44aef64ef2f78`
-- Cloudflare-rendered public source revision: `0562a9a779f0f1dae030624537c44aef64ef2f78`
-- Exact rendered preview: `https://e495e9ba.goreecloud-website.pages.dev`
+- Candidate source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
+- Cloudflare-rendered public source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
+- Exact rendered preview: `https://cce68d2e.goreecloud-website.pages.dev`
 - Branch preview alias: `https://feature-main-website-rebuild.goreecloud-website.pages.dev`
 - Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`
 
-This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 79-file isolated public artifact.
+This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 79-file / 252216-byte isolated public artifact.
 
 ## Screenshot-driven polish checkpoint
 
@@ -25,6 +25,16 @@ Revision `0562a9a779f0f1dae030624537c44aef64ef2f78` adds the canonical `/contact
 Machine validation passed for all seven canonical destinations at 1180×900, 768×900, 390×844, and 320×844, with a 79-file / 251318-byte allowlisted artifact. The exact rendered preview is `https://e495e9ba.goreecloud-website.pages.dev`.
 
 Because the public surface changed after the prior owner reviews, the earlier visual and keyboard passes remain historical evidence for the six-destination candidate only. Fresh human visual and keyboard review are required for the current seven-destination candidate.
+
+## Contact & Social page-scoped polish checkpoint
+
+The owner reviewed the first seven-destination Contact & Social preview and identified remaining presentation issues: the hero headline was too dominant, the social-icon constellation crowded its caption, vertical spacing remained too loose, smaller descriptive text needed stronger legibility, the privacy panel left too much unused space, and the Contact/social cards could be tighter.
+
+Revision `a1c0f784db5b9ad7ee121eb00700f3155369634b` applies only bounded Contact-page presentation changes: a better-balanced hero measure, safer icon placement, tighter Contact section rhythm, stronger small-text legibility, denser cards, and a narrower privacy panel. The other six canonical page compositions were not restyled.
+
+Machine validation passed for all seven canonical destinations at 1180×900, 768×900, 390×844, and 320×844. The exact rendered preview is `https://cce68d2e.goreecloud-website.pages.dev`.
+
+Fresh owner visual and keyboard review remain required for the current candidate.
 
 ## Human visual review
 
