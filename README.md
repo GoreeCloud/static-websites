@@ -4,15 +4,15 @@ This repository is the retained source authority for the GoreeCloud public websi
 
 ## Current website state
 
-As of September 20, 2026:
+As of September 21, 2026:
 
 - **`www.goreecloud.com` is the only current GoreeCloud website.**
-- Former secondary public website hostnames and standalone website deployments are retired or in governed retirement.
+- Former secondary public website hostnames and standalone website deployments are retired.
 - A historical source package, directory, former hostname, redirect, validation workflow, or deployment record does **not** make that surface a current website.
 - Retired website endpoints must not be recreated solely to satisfy superseded validation, migration, or acceptance checks.
 - Web applications, private administration interfaces, APIs, and service endpoints are not reclassified as websites merely because they use HTTP or a `goreecloud.com` hostname.
 
-The governing retirement workflow is tracked in GoreeCloud Tasks Management under **GoreeCloud Main Website Retention and Public Website Retirement**.
+The governed secondary-site retirement workflow completed on September 21, 2026. Its completed task record is removed after final reconciliation under GoreeCloud task governance.
 
 ## Repository role
 
@@ -21,8 +21,8 @@ The governing retirement workflow is tracked in GoreeCloud Tasks Management unde
 Its current responsibilities are:
 
 1. maintain the reviewed source needed for `www.goreecloud.com`;
-2. preserve required source history, migration evidence, and recovery material for former public websites while retirement is still being reconciled;
-3. support controlled removal or archival of retired secondary-site source, workflows, deployment references, and compatibility material after dependencies and preservation requirements are verified; and
+2. preserve required source history, migration evidence, and recovery material for former public websites as historical/retirement evidence;
+3. support any later controlled removal or archival of preserved secondary-site source and compatibility material as separate maintenance after dependency and preservation review; and
 4. prevent historical multi-site source from being mistaken for current public deployment authority.
 
 This repository is **not** authority to publish additional GoreeCloud websites. A new or restored website requires a later explicit GoreeCloud decision plus applicable DNS, hosting, security, privacy, design, deployment, and production-verification evidence.
@@ -41,7 +41,7 @@ docs/
 
 `sites/main/` is the source package associated with the retained `www.goreecloud.com` website. `sites/url-namespace.json` is the current route registry for that one website and its path-based sections. `sites/manifest.json` is retained migration/retirement evidence and is not a current website inventory.
 
-Other `sites/<site-id>/` packages may remain temporarily for history, recovery, migration, or retirement cleanup. Their presence in the repository or in `sites/manifest.json` is not a current-site inventory and must not be interpreted as proof that the corresponding hostname, Cloudflare Pages project, redirect, or public deployment still exists.
+Other `sites/<site-id>/` packages remain as preserved history, recovery, migration, and retirement evidence unless later maintenance explicitly removes or archives them. Their presence in the repository or in `sites/manifest.json` is not a current-site inventory and must not be interpreted as proof that the corresponding hostname, Cloudflare Pages project, redirect, or public deployment still exists.
 
 Generated deployment artifacts such as `dist/` are not authoritative source and should be regenerated from reviewed source unless a retained-site contract explicitly requires otherwise.
 
