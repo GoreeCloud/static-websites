@@ -1,0 +1,30 @@
+name: Verify main GoreeCloud production deployment
+
+on:
+  pull_request:
+    paths:
+      - 'sites/main/**'
+      - '.github/workflows/verify-main-production.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact verification candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Build exact isolated public artifact
+        run: python sites/main/scripts/build_public_site.py
+
+      - name: Verify canonical production bytes
+        env:
+          EXPECTED_REVISION: ${{ github.event.pull_request.base.sha || github.sha }}
+        run: python sites/main/scripts/verify_production.py
