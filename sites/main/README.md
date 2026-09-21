@@ -62,6 +62,14 @@ The public artifact is allowlisted and excludes repository-only documentation, t
 
 The GitHub page does not contact GitHub automatically. A visitor must explicitly choose **Load current public repositories** before the browser requests public repository metadata from `api.github.com`. The page contains a direct organization link for visitors who prefer not to make that request from the GoreeCloud site.
 
+## Production redeploy trigger — September 21, 2026
+
+Owner acceptance for PR #121 is complete. Accepted public-source head `02b60edf27b36e7cad31d0bbf383b147bcfed6f4` was merged to `main` as `3715e132e6a2ce6f3f4034a9dc6f0b70b2078af4`.
+
+A production redeploy was explicitly requested after the canonical hostname continued to serve the prior website bytes. This repository-only note intentionally changes no public website source or generated public artifact; its purpose is to create a governed `main` push so the connected Cloudflare Pages project can rebuild and publish the already accepted website bytes.
+
+Production completion still requires post-push live verification of `https://www.goreecloud.com/`, `/design/`, `/security/`, and `/privacy/`.
+
 ## Acceptance boundary
 
 Source changes, a successful build, CI success, or a Cloudflare deployment do not by themselves establish final production acceptance. Merge, deployment, exact deployed-byte verification, rendered review, accessibility acceptance, performance acceptance, rollback readiness, and current Glaze UI consumer acceptance remain separately governed transitions.
