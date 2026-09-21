@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title"><title>GoreeCloud Vault</title><defs><linearGradient id="g" x1="8" y1="6" x2="56" y2="58"><stop stop-color="#60A5FA"/><stop offset="1" stop-color="#4338CA"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#g)"/><rect x="13" y="13" width="38" height="38" rx="7" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="32" cy="32" r="10" fill="none" stroke="#fff" stroke-width="3.5"/><circle cx="32" cy="32" r="3" fill="#fff"/><path d="M32 22v5M42 32h-5M32 42v-5M22 32h5" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud Vault — Cipher Chamber</title><desc id="desc">A layered encrypted chamber surrounds a compact credential keyway.</desc>
+<defs><linearGradient id="bg" x1="28" y1="20" x2="226" y2="236"><stop stop-color="#4FA8FF"/><stop offset=".5" stop-color="#4165EA"/><stop offset="1" stop-color="#4330A9"/></linearGradient><linearGradient id="ring" x1="78" y1="70" x2="182" y2="188"><stop stop-color="#F7FBFF"/><stop offset="1" stop-color="#C9DAFF"/></linearGradient></defs>
+<rect width="256" height="256" rx="58" fill="url(#bg)"/>
+<path d="M128 43 194 81v94l-66 38-66-38V81Z" fill="#111B46" fill-opacity=".32" stroke="#fff" stroke-opacity=".62" stroke-width="7" stroke-linejoin="round"/>
+<circle cx="128" cy="128" r="56" fill="none" stroke="url(#ring)" stroke-width="11"/>
+<circle cx="128" cy="128" r="38" fill="#0E1736" fill-opacity=".82" stroke="#9AB9FF" stroke-width="5"/>
+<path d="M128 94v12M128 150v12M94 128h12M150 128h12" stroke="#DCE7FF" stroke-width="7" stroke-linecap="round"/>
+<path d="M128 111c-11 0-20 8-20 19 0 8 5 14 11 18v14h18v-14c7-4 11-10 11-18 0-11-9-19-20-19Z" fill="#EAF3FF"/>
+<circle cx="128" cy="131" r="7" fill="#425BE0"/><rect x="124" y="135" width="8" height="15" rx="4" fill="#425BE0"/>
+</svg>
