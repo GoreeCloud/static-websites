@@ -45,6 +45,15 @@ STALE_MARKERS = (
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 CGNAT = ipaddress.ip_network("100.64.0.0/10")
 
+PLACEHOLDER_VISUAL_PATTERNS = (
+    re.compile(r'<div class="symbol">\s*[^<]{1,3}\s*</div>'),
+    re.compile(r'<span class="initials">\s*[^<]{1,4}\s*</span>'),
+    re.compile(r'<div class="map-node[^"]*">\s*<span>\s*[^<]{1,4}\s*</span>\s*</div>'),
+    re.compile(r'<div class="app-symbol">\s*[^<]{1,4}\s*</div>'),
+    re.compile(r'<div class="extension-art generic">'),
+)
+
+
 
 def contains_private_address(text: str) -> bool:
     for token in IP_RE.findall(text):
@@ -117,6 +126,10 @@ def audit_page(relative: str, expected_canonical: str | None, errors: list[str])
             errors.append(f"{relative} contains stale current-state text: {stale}")
     if contains_private_address(text):
         errors.append(f"{relative} exposes private-range address material")
+    for pattern in PLACEHOLDER_VISUAL_PATTERNS:
+        if pattern.search(text):
+            errors.append(f"{relative} contains a prohibited letter/initial/generic visual placeholder: {pattern.pattern}")
+
     for marker in (
         'data-glaze-version="1.6.0"',
         'name="goreecloud-glaze-ui" content="1.6.0"',
@@ -194,16 +207,19 @@ def main() -> int:
         errors.append(f"suite must contain nine product groups; found {suite[1].classes['product-section']}")
     if suite[1].classes["product-card"] != 45:
         errors.append(f"suite must contain 45 current products; found {suite[1].classes['product-card']}")
+    if suite[1].classes["no-icon"] != 0:
+        errors.append(f"suite must not contain missing-artwork product cards; found {suite[1].classes['no-icon']}")
+
 
 
     visual_requirements = {
-        "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
-        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg"),
-        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg"),
-        "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg"),
-        "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
-        "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
-        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "security@goreecloud.com"),
+        "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg", "/assets/systems/privacy-shield.svg", "/assets/systems/everkeep.svg", "/assets/products/code.svg"),
+        "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg", "/assets/systems/policy.svg"),
+        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg", "/assets/products/sync.svg", "/assets/products/keyboard.svg", "/assets/products/health.svg", "/assets/products/home.svg", "/assets/products/home-security.svg", "/assets/products/router-os.svg", "/assets/products/reader.svg", "/assets/products/social.svg", "/assets/brand/goreecloud-logo.svg"),
+        "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
+        "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg", "/assets/firefox/advanced-tab-manager.svg"),
+        "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg", "/assets/website/github-public.svg", "/assets/website/github-visitor.svg", "/assets/website/github-authority.svg"),
+        "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "/assets/website/general-conversation.svg", "security@goreecloud.com"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]

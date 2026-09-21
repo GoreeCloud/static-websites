@@ -6,30 +6,30 @@
   "targetVersion": "1.6.0",
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
-  "candidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
-  "renderedCandidateRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
-  "renderedCandidatePreview": "https://cce68d2e.goreecloud-website.pages.dev",
-  "branchPreview": "https://feature-main-website-rebuild.goreecloud-website.pages.dev",
-  "status": "accepted-v1",
+  "candidateRevision": "cb79f3b75b64c957105c570d8ffaeab355e42a32",
+  "renderedCandidateRevision": "cb79f3b75b64c957105c570d8ffaeab355e42a32",
+  "renderedCandidatePreview": "https://0a651db7.goreecloud-website.pages.dev",
+  "branchPreview": "https://fix-official-visual-assets-p.goreecloud-website.pages.dev",
+  "status": "pending-human-acceptance",
   "supportedPlatforms": [
     "web"
   ],
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35552316820,
-      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
+      "runId": 35597350527,
+      "revision": "cb79f3b75b64c957105c570d8ffaeab355e42a32"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35552316810,
-      "revision": "a1c0f784db5b9ad7ee121eb00700f3155369634b"
+      "runId": 35597350429,
+      "revision": "cb79f3b75b64c957105c570d8ffaeab355e42a32"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
-      "validationRevision": "a1c0f784db5b9ad7ee121eb00700f3155369634b",
-      "note": "The Contact & Social page-scoped UI-polish revision passed the seven-destination URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation before this non-public acceptance record was reconciled."
+      "reviewedRevision": "cb79f3b75b64c957105c570d8ffaeab355e42a32",
+      "validationRevision": "cb79f3b75b64c957105c570d8ffaeab355e42a32",
+      "note": "The complete placeholder/missing-artwork remediation candidate passed the seven-destination URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation. Cloudflare Pages deployed this exact source revision to the branch preview."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -47,13 +47,14 @@
         "primary-navigation-binding",
         "skip-link",
         "theme-state-and-label",
-        "mobile-escape-close-and-focus-restore"
+        "mobile-escape-close-and-focus-restore",
+        "prohibited-letter-initial-generic-visual-placeholder-rejection"
       ]
     },
     "isolatedArtifact": {
       "status": "passed",
-      "fileCount": 79,
-      "totalBytes": 252216
+      "fileCount": 98,
+      "totalBytes": 266698
     },
     "privacyAndSecurity": {
       "status": "passed",
@@ -63,48 +64,51 @@
         "no-retired-posthog-endpoints",
         "no-private-repository-inventory",
         "visitor-triggered-github-request",
-        "contact-page-private-owner-contact-exclusion"
+        "contact-page-private-owner-contact-exclusion",
+        "official-visual-assets-locally-hosted"
       ]
     },
     "visualIdentity": {
       "status": "passed",
       "checks": [
-        "canonical GoreeCloud logo",
-        "canonical GoreeCloud wallpapers",
-        "canonical product icons",
-        "canonical platform-system marks",
-        "verified social-profile icons",
-        "Glaze visual composition markers"
-      ]
+        "all 15 audited letter/initial/generic visual placeholders removed",
+        "Suite contains zero no-icon product cards",
+        "Sync and Keyboard use existing canonical GoreeCloud branding assets",
+        "Health, Home, Home Security, Router OS, Reader, and Social use source-traceable GoreeCloud/branding-assets PR #19 review candidates",
+        "GoreeCloud Website uses the existing official GoreeCloud brand mark",
+        "official placeholder-prohibition and Suite no-icon validators enabled",
+        "website-local derivatives remain non-authoritative publication copies"
+      ],
+      "note": "Machine validation establishes placeholder/missing-artwork removal and provenance linkage only. Human visual approval and canonical branding PR merge remain required before production."
     }
   },
   "humanEvidence": {
     "visualReview": {
-      "status": "passed",
-      "reviewer": "GoreeCloud project owner",
-      "reviewedAt": "2026-09-21T02:03:57.769Z",
-      "notes": "The project owner reviewed the polished seven-destination candidate and explicitly reported all review lanes PASS. Human visual review is therefore passed for public-source revision a1c0f784db5b9ad7ee121eb00700f3155369634b, including the updated /contact/ destination and shared navigation/footer."
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "notes": "Fresh human visual review is required because official visual identity changed across Home, Suite, Platform Systems, Office Suite, Firefox, GitHub, and Contact. The owner specifically identified missing Suite artwork for Sync, Keyboard, Health, Home, Home Security, Router OS, and Reader; the final audit also closed Social and Website no-icon cards. Earlier production visual approval remains historical evidence for the prior production revision only."
     },
     "keyboardReview": {
       "status": "passed",
       "reviewer": "GoreeCloud project owner",
       "reviewedAt": "2026-09-21T02:03:57.769Z",
-      "notes": "The project owner explicitly reported all review lanes PASS for the polished seven-destination candidate. This records the required keyboard-only review as passed for all seven canonical destinations, including the updated /contact/ destination and shared navigation/footer."
+      "notes": "Keyboard-only evidence is carried forward because the remediation changes decorative/identity artwork and non-interactive card markup only; no focusable controls, navigation behavior, keyboard handlers, or interaction order changed. Exact-candidate browser interaction smoke also passed."
     },
     "assistiveTechnologyReview": {
-      "status": "passed",
-      "reviewer": "GoreeCloud project owner",
-      "reviewedAt": "2026-09-21T02:03:57.769Z",
-      "technology": "Orca + Firefox on Linux",
-      "notes": "The project owner explicitly reported all review lanes PASS and identified the representative assistive-technology environment as Orca with Firefox on Linux. The required screen-reader/assistive-technology review is therefore recorded as passed for the current seven-destination candidate."
+      "status": "pending",
+      "reviewer": null,
+      "reviewedAt": null,
+      "technology": null,
+      "notes": "Fresh representative assistive-technology review is required because missing/placeholder visuals were replaced with decorative image elements using empty alt text. Earlier Orca + Firefox on Linux evidence remains historical for the prior production revision."
     }
   },
   "performance": {
-    "status": "passed",
-    "reviewer": "GoreeCloud project owner",
-    "reviewedAt": "2026-09-21T02:03:57.769Z",
-    "environment": "Firefox on Linux",
-    "note": "The project owner explicitly reported all review lanes PASS. Representative performance and resilience review is recorded as passed in the same Firefox-on-Linux review environment; no material jank, unusable delay, persistent loading failure, or resource behavior was reported."
+    "status": "pending-representative-review",
+    "reviewer": null,
+    "reviewedAt": null,
+    "environment": null,
+    "note": "The public artifact changed from the previously accepted 79 files / 252216 bytes to 98 files / 266698 bytes. Hosted browser smoke passed, but representative performance/resilience review remains pending for the complete replacement-asset set."
   },
   "rollback": {
     "lastKnownGoodMainRevision": "8fad0a2393ec05d085fb7251cc90712cfcee00f3",
@@ -113,11 +117,11 @@
     "note": "Production is accepted at merge revision 4e03d06f7e6681b5a3517da5d7cbfc11cabc5834. Prior main history remains available for controlled rollback if a production regression is later discovered."
   },
   "productionApproval": {
-    "approved": true,
+    "approved": false,
     "authority": "GoreeCloud project owner",
-    "acceptedRevision": "4e03d06f7e6681b5a3517da5d7cbfc11cabc5834",
-    "approvedAt": "2026-09-21T02:21:19.050Z",
-    "note": "Final production acceptance explicitly confirmed by the GoreeCloud project owner after Glaze UI V1.6 consumer acceptance, PR #109 merge, successful post-merge validation, exact-revision Cloudflare deployment, canonical production readback, and verification that no public website source changed between the accepted public-source revision and the production merge revision."
+    "acceptedRevision": null,
+    "approvedAt": null,
+    "note": "The currently deployed production revision remains historically accepted. The complete placeholder/missing-artwork remediation candidate is not production-approved and remains blocked on human visual review, assistive-technology review, representative performance review, canonical branding approval/merge, and separately authorized website merge/release."
   },
   "productionEvidence": {
     "status": "passed",
@@ -148,6 +152,7 @@
       "status": "passed",
       "checkedAt": "2026-09-21T02:21:19.050Z",
       "note": "Canonical production readback showed the rebuilt one-site navigation and current seven-destination content on www.goreecloud.com; combined with the exact-revision Cloudflare deployment result and public-file equivalence, the deployed revision corresponds to the accepted source/artifact."
-    }
+    },
+    "previousAcceptedProductionScope": "Historical evidence for production revision 4e03d06f7e6681b5a3517da5d7cbfc11cabc5834 only. It does not approve the current placeholder-remediation branch candidate."
   }
 }
