@@ -104,6 +104,13 @@ def set_viewport(session: str, width: int, height: int) -> None:
 def validate_page(session: str, path: str, width: int, height: int) -> None:
     request("POST", f"/session/{session}/url", {"url": WEB_BASE + path})
     set_viewport(session, width, height)
+    deadline = time.monotonic() + 5
+    while time.monotonic() < deadline:
+        if execute(session, "return document.readyState") == "complete":
+            break
+        time.sleep(0.1)
+    else:
+        raise BrowserError(f"{path} did not finish loading within the bounded readiness wait")
     state = execute(session, """
       const h1=document.querySelector('h1');
       const header=document.querySelector('.site-header');
