@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+<title id="title">GoreeCloud Social — Common Orbit</title><desc id="desc">Three social presences exchange conversation and media through overlapping bounded orbits.</desc>
+<defs><linearGradient id="bg" x1="26" y1="20" x2="232" y2="236"><stop stop-color="#FF6AB8"/><stop offset=".46" stop-color="#8B5CF6"/><stop offset="1" stop-color="#3D73F6"/></linearGradient></defs>
+<rect width="256" height="256" rx="58" fill="url(#bg)"/>
+<path d="M62 121c0-41 29-70 68-70 38 0 64 26 64 60 0 27-17 50-43 59l-1 25-24-18c-36-1-64-24-64-56Z" fill="#fff" fill-opacity=".19" stroke="#fff" stroke-opacity=".45" stroke-width="5"/>
+<path d="M82 107c11-18 30-29 52-29 28 0 52 18 60 43" fill="none" stroke="#FCEBFF" stroke-width="9" stroke-linecap="round"/>
+<path d="M74 145c17 20 45 29 70 21 19-6 34-19 44-37" fill="none" stroke="#DDF7FF" stroke-width="9" stroke-linecap="round"/>
+<circle cx="82" cy="106" r="13" fill="#fff"/><circle cx="195" cy="122" r="13" fill="#fff"/><circle cx="150" cy="171" r="12" fill="#E6F8FF"/>
+<circle cx="128" cy="127" r="38" fill="#17153E" fill-opacity=".72" stroke="#fff" stroke-width="5"/>
+<circle cx="116" cy="119" r="9" fill="#fff"/><circle cx="141" cy="119" r="9" fill="#fff"/><path d="M104 148c7-13 15-19 24-19s17 6 24 19" fill="none" stroke="#A9FFF1" stroke-width="7" stroke-linecap="round"/>
+</svg>
