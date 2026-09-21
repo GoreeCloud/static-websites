@@ -6,10 +6,10 @@
   "targetVersion": "1.6.0",
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
-  "candidateRevision": "6c5833c27058233eacbd2d3a96c70f7f5d676ba3",
-  "renderedCandidateRevision": null,
-  "renderedCandidatePreview": null,
-  "branchPreview": null,
+  "candidateRevision": "3e20e6bc99cc0255ece7fe968440462543c3effe",
+  "renderedCandidateRevision": "3e20e6bc99cc0255ece7fe968440462543c3effe",
+  "renderedCandidatePreview": "https://a436f100.goreecloud-website.pages.dev",
+  "branchPreview": "https://feature-design-security-priv.goreecloud-website.pages.dev",
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
     "web"
@@ -17,19 +17,19 @@
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35604797339,
-      "revision": "6c5833c27058233eacbd2d3a96c70f7f5d676ba3"
+      "runId": 35607531962,
+      "revision": "8e875954c1dcda2dd5495a40247b8a1968005d5c"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35604797336,
-      "revision": "6c5833c27058233eacbd2d3a96c70f7f5d676ba3"
+      "runId": 35607531749,
+      "revision": "8e875954c1dcda2dd5495a40247b8a1968005d5c"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "6c5833c27058233eacbd2d3a96c70f7f5d676ba3",
-      "validationRevision": "6c5833c27058233eacbd2d3a96c70f7f5d676ba3",
-      "note": "Exact candidate source passed URL-namespace, semantic/public-surface, Glaze target, isolated-build, exact-byte, and browser validation. This machine evidence does not substitute for fresh human review."
+      "reviewedRevision": "3e20e6bc99cc0255ece7fe968440462543c3effe",
+      "validationRevision": "8e875954c1dcda2dd5495a40247b8a1968005d5c",
+      "note": "The rendered public-source revision contains the identity/artwork correction. The exact validation head differs only in build_public_site.py and validate_site.py, so no public website bytes changed between rendered public source and machine validation."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -52,8 +52,8 @@
     },
     "isolatedArtifact": {
       "status": "passed",
-      "fileCount": 82,
-      "totalBytes": 285873
+      "fileCount": 88,
+      "totalBytes": 305833
     },
     "privacyAndSecurity": {
       "status": "passed",
@@ -71,11 +71,12 @@
     "visualIdentity": {
       "status": "passed",
       "checks": [
-        "canonical GoreeCloud logo",
-        "canonical existing product icons",
-        "canonical platform-system marks",
-        "no fabricated product identity for missing Social or Security artwork",
-        "Glaze visual composition markers"
+        "canonical GoreeCloud platform logo preserved",
+        "refreshed AI, Index, Network, DNS, Vault, Identity, and App Store review-candidate product identities synchronized from GoreeCloud/branding-assets PR #20",
+        "new Social and Home Security review-candidate product identities replace website no-icon placeholders",
+        "new GoreeCloud Policy Decision Gate review-candidate mark replaces PL text placeholder",
+        "Glaze UI, Wardveil Security, and Privacy Shield presentation artwork replaces generic hero placeholder compositions",
+        "review-candidate branding remains explicitly non-production pending owner visual approval"
       ]
     }
   },
@@ -84,20 +85,20 @@
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
-      "notes": "Fresh visual review is required for the ten-destination PR #112 candidate, including reduced heading scale, the three new showcase routes, and highlighted Suite identity-card treatment."
+      "notes": "Fresh visual review is required for the corrected ten-destination candidate, including the new branding review candidates, real presentation artwork, removal of Social/Home Security/Policy placeholders, filled material samples, and the reduced heading scale."
     },
     "keyboardReview": {
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
-      "notes": "Fresh keyboard-only review is required for the changed ten-destination surface."
+      "notes": "Fresh keyboard-only review is required for the changed ten-destination surface after the artwork and identity correction."
     },
     "assistiveTechnologyReview": {
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
       "technology": null,
-      "notes": "Fresh representative assistive-technology review is required for the changed ten-destination surface."
+      "notes": "Fresh representative assistive-technology review is required for the changed ten-destination surface after the artwork and identity correction."
     }
   },
   "performance": {
@@ -105,7 +106,7 @@
     "reviewer": null,
     "reviewedAt": null,
     "environment": null,
-    "note": "Fresh representative performance/resilience review is required for the changed ten-destination surface."
+    "note": "Fresh representative performance/resilience review is required for the changed ten-destination surface and larger SVG artwork payload."
   },
   "rollback": {
     "lastKnownGoodMainRevision": "1104f0610a55f725f0f4df34b4970aabc5944af4",
@@ -161,5 +162,15 @@
         "note": "Canonical production readback showed the rebuilt one-site navigation and current seven-destination content on www.goreecloud.com; combined with the exact-revision Cloudflare deployment result and public-file equivalence, the deployed revision corresponds to the accepted source/artifact."
       }
     }
+  },
+  "brandingDependency": {
+    "repository": "GoreeCloud/branding-assets",
+    "pullRequest": 20,
+    "candidateRevision": "7a63051178dbb9975132e13f2cd434622e25ba3a",
+    "validationRunId": 35607718871,
+    "validationStatus": "passed",
+    "lifecycle": "review-candidate",
+    "merged": false,
+    "note": "The website preview intentionally vendors exact review-candidate SVG bytes so the owner can review the new identities in context. Branding approval and website acceptance remain separate gates."
   }
 }
