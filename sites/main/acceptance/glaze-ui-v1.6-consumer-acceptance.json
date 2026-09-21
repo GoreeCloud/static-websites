@@ -7,9 +7,9 @@
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
   "candidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
-  "renderedCandidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
-  "renderedCandidatePreview": null,
-  "branchPreview": null,
+  "renderedCandidateRevision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+  "renderedCandidatePreview": "https://32e5d442.goreecloud-website.pages.dev",
+  "branchPreview": "https://feature-stable-showcase.goreecloud-website.pages.dev",
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
     "web"
@@ -17,19 +17,22 @@
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35629946739,
-      "revision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e"
+      "runId": 35630430242,
+      "revision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+      "note": "Documentation-head validation; Git compare proves the only changes after the public-source candidate are the two acceptance records."
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35629946752,
-      "revision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e"
+      "runId": 35630430267,
+      "revision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+      "note": "Documentation-head validation; public artifact bytes remain bound to source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e."
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
-      "validationRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
-      "note": "The exact PR #119 public-source candidate built from the allowlisted source and passed exact-byte artifact validation. No provider preview or production deployment is verified for this candidate."
+      "reviewedRevision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+      "validationRevision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+      "publicSourceRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
+      "note": "Git compare proves documentation head cbc16e6b3f3514bfb3233655bb4e5379b84388e4 differs from public-source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e only in the two acceptance records, which are excluded from the public artifact. Exact-head artifact validation passed and Cloudflare Pages reported a successful preview deployment."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -145,8 +148,12 @@
       "note": "Canonical production readback confirmed the updated root page no longer exposes the former operating-principle letter tiles and the Suite page exposes image elements for the remediated product cards. Final human visual acceptance remains pending."
     },
     "candidateRevision": "0db8e4fc0757bb3c177ec9deb10baa317a97024e",
-    "candidateDeploymentStatus": "unverified",
-    "candidateDeploymentNote": "No exact Cloudflare preview, merge, production deployment, or canonical production readback is verified for PR #119 candidate. Retained deployment fields below describe earlier recorded website evidence only and must not be applied to this candidate."
+    "candidateDeploymentStatus": "preview-passed-production-unverified",
+    "candidateDeploymentNote": "Cloudflare Pages reported a successful PR preview for documentation head cbc16e6b3f3514bfb3233655bb4e5379b84388e4. Git compare proves only acceptance records differ from public-source candidate 0db8e4fc0757bb3c177ec9deb10baa317a97024e. This is preview evidence only; merge and production deployment/readback remain unverified.",
+    "candidatePreviewRevision": "cbc16e6b3f3514bfb3233655bb4e5379b84388e4",
+    "candidatePreviewUrl": "https://32e5d442.goreecloud-website.pages.dev",
+    "candidateBranchPreviewUrl": "https://feature-stable-showcase.goreecloud-website.pages.dev",
+    "candidateExternalDeploymentId": "32e5d442-c579-44fa-b19a-58eb91fcd9b0"
   },
   "historicalAcceptance": {
     "status": "historical-only",
