@@ -212,7 +212,7 @@ def main() -> int:
     visual_requirements = {
         "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg", "/assets/systems/privacy-shield.svg", "/assets/systems/everkeep.svg", "/assets/products/code.svg"),
         "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg", "/assets/systems/policy.svg"),
-        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg"),
+        "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg", "/assets/products/sync.svg", "/assets/products/keyboard.svg", "/assets/products/health.svg", "/assets/products/home.svg", "/assets/products/home-security.svg", "/assets/products/router-os.svg", "/assets/products/reader.svg"),
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/documents.svg", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg", "/assets/firefox/advanced-tab-manager.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg", "/assets/website/github-public.svg", "/assets/website/github-visitor.svg", "/assets/website/github-authority.svg"),

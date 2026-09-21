@@ -25,3 +25,22 @@ The website copies below are synchronized publication derivatives. They must rem
 The existing website Webspaces, Redirector, and Source Resync artwork is separately being established in `GoreeCloud/branding-assets` on the same branding review branch without changing the website-visible bytes.
 
 This provenance record does not itself approve the artwork, merge the branding source, authorize production publication, or establish release acceptance.
+
+
+## Suite missing-artwork remediation
+
+Owner review identified seven Suite entries that still rendered without official artwork. GoreeCloud Sync and GoreeCloud Keyboard already have canonical assets in `GoreeCloud/branding-assets`; five additional review-candidate assets were created in the same branding PR for Health, Home, Home Security, Router OS, and Reader.
+
+Branding source revision: `017f93d84921d6e69f5af172134cdecfb77f042a`.
+
+| Website derivative | Branding source |
+| --- | --- |
+| `assets/products/sync.svg` | `products/sync/app-icon.svg` |
+| `assets/products/keyboard.svg` | `products/keyboard/app-icon.svg` |
+| `assets/products/health.svg` | `products/health/app-icon.svg` |
+| `assets/products/home.svg` | `products/home/app-icon.svg` |
+| `assets/products/home-security.svg` | `products/home-security/app-icon.svg` |
+| `assets/products/router-os.svg` | `products/router-os/app-icon.svg` |
+| `assets/products/reader.svg` | `products/reader/app-icon.svg` |
+
+These remain review candidates until branding visual approval and merge.
