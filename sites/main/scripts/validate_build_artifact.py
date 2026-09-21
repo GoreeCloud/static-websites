@@ -18,6 +18,9 @@ CANONICAL_PAGES = (
     "firefox/index.html",
     "github/index.html",
     "contact/index.html",
+    "design/index.html",
+    "security/index.html",
+    "privacy/index.html",
 )
 COMPATIBILITY_PAGES = ("privacy.html", "security.html", "repositories.html", "404.html")
 IP_RE = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
