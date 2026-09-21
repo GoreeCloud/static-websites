@@ -2,6 +2,23 @@
 
 This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate recorded in `glaze-ui-v1.6-consumer-acceptance.json`.
 
+## Current ten-destination candidate — PR #112
+
+**Status: PENDING FRESH HUMAN ACCEPTANCE.**
+
+- Public-source candidate: `6c5833c27058233eacbd2d3a96c70f7f5d676ba3`
+- Pull request: #112 — Build design, security, and privacy website sections
+- Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`, `/design/`, `/security/`, `/privacy/`
+- Static website repository validation: run `35604797339` — passed.
+- Main website validation: run `35604797336` — passed.
+- Exact allowlisted artifact: 82 files / 285873 bytes — passed.
+- Browser matrix: all ten canonical destinations at 1180×900, 768×900, 390×844, and 320×844 — passed.
+- Production state: unchanged. PR #112 is unmerged and no deployment acceptance is claimed.
+
+The candidate reduces global hero and section heading scale, adds the Glaze UI design showcase, Wardveil Security, and Privacy Shield path-based destinations, and strengthens the presentation of the requested existing Suite identities without creating new official artwork. Fresh owner visual and keyboard review, representative assistive-technology review, and representative performance/resilience review are required because the public surface changed after the previously accepted seven-destination production baseline.
+
+The prior seven-destination human and production evidence below remains historical evidence for the currently deployed baseline only. It does not transfer to this candidate.
+
 ## Exact review surface
 
 - Candidate source revision: `a1c0f784db5b9ad7ee121eb00700f3155369634b`
