@@ -4,13 +4,13 @@ This review applies to the GoreeCloud Website Glaze UI V1.6 consumer candidate r
 
 ## Exact review surface
 
-- Candidate source revision: `a2aeea566e4831a59348b966d5c15631c77a80cb`
-- Cloudflare-rendered public source revision: `a2aeea566e4831a59348b966d5c15631c77a80cb`
-- Exact rendered preview: `https://d1c6105a.goreecloud-website.pages.dev`
+- Candidate source revision: `0562a9a779f0f1dae030624537c44aef64ef2f78`
+- Cloudflare-rendered public source revision: `0562a9a779f0f1dae030624537c44aef64ef2f78`
+- Exact rendered preview: `https://e495e9ba.goreecloud-website.pages.dev`
 - Branch preview alias: `https://feature-main-website-rebuild.goreecloud-website.pages.dev`
-- Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`
+- Canonical destinations: `/`, `/platform-systems/`, `/suite/`, `/office-suite/`, `/firefox/`, `/github/`, `/contact/`
 
-This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, richer page-specific compositions, and the validated 72-file isolated public artifact.
+This review target is the Glaze visual redesign candidate containing the canonical GoreeCloud branding assets, wallpapers, product icons, platform-system marks, verified social-profile icons, richer page-specific compositions, and the validated 79-file isolated public artifact.
 
 ## Screenshot-driven polish checkpoint
 
@@ -18,9 +18,17 @@ Human screenshots of all six canonical destinations on the prior visual candidat
 
 This checkpoint is corrective evidence, not human acceptance. A fresh human visual review of the corrected Cloudflare preview remains required.
 
+## Contact & Social expansion checkpoint
+
+Revision `0562a9a779f0f1dae030624537c44aef64ef2f78` adds the canonical `/contact/` destination, integrates Contact into shared navigation/footer, publishes only the six verified active GoreeCloud social-media accounts plus the existing dedicated security-reporting route and public-source route, and deliberately excludes private owner phone numbers, personal email accounts, residential/mailing addresses, and internal contact records.
+
+Machine validation passed for all seven canonical destinations at 1180×900, 768×900, 390×844, and 320×844, with a 79-file / 251318-byte allowlisted artifact. The exact rendered preview is `https://e495e9ba.goreecloud-website.pages.dev`.
+
+Because the public surface changed after the prior owner reviews, the earlier visual and keyboard passes remain historical evidence for the six-destination candidate only. Fresh human visual and keyboard review are required for the current seven-destination candidate.
+
 ## Human visual review
 
-**Status: PASSED — owner visual approval recorded.**
+**Current seven-destination status: PENDING. Prior six-destination review: PASSED.**
 
 - Reviewer: GoreeCloud project owner
 - Reviewed at: `2026-09-21T01:27:23Z`
@@ -29,7 +37,7 @@ This checkpoint is corrective evidence, not human acceptance. A fresh human visu
 - Approval scope: human visual review of the corrected screenshot-driven UI-polish candidate only.
 - Authorization evidence: the project owner explicitly confirmed recording visual approval after the risk/scope boundary was presented.
 
-The owner approved the corrected visual candidate. This closes only the human visual-review requirement. It does **not** satisfy keyboard-only review, representative assistive-technology review, representative performance review, overall Glaze consumer acceptance, merge authorization, production publication, deployed-byte verification, or final production acceptance.
+The owner approval recorded below applies to the prior six-destination candidate. The new `/contact/` page and shared navigation/footer changes require fresh visual review before the current seven-destination candidate can satisfy this lane.
 
 Review at representative desktop, tablet, modern-phone, and narrow-phone widths in both Light and Dark appearance where practical. Confirm that content is legible; headings, cards, navigation, forms, banners, and status elements maintain clear hierarchy; no controls overlap or clip; the mobile menu is shown only when appropriate; and the interface remains understandable with reduced transparency or other applicable accessibility preferences.
 
@@ -37,14 +45,14 @@ Record **passed** only after actual human review. Automated screenshots or assis
 
 ## Human keyboard review
 
-**Status: PASSED — owner keyboard approval recorded.**
+**Current seven-destination status: PENDING. Prior six-destination review: PASSED.**
 
 - Reviewer: GoreeCloud project owner
 - Reviewed at: `2026-09-21T01:36:24.713Z`
 - Scope: all canonical website destinations in the corrected PR #109 candidate.
 - Human evidence: typing and Tab navigation worked across the websites; Skip to content worked; focus remained visible; navigation order was logical; the theme control worked; the mobile Menu opened and closed; Escape closed it and restored focus; search fields were reachable and usable; links and buttons were operable; and no keyboard traps or unreachable controls were encountered.
 
-This closes only the human keyboard-review requirement. It does **not** satisfy representative assistive-technology review, representative performance review, overall Glaze consumer acceptance, merge authorization, production publication, deployed-byte verification, or final production acceptance.
+The keyboard evidence recorded below applies to the prior six-destination candidate. Because `/contact/` and the shared navigation/footer are new, keyboard-only review must be repeated for the current seven-destination candidate.
 
 Using keyboard input only, traverse every canonical destination. Confirm Skip to content works, focus remains visible, navigation order is logical, the theme control works, mobile Menu can be opened and closed, Escape closes the mobile Menu and returns focus, search fields are reachable and usable, links/buttons are operable, and no keyboard trap or unreachable control is present.
 
