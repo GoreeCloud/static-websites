@@ -6,9 +6,9 @@
   "targetVersion": "1.6.0",
   "designSystemStableRevision": "081527eff1c5fe5001b6b9598d60439c8fb3c5e3",
   "designSystemRegistryRevision": "ec88e63c6f56908443affb4eb09fb91815335ca4",
-  "candidateRevision": "e575d58d3efb42c163435ac11aae1f43fe2fe995",
-  "renderedCandidateRevision": "e575d58d3efb42c163435ac11aae1f43fe2fe995",
-  "renderedCandidatePreview": "https://89904e51.goreecloud-website.pages.dev",
+  "candidateRevision": "a2aeea566e4831a59348b966d5c15631c77a80cb",
+  "renderedCandidateRevision": "a2aeea566e4831a59348b966d5c15631c77a80cb",
+  "renderedCandidatePreview": "https://d1c6105a.goreecloud-website.pages.dev",
   "branchPreview": "https://feature-main-website-rebuild.goreecloud-website.pages.dev",
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
@@ -17,19 +17,19 @@
   "machineEvidence": {
     "repositoryValidation": {
       "status": "passed",
-      "runId": 35549446389,
-      "revision": "e575d58d3efb42c163435ac11aae1f43fe2fe995"
+      "runId": 35550489483,
+      "revision": "a2aeea566e4831a59348b966d5c15631c77a80cb"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 35549446339,
-      "revision": "e575d58d3efb42c163435ac11aae1f43fe2fe995"
+      "runId": 35550489472,
+      "revision": "a2aeea566e4831a59348b966d5c15631c77a80cb"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "reviewedRevision": "e575d58d3efb42c163435ac11aae1f43fe2fe995",
-      "validationRevision": "e575d58d3efb42c163435ac11aae1f43fe2fe995",
-      "note": "The exact visual redesign revision passed isolated build, public-surface, Glaze target, and browser validation before this non-public acceptance record was reconciled."
+      "reviewedRevision": "a2aeea566e4831a59348b966d5c15631c77a80cb",
+      "validationRevision": "a2aeea566e4831a59348b966d5c15631c77a80cb",
+      "note": "The screenshot-driven UI-polish revision passed isolated build, public-surface, Glaze target, and browser validation before this non-public acceptance record was reconciled."
     },
     "responsiveAndInteraction": {
       "status": "passed",
@@ -52,7 +52,7 @@
     "isolatedArtifact": {
       "status": "passed",
       "fileCount": 72,
-      "totalBytes": 198365
+      "totalBytes": 198787
     },
     "privacyAndSecurity": {
       "status": "passed",
@@ -80,7 +80,7 @@
       "status": "pending",
       "reviewer": null,
       "reviewedAt": null,
-      "notes": "Human review must use the new Glaze visual redesign preview, not the superseded flat candidate."
+      "notes": "Human screenshots of the prior candidate identified oversized hero typography, excessive section spacing, tiny secondary text, sticky-navigation overlap in the Firefox capture, and broken word wrapping on GitHub. Revision a2aeea566e4831a59348b966d5c15631c77a80cb applies the responsive UI-polish correction. A fresh human visual review of this corrected rendered preview is still required before acceptance."
     },
     "keyboardReview": {
       "status": "pending",
