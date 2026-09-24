@@ -1,0 +1,340 @@
+/* GoreeCloud Android portfolio — mobile readability and density refinements.
+   Page-scoped so the canonical site system remains unchanged elsewhere. */
+
+:root:not([data-theme="dark"]) .android-page{
+  --accent:#08729d;
+  --muted:#405875;
+  --faint:#526780;
+  --line:rgba(36,78,117,.20);
+  --line-strong:rgba(36,78,117,.30);
+}
+
+:root[data-theme="dark"] .android-page{
+  --accent:#59d6ff;
+  --muted:#b3c4d7;
+  --faint:#90a4ba;
+}
+
+.android-page .page-hero{
+  padding-bottom:clamp(2.3rem,3.5vw,3.4rem);
+}
+
+.android-page .page-hero + .section{
+  padding-top:clamp(2rem,3vw,3rem);
+}
+
+.android-page .section{
+  padding:clamp(2.75rem,4.5vw,4.75rem) 0;
+}
+
+.android-page .lede,
+.android-page .boundary-note,
+.android-page .metric span,
+.android-page .product-section-head p,
+.android-page .product-card span,
+.android-page .section-heading p,
+.android-page .card p,
+.android-page .hero-caption,
+.android-page .footer-note,
+.android-page .footer-links a{
+  color:var(--muted);
+}
+
+.android-page .eyebrow{
+  letter-spacing:.13em;
+}
+
+.android-page .hero-grid{
+  gap:clamp(1.5rem,3.5vw,3.5rem);
+}
+
+.android-page .hero-visual{
+  min-height:410px;
+}
+
+.android-page .hero-caption{
+  background:color-mix(in srgb,var(--surface-solid) 93%,transparent);
+  border-color:var(--line-strong);
+  font-weight:560;
+}
+
+.android-page .metrics-band{
+  gap:.8rem;
+  padding:1rem;
+}
+
+.android-page .metric{
+  min-height:132px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.android-page .metric span{
+  font-weight:560;
+}
+
+.android-page .boundary-note{
+  max-width:1000px;
+  font-size:.96rem;
+  font-weight:520;
+}
+
+.android-page .product-section-head{
+  margin-bottom:1.15rem;
+}
+
+.android-page .product-section-head > div > p:not(.eyebrow){
+  line-height:1.58;
+}
+
+.android-page .product-card{
+  border-color:var(--line);
+  background:color-mix(in srgb,var(--surface-solid) 92%,transparent);
+}
+
+.android-page .product-card strong{
+  color:var(--ink);
+  font-weight:780;
+}
+
+.android-page .product-card span{
+  font-size:.86rem;
+  line-height:1.45;
+  font-weight:520;
+}
+
+.android-page [data-android-lifecycle="release-candidate"] .section-heading,
+.android-page [data-android-lifecycle="stable"] .section-heading{
+  margin-bottom:1.1rem;
+}
+
+.android-page [data-android-lifecycle="release-candidate"] .story-card,
+.android-page [data-android-lifecycle="stable"] .story-card{
+  max-width:820px;
+}
+
+.android-page [data-android-lifecycle="release-candidate"] .story-card h3,
+.android-page [data-android-lifecycle="stable"] .story-card h3{
+  max-width:28ch;
+}
+
+.android-page .aura-panel{
+  max-width:940px;
+  margin-inline:auto;
+  padding:clamp(1.8rem,4vw,3rem);
+}
+
+.android-page .site-footer{
+  margin-top:1rem;
+}
+
+.android-page .footer-links a{
+  font-weight:560;
+}
+
+@media (max-width:660px){
+  .android-page .shell{
+    width:min(calc(100% - 1.25rem),var(--max));
+  }
+
+  .android-page .page-hero{
+    padding:2.15rem 0 2.2rem;
+  }
+
+  .android-page h1{
+    max-width:16ch;
+    font-size:clamp(2.35rem,10.5vw,3.15rem);
+    line-height:.99;
+    letter-spacing:-.042em;
+  }
+
+  .android-page h2{
+    font-size:clamp(2rem,9vw,2.65rem);
+    line-height:1.02;
+  }
+
+  .android-page .lede{
+    font-size:1rem;
+    line-height:1.56;
+    font-weight:510;
+  }
+
+  .android-page .hero-actions{
+    margin-top:1.25rem;
+    gap:.6rem;
+  }
+
+  .android-page .button{
+    min-height:48px;
+    padding:.7rem .9rem;
+    border-radius:14px;
+  }
+
+  .android-page .hero-visual{
+    min-height:300px;
+    border-radius:32px;
+  }
+
+  .android-page .ecosystem-orbit{
+    inset:5%;
+  }
+
+  .android-page .hero-caption{
+    left:.8rem;
+    right:.8rem;
+    bottom:.8rem;
+    padding:.72rem .82rem;
+    font-size:.86rem;
+    line-height:1.4;
+  }
+
+  .android-page .section,
+  .android-page .page-hero + .section{
+    padding:2.2rem 0;
+  }
+
+  .android-page .metrics-band{
+    gap:.62rem;
+    padding:.68rem;
+    border-radius:26px;
+  }
+
+  .android-page .metric{
+    min-height:118px;
+    padding:.9rem .78rem;
+    border-radius:18px;
+  }
+
+  .android-page .metric strong{
+    font-size:2.2rem;
+  }
+
+  .android-page .metric span{
+    font-size:.9rem;
+    line-height:1.34;
+  }
+
+  .android-page .boundary-note{
+    margin-top:.75rem;
+    padding:.9rem;
+    font-size:.92rem;
+    line-height:1.55;
+    border-radius:16px;
+  }
+
+  .android-page .product-section-head{
+    gap:.6rem;
+    margin-bottom:.8rem;
+  }
+
+  .android-page .product-section-head .eyebrow{
+    margin-bottom:.7rem;
+  }
+
+  .android-page .status-pill{
+    min-height:36px;
+    padding:.42rem .68rem;
+  }
+
+  .android-page .product-grid{
+    gap:.62rem;
+  }
+
+  .android-page .product-card{
+    min-height:88px;
+    padding:.9rem;
+    gap:.8rem;
+    border-radius:18px;
+  }
+
+  .android-page .product-card img{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+  }
+
+  .android-page .product-card strong{
+    font-size:1rem;
+    line-height:1.22;
+  }
+
+  .android-page .product-card span{
+    margin-top:.24rem;
+    font-size:.88rem;
+    line-height:1.42;
+  }
+
+  .android-page [data-android-lifecycle="release-candidate"] .section-heading,
+  .android-page [data-android-lifecycle="stable"] .section-heading{
+    margin-bottom:.75rem;
+  }
+
+  .android-page [data-android-lifecycle="release-candidate"] .story-card,
+  .android-page [data-android-lifecycle="stable"] .story-card{
+    padding:1.05rem;
+    border-radius:20px;
+  }
+
+  .android-page [data-android-lifecycle="release-candidate"] .story-card h3,
+  .android-page [data-android-lifecycle="stable"] .story-card h3{
+    margin-bottom:.5rem;
+    font-size:1.3rem;
+    line-height:1.12;
+  }
+
+  .android-page [data-android-lifecycle="release-candidate"] .story-card p,
+  .android-page [data-android-lifecycle="stable"] .story-card p{
+    margin-bottom:0;
+    line-height:1.52;
+  }
+
+  .android-page .aura-panel{
+    padding:1.35rem;
+    border-radius:28px;
+  }
+
+  .android-page .aura-panel .eyebrow{
+    margin-bottom:.7rem;
+  }
+
+  .android-page .aura-panel h2{
+    margin-bottom:.6rem;
+  }
+
+  .android-page .site-footer{
+    padding:1.5rem 0 2rem;
+  }
+
+  .android-page .footer-shell{
+    gap:1rem;
+  }
+
+  .android-page .footer-note{
+    margin-bottom:.4rem;
+    font-size:.92rem;
+    line-height:1.5;
+  }
+
+  .android-page .footer-links{
+    gap:.15rem .75rem;
+  }
+
+  .android-page .footer-links a{
+    min-height:44px;
+  }
+}
+
+@media (max-width:390px){
+  .android-page h1{
+    font-size:clamp(2.25rem,11vw,2.8rem);
+  }
+
+  .android-page .metrics-band{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .android-page .metric{
+    min-height:110px;
+  }
+}
