@@ -15,6 +15,7 @@ CANONICAL = {
     "index.html": "https://www.goreecloud.com/",
     "platform-systems/index.html": "https://www.goreecloud.com/platform-systems/",
     "suite/index.html": "https://www.goreecloud.com/suite/",
+    "android/index.html": "https://www.goreecloud.com/android/",
     "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
@@ -161,9 +162,9 @@ def main() -> int:
 
     for relative in CANONICAL:
         text_value = audited.get(relative, ("", Audit()))[0]
-        for route in ('href="/design/"', 'href="/security/"', 'href="/privacy/"'):
+        for route in ('href="/android/"', 'href="/design/"', 'href="/security/"', 'href="/privacy/"'):
             if route not in text_value:
-                errors.append(f"{relative} missing first-class Design/Security/Privacy navigation route: {route}")
+                errors.append(f"{relative} missing required first-class navigation route: {route}")
 
     for relative in COMPATIBILITY:
         result = audit_page(relative, None, errors)
@@ -189,6 +190,7 @@ def main() -> int:
         "Glaze UI V1.6",
         "/platform-systems/",
         "/suite/",
+        "/android/",
         "/office-suite/",
         "/firefox/",
         "/github/",
@@ -221,11 +223,26 @@ def main() -> int:
     if suite[1].classes["product-card"] != 45:
         errors.append(f"suite must contain 45 current products; found {suite[1].classes['product-card']}")
 
+    android = audited.get("android/index.html", ("", Audit()))
+    if android[1].classes["product-card"] != 20:
+        errors.append(f"android page must contain 20 current/planned app-client cards; found {android[1].classes['product-card']}")
+    for marker in (
+        'data-android-lifecycle="planned"',
+        'data-android-lifecycle="active-development"',
+        'data-android-lifecycle="release-candidate"',
+        'data-android-lifecycle="stable"',
+        "No current Android release candidates.",
+        "No Android app or client is currently Stable-qualified.",
+    ):
+        if marker not in android[0]:
+            errors.append(f"android page missing lifecycle truth marker: {marker}")
+
 
     visual_requirements = {
         "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
         "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg", "/assets/systems/policy.svg", "/assets/systems/observability.svg"),
         "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg", "/assets/products/sync.svg", "/assets/products/reader.svg", "/assets/products/social.svg", "/assets/products/keyboard.svg", "/assets/products/health.svg", "/assets/products/home.svg", "/assets/products/home-security.svg", "/assets/products/router-os.svg", "/assets/products/website.svg"),
+        "android/index.html": ("hero-visual", "product-card", "/assets/products/launcher.svg", "/assets/products/gallery.svg", "Planned", "Active development", "Release Candidate", "Stable"),
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/advanced-tab-manager.svg", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
@@ -309,7 +326,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: one current website, ten canonical public pages, nine platform systems, and 45 Suite products.")
+    print("Website validation passed: one current website, eleven canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 

@@ -22,6 +22,7 @@ PUBLIC_FILES = (
     "assets/social/x.ico",
     "assets/social/reddit.ico",
     "assets/social/pinterest.ico",
+    "android/index.html",
     "css/site-v9.css",
     "contact/index.html",
     "design/index.html",

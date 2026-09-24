@@ -14,6 +14,7 @@ CANONICAL_PAGES = (
     "index.html",
     "platform-systems/index.html",
     "suite/index.html",
+    "android/index.html",
     "office-suite/index.html",
     "firefox/index.html",
     "github/index.html",
