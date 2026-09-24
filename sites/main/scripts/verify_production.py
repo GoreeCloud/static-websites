@@ -15,6 +15,7 @@ from build_public_site import DIST
 ORIGIN = "https://www.goreecloud.com"
 ROUTES = {
     "/": "index.html",
+    "/android/": "android/index.html",
     "/design/": "design/index.html",
     "/security/": "security/index.html",
     "/privacy/": "privacy/index.html",
@@ -211,7 +212,7 @@ def main() -> int:
         failures = verify_once(expected_revision)
         if not failures:
             print(
-                "Production verification passed: Home, Design, Security, and Privacy match "
+                "Production verification passed: Home, Android, Design, Security, and Privacy match "
                 f"the exact isolated artifact for {expected_revision}; required security/indexing "
                 "headers, Privacy/Security legacy redirects, and exact 404 behavior are verified."
             )
