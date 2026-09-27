@@ -1,4 +1,4 @@
-# GoreeCloud Website — Retention and Retirement Roadmap
+# GoreeCloud Public Websites — Planned Features and Retention
 
 **Status:** Secondary-site retirement complete / retained main website ongoing  
 **As of:** 2026-09-21  
