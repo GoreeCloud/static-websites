@@ -30,6 +30,11 @@
       "url": "/suite/"
     },
     {
+      "name": "GoreeCloud OS",
+      "short_name": "OS",
+      "url": "/os/"
+    },
+    {
       "name": "Office Suite",
       "short_name": "Office",
       "url": "/office-suite/"

@@ -15,6 +15,7 @@ CANONICAL = {
     "index.html": "https://www.goreecloud.com/",
     "platform-systems/index.html": "https://www.goreecloud.com/platform-systems/",
     "suite/index.html": "https://www.goreecloud.com/suite/",
+    "os/index.html": "https://www.goreecloud.com/os/",
     "android/index.html": "https://www.goreecloud.com/android/",
     "office-suite/index.html": "https://www.goreecloud.com/office-suite/",
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
@@ -162,7 +163,7 @@ def main() -> int:
 
     for relative in CANONICAL:
         text_value = audited.get(relative, ("", Audit()))[0]
-        for route in ('href="/android/"', 'href="/design/"', 'href="/security/"', 'href="/privacy/"'):
+        for route in ('href="/os/"', 'href="/android/"', 'href="/design/"', 'href="/security/"', 'href="/privacy/"'):
             if route not in text_value:
                 errors.append(f"{relative} missing required first-class navigation route: {route}")
 
@@ -190,6 +191,7 @@ def main() -> int:
         "Glaze UI V1.6",
         "/platform-systems/",
         "/suite/",
+        "/os/",
         "/android/",
         "/office-suite/",
         "/firefox/",
@@ -241,6 +243,7 @@ def main() -> int:
     visual_requirements = {
         "index.html": ("hero-visual", "feature-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "/assets/products/drive.svg"),
         "platform-systems/index.html": ("system-map", "system-card", "/assets/systems/privacy-shield.svg", "/assets/systems/wardveil-security.svg", "/assets/systems/policy.svg", "/assets/systems/observability.svg"),
+        "os/index.html": ("identity-stage", "showcase-card", "GoreeCloud OS Mobile", "GoreeCloud OS Desktop", "GoreeCloud OS TV", "GoreeCloud OS Hypervisor", "GoreeCloud Router OS", "Development · Milestone 0"),
         "suite/index.html": ("hero-visual", "product-card", "/assets/products/notes.svg", "/assets/products/photos.svg", "/assets/products/sync.svg", "/assets/products/reader.svg", "/assets/products/social.svg", "/assets/products/keyboard.svg", "/assets/products/health.svg", "/assets/products/home.svg", "/assets/products/home-security.svg", "/assets/products/router-os.svg", "/assets/products/website.svg"),
         "android/index.html": ("hero-visual", "product-card", "/assets/products/launcher.svg", "/assets/products/gallery.svg", "Planned", "Active development", "Release Candidate", "Stable"),
         "office-suite/index.html": ("office-stage", "office-family", "arch-card", "/assets/products/office.svg", "/assets/products/writer.svg", "/assets/products/spreadsheet.svg", "/assets/products/presentations.svg", "/assets/products/forms.svg"),
@@ -256,6 +259,18 @@ def main() -> int:
         for marker in markers:
             if marker not in text_value:
                 errors.append(f"{relative} missing required Glaze visual identity marker: {marker}")
+
+    os_page = audited.get("os/index.html", ("", Audit()))[0]
+    for marker in (
+        "AOSP-first",
+        "Debian 13 or later",
+        "Early repository",
+        "No verified product features",
+        "Development · Milestone 0",
+        "Supported release not established",
+    ):
+        if marker not in os_page:
+            errors.append(f"os page missing evidence-bound platform marker: {marker}")
 
     office = audited.get("office-suite/index.html", ("", Audit()))[0]
     for marker in ("not yet implemented", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):

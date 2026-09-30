@@ -16,6 +16,7 @@ PAGES = (
     ROOT / "index.html",
     ROOT / "platform-systems/index.html",
     ROOT / "suite/index.html",
+    ROOT / "os/index.html",
     ROOT / "office-suite/index.html",
     ROOT / "firefox/index.html",
     ROOT / "github/index.html",

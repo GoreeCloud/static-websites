@@ -30,6 +30,11 @@
       "source": "sites/main/suite/index.html"
     },
     {
+      "id": "os",
+      "path": "/os/",
+      "source": "sites/main/os/index.html"
+    },
+    {
       "id": "android",
       "path": "/android/",
       "source": "sites/main/android/index.html"
