@@ -481,3 +481,21 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
   #variants .showcase-card{padding:.95rem}
   #variants + .section .story-card{padding:.95rem}
 }
+
+
+/* OS phone hero and metrics refinement 2026-09-30 */
+@media (max-width:660px){
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero{padding:1.9rem 0 2.1rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero h1{font-size:clamp(2.25rem,10.5vw,3rem);line-height:1}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero .lede{font-size:1rem;line-height:1.5}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2){padding:1.6rem 0 2rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;padding:.65rem;border-radius:24px}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric{padding:.85rem .8rem;border-radius:17px}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric strong{font-size:1.8rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric:nth-child(4) strong{font-size:1.35rem;line-height:1.02;letter-spacing:-.04em}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric span{font-size:.82rem;line-height:1.35}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .boundary-note{margin-top:.75rem;padding:.85rem 1rem;line-height:1.5}
+}
+@media (max-width:390px){
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
