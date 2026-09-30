@@ -456,3 +456,28 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
   .home-page .orbit-icon{width:48px;height:48px}
   .home-page .ecosystem-core{width:84px;height:84px}
 }
+
+
+/* OS phone-density refinement 2026-09-30 */
+@media (max-width:660px){
+  .identity-stage[aria-label="GoreeCloud OS family illustration"]{min-height:260px;border-radius:28px}
+  .identity-stage[aria-label="GoreeCloud OS family illustration"] .identity-emblem{width:88px;height:88px;padding:14px;border-radius:24px}
+  .identity-stage[aria-label="GoreeCloud OS family illustration"] .identity-chip{min-height:36px;padding:.5rem .62rem;font-size:.68rem}
+  #variants{padding:2.5rem 0}
+  #variants .section-heading{margin-bottom:1.2rem}
+  #variants .showcase-grid{gap:.75rem}
+  #variants .showcase-card{min-height:0;padding:1.05rem;border-radius:24px}
+  #variants .showcase-card p{line-height:1.5}
+  #variants .status-strip{gap:.45rem;margin-top:.8rem}
+  #variants .status-pill{min-height:34px;padding:.42rem .62rem;font-size:.72rem}
+  #variants .showcase-card .stretched{margin-top:.3rem;padding:.35rem .1rem;font-size:.96rem}
+  #variants + .section{padding:2.5rem 0}
+  #variants + .section .story-grid{gap:.75rem}
+  #variants + .section .story-card{padding:1.05rem;border-radius:24px}
+  #variants ~ .section.soft .aura-panel{padding:1.4rem;border-radius:28px}
+  #variants ~ .section.soft .button-row{gap:.55rem;margin-top:1rem}
+}
+@media (max-width:390px){
+  #variants .showcase-card{padding:.95rem}
+  #variants + .section .story-card{padding:.95rem}
+}
