@@ -413,3 +413,46 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
   .identity-stage::before,.identity-orbit,.showcase-card::after{display:none}
   .design-demo-orb,.flow-step>span{background:ButtonFace;color:ButtonText;border:1px solid ButtonText}
 }
+
+
+/* Mobile density refinement — representative-device review, 2026-09-30. */
+@media (max-width:660px){
+  .home-page .shell{width:min(calc(100% - 2rem),var(--max))}
+  .home-page .page-hero{padding:2rem 0 2.25rem}
+  .home-page h1{max-width:none;font-size:clamp(2.35rem,10vw,3rem);line-height:1}
+  .home-page h2{font-size:clamp(1.8rem,8.2vw,2.35rem);line-height:1.04}
+  .home-page h3{font-size:1.22rem;line-height:1.12}
+  .home-page .eyebrow{margin-bottom:.7rem;font-size:.72rem;letter-spacing:.14em}
+  .home-page .lede{font-size:1rem;line-height:1.55}
+  .home-page .hero-actions{gap:.6rem;margin-top:1.15rem}
+  .home-page .hero-visual{min-height:280px;border-radius:28px}
+  .home-page .ecosystem-orbit{inset:8%}
+  .home-page .orbit-icon{width:52px;height:52px;padding:7px;border-radius:17px}
+  .home-page .ecosystem-core{width:90px;height:90px;padding:16px;border-radius:25px}
+  .home-page .hero-caption{left:.75rem;right:.75rem;bottom:.75rem;padding:.65rem .75rem;border-radius:14px;font-size:.78rem;line-height:1.4}
+  .home-page .section{padding:2.65rem 0}
+  .home-page .page-hero + .section{padding-top:1.6rem}
+  .home-page .section-heading{margin-bottom:1.25rem}
+  .home-page .section-heading p{line-height:1.58}
+  .home-page .feature-grid,.home-page .story-grid,.home-page .system-access-grid{gap:.75rem}
+  .home-page .feature-card,.home-page .system-access-card,.home-page .story-card{min-height:0;padding:1.05rem;border-radius:24px}
+  .home-page .feature-card.wide{min-height:0}
+  .home-page .feature-icon{width:52px;height:52px;padding:6px;border-radius:17px}
+  .home-page .card p,.home-page .system-access-card p:not(.kicker){line-height:1.52}
+  .home-page .feature-card .stretched,.home-page .system-access-action{margin-top:.25rem;padding:.35rem .1rem;font-size:.96rem}
+  .home-page .icon-strip{gap:.35rem;margin:.9rem 0}
+  .home-page .icon-strip img{width:42px;height:42px;padding:4px;border-radius:13px}
+  .home-page .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;padding:.65rem;border-radius:24px}
+  .home-page .metric{padding:.85rem .8rem;border-radius:17px}
+  .home-page .metric strong{font-size:1.8rem}
+  .home-page .metric span{font-size:.82rem;line-height:1.35}
+  .home-page .aura-panel{padding:1.4rem;border-radius:28px}
+}
+@media (max-width:390px){
+  .home-page .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-page .section{padding:2.35rem 0}
+  .home-page .feature-card,.home-page .system-access-card,.home-page .story-card{padding:.95rem}
+  .home-page .hero-visual{min-height:260px}
+  .home-page .orbit-icon{width:48px;height:48px}
+  .home-page .ecosystem-core{width:84px;height:84px}
+}
