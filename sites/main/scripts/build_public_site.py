@@ -33,6 +33,7 @@ PUBLIC_FILES = (
     "js/site-v8.js",
     "js/theme-init-v8.js",
     "office-suite/index.html",
+    "os/index.html",
     "platform-systems/index.html",
     "privacy.html",
     "privacy/index.html",

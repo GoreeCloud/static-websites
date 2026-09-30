@@ -17,6 +17,7 @@ The website is intentionally path-based rather than a collection of separate pub
 - `/` — GoreeCloud overview
 - `/platform-systems/` — the nine Integral Platform Systems
 - `/suite/` — the reconciled 45-product GoreeCloud Suite registry
+- `/os/` — GoreeCloud OS Mobile, Desktop, TV, Hypervisor, and Router OS with evidence-bound lifecycle state
 - `/android/` — Android applications and product clients grouped by current lifecycle
 - `/office-suite/` — GoreeCloud Office Suite
 - `/firefox/` — standalone extensions and application-owned Firefox clients

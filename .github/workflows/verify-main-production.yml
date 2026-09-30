@@ -5,6 +5,11 @@ on:
     paths:
       - 'sites/main/**'
       - '.github/workflows/verify-main-production.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'sites/main/**'
+      - '.github/workflows/verify-main-production.yml'
   workflow_dispatch:
 
 permissions:
@@ -15,10 +20,10 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - name: Check out exact verification candidate
+      - name: Check out exact production-verification revision
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
           persist-credentials: false
 
       - name: Build exact isolated public artifact

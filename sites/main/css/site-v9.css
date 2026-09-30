@@ -413,3 +413,89 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
   .identity-stage::before,.identity-orbit,.showcase-card::after{display:none}
   .design-demo-orb,.flow-step>span{background:ButtonFace;color:ButtonText;border:1px solid ButtonText}
 }
+
+
+/* Mobile density refinement — representative-device review, 2026-09-30. */
+@media (max-width:660px){
+  .home-page .shell{width:min(calc(100% - 2rem),var(--max))}
+  .home-page .page-hero{padding:2rem 0 2.25rem}
+  .home-page h1{max-width:none;font-size:clamp(2.35rem,10vw,3rem);line-height:1}
+  .home-page h2{font-size:clamp(1.8rem,8.2vw,2.35rem);line-height:1.04}
+  .home-page h3{font-size:1.22rem;line-height:1.12}
+  .home-page .eyebrow{margin-bottom:.7rem;font-size:.72rem;letter-spacing:.14em}
+  .home-page .lede{font-size:1rem;line-height:1.55}
+  .home-page .hero-actions{gap:.6rem;margin-top:1.15rem}
+  .home-page .hero-visual{min-height:280px;border-radius:28px}
+  .home-page .ecosystem-orbit{inset:8%}
+  .home-page .orbit-icon{width:52px;height:52px;padding:7px;border-radius:17px}
+  .home-page .ecosystem-core{width:90px;height:90px;padding:16px;border-radius:25px}
+  .home-page .hero-caption{left:.75rem;right:.75rem;bottom:.75rem;padding:.65rem .75rem;border-radius:14px;font-size:.78rem;line-height:1.4}
+  .home-page .section{padding:2.65rem 0}
+  .home-page .page-hero + .section{padding-top:1.6rem}
+  .home-page .section-heading{margin-bottom:1.25rem}
+  .home-page .section-heading p{line-height:1.58}
+  .home-page .feature-grid,.home-page .story-grid,.home-page .system-access-grid{gap:.75rem}
+  .home-page .feature-card,.home-page .system-access-card,.home-page .story-card{min-height:0;padding:1.05rem;border-radius:24px}
+  .home-page .feature-card.wide{min-height:0}
+  .home-page .feature-icon{width:52px;height:52px;padding:6px;border-radius:17px}
+  .home-page .card p,.home-page .system-access-card p:not(.kicker){line-height:1.52}
+  .home-page .feature-card .stretched,.home-page .system-access-action{margin-top:.25rem;padding:.35rem .1rem;font-size:.96rem}
+  .home-page .icon-strip{gap:.35rem;margin:.9rem 0}
+  .home-page .icon-strip img{width:42px;height:42px;padding:4px;border-radius:13px}
+  .home-page .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;padding:.65rem;border-radius:24px}
+  .home-page .metric{padding:.85rem .8rem;border-radius:17px}
+  .home-page .metric strong{font-size:1.8rem}
+  .home-page .metric span{font-size:.82rem;line-height:1.35}
+  .home-page .aura-panel{padding:1.4rem;border-radius:28px}
+}
+@media (max-width:390px){
+  .home-page .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .home-page .section{padding:2.35rem 0}
+  .home-page .feature-card,.home-page .system-access-card,.home-page .story-card{padding:.95rem}
+  .home-page .hero-visual{min-height:260px}
+  .home-page .orbit-icon{width:48px;height:48px}
+  .home-page .ecosystem-core{width:84px;height:84px}
+}
+
+
+/* OS phone-density refinement 2026-09-30 */
+@media (max-width:660px){
+  .identity-stage[aria-label="GoreeCloud OS family illustration"]{min-height:260px;border-radius:28px}
+  .identity-stage[aria-label="GoreeCloud OS family illustration"] .identity-emblem{width:88px;height:88px;padding:14px;border-radius:24px}
+  .identity-stage[aria-label="GoreeCloud OS family illustration"] .identity-chip{min-height:36px;padding:.5rem .62rem;font-size:.68rem}
+  #variants{padding:2.5rem 0}
+  #variants .section-heading{margin-bottom:1.2rem}
+  #variants .showcase-grid{gap:.75rem}
+  #variants .showcase-card{min-height:0;padding:1.05rem;border-radius:24px}
+  #variants .showcase-card p{line-height:1.5}
+  #variants .status-strip{gap:.45rem;margin-top:.8rem}
+  #variants .status-pill{min-height:34px;padding:.42rem .62rem;font-size:.72rem}
+  #variants .showcase-card .stretched{margin-top:.3rem;padding:.35rem .1rem;font-size:.96rem}
+  #variants + .section{padding:2.5rem 0}
+  #variants + .section .story-grid{gap:.75rem}
+  #variants + .section .story-card{padding:1.05rem;border-radius:24px}
+  #variants ~ .section.soft .aura-panel{padding:1.4rem;border-radius:28px}
+  #variants ~ .section.soft .button-row{gap:.55rem;margin-top:1rem}
+}
+@media (max-width:390px){
+  #variants .showcase-card{padding:.95rem}
+  #variants + .section .story-card{padding:.95rem}
+}
+
+
+/* OS phone hero and metrics refinement 2026-09-30 */
+@media (max-width:660px){
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero{padding:1.9rem 0 2.1rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero h1{font-size:clamp(2.25rem,10.5vw,3rem);line-height:1}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .showcase-hero .lede{font-size:1rem;line-height:1.5}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2){padding:1.6rem 0 2rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;padding:.65rem;border-radius:24px}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric{padding:.85rem .8rem;border-radius:17px}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric strong{font-size:1.8rem}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric:nth-child(4) strong{font-size:1.35rem;line-height:1.02;letter-spacing:-.04em}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metric span{font-size:.82rem;line-height:1.35}
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .boundary-note{margin-top:.75rem;padding:.85rem 1rem;line-height:1.5}
+}
+@media (max-width:390px){
+  main:has(.identity-stage[aria-label="GoreeCloud OS family illustration"]) > .section:nth-of-type(2) .metrics-band{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

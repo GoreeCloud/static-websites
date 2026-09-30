@@ -21,7 +21,7 @@ DRIVER_BASE = f"http://{DRIVER_HOST}:{DRIVER_PORT}"
 WEB_HOST = "127.0.0.1"
 WEB_PORT = 8770
 WEB_BASE = f"http://{WEB_HOST}:{WEB_PORT}"
-PAGES = ("/", "/platform-systems/", "/suite/", "/android/", "/office-suite/", "/firefox/", "/github/", "/contact/", "/design/", "/security/", "/privacy/")
+PAGES = ("/", "/platform-systems/", "/suite/", "/os/", "/android/", "/office-suite/", "/firefox/", "/github/", "/contact/", "/design/", "/security/", "/privacy/")
 VIEWPORTS = ((1180, 900), (768, 900), (390, 844), (320, 844))
 
 
@@ -238,6 +238,58 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if target_state.get("undersized"):
         raise BrowserError(f"{path} contains interactive targets below the 48px floor at {width}px: {target_state}")
 
+    # mobile homepage density regression
+    if path == "/" and width <= 390:
+        density = execute(session, """
+          const metrics=document.querySelector('.metrics-band');
+          const feature=document.querySelector('.feature-card:not(.wide)');
+          const system=document.querySelector('.system-access-card');
+          const hero=document.querySelector('.hero-visual');
+          return {
+            metricColumns: metrics ? getComputedStyle(metrics).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
+            metricsHeight: metrics ? metrics.getBoundingClientRect().height : 9999,
+            featureMinHeight: feature ? getComputedStyle(feature).minHeight : '',
+            systemMinHeight: system ? getComputedStyle(system).minHeight : '',
+            heroHeight: hero ? hero.getBoundingClientRect().height : 9999,
+          };
+        """)
+        if int(density.get("metricColumns", 0)) != 2:
+            raise BrowserError(f"{path} mobile homepage metrics must use two columns at {width}px: {density}")
+        if float(density.get("metricsHeight", 9999)) > 380:
+            raise BrowserError(f"{path} mobile homepage metrics are excessively tall at {width}px: {density}")
+        if density.get("featureMinHeight") not in ("0px", "auto"):
+            raise BrowserError(f"{path} mobile homepage feature cards retain an artificial min-height at {width}px: {density}")
+        if density.get("systemMinHeight") not in ("0px", "auto"):
+            raise BrowserError(f"{path} mobile homepage system cards retain an artificial min-height at {width}px: {density}")
+        if float(density.get("heroHeight", 9999)) > 300:
+            raise BrowserError(f"{path} mobile homepage hero visual is excessively tall at {width}px: {density}")
+
+    # OS mobile density regression
+    if path == "/os/" and width <= 390:
+        density = execute(session, """
+          const metrics=document.querySelector('.metrics-band');
+          const hero=document.querySelector('.identity-stage[aria-label="GoreeCloud OS family illustration"]');
+          const card=document.querySelector('#variants .showcase-card');
+          const evidence=metrics?.querySelector('.metric:nth-child(4) strong');
+          return {
+            metricColumns: metrics ? getComputedStyle(metrics).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
+            metricsHeight: metrics ? metrics.getBoundingClientRect().height : 9999,
+            heroHeight: hero ? hero.getBoundingClientRect().height : 9999,
+            cardMinHeight: card ? getComputedStyle(card).minHeight : '',
+            evidenceSize: evidence ? parseFloat(getComputedStyle(evidence).fontSize) : 9999,
+          };
+        """)
+        if int(density.get("metricColumns", 0)) != 2:
+            raise BrowserError(f"{path} mobile OS metrics must use two columns at {width}px: {density}")
+        if float(density.get("metricsHeight", 9999)) > 360:
+            raise BrowserError(f"{path} mobile OS metrics are excessively tall at {width}px: {density}")
+        if float(density.get("heroHeight", 9999)) > 280:
+            raise BrowserError(f"{path} mobile OS illustration is excessively tall at {width}px: {density}")
+        if density.get("cardMinHeight") not in ("0px", "auto"):
+            raise BrowserError(f"{path} mobile OS variant cards retain an artificial min-height at {width}px: {density}")
+        if float(density.get("evidenceSize", 9999)) > 23:
+            raise BrowserError(f"{path} mobile Evidence-bound metric remains oversized at {width}px: {density}")
+
     if width <= 900:
         nav_state = execute(session, """
           const button=document.querySelector('[data-nav-toggle]');
@@ -311,7 +363,7 @@ def main() -> int:
             for path in PAGES:
                 validate_page(session, path, width, height)
 
-        print("Browser smoke passed for all eleven canonical pages at desktop, tablet, and mobile viewports.")
+        print("Browser smoke passed for all twelve canonical pages at desktop, tablet, and mobile viewports.")
         return 0
     except Exception as exc:
         print(f"Browser smoke failed: {exc}")
