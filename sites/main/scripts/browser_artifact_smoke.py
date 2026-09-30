@@ -238,6 +238,32 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
     if target_state.get("undersized"):
         raise BrowserError(f"{path} contains interactive targets below the 48px floor at {width}px: {target_state}")
 
+    # mobile homepage density regression
+    if path == "/" and width <= 390:
+        density = execute(session, """
+          const metrics=document.querySelector('.metrics-band');
+          const feature=document.querySelector('.feature-card:not(.wide)');
+          const system=document.querySelector('.system-access-card');
+          const hero=document.querySelector('.hero-visual');
+          return {
+            metricColumns: metrics ? getComputedStyle(metrics).gridTemplateColumns.split(' ').filter(Boolean).length : 0,
+            metricsHeight: metrics ? metrics.getBoundingClientRect().height : 9999,
+            featureMinHeight: feature ? getComputedStyle(feature).minHeight : '',
+            systemMinHeight: system ? getComputedStyle(system).minHeight : '',
+            heroHeight: hero ? hero.getBoundingClientRect().height : 9999,
+          };
+        """)
+        if int(density.get("metricColumns", 0)) != 2:
+            raise BrowserError(f"{path} mobile homepage metrics must use two columns at {width}px: {density}")
+        if float(density.get("metricsHeight", 9999)) > 380:
+            raise BrowserError(f"{path} mobile homepage metrics are excessively tall at {width}px: {density}")
+        if density.get("featureMinHeight") not in ("0px", "auto"):
+            raise BrowserError(f"{path} mobile homepage feature cards retain an artificial min-height at {width}px: {density}")
+        if density.get("systemMinHeight") not in ("0px", "auto"):
+            raise BrowserError(f"{path} mobile homepage system cards retain an artificial min-height at {width}px: {density}")
+        if float(density.get("heroHeight", 9999)) > 300:
+            raise BrowserError(f"{path} mobile homepage hero visual is excessively tall at {width}px: {density}")
+
     if width <= 900:
         nav_state = execute(session, """
           const button=document.querySelector('[data-nav-toggle]');
