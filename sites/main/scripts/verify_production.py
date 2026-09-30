@@ -15,7 +15,14 @@ from build_public_site import DIST
 ORIGIN = "https://www.goreecloud.com"
 ROUTES = {
     "/": "index.html",
+    "/platform-systems/": "platform-systems/index.html",
+    "/suite/": "suite/index.html",
+    "/os/": "os/index.html",
     "/android/": "android/index.html",
+    "/office-suite/": "office-suite/index.html",
+    "/firefox/": "firefox/index.html",
+    "/github/": "github/index.html",
+    "/contact/": "contact/index.html",
     "/design/": "design/index.html",
     "/security/": "security/index.html",
     "/privacy/": "privacy/index.html",
@@ -212,7 +219,7 @@ def main() -> int:
         failures = verify_once(expected_revision)
         if not failures:
             print(
-                "Production verification passed: Home, Android, Design, Security, and Privacy match "
+                "Production verification passed: all twelve canonical routes match "
                 f"the exact isolated artifact for {expected_revision}; required security/indexing "
                 "headers, Privacy/Security legacy redirects, and exact 404 behavior are verified."
             )
