@@ -206,7 +206,7 @@ def main() -> int:
     if platform[1].classes["system-card"] != 9:
         errors.append(f"platform-systems must contain nine system cards; found {platform[1].classes['system-card']}")
     for name in (
-        "GoreeCloud Manager", "Privacy Shield", "Wardveil Security", "Everkeep", "Glaze UI",
+        "GoreeCloud Manager", "Privacy Shield", "Wardveil Security", "Everkeep", "Glaze",
         "GoreeCloud Mesh", "GoreeCloud Identity", "GoreeCloud Policy", "GoreeCloud Observability",
     ):
         if name not in platform[0]:
@@ -249,7 +249,7 @@ def main() -> int:
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "support@goreecloud.com", "security@goreecloud.com"),
         "design/index.html": ("identity-stage", "design-lab", "material-grid", "/assets/systems/glaze-ui.svg", "Official Stable"),
         "security/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/wardveil-security.svg", "scope-specific evidence"),
-        "privacy/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/privacy-shield.svg", "Privacy Shield remains in Development"),
+        "privacy/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/privacy-shield.svg", "Privacy Shield Version 2.0.0", "Deployment remains Development"),
     }
     for relative, markers in visual_requirements.items():
         text_value = audited.get(relative, ("", Audit()))[0]
@@ -258,15 +258,31 @@ def main() -> int:
                 errors.append(f"{relative} missing required Glaze visual identity marker: {marker}")
 
     office = audited.get("office-suite/index.html", ("", Audit()))[0]
+    if "https://github.com/GoreeCloud/office" not in office:
+        errors.append("office-suite missing canonical GoreeCloud/office repository link")
     for marker in ("not yet implemented", "Rust", "Writer", ".gcwriter", ".gcsheet", ".gcpresent", "ODF 1.4", "not backup"):
         if marker not in office:
             errors.append(f"office-suite missing implementation/planning boundary marker: {marker}")
 
     firefox = audited.get("firefox/index.html", ("", Audit()))
-    if firefox[1].classes["extension-card"] != 7:
-        errors.append(f"firefox page must contain seven verified extension/client cards; found {firefox[1].classes['extension-card']}")
+    if firefox[1].classes["extension-card"] != 9:
+        errors.append(f"firefox page must contain nine verified extension/client cards; found {firefox[1].classes['extension-card']}")
+    for stale_link in (
+        "https://github.com/GoreeCloud/firefox-extensions",
+        "https://github.com/GoreeCloud/goreecloud-office",
+        "https://github.com/GoreeCloud/goreecloud-bookmarks",
+    ):
+        for relative in CANONICAL:
+            if stale_link in audited.get(relative, ("", Audit()))[0]:
+                errors.append(f"{relative} contains retired canonical repository link: {stale_link}")
+
+    if "https://github.com/GoreeCloud/firefox-addons" not in firefox[0]:
+        errors.append("firefox page missing canonical GoreeCloud/firefox-addons source link")
+    if "https://github.com/GoreeCloud/bookmarks/tree/main/clients/firefox" not in firefox[0]:
+        errors.append("firefox page missing canonical GoreeCloud/bookmarks Firefox client link")
+
     for marker in (
-        "Advanced Tab Manager", "Webspaces", "Privacy Shield", "Redirector",
+        "Advanced Tab Manager", "ChatGPT Enhancer", "Browser Hardening", "Webspaces", "Privacy Shield", "Redirector",
         "Source Resync", "Download Manager Extension", "Bookmarks Firefox Client",
     ):
         if marker not in firefox[0]:
@@ -304,6 +320,10 @@ def main() -> int:
         errors.append("GitHub catalog must use the public GoreeCloud organization API")
     if "data-load-github" not in github or "addEventListener(\"click\"" not in github_js:
         errors.append("GitHub public catalog must remain visitor-triggered rather than automatic")
+
+    css = (ROOT / "css/site-v9.css").read_text(encoding="utf-8")
+    if "\\n" in css:
+        errors.append("site-v9.css contains literal escaped newline text")
 
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
     if "posthog.com" in headers:
