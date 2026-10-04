@@ -4,26 +4,24 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
+from pathlib import Path
 import time
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urljoin, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
 
-from build_public_site import DIST
+from build_public_site import DIST, ROOT
 
 ORIGIN = "https://www.goreecloud.com"
+NAMESPACE_PATH = ROOT.parent / "url-namespace.json"
+NAMESPACE = json.loads(NAMESPACE_PATH.read_text(encoding="utf-8"))
 ROUTES = {
-    "/": "index.html",
-    "/android/": "android/index.html",
-    "/design/": "design/index.html",
-    "/security/": "security/index.html",
-    "/privacy/": "privacy/index.html",
+    entry["path"]: str(Path(entry["source"]).relative_to("sites/main"))
+    for entry in NAMESPACE["canonical_paths"]
 }
-REDIRECTS = {
-    "/privacy.html": "/privacy/",
-    "/security.html": "/security/",
-}
+REDIRECTS = {entry["from"]: entry["to"] for entry in NAMESPACE["compatibility_paths"]}
 ATTEMPTS = 6
 SLEEP_SECONDS = 10
 MAX_BYTES = 2_000_000
@@ -212,9 +210,9 @@ def main() -> int:
         failures = verify_once(expected_revision)
         if not failures:
             print(
-                "Production verification passed: Home, Android, Design, Security, and Privacy match "
-                f"the exact isolated artifact for {expected_revision}; required security/indexing "
-                "headers, Privacy/Security legacy redirects, and exact 404 behavior are verified."
+                f"Production verification passed: all {len(ROUTES)} canonical routes match the exact isolated "
+                f"artifact for {expected_revision}; required security/indexing headers, all governed compatibility "
+                "redirects, and exact 404 behavior are verified."
             )
             return 0
         print(f"Production verification attempt {attempt}/{ATTEMPTS} did not match:")

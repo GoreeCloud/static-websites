@@ -58,6 +58,9 @@ jobs:
           GLAZE_UI_SOURCE: ${{ github.workspace }}/.glaze-ui
         run: python sites/main/scripts/validate_glaze_ui.py
 
+      - name: Run current retained-site unit tests
+        run: python -m unittest discover -s sites/main/tests -p "test_*.py"
+
       - name: Build isolated one-site artifact
         run: python sites/main/scripts/build_public_site.py
 

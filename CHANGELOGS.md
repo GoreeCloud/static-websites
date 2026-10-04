@@ -1,5 +1,13 @@
 # GoreeCloud Public Websites — Changelogs
 
+## 2026-10-04 — Current retained-site test and release-evidence restoration
+
+- Replaced the dormant transformation-era Main unit suite with current one-site, Glaze V1.7, navigation, documentation, release-evidence, and production-verifier coverage.
+- Restored fail-closed release-evidence record generation/validation after the template modernization and removed obsolete issue-number acceptance gates from the structural validator.
+- Updated the production verifier to derive all eleven canonical routes and every governed compatibility redirect from `sites/url-namespace.json` instead of verifying a five-route subset.
+- Re-enabled current unit discovery in both retained-site GitHub Actions workflows and added the unit gate to the release-readiness checklist.
+- This quality pass changes repository-only tests, tooling, workflow configuration, and documentation; it does not change allowlisted public website bytes or grant final Glaze consumer acceptance.
+
 ## 2026-10-04 — Current support-document and release-gate reconciliation
 
 - Reconciled current retained-site support documentation to the eleven-route one-site topology, source version 5.25.1, Glaze V1.7 / 1.7.0 Stable target, and exact deployed public-artifact revision `17303b6c7381faaa0e89ce6175ce24048fb56a12`.

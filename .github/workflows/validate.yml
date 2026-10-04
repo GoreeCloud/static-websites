@@ -39,6 +39,9 @@ jobs:
           python sites/main/scripts/validate_glaze_ui.py
           python sites/main/scripts/validate_governance_readiness.py
 
+      - name: Run current retained-site unit tests
+        run: python -m unittest discover -s sites/main/tests -p "test_*.py"
+
       - name: Reject active stale multi-site and old Glaze claims in Main
         shell: python
         run: |

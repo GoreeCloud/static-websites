@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""Protect the repository-only GoreeCloud website release-evidence record template."""
-
-from __future__ import annotations
-
 from pathlib import Path
 import sys
 import unittest
@@ -18,70 +14,64 @@ TEMPLATE = ROOT / "docs" / "release-evidence-template.md"
 
 
 class ReleaseEvidenceTemplateTests(unittest.TestCase):
-    """Keep release evidence separate, fail-closed, and outside the public artifact."""
-
-    def setUp(self) -> None:
+    def setUp(self):
         self.text = TEMPLATE.read_text(encoding="utf-8")
         self.lower = self.text.lower()
 
-    def test_template_exists_but_is_not_deployed(self) -> None:
+    def test_template_is_repository_only_and_candidate_bound(self):
         self.assertTrue(TEMPLATE.is_file())
         self.assertNotIn("docs/release-evidence-template.md", PUBLIC_FILES)
-
-    def test_template_preserves_exact_candidate_and_evidence_boundaries(self) -> None:
-        required = (
-            "one exact GoreeCloud website release candidate",
-            "exact 40-character Git commit SHA",
+        for marker in (
+            "one exact GoreeCloud Website release candidate",
+            "Exact candidate commit (40-character SHA)",
             "Evidence from one candidate must not be silently reused",
             "Central Time (`America/Chicago`)",
             "12-hour time format",
             "must remain outside the website `dist/` artifact",
             "does not itself authorize a merge",
             "Historical evidence must remain distinguishable from current state",
-        )
-        for marker in required:
+        ):
             self.assertIn(marker.lower(), self.lower)
 
-    def test_template_covers_all_release_gate_domains(self) -> None:
-        required_sections = (
+    def test_template_covers_current_release_domains(self):
+        for section in (
             "## 1. Candidate identity",
             "## 2. Automated validation evidence",
-            "## 3. Glaze UI visual and interaction acceptance",
+            "## 3. Human visual and interaction acceptance",
             "## 4. Accessibility acceptance",
             "## 5. Progressive enhancement, resilience, privacy, and origin boundary",
-            "## 6. Source publication and creative-rights gate — issue #5",
-            "## 7. Cloudflare isolated-artifact gate — issue #6",
-            "## 8. Exceptions and accepted limitations",
+            "## 6. Publication and creative-rights boundary",
+            "## 7. Isolated artifact and deployment boundary",
+            "## 8. Glaze consumer evidence",
             "## 9. Release authorization",
             "## 10. Post-release production verification",
-        )
-        for section in required_sections:
+            "## 11. Final reconciliation",
+        ):
             self.assertIn(section, self.text)
+        self.assertIn("eleven canonical routes", self.lower)
+        self.assertIn("glaze v1.7", self.lower)
 
-    def test_template_starts_fail_closed(self) -> None:
+    def test_template_starts_fail_closed(self):
         self.assertNotIn("[x]", self.lower)
-        self.assertIn("- [ ] ACCEPTED", self.text)
-        self.assertIn("- [ ] BLOCKED", self.text)
-        self.assertIn("- [ ] REJECTED", self.text)
-        self.assertIn("- [ ] SUPERSEDED", self.text)
+        for disposition in ("ACCEPTED", "BLOCKED", "REJECTED", "SUPERSEDED"):
+            self.assertIn(f"- [ ] {disposition}", self.text)
         self.assertIn("Select exactly one final candidate disposition", self.text)
 
-    def test_template_prohibits_sensitive_evidence_material(self) -> None:
-        required = (
+    def test_template_prohibits_sensitive_evidence_material(self):
+        for marker in (
             "Do not place credentials",
             "private keys",
             "private IP addresses",
             "private hostnames",
             "Do not paste raw logs",
             "appropriate protected system",
-        )
-        for marker in required:
+        ):
             self.assertIn(marker.lower(), self.lower)
 
-    def test_template_keeps_integrity_evidence_scoped(self) -> None:
+    def test_integrity_evidence_is_scoped(self):
         self.assertIn("checksum", self.lower)
         self.assertIn("git blob id", self.lower)
-        self.assertIn("is evidence for the specific property it validates", self.lower)
+        self.assertIn("evidence for the specific property it validates", self.lower)
         self.assertIn("not proof of unrelated security", self.lower)
 
 
