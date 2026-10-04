@@ -6,7 +6,7 @@ This record defines how the GoreeCloud public website applies **Wardveil Securit
 
 Wardveil Security is the platform security and protection identity. It does not replace the technical authorities that establish the website's actual security state, including source review, GitHub Actions validation, Cloudflare Pages publication, browser security headers, the public security-reporting policy, or GoreeCloud governance records.
 
-Glaze UI remains the website's design and interaction language. Wardveil-facing website surfaces must use the existing Glaze UI semantic system rather than introducing a separate visual system.
+Glaze remains the website's design and interaction language. Wardveil-facing website surfaces must use the existing Glaze semantic system rather than introducing a separate visual system.
 
 ## Current Runtime Classification
 
