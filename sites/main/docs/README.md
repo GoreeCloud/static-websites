@@ -12,7 +12,7 @@ Current website facts must come from the systems that own them:
 
 - website source and implementation: live `GoreeCloud/static-websites`;
 - public route model: `sites/url-namespace.json`;
-- Glaze lifecycle and shared contract: live `GoreeCloud/glaze-ui`;
+- Glaze lifecycle and shared contract: live `GoreeCloud/glaze`;
 - current repository metadata: live GitHub;
 - current Suite membership: the authoritative reconciled Suite inventory;
 - branding: `GoreeCloud/branding-assets`;
@@ -25,15 +25,15 @@ Repository-only snapshots do not override those sources.
 
 ### `glaze-ui-conformance.md`
 
-Current website-specific GLAZE UI V1.6 consumer contract and downstream acceptance boundary.
+Current website-specific Glaze V1.7 consumer contract, exact deployed-candidate evidence, and downstream human-acceptance boundary.
 
 ### `stability-baseline.md`
 
-Current website stability definition, one-site public architecture, and required pre-production gates.
+Current website stability definition, eleven-route one-site architecture, exact deployed-artifact evidence boundary, and required acceptance gates.
 
 ### `governance-readiness.md`
 
-Website-specific governance applicability record for the anonymous static architecture.
+Website-specific governance applicability record for the anonymous static architecture, including current Glaze applicability.
 
 ### `wardveil-security-and-observability.md`
 
@@ -80,4 +80,4 @@ Repository validation and documentation must distinguish:
 - Glaze presentation from product/platform authority; and
 - historical multi-site evidence from the one current website.
 
-Passing CI does not authorize merge or production release.
+Passing CI does not authorize final consumer acceptance or production claims. Active unfinished human Glaze acceptance is tracked in GoreeCloud Tasks Management.
