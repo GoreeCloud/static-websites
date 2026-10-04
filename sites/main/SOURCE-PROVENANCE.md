@@ -5,21 +5,25 @@
 - Canonical repository: `GoreeCloud/static-websites`
 - Canonical source path: `sites/main`
 - Canonical public website: `https://www.goreecloud.com/`
-- Current public model: one retained website with path-based sections
-- Current design target: GLAZE UI V1.6 / 1.6.0 Stable
-- Canonical Glaze repository: `GoreeCloud/glaze-ui`
-- Stable Glaze lifecycle authority: `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`
-- Accepted published Glaze V1.6 source: `a7180679ea851389e0f3004515f9a25f420e716d`
+- Current public model: one retained website with eleven canonical path-based destinations
+- Website source version: **5.25.1**
+- Exact deployed public-artifact revision: `17303b6c7381faaa0e89ce6175ce24048fb56a12`
+- Current design target: **Glaze V1.7 / 1.7.0 Stable**
+- Canonical Glaze repository: `GoreeCloud/glaze`
+- Bounded Stable promotion revision: `1a5756daed2294155be2e9972b24f580f6222b7b`
+- Stable runtime entrypoint: `js/glaze-v1.7.0.mjs`
+- Entrypoint Git blob: `c669d9c6f1738b2a56cb02b2e00fa0ca229117c0`
+- Current consumer state: **source-adopted-unaccepted / pending-human-acceptance**
 
-The current website rebuild remains a downstream Glaze migration candidate until repository-local acceptance is completed. Shared Glaze Stable authority does not establish website production acceptance.
+The exact public artifact has completed machine validation, deployment, and canonical byte readback. Human visual, keyboard-only, assistive-technology, representative performance/resilience, and explicit GoreeCloud project-owner acceptance remain open. Shared Glaze Stable authority does not establish final downstream website acceptance.
 
 ## Current branding provenance
 
 Canonical GoreeCloud branding authority is `GoreeCloud/branding-assets`.
 
-The website-local `assets/goreecloud-logo.svg` is a synchronized publication derivative. Its Git blob is `082936062de7839148db89ea3ab4e86ff71341b0`, matching the current canonical `official/goreecloud-logo.svg` asset.
+Website-local branding and product artwork are publication derivatives. A copied asset does not become an independent branding authority merely because it is present in the static publication package.
 
-Website-local assets do not become independent branding authorities merely because they are copied into the static publication package.
+The public website uses approved artwork where authoritative artwork exists and uses governed text-only/neutral fallback presentation rather than fabricating product identities.
 
 ## Legacy centralization lineage
 
@@ -29,24 +33,28 @@ The retained Main source was originally imported from the legacy repository `Gor
 - Legacy root tree: `49e1723e4d28310f3e680c8c80249cb0f1a0d76f`
 - Initial migration method: exact Git checkout followed by bounded transfer into `sites/main`
 
-Legacy repository source, historical secondary-site packages, old deployment evidence, and earlier website transformations remain historical provenance only. They are not current publication authority.
+Legacy repository source, retired satellite-site packages, old deployment evidence, and earlier website transformations remain historical provenance only. They are not current publication authority.
 
 ## Historical Glaze migration lineage
 
-The website passed through earlier Glaze public-web baselines, including Glaze 2.x, GLAZE UI V1.3, and GLAZE UI V1.4.
+The website passed through earlier Glaze UI / Glaze public-web baselines, including Glaze 2.x, Glaze UI V1.3, V1.4, and the V1.6 runtime baseline.
 
-Those records are valid only for the exact historical revisions they describe. They do not satisfy the current V1.6 consumer target and must not be used as current lifecycle, conformance, deployment, or production evidence.
+Those records remain exact historical evidence only. V1.6.0 is the immediate rollback/runtime baseline inherited by the bounded V1.7.0 Stable release; it is not the current shared consumer target.
 
-Historical files and Git history may preserve those transitions for audit and rollback context while current-facing documentation must identify V1.6 as the required target.
+Current-facing documentation must identify **Glaze V1.7 / 1.7.0** as the shared target while preserving older names and versions only where historical provenance requires them.
 
 ## Current information boundary
 
 Live GitHub is authoritative for repository existence, current names, visibility, descriptions, branches, and archive state.
 
-The current public website does not use dated repository portfolio snapshots as live inventory authority and does not publish a fixed current repository count.
+The current public website does not use dated repository-portfolio snapshots as live inventory authority and does not publish a fixed current repository count. The `/github/` page requests current public metadata only after explicit visitor action.
 
-The current Suite page uses the reconciled 45-product portfolio. Earlier Suite snapshots remain historical review evidence.
+The current Suite page uses the reconciled **45-product** portfolio across nine functional groups. Earlier Suite snapshots remain historical review evidence.
+
+The current URL authority is `sites/url-namespace.json`, which defines eleven canonical paths and the compatibility redirects retained by the one-site model.
 
 ## Acceptance boundary
 
-Source provenance proves where reviewed material came from. It does not establish human visual acceptance, accessibility acceptance, Glaze consumer acceptance, merge authorization, Cloudflare production deployment, canonical-domain equivalence, or final production acceptance.
+Source provenance proves where reviewed material came from. It does not establish human visual acceptance, keyboard acceptance, assistive-technology acceptance, representative performance acceptance, Glaze consumer acceptance, merge authorization, deployment state, or final production acceptance by itself.
+
+Current machine/deployment evidence and the remaining human gates are recorded in `acceptance/glaze-ui-v1.7-consumer-acceptance.json`, `acceptance/HUMAN-REVIEW.md`, and GoreeCloud Tasks Management.
