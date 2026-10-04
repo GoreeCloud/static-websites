@@ -26,7 +26,7 @@ jobs:
 
       - name: Compile retained-site governance checks
         run: |
-          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py \
+          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py             sites/main/scripts/validate_governance_readiness.py \
             scripts/validate_url_namespace.py \
             scripts/validate_manifest.py
 
@@ -37,6 +37,7 @@ jobs:
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
           python sites/main/scripts/validate_glaze_ui.py
+          python sites/main/scripts/validate_governance_readiness.py
 
       - name: Reject active stale multi-site and old Glaze claims in Main
         shell: python
