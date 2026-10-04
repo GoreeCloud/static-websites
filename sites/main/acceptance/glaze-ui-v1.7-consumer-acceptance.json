@@ -20,8 +20,20 @@
     "repositoryValidation": {"status": "passed", "runId": 37171153953, "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"},
     "websiteValidation": {"status": "passed", "runId": 37171153974, "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"},
     "renderedPublicTreeEquivalence": {"status": "pending"},
-    "responsiveAndInteraction": {"status": "pending"},
-    "isolatedArtifact": {"status": "pending"},
+    "responsiveAndInteraction": {
+      "status": "passed",
+      "runId": 37171153974,
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+      "note": "Headless Chrome passed all eleven canonical pages at desktop, tablet, modern-phone, and narrow-phone widths, including overflow, target sizing, theme interaction, mobile navigation, Escape handling, and focus restoration."
+    },
+    "isolatedArtifact": {
+      "status": "passed",
+      "runId": 37171153974,
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+      "files": 100,
+      "bytes": 322713,
+      "note": "The isolated retained-site artifact built and validated successfully."
+    },
     "privacyAndSecurity": {"status": "pending"}
   },
   "humanEvidence": {
