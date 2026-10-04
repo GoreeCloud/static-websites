@@ -14,9 +14,10 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]
 GOVERNANCE = ROOT / "docs" / "governance-readiness.md"
 BUILD = ROOT / "scripts" / "build_public_site.py"
-WORKFLOW = ROOT / ".github" / "workflows" / "validate.yml"
+WORKFLOW = REPO_ROOT / ".github" / "workflows" / "validate-main-site.yml"
 DEPLOYMENT_VALIDATOR = ROOT / "scripts" / "validate_deployment_contract.py"
 ORIGIN_VALIDATOR = ROOT / "scripts" / "validate_browser_origin_integrity.py"
 GLAZE_VALIDATOR = ROOT / "scripts" / "validate_glaze_ui.py"
@@ -90,17 +91,13 @@ def main() -> int:
             )
 
     required_workflow_commands = (
-        "python scripts/validate_governance_readiness.py",
-        "python scripts/validate_repository_hygiene.py",
-        "python scripts/validate_repository_history.py",
-        "python scripts/validate_security_policy.py",
-        "python scripts/validate_privacy_policy.py",
-        "python scripts/validate_browser_origin_integrity.py",
-        "python scripts/validate_accessibility.py",
-        "python scripts/validate_glaze_ui.py",
-        "python scripts/validate_deployment_contract.py",
-        "python scripts/build_public_site.py",
-        "python scripts/validate_build_artifact.py",
+        "python sites/main/scripts/validate_governance_readiness.py",
+        "python sites/main/scripts/validate_site.py",
+        "python sites/main/scripts/validate_public_surface.py",
+        "python sites/main/scripts/validate_glaze_ui.py",
+        "python sites/main/scripts/build_public_site.py",
+        "python sites/main/scripts/validate_build_artifact.py",
+        "python sites/main/scripts/browser_artifact_smoke.py",
     )
     for command in required_workflow_commands:
         if command not in workflow:
