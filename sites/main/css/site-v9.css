@@ -122,6 +122,8 @@ button,input{font:inherit}
 .nav a:hover,.nav a[aria-current="page"]{color:var(--ink);background:var(--surface-strong);box-shadow:0 8px 22px rgba(31,72,109,.08)}
 .nav-actions{display:flex;align-items:center;gap:.45rem}
 .theme-toggle,.nav-toggle{min-width:48px;min-height:48px;border:1px solid var(--line);border-radius:15px;background:var(--surface-tint);color:var(--ink);cursor:pointer}
+.nav-toggle [data-nav-icon]{font-size:1.35rem;line-height:1;font-weight:650}
+.extension-card.text-only-extension{grid-template-columns:1fr}
 .nav-actions .nav-toggle{display:none}
 .page-hero{position:relative;padding:clamp(2.8rem,5vw,4.8rem) 0 clamp(2.5rem,4vw,4rem);overflow:hidden}
 .page-hero::before{
@@ -297,7 +299,12 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
 .banner{padding:1rem 1.15rem;border-radius:18px;border:1px solid var(--line);background:color-mix(in srgb,var(--surface-tint) 72%,transparent);color:var(--muted);font-size:.96rem;line-height:1.55}.banner strong{color:var(--ink)}
 .site-footer{margin-top:2.25rem;padding:2rem 0 3rem;border-top:1px solid var(--line)}
 .footer-shell{display:grid;grid-template-columns:1fr 1.2fr;gap:2rem;align-items:end}.footer-brand{display:flex;align-items:center;gap:.75rem;font-weight:850}.footer-brand img{width:38px;height:38px}.footer-note{color:var(--muted);line-height:1.6;font-size:.94rem}.footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.6rem 1rem}.footer-links a{min-height:48px;display:inline-flex;align-items:center;color:var(--muted);text-decoration:none}.footer-links a:hover{color:var(--ink)}
-.contact-page .page-hero{padding-bottom:clamp(2.7rem,4vw,4rem)}\n.contact-page .hero-grid{grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);gap:clamp(1.5rem,3vw,3rem)}\n.contact-page h1{max-width:13ch;font-size:clamp(2.6rem,4.8vw,4.9rem);line-height:.97}\n.contact-page .section{padding:clamp(3rem,4.8vw,4.8rem) 0}\n.contact-page .section-heading{margin-bottom:1.35rem}\n.contact-stage{background:linear-gradient(145deg,rgba(45,194,255,.16),rgba(119,103,255,.14),rgba(70,220,185,.08))}
+.contact-page .page-hero{padding-bottom:clamp(2.7rem,4vw,4rem)}
+.contact-page .hero-grid{grid-template-columns:minmax(0,1.18fr) minmax(360px,.82fr);gap:clamp(1.5rem,3vw,3rem)}
+.contact-page h1{max-width:13ch;font-size:clamp(2.6rem,4.8vw,4.9rem);line-height:.97}
+.contact-page .section{padding:clamp(3rem,4.8vw,4.8rem) 0}
+.contact-page .section-heading{margin-bottom:1.35rem}
+.contact-stage{background:linear-gradient(145deg,rgba(45,194,255,.16),rgba(119,103,255,.14),rgba(70,220,185,.08))}
 .contact-stage::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(255,255,255,.20),transparent 22rem);pointer-events:none}
 .contact-stage-core{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);z-index:3;width:128px;height:128px;padding:22px;border-radius:36px;background:var(--surface-strong);border:1px solid var(--line);box-shadow:var(--shadow-2)}
 .contact-stage-core img{width:100%;height:100%;object-fit:contain}
@@ -315,7 +322,10 @@ color-mix(in srgb,var(--surface-strong) 88%,transparent);box-shadow:var(--shadow
 .social-name{font-size:1.15rem;font-weight:820;letter-spacing:-.02em}
 .social-handle{color:var(--accent);font-size:.9rem;font-weight:750}
 .social-role{color:var(--muted);font-size:.96rem;line-height:1.58;margin-top:.25rem}
-.social-action{margin-top:auto;padding-top:.75rem;color:var(--accent);font-weight:780}\n.contact-page .contact-card p{font-size:.97rem;line-height:1.6}\n.contact-privacy{width:min(100%,1040px);margin-inline:auto;padding:clamp(2rem,4vw,3.35rem)}\n.contact-privacy .lede{max-width:60ch}
+.social-action{margin-top:auto;padding-top:.75rem;color:var(--accent);font-weight:780}
+.contact-page .contact-card p{font-size:.97rem;line-height:1.6}
+.contact-privacy{width:min(100%,1040px);margin-inline:auto;padding:clamp(2rem,4vw,3.35rem)}
+.contact-privacy .lede{max-width:60ch}
 :focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 72%,white);outline-offset:3px}
 @media (max-width:1000px){
   .hero-grid{grid-template-columns:1fr}.contact-page .hero-grid{grid-template-columns:1fr}.hero-visual{min-height:390px}.feature-grid{grid-template-columns:1fr 1fr}.feature-card.wide{grid-row:auto;grid-column:1/-1;min-height:340px}.product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.office-family{grid-template-columns:repeat(3,minmax(0,1fr))}.system-grid,.arch-grid,.contact-grid,.social-grid,.system-access-grid{grid-template-columns:repeat(2,minmax(0,1fr))}

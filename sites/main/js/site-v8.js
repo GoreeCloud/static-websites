@@ -3,6 +3,7 @@
   const themeButton = document.querySelector("[data-theme-toggle]");
   const nav = document.querySelector("[data-nav]");
   const navButton = document.querySelector("[data-nav-toggle]");
+  const navIcon = document.querySelector("[data-nav-icon]");
   const search = document.querySelector("[data-filter-input]");
 
   if (themeButton) {
@@ -25,6 +26,8 @@
     const setNavOpen = (open) => {
       nav.dataset.open = open ? "true" : "false";
       navButton.setAttribute("aria-expanded", open ? "true" : "false");
+      navButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      if (navIcon) navIcon.textContent = open ? "×" : "☰";
     };
 
     navButton.addEventListener("click", () => {
