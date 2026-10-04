@@ -19,6 +19,17 @@ The retained website source is `GoreeCloud/static-websites/sites/main`. Every ca
 
 The website retains its existing accessibility and adaptation foundations, including the 48 px interaction floor, responsive layouts, visible keyboard focus, reduced-motion and reduced-transparency behavior, increased-contrast and forced-colors handling, light/dark appearance, bounded mobile navigation, and compact-width overflow checks.
 
+## Current verified machine/readback progress
+
+Exact revision `531744f2a82133caca8ddde00fa782415d1a42e1` has successful repository validation, main-site source/build/browser validation, isolated-artifact validation, responsive browser smoke, and Cloudflare Pages deployment evidence.
+
+Canonical HTTPS readback also verifies exact live/source HTML text equality for:
+
+- `/security/` against blob `1c3f93866eb76c9ce366ba8f2db42b15dc5ad427`;
+- `/privacy/` against blob `aadf935248db716858b7882b1685d0bcdd4a6da4`.
+
+This advances deployment/readback evidence but does not establish complete deployed-tree equivalence or human consumer acceptance.
+
 ## Acceptance boundary
 
 The V1.6 consumer record remains historical exact-revision evidence only. Current V1.7 adoption starts a fresh evidence cycle in `acceptance/glaze-ui-v1.7-consumer-acceptance.json`.
