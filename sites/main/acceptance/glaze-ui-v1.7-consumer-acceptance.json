@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "recordId": "goreecloud.website.glaze-v1.7-consumer-acceptance",
+  "consumerName": "GoreeCloud Website",
+  "repository": "GoreeCloud/static-websites",
+  "targetVersion": "1.7.0",
+  "designSystemStableRevision": "1a5756daed2294155be2e9972b24f580f6222b7b",
+  "designSystemEntrypoint": "js/glaze-v1.7.0.mjs",
+  "designSystemEntrypointBlob": "c669d9c6f1738b2a56cb02b2e00fa0ca229117c0",
+  "candidateRevision": null,
+  "status": "pending-evidence",
+  "supportedPlatforms": ["web"],
+  "machineEvidence": {
+    "sourceTargetValidation": {
+      "status": "pending-exact-head",
+      "note": "Repository source now targets Glaze 1.7.0; exact-head evidence must be recorded for the integrated candidate."
+    },
+    "repositoryValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
+    "websiteValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
+    "renderedPublicTreeEquivalence": {"status": "pending"},
+    "responsiveAndInteraction": {"status": "pending"},
+    "isolatedArtifact": {"status": "pending"},
+    "privacyAndSecurity": {"status": "pending"}
+  },
+  "humanEvidence": {
+    "visualReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
+    "keyboardReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
+    "assistiveTechnologyReview": {
+      "status": "pending",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": null,
+      "technology": null
+    }
+  },
+  "performance": {
+    "status": "pending",
+    "reviewer": "GoreeCloud project owner",
+    "reviewedAt": null,
+    "environment": null
+  },
+  "rollback": {
+    "lastKnownGoodVersion": "1.6.0",
+    "lastKnownGoodEntrypoint": "js/glaze-v1.6.0.mjs",
+    "independentlyReversible": true,
+    "verifiedByGitHistory": true,
+    "note": "Glaze 1.7.0 inherits the accepted 1.6.0 runtime surface, but exact website rollback evidence remains required."
+  },
+  "productionApproval": {
+    "approved": false,
+    "authority": "GoreeCloud project owner",
+    "acceptedRevision": null,
+    "approvedAt": null,
+    "note": "Source adoption does not grant consumer or production acceptance."
+  },
+  "productionEvidence": {
+    "status": "pending-deployment-and-readback",
+    "canonicalOrigin": "https://www.goreecloud.com",
+    "deployedRevision": null,
+    "deployedAt": null
+  },
+  "historicalEvidence": {
+    "v16Record": "acceptance/glaze-ui-v1.6-consumer-acceptance.json",
+    "status": "historical-only",
+    "note": "V1.6 evidence remains exact-revision provenance and does not automatically satisfy V1.7 acceptance."
+  }
+}

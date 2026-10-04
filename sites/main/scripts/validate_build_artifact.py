@@ -33,6 +33,7 @@ STALE_CURRENT_MARKERS = (
     "14 official public website",
     "GLAZE UI V1.3",
     "GLAZE UI V1.4 / 1.4",
+    "GLAZE UI V1.6",
     "suite.goreecloud.com",
     "firefox.goreecloud.com",
     "design.goreecloud.com",
@@ -82,15 +83,15 @@ def main() -> int:
             continue
         text = path.read_text(encoding="utf-8")
         for marker in (
-            'data-glaze-version="1.6.0"',
-            'name="goreecloud-glaze-ui" content="1.6.0"',
-            'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
+            'data-glaze-version="1.7.0"',
+            'name="goreecloud-glaze-ui" content="1.7.0"',
+            'name="goreecloud-glaze-consumer-state" content="source-adopted-unaccepted"',
             "/css/site-v9.css",
             "/js/theme-init-v8.js",
             "/js/site-v8.js",
         ):
             if marker not in text:
-                errors.append(f"{page} missing current V1.6 migration marker: {marker}")
+                errors.append(f"{page} missing current V1.7 source-adoption marker: {marker}")
         for stale in STALE_CURRENT_MARKERS:
             if stale in text:
                 errors.append(f"{page} contains stale current-state marker: {stale}")
