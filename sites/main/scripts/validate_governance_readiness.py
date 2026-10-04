@@ -3,7 +3,7 @@
 
 The website is currently an anonymous static publication surface. The multi-user
 baseline is therefore explicitly Not Applicable to the current architecture, while
-security readiness and Glaze UI remain mandatory. This validator makes that scope
+security readiness and Glaze remain mandatory. This validator makes that scope
 classification reviewable and fails if the implementation or CI stops carrying the
 controls that justify it.
 """
@@ -14,9 +14,10 @@ from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]
 GOVERNANCE = ROOT / "docs" / "governance-readiness.md"
 BUILD = ROOT / "scripts" / "build_public_site.py"
-WORKFLOW = ROOT / ".github" / "workflows" / "validate.yml"
+WORKFLOW = REPO_ROOT / ".github" / "workflows" / "validate-main-site.yml"
 DEPLOYMENT_VALIDATOR = ROOT / "scripts" / "validate_deployment_contract.py"
 ORIGIN_VALIDATOR = ROOT / "scripts" / "validate_browser_origin_integrity.py"
 GLAZE_VALIDATOR = ROOT / "scripts" / "validate_glaze_ui.py"
@@ -26,12 +27,12 @@ INDEX = ROOT / "index.html"
 REQUIRED_GOVERNANCE_MARKERS = (
     "Multi-user readiness: Not applicable to the current static public website",
     "Security readiness: Applicable",
-    "Glaze UI compliance: Applicable",
+    "Glaze compliance: Applicable",
     "If the website adds authentication",
     "this Not Applicable determination expires",
-    "issue #5",
-    "issue #6",
-    "explicit merge and production authorization",
+    "successful isolated `dist/` artifact and public-boundary validation",
+    "repository-publication, reachable-history, creative-rights, and contextual-disclosure review",
+    "governed merge and production authorization",
 )
 
 REQUIRED_BUILD_MARKERS = (
@@ -68,7 +69,7 @@ def main() -> int:
     for validator, label in (
         (DEPLOYMENT_VALIDATOR, "deployment-contract validator"),
         (ORIGIN_VALIDATOR, "browser-origin validator"),
-        (GLAZE_VALIDATOR, "Glaze UI validator"),
+        (GLAZE_VALIDATOR, "Glaze validator"),
         (ACCESSIBILITY_VALIDATOR, "accessibility validator"),
     ):
         require_regular_file(errors, validator, label)
@@ -90,17 +91,13 @@ def main() -> int:
             )
 
     required_workflow_commands = (
-        "python scripts/validate_governance_readiness.py",
-        "python scripts/validate_repository_hygiene.py",
-        "python scripts/validate_repository_history.py",
-        "python scripts/validate_security_policy.py",
-        "python scripts/validate_privacy_policy.py",
-        "python scripts/validate_browser_origin_integrity.py",
-        "python scripts/validate_accessibility.py",
-        "python scripts/validate_glaze_ui.py",
-        "python scripts/validate_deployment_contract.py",
-        "python scripts/build_public_site.py",
-        "python scripts/validate_build_artifact.py",
+        "python sites/main/scripts/validate_governance_readiness.py",
+        "python sites/main/scripts/validate_site.py",
+        "python sites/main/scripts/validate_public_surface.py",
+        "python sites/main/scripts/validate_glaze_ui.py",
+        "python sites/main/scripts/build_public_site.py",
+        "python sites/main/scripts/validate_build_artifact.py",
+        "python sites/main/scripts/browser_artifact_smoke.py",
     )
     for command in required_workflow_commands:
         if command not in workflow:
@@ -113,7 +110,7 @@ def main() -> int:
         return 1
 
     print(
-        "GoreeCloud governance readiness validation passed: multi-user N/A for the current anonymous static site; security and Glaze UI gates remain applicable."
+        "GoreeCloud governance readiness validation passed: multi-user N/A for the current anonymous static site; security and Glaze gates remain applicable."
     )
     return 0
 

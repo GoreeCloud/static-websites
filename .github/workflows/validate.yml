@@ -26,7 +26,7 @@ jobs:
 
       - name: Compile retained-site governance checks
         run: |
-          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py \
+          python -m py_compile             sites/main/scripts/validate_site.py             sites/main/scripts/validate_public_surface.py             sites/main/scripts/validate_glaze_ui.py             sites/main/scripts/validate_governance_readiness.py \
             scripts/validate_url_namespace.py \
             scripts/validate_manifest.py
 
@@ -37,6 +37,7 @@ jobs:
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
           python sites/main/scripts/validate_glaze_ui.py
+          python sites/main/scripts/validate_governance_readiness.py
 
       - name: Reject active stale multi-site and old Glaze claims in Main
         shell: python
@@ -57,6 +58,14 @@ jobs:
               root / "design/index.html",
               root / "security/index.html",
               root / "privacy/index.html",
+              root / "docs/README.md",
+              root / "docs/stability-baseline.md",
+              root / "docs/release-readiness-checklist.md",
+              root / "docs/release-evidence-template.md",
+              root / "docs/governance-readiness.md",
+              root / "docs/homepage-foundations-integration.md",
+              root / "docs/wardveil-security-and-observability.md",
+              root / "SOURCE-PROVENANCE.md",
           ]
           stale = (
               "Fourteen official surfaces",
@@ -68,6 +77,17 @@ jobs:
               'name="goreecloud-glaze-ui" content="1.6.0"',
               "suite.goreecloud.com",
               "firefox.goreecloud.com",
+              "Current design target: GLAZE UI V1.6",
+              "The required design-system target is **GLAZE UI V1.6",
+              "Canonical six-path route registry:",
+              "current six canonical destinations",
+              "all six canonical pages",
+              "all six canonical destinations",
+              "https://design.goreecloud.com/",
+              "https://privacy.goreecloud.com/",
+              "https://security.goreecloud.com/",
+              "issue #5 completion before",
+              "issue #6 completion before",
           )
           failures = []
           for path in current_files:

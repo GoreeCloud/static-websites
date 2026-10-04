@@ -1,5 +1,14 @@
 # GoreeCloud Public Websites — Changelogs
 
+## 2026-10-04 — Current support-document and release-gate reconciliation
+
+- Reconciled current retained-site support documentation to the eleven-route one-site topology, source version 5.25.1, Glaze V1.7 / 1.7.0 Stable target, and exact deployed public-artifact revision `17303b6c7381faaa0e89ce6175ce24048fb56a12`.
+- Replaced retired Design/Privacy/Security satellite-domain references in current homepage authority documentation with the canonical `/design/`, `/privacy/`, and `/security/` paths.
+- Removed obsolete website-gate references to repository issues #5 and #6 after live GitHub verification showed those numbers are closed historical migration issues, not current release blockers.
+- Updated the release checklist and evidence template from six routes/V1.6 to eleven routes/Glaze V1.7 while preserving exact-revision and human-acceptance boundaries.
+- Extended the repository workflow to fail closed when selected current support documents regress to the retired six-route, satellite-domain, V1.6-current-target, or obsolete issue-gate language.
+- This documentation/validation reconciliation does not change public website bytes or grant final Glaze consumer acceptance.
+
 ## 2026-10-04 — Glaze V1.7 evidence rebind after navigation patch
 
 - Bound the Glaze V1.7 consumer evidence to exact website revision `17303b6c7381faaa0e89ce6175ce24048fb56a12` / source version `5.25.1`.

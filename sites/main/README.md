@@ -8,7 +8,8 @@ Canonical source for GoreeCloud's one current public website.
 - Cloudflare Pages project: `goreecloud-website`
 - Current public model: one website with path-based sections
 - Current design target: **Glaze V1.7 / 1.7.0 Stable**
-- Consumer state: **source adopted — repository-local acceptance pending**
+- Consumer state: **source-adopted-unaccepted / pending-human-acceptance**
+- Exact deployed public artifact: `17303b6c7381faaa0e89ce6175ce24048fb56a12` (source version 5.25.1)
 
 ## Current public information architecture
 
@@ -21,6 +22,10 @@ The website is intentionally path-based rather than a collection of separate pub
 - `/office-suite/` — GoreeCloud Office Suite
 - `/firefox/` — standalone extensions and application-owned Firefox clients
 - `/github/` — current public GitHub repository discovery
+- `/contact/` — approved public contact and social channels
+- `/design/` — Glaze design and experience system
+- `/security/` — Wardveil Security public boundary and evidence model
+- `/privacy/` — Privacy Shield public boundary and authorization model
 
 Compatibility paths such as `/repositories.html`, `/privacy.html`, and `/security.html` are retained only as transition entry points and must not carry stale standalone content.
 
@@ -38,7 +43,7 @@ The website must not publish private repository names or fixed private-repositor
 
 ## Glaze V1.7 source adoption
 
-This source now targets the current bounded Stable Glaze 1.7.0 contract at `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b` using `js/glaze-v1.7.0.mjs`. Glaze 1.7.0 intentionally inherits the accepted 1.6.0 runtime surface, but downstream website conformance is not inherited automatically. The website therefore records `source-adopted-unaccepted` until exact-revision rendered, accessibility, performance/resilience, rollback, deployment/readback, and owner acceptance evidence is completed.
+This source now targets the current bounded Stable Glaze 1.7.0 contract at `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b` using `js/glaze-v1.7.0.mjs`. Glaze 1.7.0 intentionally inherits the accepted 1.6.0 runtime surface, but downstream website conformance is not inherited automatically. The website therefore records `source-adopted-unaccepted / pending-human-acceptance`. Exact-revision machine validation, deployment/readback, and rollback provenance are complete for the deployed candidate; human visual, keyboard-only, assistive-technology, representative performance/resilience, and explicit owner acceptance remain open.
 
 The retained site uses local, same-origin presentation code. Current public links use canonical `GoreeCloud/office`, `GoreeCloud/firefox-addons`, and `GoreeCloud/bookmarks` repository identities; legacy repository names are compatibility/history only. It does not require remote Glaze runtime execution in the browser.
 
@@ -73,4 +78,4 @@ Production completion still requires post-push live verification of `https://www
 
 ## Acceptance boundary
 
-Source changes, a successful build, CI success, or a Cloudflare deployment do not by themselves establish final production acceptance. Merge, deployment, exact deployed-byte verification, rendered review, accessibility acceptance, performance acceptance, rollback readiness, and current Glaze consumer acceptance remain separately governed transitions.
+Source changes, a successful build, CI success, or a deployment provider success signal do not by themselves establish final Glaze consumer acceptance. The current deployed artifact has exact byte/readback evidence; final consumer acceptance remains separately gated on the outstanding human and representative-performance lanes tracked in GoreeCloud Tasks Management.
