@@ -60,12 +60,11 @@ REQUIRED_ACCEPTED_CHECKBOXES = (
     "No formal WCAG conformance claim is being inferred solely from this record or CI.",
     "Progressive enhancement and resilience accepted.",
     "Privacy/origin behavior accepted.",
-    "Issue #5 is resolved for the actions being authorized.",
+    "Repository publication and creative-rights review is complete for the actions being authorized.",
     "No source-publication or third-party-rights claim exceeds the evidence actually reviewed.",
-    "Cloudflare is verified to build and publish the exact isolated `dist/` artifact.",
-    "Fresh post-cutover remote verification passed.",
+    "Isolated public artifact is verified as the production publication boundary.",
+    "Fresh exact production verification passed.",
 )
-
 
 def display_path(path: Path) -> str:
     """Return a stable repository-relative path when possible, otherwise a safe test path."""

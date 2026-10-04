@@ -4,198 +4,201 @@
 
 Use this repository-only template for one exact GoreeCloud Website release candidate.
 
-A completed record documents evidence observed for that exact candidate. It does not authorize merge, deployment, Stable classification, Glaze consumer acceptance, or production release.
+A completed record documents evidence observed for that exact candidate. It does not itself authorize a merge, deployment, Stable classification, Glaze consumer acceptance, DNS change, or production release. Evidence from one candidate must not be silently reused for a changed candidate.
 
-If the candidate SHA changes, create or update evidence only after explicitly revalidating the affected lanes. Never silently transfer acceptance from an older revision.
+All release-evidence timestamps use Central Time (`America/Chicago`) and a 12-hour time format. This template and every generated record must remain outside the website `dist/` artifact. Historical evidence must remain distinguishable from current state.
+
+Do not place credentials, tokens, private keys, private IP addresses, private hostnames, private topology, or other non-public operational material in a release-evidence record. Do not paste raw logs when a bounded run ID, result, checksum, Git blob ID, or protected-system reference is sufficient. Sensitive evidence belongs in the appropriate protected system.
+
+A checksum, Git blob ID, workflow result, or deployment identifier is evidence for the specific property it validates; it is not proof of unrelated security, privacy, accessibility, or release readiness.
 
 ## 1. Candidate identity
 
 - Review date/time:
-- Exact 40-character candidate SHA:
+- Exact candidate commit (40-character SHA):
 - Pull request:
 - Source branch:
-- Target branch:
+- Intended base branch: `main`
 - Reviewer / reviewer role:
 - Main website validation run:
 - Retained-site validation run:
-- Cloudflare immutable branch-preview URL:
-- Cloudflare branch-preview alias:
+- Provider deployment / preview identifier:
 
 Candidate freeze:
-- [ ] Exact SHA confirmed.
-- [ ] PR still targets `main`.
-- [ ] No later unreviewed commit is being treated as covered.
-- [ ] Candidate has not been merged unintentionally.
+- [ ] Exact candidate SHA confirmed.
+- [ ] No later unreviewed commit is being treated as covered by this record.
+- [ ] Pull request still targets the intended base branch.
+- [ ] Candidate has not been merged or promoted unintentionally.
 
-## 2. Current-authority verification
+Evidence/notes:
 
-Record the authoritative source checked for each claim.
+## 2. Automated validation evidence
 
-- One current website:
-- Canonical eleven-path route registry:
-- Nine Integral Platform Systems:
-- GoreeCloud Sync separate-governance boundary:
-- 45-product Suite registry:
-- Office current implementation state:
-- Firefox extension/client current source and release state:
-- GitHub live repository authority:
-- Branding authority:
+Record exact run IDs or bounded results for the applicable current gates.
 
-Result:
-- [ ] Public claims are current and evidence-scoped.
-- [ ] No historical snapshot is being presented as current authority.
-
-## 3. Automated source/artifact evidence
-
-- URL namespace:
-- Historical manifest boundary:
-- Public site semantics:
-- Public link/sitemap surface:
-- Glaze V1.7 target:
-- Isolated artifact build:
-- Artifact exact-byte/allowlist validation:
+- URL namespace / eleven canonical routes:
+- Current public semantics:
+- Glaze V1.7 source-target validation:
+- Isolated artifact build and allowlist:
 - Responsive Chrome smoke:
-- 48px interactive-target gate:
+- Privacy/security/public-boundary checks:
 - JavaScript syntax:
-- Other applicable security/privacy/performance checks:
+- Unit tests:
+- Other applicable checks:
 
 Result:
 - [ ] All required automated gates passed on the exact candidate.
-- [ ] Any exception/failure is documented rather than ignored.
+- [ ] Any failure or exception is documented below instead of being silently ignored.
 
-## 4. Branch-preview evidence
+Evidence/notes:
 
-- Provider deployment check:
-- Exact candidate SHA shown by provider:
-- Immutable preview URL:
-- Stable branch alias:
-- Preview fetch/result:
-- Preview corresponds to exact PR head: Yes / No / Unverified
+## 3. Human visual and interaction acceptance
 
-Result:
-- [ ] Exact branch preview succeeded.
-- [ ] Provider success is not being substituted for human acceptance.
-
-## 5. Human visual acceptance
-
-Review:
-- Home
-- Integral Platform Systems
-- Suite
-- Office Suite
-- Firefox
-- GitHub
+Review all eleven canonical routes at representative desktop, tablet, modern-phone, and narrow-phone sizes in applicable appearance modes.
 
 Record:
 - Desktop result:
 - Tablet result:
-- Mobile/compact result:
+- Modern-phone result:
+- Narrow-phone result:
 - Light appearance:
 - Dark appearance:
-- Reduced motion:
-- Reduced transparency:
+- Reduced motion / transparency:
 - Increased contrast / forced colors:
-- Navigation and focus:
-- Visual defects found/resolved:
+- Navigation / focus:
+- Visual defects found and resolved:
 
 Result:
-- [ ] Human visual review accepted the exact candidate.
+- [ ] Accepted for this exact candidate.
+- [ ] No material visual or interaction defect remains hidden by automated validation.
 
-## 6. Keyboard, touch, and assistive technology
+Evidence/notes:
 
+## 4. Accessibility acceptance
+
+Record:
 - Keyboard-only navigation:
-- Focus order:
-- Focus visibility:
-- 48px interaction target review:
-- Text resize/zoom:
-- Screen reader / assistive technology:
-- Touch review:
+- Focus order and focus visibility:
+- Text resize / zoom / reflow:
+- Screen reader or representative assistive technology:
+- Touch-target review:
 - Accessibility defects and resolutions:
 
 Result:
-- [ ] Applicable human accessibility/AT acceptance is complete.
+- [ ] Human acceptance completed for this exact candidate.
+- [ ] No formal WCAG conformance claim is being inferred solely from this record or CI.
 
-## 7. Privacy and security
+Evidence/notes:
 
-- Analytics/telemetry state:
-- GitHub visitor-triggered request boundary:
-- CSP:
-- Permissions Policy:
-- Security reporting contact:
-- Secret/private-data review:
-- Security/privacy claim review:
+## 5. Progressive enhancement, resilience, privacy, and origin boundary
 
-Result:
-- [ ] Current public artifact preserves the approved privacy/security boundary.
-
-## 8. Performance and browser compatibility
-
-- Performance evidence:
-- Desktop browser evidence:
-- Mobile browser evidence:
+Record:
 - Optional-JavaScript failure behavior:
-- Regressions/waivers:
+- Reduced-motion / reduced-transparency fallback:
+- Privacy / telemetry state:
+- GitHub visitor-triggered request boundary:
+- CSP / permissions / security-reporting state:
+- Secret and private-data review:
 
 Result:
-- [ ] Applicable performance/browser acceptance is complete.
+- [ ] Progressive enhancement and resilience accepted.
+- [ ] Privacy/origin behavior accepted.
 
-## 9. Glaze consumer evidence
+Evidence/notes:
+
+## 6. Publication and creative-rights boundary
+
+Record:
+- Repository publication / reachable-history review:
+- Artwork / licensing / provenance review:
+- Public/private disclosure boundary:
+
+Result:
+- [ ] Repository publication and creative-rights review is complete for the actions being authorized.
+- [ ] No source-publication or third-party-rights claim exceeds the evidence actually reviewed.
+
+Evidence/notes:
+
+## 7. Isolated artifact and deployment boundary
+
+Record:
+- Public artifact revision:
+- Build output:
+- Provider deployment identifier:
+- Canonical readback:
+- Redirect / 404 behavior:
+- Rollback availability:
+
+Result:
+- [ ] Isolated public artifact is verified as the production publication boundary.
+- [ ] Fresh exact production verification passed.
+
+Evidence/notes:
+
+## 8. Glaze consumer evidence
 
 - Required version: 1.7.0
-- Stable lifecycle authority:
-- Accepted published Glaze source:
-- Website exact reference revision:
-- Repository-local evidence reference:
-- Human review complete:
-- Current consumer-registry repository:
-- Registry status:
-- Registry update PR/commit if applicable:
+- Stable authority: `GoreeCloud/glaze`
+- Stable promotion revision:
+- Website exact public-artifact revision:
+- Consumer acceptance record:
+- Human/performance lanes complete:
+- Explicit owner acceptance:
 
 Result:
 - [ ] Current Glaze consumer acceptance is supported by exact-revision evidence.
 - [ ] No acceptance is claimed solely from shared Glaze Stable status.
 
-## 10. Merge authorization
+Evidence/notes:
 
-Risk warning recorded:
-Explicit user confirmation:
-Authorization scope:
-Candidate SHA at authorization:
-Merge method:
-Rollback plan:
+## 9. Release authorization
+
+- Merge authorization:
+- Production-release authorization:
+- Authorizing person/role:
+- Authorization date/time:
+- Authorization scope:
+- Candidate SHA at authorization:
+- Merge method:
+- Rollback plan:
 
 Result:
-- [ ] Merge was explicitly authorized for the exact candidate.
+- [ ] Authorization is recorded only for the exact action and exact candidate actually approved.
 
-## 11. Production verification
+Evidence/notes:
 
-Complete only after authorized merge.
+## 10. Post-release production verification
 
 - Main merge revision:
-- Production deployment identifier:
 - Production deployment revision:
-- Canonical home verification:
-- Eleven canonical destinations:
-- Headers/CSP:
-- Redirects:
-- Production responsive/browser result:
-- Production accessibility follow-up if required:
+- Production verifier result:
+- Production verification date/time:
+- Canonical route/readback result:
+- Header / redirect / 404 result:
+- Production browser follow-up:
 - Rollback availability:
 
 Result:
-- [ ] Exact production deployment verified.
+- [ ] Production verification passed without a material discrepancy.
 - [ ] Production acceptance is supported rather than inferred.
 
-## 12. Final reconciliation
+Evidence/notes:
 
-- [ ] Pull Request operational record updated.
+## 11. Final reconciliation
+
 - [ ] Tasks Management updated.
 - [ ] Directly affected repository documentation updated.
-- [ ] Glaze consumer registry reconciled where applicable.
+- [ ] Glaze consumer record reconciled where applicable.
 - [ ] Canonical Drive/GitHub indexes reconciled if materially affected.
 - [ ] No unresolved blocker makes completion inaccurate.
 
-Final disposition:
-Accepted / Rejected / Blocked / Superseded / Unverified
+## Final candidate disposition
 
-Notes:
+Select exactly one final candidate disposition only when the record leaves the working state:
+
+- [ ] ACCEPTED
+- [ ] BLOCKED
+- [ ] REJECTED
+- [ ] SUPERSEDED
+
+Evidence/notes:

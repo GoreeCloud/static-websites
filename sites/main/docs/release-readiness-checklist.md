@@ -40,6 +40,7 @@ python scripts/validate_manifest.py
 python sites/main/scripts/validate_site.py
 python sites/main/scripts/validate_public_surface.py
 python sites/main/scripts/validate_glaze_ui.py
+python -m unittest discover -s sites/main/tests -p "test_*.py"
 python sites/main/scripts/build_public_site.py
 python sites/main/scripts/validate_build_artifact.py
 python sites/main/scripts/browser_artifact_smoke.py
@@ -53,6 +54,7 @@ Required evidence:
 - [ ] The Main website validation workflow is green on the exact SHA.
 - [ ] The exact artifact contains only allowlisted public files.
 - [ ] Current **Glaze V1.7 / 1.7.0** target validation passes against the pinned authority.
+- [ ] Current retained-site unit tests pass without errors or skipped legacy contracts.
 - [ ] Chrome automation passes all eleven canonical pages at the governed representative viewports.
 - [ ] Governed core interactive controls satisfy the 48 px floor.
 - [ ] No unintended horizontal overflow is present.
