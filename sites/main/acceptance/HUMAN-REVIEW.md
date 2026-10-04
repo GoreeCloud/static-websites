@@ -8,10 +8,24 @@
 - Stable authority: `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b`
 - Stable entrypoint: `js/glaze-v1.7.0.mjs`
 - Website state: `source-adopted-unaccepted`
-- Candidate revision: bind after the exact protected candidate is finalized
+- Candidate revision: `531744f2a82133caca8ddde00fa782415d1a42e1`
 - Canonical origin: `https://www.goreecloud.com`
 
 Glaze V1.7.0 intentionally inherits the accepted V1.6.0 runtime surface, but downstream acceptance does not transfer automatically across target versions or changed website revisions.
+
+## Current machine and canonical-readback evidence
+
+For exact revision `531744f2a82133caca8ddde00fa782415d1a42e1`:
+
+- repository validation run `37171153953` passed;
+- main website validation run `37171153974` passed;
+- the isolated artifact validated at 100 files / 322713 bytes;
+- responsive browser smoke passed all eleven canonical routes at representative widths;
+- Cloudflare Pages reported a successful deployment for the exact revision;
+- live `/security/` HTML exactly matched source blob `1c3f93866eb76c9ce366ba8f2db42b15dc5ad427`;
+- live `/privacy/` HTML exactly matched source blob `aadf935248db716858b7882b1685d0bcdd4a6da4`.
+
+This is partial production readback evidence only. Complete deployed-tree equivalence, human review, representative performance/resilience, exact rollback evidence, and final production consumer approval remain pending.
 
 ## Required current review lanes
 
