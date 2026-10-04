@@ -32,7 +32,7 @@ REQUIRED_GOVERNANCE_MARKERS = (
     "this Not Applicable determination expires",
     "successful isolated `dist/` artifact and public-boundary validation",
     "repository-publication, reachable-history, creative-rights, and contextual-disclosure review",
-    "explicit merge and production authorization",
+    "governed merge and production authorization",
 )
 
 REQUIRED_BUILD_MARKERS = (
