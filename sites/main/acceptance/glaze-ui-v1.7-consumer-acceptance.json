@@ -7,24 +7,66 @@
   "designSystemStableRevision": "1a5756daed2294155be2e9972b24f580f6222b7b",
   "designSystemEntrypoint": "js/glaze-v1.7.0.mjs",
   "designSystemEntrypointBlob": "c669d9c6f1738b2a56cb02b2e00fa0ca229117c0",
-  "candidateRevision": null,
-  "status": "pending-evidence",
-  "supportedPlatforms": ["web"],
+  "candidateRevision": "36bfb823abe52007ae377766c6d224407df5f071",
+  "status": "pending-human-acceptance",
+  "supportedPlatforms": [
+    "web"
+  ],
   "machineEvidence": {
     "sourceTargetValidation": {
-      "status": "pending-exact-head",
-      "note": "Repository source now targets Glaze 1.7.0; exact-head evidence must be recorded for the integrated candidate."
+      "status": "passed",
+      "runId": 37175225680,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "note": "Validate main GoreeCloud website passed the pinned Glaze V1.7.0 source-target check on exact main."
     },
-    "repositoryValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
-    "websiteValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
-    "renderedPublicTreeEquivalence": {"status": "pending"},
-    "responsiveAndInteraction": {"status": "pending"},
-    "isolatedArtifact": {"status": "pending"},
-    "privacyAndSecurity": {"status": "pending"}
+    "repositoryValidation": {
+      "status": "passed",
+      "runId": 37175225674,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071"
+    },
+    "websiteValidation": {
+      "status": "passed",
+      "runId": 37175225680,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071"
+    },
+    "renderedPublicTreeEquivalence": {
+      "status": "passed",
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "routeCount": 11,
+      "totalHtmlBytes": 115354,
+      "evidence": "acceptance/GLAZE-V1.7-CANONICAL-READBACK.md",
+      "note": "Canonical cache-busted readback matched repository source byte-for-byte for all eleven current public routes."
+    },
+    "responsiveAndInteraction": {
+      "status": "passed",
+      "runId": 37175225680,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "note": "The exact-main Chrome smoke lane passed canonical-page responsive and interaction checks."
+    },
+    "isolatedArtifact": {
+      "status": "passed",
+      "runId": 37175225680,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "note": "The exact-main isolated public artifact and public-boundary validation passed."
+    },
+    "privacyAndSecurity": {
+      "status": "passed",
+      "runId": 37175225680,
+      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "note": "Current public-truth, artifact-boundary, CSP/public-surface, and privacy/security validation passed for the exact main candidate."
+    }
   },
   "humanEvidence": {
-    "visualReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
-    "keyboardReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
+    "visualReview": {
+      "status": "pending",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": null
+    },
+    "keyboardReview": {
+      "status": "pending",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": null
+    },
     "assistiveTechnologyReview": {
       "status": "pending",
       "reviewer": "GoreeCloud project owner",
@@ -36,31 +78,35 @@
     "status": "pending",
     "reviewer": "GoreeCloud project owner",
     "reviewedAt": null,
-    "environment": null
+    "environment": null,
+    "note": "Automated browser smoke passed, but representative owner/device performance and resilience acceptance remains separate."
   },
   "rollback": {
     "lastKnownGoodVersion": "1.6.0",
     "lastKnownGoodEntrypoint": "js/glaze-v1.6.0.mjs",
     "independentlyReversible": true,
     "verifiedByGitHistory": true,
-    "note": "Glaze 1.7.0 inherits the accepted 1.6.0 runtime surface, but exact website rollback evidence remains required."
+    "note": "Glaze 1.7.0 inherits the accepted 1.6.0 runtime surface. Website source rollback remains independently available through Git history; current human acceptance is still pending."
   },
   "productionApproval": {
     "approved": false,
     "authority": "GoreeCloud project owner",
     "acceptedRevision": null,
     "approvedAt": null,
-    "note": "Source adoption does not grant consumer or production acceptance."
+    "note": "Exact deployment/readback and machine validation are complete, but Glaze consumer acceptance remains blocked on human review and representative performance evidence."
   },
   "productionEvidence": {
-    "status": "pending-deployment-and-readback",
+    "status": "deployed-readback-verified",
     "canonicalOrigin": "https://www.goreecloud.com",
-    "deployedRevision": null,
-    "deployedAt": null
+    "deployedRevision": "36bfb823abe52007ae377766c6d224407df5f071",
+    "deployedAt": null,
+    "routeCount": 11,
+    "evidence": "acceptance/GLAZE-V1.7-CANONICAL-READBACK.md",
+    "note": "Canonical readback is exact for all current public HTML routes; provider deployment timestamp was not independently recorded in this evidence pass."
   },
   "historicalEvidence": {
     "v16Record": "acceptance/glaze-ui-v1.6-consumer-acceptance.json",
     "status": "historical-only",
-    "note": "V1.6 evidence remains exact-revision provenance and does not automatically satisfy V1.7 acceptance."
+    "note": "V1.6 and earlier V1.7 evidence remain exact-revision provenance and do not automatically satisfy current acceptance."
   }
 }

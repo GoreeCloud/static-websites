@@ -8,8 +8,10 @@
 - Stable runtime entrypoint: `js/glaze-v1.7.0.mjs`
 - Entrypoint Git blob: `c669d9c6f1738b2a56cb02b2e00fa0ca229117c0`
 - Stable runtime baseline: **1.6.0**
-- Website consumer state: **source-adopted-unaccepted**
-- Production eligibility: **not established**
+- Website consumer state: **source-adopted-unaccepted / pending-human-acceptance**
+- Exact website candidate: `36bfb823abe52007ae377766c6d224407df5f071`
+- Machine/deployment evidence: **complete for the exact candidate**
+- Final Glaze consumer acceptance: **not established**
 
 Glaze V1.7.0 is the current shared Stable/Anchor target. Its bounded Stable runtime intentionally inherits the accepted V1.6.0 runtime and excludes unverified V1.7 Development behavior. That compatibility choice permits a bounded source migration, but it does not transfer downstream website acceptance.
 
@@ -23,9 +25,9 @@ The website retains its existing accessibility and adaptation foundations, inclu
 
 The V1.6 consumer record remains historical exact-revision evidence only. Current V1.7 adoption starts a fresh evidence cycle in `acceptance/glaze-ui-v1.7-consumer-acceptance.json`.
 
-Before V1.7 consumer acceptance may be claimed, one exact website revision must complete all applicable machine, rendered/responsive, privacy/security, accessibility, keyboard, assistive-technology, representative performance/resilience, rollback, deployment, deployed-byte/readback, and owner-acceptance obligations.
+For exact candidate `36bfb823abe52007ae377766c6d224407df5f071`, repository validation, website validation, rendered/responsive browser smoke, isolated-artifact checks, privacy/security validation, deployment, and deployed-byte readback are complete. Human visual, keyboard, assistive-technology, representative performance/resilience, and explicit owner acceptance remain pending.
 
-A source build, GitHub Actions run, Cloudflare preview, visual resemblance, or Glaze's own Stable lifecycle cannot independently grant website production acceptance.
+The exact canonical readback is recorded in `acceptance/GLAZE-V1.7-CANONICAL-READBACK.md`. A source build, GitHub Actions run, canonical deployment, visual resemblance, or Glaze's own Stable lifecycle cannot independently grant final website consumer acceptance.
 
 ## Authority boundary
 
