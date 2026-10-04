@@ -1,5 +1,13 @@
 # GoreeCloud Public Websites — Changelogs
 
+## 2026-10-04 — Navigation and accessible identity consistency patch
+
+- Normalized the retained site's mobile navigation control across all eleven canonical routes and the 404 surface to the shared glyph control with explicit Open/Close accessibility labels.
+- Updated Glaze and GoreeCloud Mesh SVG accessibility metadata to the current Glaze identity without renaming compatibility asset paths.
+- Extended current-site validation so canonical pages and the 404 surface fail closed if the glyph navigation control regresses to legacy text-only markup.
+- Bumped the retained website source patch version to `5.25.1`.
+- This source patch creates a new exact website candidate; prior Glaze V1.7 consumer evidence remains historical exact-revision evidence until the new revision completes its own validation, deployment readback, and human acceptance lanes.
+
 ## 2026-10-03 — Glaze V1.7 exact-revision machine evidence
 
 - Bound the Glaze V1.7 consumer record to website revision `36bfb823abe52007ae377766c6d224407df5f071`.
