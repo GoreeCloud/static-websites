@@ -7,24 +7,57 @@
   "designSystemStableRevision": "1a5756daed2294155be2e9972b24f580f6222b7b",
   "designSystemEntrypoint": "js/glaze-v1.7.0.mjs",
   "designSystemEntrypointBlob": "c669d9c6f1738b2a56cb02b2e00fa0ca229117c0",
-  "candidateRevision": null,
+  "candidateRevision": "531744f2a82133caca8ddde00fa782415d1a42e1",
   "status": "pending-evidence",
-  "supportedPlatforms": ["web"],
+  "supportedPlatforms": [
+    "web"
+  ],
   "machineEvidence": {
     "sourceTargetValidation": {
-      "status": "pending-exact-head",
-      "note": "Repository source now targets Glaze 1.7.0; exact-head evidence must be recorded for the integrated candidate."
+      "status": "passed",
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+      "note": "Exact current main targets Glaze 1.7.0 and passes the pinned source-authority validator."
     },
-    "repositoryValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
-    "websiteValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
-    "renderedPublicTreeEquivalence": {"status": "pending"},
-    "responsiveAndInteraction": {"status": "pending"},
-    "isolatedArtifact": {"status": "pending"},
-    "privacyAndSecurity": {"status": "pending"}
+    "repositoryValidation": {
+      "status": "passed",
+      "runId": 37171153953,
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"
+    },
+    "websiteValidation": {
+      "status": "passed",
+      "runId": 37171153974,
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"
+    },
+    "renderedPublicTreeEquivalence": {
+      "status": "pending",
+      "note": "Exact live/source HTML parity is verified for /security/ and /privacy/ only; complete deployed-tree equivalence remains pending."
+    },
+    "responsiveAndInteraction": {
+      "status": "passed",
+      "note": "Headless Chrome smoke passed all eleven canonical routes at representative desktop, tablet, modern-phone, and narrow-phone widths."
+    },
+    "isolatedArtifact": {
+      "status": "passed",
+      "files": 100,
+      "bytes": 322713,
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"
+    },
+    "privacyAndSecurity": {
+      "status": "passed",
+      "note": "Repository/public-surface validators passed for the exact revision; this is machine evidence only and does not replace human or product-authority acceptance."
+    }
   },
   "humanEvidence": {
-    "visualReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
-    "keyboardReview": {"status": "pending", "reviewer": "GoreeCloud project owner", "reviewedAt": null},
+    "visualReview": {
+      "status": "pending",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": null
+    },
+    "keyboardReview": {
+      "status": "pending",
+      "reviewer": "GoreeCloud project owner",
+      "reviewedAt": null
+    },
     "assistiveTechnologyReview": {
       "status": "pending",
       "reviewer": "GoreeCloud project owner",
@@ -53,10 +86,29 @@
     "note": "Source adoption does not grant consumer or production acceptance."
   },
   "productionEvidence": {
-    "status": "pending-deployment-and-readback",
+    "status": "partial-canonical-page-readback-passed",
     "canonicalOrigin": "https://www.goreecloud.com",
-    "deployedRevision": null,
-    "deployedAt": null
+    "deployedRevision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+    "deployedAt": null,
+    "readbackRecord": "acceptance/GLAZE-V1.7-CANONICAL-READBACK.md",
+    "routeReadbacks": [
+      {
+        "route": "/security/",
+        "sourcePath": "sites/main/security/index.html",
+        "sourceBlob": "1c3f93866eb76c9ce366ba8f2db42b15dc5ad427",
+        "liveTextLength": 9745,
+        "sourceTextLength": 9745,
+        "status": "exact-text-match-passed"
+      },
+      {
+        "route": "/privacy/",
+        "sourcePath": "sites/main/privacy/index.html",
+        "sourceBlob": "aadf935248db716858b7882b1685d0bcdd4a6da4",
+        "liveTextLength": 9966,
+        "sourceTextLength": 9966,
+        "status": "exact-text-match-passed"
+      }
+    ]
   },
   "historicalEvidence": {
     "v16Record": "acceptance/glaze-ui-v1.6-consumer-acceptance.json",
