@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">GoreeCloud Mesh Interlace emblem</title>
-  <desc id="desc">Three independent Glaze UI ribbons interlace around an open center to represent distributed coordination without a central authority hub.</desc>
+  <desc id="desc">Three independent Glaze ribbons interlace around an open center to represent distributed coordination without a central authority hub.</desc>
   <defs>
     <linearGradient id="meshA" x1="56" y1="252" x2="454" y2="178" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#22D3EE"/>
