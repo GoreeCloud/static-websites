@@ -32,7 +32,7 @@ Public content must not manufacture current state.
 - `Instructions — Integral Platform Systems` controls the current nine-system platform model.
 - Live GitHub is authoritative for repository existence, names, visibility, descriptions, and archive state.
 - Product implementation and lifecycle state remain controlled by each product's authoritative repository and project records.
-- Glaze UI presentation must not be presented as proof of privacy, security, deployment, production readiness, or platform integration.
+- Glaze presentation must not be presented as proof of privacy, security, deployment, production readiness, or platform integration.
 
 The website must not publish private repository names or fixed private-repository counts.
 
@@ -40,7 +40,7 @@ The website must not publish private repository names or fixed private-repositor
 
 This source now targets the current bounded Stable Glaze 1.7.0 contract at `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b` using `js/glaze-v1.7.0.mjs`. Glaze 1.7.0 intentionally inherits the accepted 1.6.0 runtime surface, but downstream website conformance is not inherited automatically. The website therefore records `source-adopted-unaccepted` until exact-revision rendered, accessibility, performance/resilience, rollback, deployment/readback, and owner acceptance evidence is completed.
 
-The rebuild uses local, same-origin presentation code. It does not require remote Glaze runtime execution in the browser.
+The retained site uses local, same-origin presentation code. Current public links use canonical `GoreeCloud/office`, `GoreeCloud/firefox-addons`, and `GoreeCloud/bookmarks` repository identities; legacy repository names are compatibility/history only. It does not require remote Glaze runtime execution in the browser.
 
 ## Build and validation
 
