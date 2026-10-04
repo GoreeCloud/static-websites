@@ -7,8 +7,8 @@ Canonical source for GoreeCloud's one current public website.
 - Site root: `sites/main`
 - Cloudflare Pages project: `goreecloud-website`
 - Current public model: one website with path-based sections
-- Current design target: **GLAZE UI V1.6 / 1.6.0 Stable**
-- Consumer state: **migration candidate — repository-local acceptance pending**
+- Current design target: **Glaze V1.7 / 1.7.0 Stable**
+- Consumer state: **source adopted — repository-local acceptance pending**
 
 ## Current public information architecture
 
@@ -36,11 +36,11 @@ Public content must not manufacture current state.
 
 The website must not publish private repository names or fixed private-repository counts.
 
-## Glaze UI V1.6 migration
+## Glaze V1.7 source adoption
 
-This rebuild targets the current Official Stable Glaze UI 1.6.0 contract. Stable lifecycle authority is pinned at `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`; the separately recorded accepted published release source is `a7180679ea851389e0f3004515f9a25f420e716d`. The shared Glaze UI release is consumer-eligible, but downstream website conformance is not inherited automatically. The website therefore records its state as `migration-candidate-unaccepted` until exact-revision repository-local rendered, accessibility, performance, and other required acceptance evidence is completed.
+This source now targets the current bounded Stable Glaze 1.7.0 contract at `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b` using `js/glaze-v1.7.0.mjs`. Glaze 1.7.0 intentionally inherits the accepted 1.6.0 runtime surface, but downstream website conformance is not inherited automatically. The website therefore records `source-adopted-unaccepted` until exact-revision rendered, accessibility, performance/resilience, rollback, deployment/readback, and owner acceptance evidence is completed.
 
-The rebuild uses local, same-origin presentation code. It does not require remote Glaze UI runtime execution in the browser.
+The rebuild uses local, same-origin presentation code. It does not require remote Glaze runtime execution in the browser.
 
 ## Build and validation
 
@@ -73,4 +73,4 @@ Production completion still requires post-push live verification of `https://www
 
 ## Acceptance boundary
 
-Source changes, a successful build, CI success, or a Cloudflare deployment do not by themselves establish final production acceptance. Merge, deployment, exact deployed-byte verification, rendered review, accessibility acceptance, performance acceptance, rollback readiness, and current Glaze UI consumer acceptance remain separately governed transitions.
+Source changes, a successful build, CI success, or a Cloudflare deployment do not by themselves establish final production acceptance. Merge, deployment, exact deployed-byte verification, rendered review, accessibility acceptance, performance acceptance, rollback readiness, and current Glaze consumer acceptance remain separately governed transitions.
