@@ -9,7 +9,7 @@
 - Entrypoint Git blob: `c669d9c6f1738b2a56cb02b2e00fa0ca229117c0`
 - Stable runtime baseline: **1.6.0**
 - Website consumer state: **source-adopted-unaccepted / pending-human-acceptance**
-- Exact website candidate: `36bfb823abe52007ae377766c6d224407df5f071`
+- Exact website candidate: `17303b6c7381faaa0e89ce6175ce24048fb56a12`
 - Machine/deployment evidence: **complete for the exact candidate**
 - Final Glaze consumer acceptance: **not established**
 
@@ -25,7 +25,7 @@ The website retains its existing accessibility and adaptation foundations, inclu
 
 The V1.6 consumer record remains historical exact-revision evidence only. Current V1.7 adoption starts a fresh evidence cycle in `acceptance/glaze-ui-v1.7-consumer-acceptance.json`.
 
-For exact candidate `36bfb823abe52007ae377766c6d224407df5f071`, repository validation, website validation, rendered/responsive browser smoke, isolated-artifact checks, privacy/security validation, deployment, and deployed-byte readback are complete. Human visual, keyboard, assistive-technology, representative performance/resilience, and explicit owner acceptance remain pending.
+For exact candidate `17303b6c7381faaa0e89ce6175ce24048fb56a12`, repository validation, website validation, rendered/responsive browser smoke, isolated-artifact checks, privacy/security validation, deployment, and deployed-byte readback are complete. Human visual, keyboard, assistive-technology, representative performance/resilience, and explicit owner acceptance remain pending.
 
 The exact canonical readback is recorded in `acceptance/GLAZE-V1.7-CANONICAL-READBACK.md`. A source build, GitHub Actions run, canonical deployment, visual resemblance, or Glaze's own Stable lifecycle cannot independently grant final website consumer acceptance.
 

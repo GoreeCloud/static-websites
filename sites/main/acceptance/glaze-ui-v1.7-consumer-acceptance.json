@@ -7,7 +7,7 @@
   "designSystemStableRevision": "1a5756daed2294155be2e9972b24f580f6222b7b",
   "designSystemEntrypoint": "js/glaze-v1.7.0.mjs",
   "designSystemEntrypointBlob": "c669d9c6f1738b2a56cb02b2e00fa0ca229117c0",
-  "candidateRevision": "36bfb823abe52007ae377766c6d224407df5f071",
+  "candidateRevision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
   "status": "pending-human-acceptance",
   "supportedPlatforms": [
     "web"
@@ -15,44 +15,44 @@
   "machineEvidence": {
     "sourceTargetValidation": {
       "status": "passed",
-      "runId": 37175225680,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "runId": 37191505073,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
       "note": "Validate main GoreeCloud website passed the pinned Glaze V1.7.0 source-target check on exact main."
     },
     "repositoryValidation": {
       "status": "passed",
-      "runId": 37175225674,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071"
+      "runId": 37191505046,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12"
     },
     "websiteValidation": {
       "status": "passed",
-      "runId": 37175225680,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071"
+      "runId": 37191505073,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12"
     },
     "renderedPublicTreeEquivalence": {
       "status": "passed",
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
       "routeCount": 11,
-      "totalHtmlBytes": 115354,
+      "totalHtmlBytes": 115559,
       "evidence": "acceptance/GLAZE-V1.7-CANONICAL-READBACK.md",
-      "note": "Canonical cache-busted readback matched repository source byte-for-byte for all eleven current public routes."
+      "note": "Cache-busted canonical readback matched repository source byte-for-byte for all eleven current public routes. The current 404 body plus Glaze and Mesh SVG assets also matched exact source bytes."
     },
     "responsiveAndInteraction": {
       "status": "passed",
-      "runId": 37175225680,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
-      "note": "The exact-main Chrome smoke lane passed canonical-page responsive and interaction checks."
+      "runId": 37191505073,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
+      "note": "The exact-main Chrome smoke lane passed canonical-page responsive and interaction checks, including the shared glyph navigation control."
     },
     "isolatedArtifact": {
       "status": "passed",
-      "runId": 37175225680,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "runId": 37191505073,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
       "note": "The exact-main isolated public artifact and public-boundary validation passed."
     },
     "privacyAndSecurity": {
       "status": "passed",
-      "runId": 37175225680,
-      "revision": "36bfb823abe52007ae377766c6d224407df5f071",
+      "runId": 37191505073,
+      "revision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
       "note": "Current public-truth, artifact-boundary, CSP/public-surface, and privacy/security validation passed for the exact main candidate."
     }
   },
@@ -98,15 +98,15 @@
   "productionEvidence": {
     "status": "deployed-readback-verified",
     "canonicalOrigin": "https://www.goreecloud.com",
-    "deployedRevision": "36bfb823abe52007ae377766c6d224407df5f071",
+    "deployedRevision": "17303b6c7381faaa0e89ce6175ce24048fb56a12",
     "deployedAt": null,
     "routeCount": 11,
     "evidence": "acceptance/GLAZE-V1.7-CANONICAL-READBACK.md",
-    "note": "Canonical readback is exact for all current public HTML routes; provider deployment timestamp was not independently recorded in this evidence pass."
+    "note": "Canonical readback is exact for all current public HTML routes; the changed 404 body and Glaze/Mesh SVG assets also match exact source. Provider deployment timestamp was not independently recorded."
   },
   "historicalEvidence": {
     "v16Record": "acceptance/glaze-ui-v1.6-consumer-acceptance.json",
     "status": "historical-only",
-    "note": "V1.6 and earlier V1.7 evidence remain exact-revision provenance and do not automatically satisfy current acceptance."
+    "note": "V1.6 and earlier V1.7 evidence, including exact candidate 36bfb823abe52007ae377766c6d224407df5f071, remain exact-revision provenance and do not automatically satisfy current acceptance."
   }
 }

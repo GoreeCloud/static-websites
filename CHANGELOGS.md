@@ -1,5 +1,13 @@
 # GoreeCloud Public Websites — Changelogs
 
+## 2026-10-04 — Glaze V1.7 evidence rebind after navigation patch
+
+- Bound the Glaze V1.7 consumer evidence to exact website revision `17303b6c7381faaa0e89ce6175ce24048fb56a12` / source version `5.25.1`.
+- Recorded successful exact-main repository validation run `37191505046` and website validation run `37191505073`.
+- Verified all 11 canonical HTML routes byte-for-byte against deployed production, totaling 115,559 HTML bytes.
+- Verified the changed 404 body plus the Glaze and Mesh SVG assets byte-for-byte against the same exact source revision.
+- Retained `pending-human-acceptance`; visual, keyboard, assistive-technology, representative performance/resilience, and explicit owner acceptance remain open.
+
 ## 2026-10-04 — Navigation and accessible identity consistency patch
 
 - Normalized the retained site's mobile navigation control across all eleven canonical routes and the 404 surface to the shared glyph control with explicit Open/Close accessibility labels.
