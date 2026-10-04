@@ -2,38 +2,48 @@
 
 ## Current source state
 
-`www.goreecloud.com` is the one current GoreeCloud website.
+`www.goreecloud.com` is the one current GoreeCloud public website.
 
-The active rebuild is being reviewed in `GoreeCloud/static-websites` through pull request #109. The candidate is not production-accepted merely because source validation, branch preview deployment, or responsive browser checks pass.
+- Canonical source repository: `GoreeCloud/static-websites`
+- Canonical site root: `sites/main`
+- Website source version: **5.25.1**
+- Exact deployed public-artifact revision: `17303b6c7381faaa0e89ce6175ce24048fb56a12`
+- Current Glaze consumer state: **source-adopted-unaccepted / pending-human-acceptance**
 
-The repository `VERSION` file remains release metadata. It does not establish current design-system authority, deployment identity, Stable status, or production acceptance by itself.
+Repository `main` may advance through repository-only evidence or documentation commits without changing public HTML bytes. Production and consumer-acceptance claims remain bound to the exact public artifact and evidence record, not merely to the newest repository commit.
 
 ## Current design-system baseline
 
-The required design-system target is **GLAZE UI V1.6 / 1.6.0 Stable**.
+The required shared design target is **Glaze V1.7 / 1.7.0 Stable**.
 
-- Canonical repository: `GoreeCloud/glaze-ui`
-- Stable lifecycle authority: `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`
-- Accepted published release source: `a7180679ea851389e0f3004515f9a25f420e716d`
-- Stable runtime entrypoint: `js/glaze-v1.6.0.mjs`
-- Website consumer state: `migration-candidate-unaccepted`
+- Canonical repository: `GoreeCloud/glaze`
+- Bounded Stable promotion revision: `1a5756daed2294155be2e9972b24f580f6222b7b`
+- Stable runtime entrypoint: `js/glaze-v1.7.0.mjs`
+- Entrypoint Git blob: `c669d9c6f1738b2a56cb02b2e00fa0ca229117c0`
+- Immediate rollback/runtime baseline: **1.6.0**
+- Consumer evidence: `acceptance/glaze-ui-v1.7-consumer-acceptance.json`
 
-The Glaze consumer registry requires fresh repository-local V1.6.0 acceptance. Shared design-system Stable status does not make the website production-eligible.
+Glaze 1.7.0 intentionally inherits the accepted 1.6.0 runtime surface, but downstream website acceptance is not inherited automatically. Final Glaze consumer acceptance remains open until the required human and representative-performance lanes pass for the exact deployed public artifact and the GoreeCloud project owner explicitly accepts that revision.
 
 ## Current public-information baseline
 
-The retained website uses six canonical destinations:
+The canonical route registry contains **eleven** destinations:
 
 1. `/`
 2. `/platform-systems/`
 3. `/suite/`
-4. `/office-suite/`
-5. `/firefox/`
-6. `/github/`
+4. `/android/`
+5. `/office-suite/`
+6. `/firefox/`
+7. `/github/`
+8. `/contact/`
+9. `/design/`
+10. `/security/`
+11. `/privacy/`
 
 Current public architecture uses the authoritative nine Integral Platform Systems. GoreeCloud Sync remains separately governed and is not a tenth Integral Platform System.
 
-The Suite section uses the reconciled 45-product registry across nine functional groups.
+The Suite section uses the reconciled **45-product** registry across nine functional groups.
 
 The GitHub section does not publish private repository names or a fixed repository count. Current public repository metadata is loaded from GitHub only after explicit visitor action.
 
@@ -41,39 +51,64 @@ The GitHub section does not publish private repository names or a fixed reposito
 
 The website must preserve, at minimum:
 
-- 48px general interactive targets for governed core controls;
-- phone, tablet, and desktop responsiveness;
-- no unintended horizontal scrolling;
-- keyboard-operable navigation and actions;
-- visible focus treatment;
+- 48 px general interactive targets for governed core controls;
+- phone, tablet, desktop, and narrow-phone responsiveness;
+- no unintended horizontal scrolling or clipped controls;
+- keyboard-operable navigation and actions with visible focus;
+- accessible glyph mobile navigation with correct Open/Close state;
 - reduced-motion and reduced-transparency behavior;
 - increased-contrast and forced-colors behavior;
-- current official GoreeCloud branding;
+- current official GoreeCloud branding and artwork provenance;
 - no placeholder or dead production controls; and
-- graceful failure/fallback behavior.
+- graceful local failure/fallback behavior.
 
-The current website logo bytes match the approved `official/goreecloud-logo.svg` asset in the canonical `GoreeCloud/branding-assets` repository.
+## Current exact-revision machine and deployment evidence
+
+For public artifact revision `17303b6c7381faaa0e89ce6175ce24048fb56a12`:
+
+- repository validation run `37191505046` passed;
+- Main website validation run `37191505073` passed;
+- pinned Glaze V1.7 source-target validation passed;
+- isolated public-artifact and public-boundary validation passed;
+- canonical-page Chrome responsive/interaction smoke passed;
+- canonical production readback matched repository HTML byte-for-byte across all eleven routes, totaling **115,559 HTML bytes**; and
+- the changed 404 body plus the Glaze and Mesh SVG assets also matched exact source bytes.
+
+These results establish machine and deployment evidence, not final human acceptance.
+
+## Remaining acceptance boundary
+
+The following lanes remain open for the exact deployed artifact:
+
+- human visual review across representative desktop, tablet, modern-phone, and narrow-phone viewports;
+- keyboard-only review;
+- assistive-technology review;
+- representative browser/device performance and resilience review; and
+- explicit GoreeCloud project-owner acceptance.
+
+The canonical active task record is maintained in GoreeCloud Tasks Management as **Public Website — Glaze V1.7 Human Acceptance Task List.docx**.
 
 ## Stability definition
 
-A website revision is not Stable or production-accepted until the exact candidate satisfies all applicable source, artifact, human review, accessibility, privacy, security, performance, branch-preview, merge, deployment, rollback, and post-deployment verification requirements.
+A changed public website revision is not final-accepted merely because source exists, CI is green, a merge completed, or a deployment provider reports success.
 
-Required transition sequence includes:
+The required transition sequence includes, as applicable:
 
 1. exact source and public-artifact validation;
 2. current Glaze target validation;
 3. representative responsive/browser validation;
-4. successful exact branch preview;
+4. candidate deployment/preview evidence when configured;
 5. human visual and keyboard review;
 6. appropriate accessibility and assistive-technology review;
-7. explicit authorization for merge;
-8. merge to the protected production branch;
-9. exact production deployment;
-10. canonical-domain deployed-byte/header/browser verification; and
-11. final documentation, Glaze consumer registry, and task reconciliation.
+7. representative performance/resilience evidence;
+8. governed merge to the production branch;
+9. exact production deployment/readback;
+10. canonical-domain byte/header/browser verification;
+11. rollback/recovery readiness; and
+12. final documentation, Glaze consumer record, canonical-index, and Tasks Management reconciliation.
 
-A passing branch preview alone is not a Stable release. A merge alone is not a Stable release.
+If a source-changing correction creates a new public artifact revision, acceptance must be rebound and every affected lane revalidated. Historical acceptance must not be grandfathered to changed public bytes.
 
 ## Historical boundary
 
-Earlier Glaze 2.x, V1.3, and V1.4 public-web baselines, multi-site inventories, repository totals, and former standalone website-domain records are historical evidence only. They must not be interpreted as the current website, current design-system target, or current production topology.
+Earlier Glaze UI/Glaze 2.x, V1.3, V1.4, and V1.6 public-web baselines; multi-site inventories; former satellite domains; and dated repository-count snapshots remain historical evidence only. They do not override the current one-site topology, Glaze V1.7 target, or exact current consumer-acceptance boundary.
