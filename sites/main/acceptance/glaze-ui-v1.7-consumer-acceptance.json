@@ -67,10 +67,14 @@
     "note": "Source adoption does not grant consumer or production acceptance."
   },
   "productionEvidence": {
-    "status": "pending-deployment-and-readback",
+    "status": "deployed-readback-pending",
     "canonicalOrigin": "https://www.goreecloud.com",
-    "deployedRevision": null,
-    "deployedAt": null
+    "deployedRevision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+    "deployedAt": "2026-10-04T02:28:36Z",
+    "cloudflarePagesCheckId": 111344235579,
+    "deploymentId": "833c933e-f6d0-48ce-b14d-30c8e62a74f2",
+    "previewOrigin": "https://833c933e.goreecloud-website.pages.dev",
+    "note": "Cloudflare Pages reports successful deployment of the exact revision; canonical-origin exact-byte readback remains pending."
   },
   "historicalEvidence": {
     "v16Record": "acceptance/glaze-ui-v1.6-consumer-acceptance.json",
