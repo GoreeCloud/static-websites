@@ -213,6 +213,9 @@ def main() -> int:
             errors.append(f"platform-systems missing: {name}")
     if "not a tenth Integral Platform System" not in platform[0]:
         errors.append("platform-systems must preserve GoreeCloud Sync's separate-governance boundary")
+    for marker in ("Private networking, connectivity, reachability, and service discovery", "Synchronization and state coordination remain GoreeCloud Sync authority"):
+        if marker not in platform[0]:
+            errors.append(f"platform-systems missing current Mesh authority marker: {marker}")
     for identifier in ('id="privacy-shield"', 'id="wardveil-security"', 'id="glaze-ui"'):
         if identifier not in platform[0]:
             errors.append(f"platform-systems missing direct system anchor: {identifier}")
@@ -248,7 +251,7 @@ def main() -> int:
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "support@goreecloud.com", "security@goreecloud.com"),
         "design/index.html": ("identity-stage", "design-lab", "material-grid", "/assets/systems/glaze-ui.svg", "Official Stable"),
-        "security/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/wardveil-security.svg", "scope-specific evidence"),
+        "security/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/wardveil-security.svg", "Version 2.0.0", "deployment remains Development", "scope-specific evidence"),
         "privacy/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/privacy-shield.svg", "Privacy Shield Version 2.0.0", "Deployment remains Development"),
     }
     for relative, markers in visual_requirements.items():
