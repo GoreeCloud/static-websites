@@ -32,7 +32,7 @@ Candidate freeze:
 Record the authoritative source checked for each claim.
 
 - One current website:
-- Canonical six-path route registry:
+- Canonical eleven-path route registry:
 - Nine Integral Platform Systems:
 - GoreeCloud Sync separate-governance boundary:
 - 45-product Suite registry:
@@ -51,7 +51,7 @@ Result:
 - Historical manifest boundary:
 - Public site semantics:
 - Public link/sitemap surface:
-- Glaze V1.6 target:
+- Glaze V1.7 target:
 - Isolated artifact build:
 - Artifact exact-byte/allowlist validation:
 - Responsive Chrome smoke:
@@ -139,9 +139,9 @@ Result:
 Result:
 - [ ] Applicable performance/browser acceptance is complete.
 
-## 9. Glaze UI consumer evidence
+## 9. Glaze consumer evidence
 
-- Required version: 1.6.0
+- Required version: 1.7.0
 - Stable lifecycle authority:
 - Accepted published Glaze source:
 - Website exact reference revision:
@@ -175,7 +175,7 @@ Complete only after authorized merge.
 - Production deployment identifier:
 - Production deployment revision:
 - Canonical home verification:
-- Six canonical destinations:
+- Eleven canonical destinations:
 - Headers/CSP:
 - Redirects:
 - Production responsive/browser result:
