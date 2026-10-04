@@ -144,6 +144,7 @@ def audit_page(relative: str, expected_canonical: str | None, errors: list[str])
             'id="primary-navigation"',
             'aria-controls="primary-navigation"',
             'aria-expanded="false"',
+            'data-nav-icon aria-hidden="true"',
             'class="skip-link" href="#main"',
             'id="main"',
         ):
@@ -181,6 +182,8 @@ def main() -> int:
             errors.append("404.html must be noindex")
         if audit.canonical:
             errors.append("404.html must not publish a canonical URL")
+        if 'data-nav-icon aria-hidden="true"' not in result[0]:
+            errors.append("404.html missing current glyph navigation control")
 
     home = audited.get("index.html", ("", Audit()))[0]
     for marker in (
