@@ -7,16 +7,18 @@
   "designSystemStableRevision": "1a5756daed2294155be2e9972b24f580f6222b7b",
   "designSystemEntrypoint": "js/glaze-v1.7.0.mjs",
   "designSystemEntrypointBlob": "c669d9c6f1738b2a56cb02b2e00fa0ca229117c0",
-  "candidateRevision": null,
+  "candidateRevision": "531744f2a82133caca8ddde00fa782415d1a42e1",
   "status": "pending-evidence",
   "supportedPlatforms": ["web"],
   "machineEvidence": {
     "sourceTargetValidation": {
-      "status": "pending-exact-head",
-      "note": "Repository source now targets Glaze 1.7.0; exact-head evidence must be recorded for the integrated candidate."
+      "status": "passed",
+      "revision": "531744f2a82133caca8ddde00fa782415d1a42e1",
+      "runId": 37171153953,
+      "note": "Exact merged source targets Glaze 1.7.0 and passed the repository-local source-adoption validator."
     },
-    "repositoryValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
-    "websiteValidation": {"status": "pending-exact-head", "runId": null, "revision": null},
+    "repositoryValidation": {"status": "passed", "runId": 37171153953, "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"},
+    "websiteValidation": {"status": "passed", "runId": 37171153974, "revision": "531744f2a82133caca8ddde00fa782415d1a42e1"},
     "renderedPublicTreeEquivalence": {"status": "pending"},
     "responsiveAndInteraction": {"status": "pending"},
     "isolatedArtifact": {"status": "pending"},
