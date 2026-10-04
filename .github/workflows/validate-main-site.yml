@@ -51,6 +51,7 @@ jobs:
           python scripts/validate_url_namespace.py
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
+          python sites/main/scripts/validate_governance_readiness.py
 
       - name: Validate current Glaze target against pinned authority
         env:
