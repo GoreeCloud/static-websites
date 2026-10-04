@@ -49,15 +49,23 @@ jobs:
               root / "README.md",
               root / "platform-systems/index.html",
               root / "suite/index.html",
+              root / "android/index.html",
               root / "office-suite/index.html",
               root / "firefox/index.html",
               root / "github/index.html",
+              root / "contact/index.html",
+              root / "design/index.html",
+              root / "security/index.html",
+              root / "privacy/index.html",
           ]
           stale = (
               "Fourteen official surfaces",
               "seven Integral Platform Systems",
               "Current design target: **GLAZE UI V1.3",
               "Current design target: **GLAZE UI V1.4",
+              "Current design target: **GLAZE UI V1.6",
+              'data-glaze-version="1.6.0"',
+              'name="goreecloud-glaze-ui" content="1.6.0"',
               "suite.goreecloud.com",
               "firefox.goreecloud.com",
           )

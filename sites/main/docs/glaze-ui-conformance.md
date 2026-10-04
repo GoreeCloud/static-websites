@@ -1,61 +1,34 @@
-# GoreeCloud Main Website — GLAZE UI V1.6 Consumer Contract
+# GoreeCloud Main Website — Glaze V1.7 Consumer Contract
 
 ## Current contract
 
-- Target GLAZE UI version: **V1.6 / 1.6.0 Stable**
-- Canonical design-system repository: `GoreeCloud/glaze-ui`
-- Stable lifecycle authority: `081527eff1c5fe5001b6b9598d60439c8fb3c5e3`
-- Accepted published release source: `a7180679ea851389e0f3004515f9a25f420e716d`
-- Stable runtime entrypoint: `js/glaze-v1.6.0.mjs`
-- Entrypoint Git blob: `7dfc863d6c39def97c263de80b21b73efe54db1e`
-- Website consumer state: **migration-candidate-unaccepted**
+- Target Glaze version: **V1.7 / 1.7.0 Stable**
+- Canonical design-system repository: `GoreeCloud/glaze`
+- Bounded Stable promotion revision: `1a5756daed2294155be2e9972b24f580f6222b7b`
+- Stable runtime entrypoint: `js/glaze-v1.7.0.mjs`
+- Entrypoint Git blob: `c669d9c6f1738b2a56cb02b2e00fa0ca229117c0`
+- Stable runtime baseline: **1.6.0**
+- Website consumer state: **source-adopted-unaccepted**
 - Production eligibility: **not established**
 
-GLAZE UI V1.6.0 is the current shared Stable target. Shared Stable status does not grant downstream website conformance, deployment acceptance, or production acceptance.
+Glaze V1.7.0 is the current shared Stable/Anchor target. Its bounded Stable runtime intentionally inherits the accepted V1.6.0 runtime and excludes unverified V1.7 Development behavior. That compatibility choice permits a bounded source migration, but it does not transfer downstream website acceptance.
 
 ## Current website implementation
 
-The retained website is sourced from `GoreeCloud/static-websites/sites/main` and published only as `www.goreecloud.com` with path-based sections.
+The retained website source is `GoreeCloud/static-websites/sites/main`. Every canonical page records the V1.7 target and the fail-closed `source-adopted-unaccepted` state. The exact design-system source pin is recorded in `glaze.lock.json` and verified by repository CI.
 
-The current rebuild uses same-origin website presentation code and records its exact V1.6 target in `glaze.lock.json`. It does not claim that metadata, visual resemblance, or shared Glaze release status proves consumer acceptance.
+The website retains its existing accessibility and adaptation foundations, including the 48 px interaction floor, responsive layouts, visible keyboard focus, reduced-motion and reduced-transparency behavior, increased-contrast and forced-colors handling, light/dark appearance, bounded mobile navigation, and compact-width overflow checks.
 
-The current interface implements the website's required adaptive and accessibility foundations, including:
+## Acceptance boundary
 
-- a 48px general interaction floor for governed core controls;
-- responsive phone, tablet, and desktop layouts;
-- visible keyboard focus;
-- reduced-motion behavior;
-- reduced-transparency fallback;
-- increased-contrast treatment;
-- forced-colors support;
-- light and dark appearance;
-- bounded mobile navigation; and
-- horizontal-overflow failure checks at representative compact widths.
+The V1.6 consumer record remains historical exact-revision evidence only. Current V1.7 adoption starts a fresh evidence cycle in `acceptance/glaze-ui-v1.7-consumer-acceptance.json`.
 
-Repository-local browser validation exercises all six canonical website pages at 1180×900, 768×900, 390×844, and 320×844. Automated validation complements rather than replaces human review.
+Before V1.7 consumer acceptance may be claimed, one exact website revision must complete all applicable machine, rendered/responsive, privacy/security, accessibility, keyboard, assistive-technology, representative performance/resilience, rollback, deployment, deployed-byte/readback, and owner-acceptance obligations.
 
-## Current information and authority boundary
+A source build, GitHub Actions run, Cloudflare preview, visual resemblance, or Glaze's own Stable lifecycle cannot independently grant website production acceptance.
 
-The website reflects the current nine Integral Platform Systems: GoreeCloud Manager, Privacy Shield, Wardveil Security, Everkeep, Glaze UI, GoreeCloud Mesh, GoreeCloud Identity, GoreeCloud Policy, and GoreeCloud Observability.
+## Authority boundary
 
-GoreeCloud Sync remains separately governed synchronization capability and is not a tenth Integral Platform System.
+Glaze remains presentation authority only. Website presentation state cannot create Privacy Shield consent or privacy authorization, Wardveil security authority, runtime capability, deployment state, production state, or another product authority.
 
-The current Suite presentation uses the reconciled 45-product registry across nine functional groups. Live GitHub remains authoritative for current repository existence, naming, visibility, descriptions, and archive state.
-
-The website does not load PostHog or another analytics runtime in the current rebuild. The public GitHub catalog is visitor-triggered and contacts only the public GitHub API after the visitor explicitly chooses to load it.
-
-## Consumer acceptance boundary
-
-The authoritative Glaze consumer registry still requires fresh repository-local V1.6.0 acceptance for GoreeCloud Website. A separate registry-reconciliation pull request may correct repository identity without granting acceptance.
-
-Before this consumer can be treated as accepted for the current Stable Glaze contract, the exact website candidate must complete all applicable repository-local evidence, including human visual review, keyboard review, accessibility/assistive-technology review, performance review, responsive review, and any other required acceptance lanes.
-
-If the candidate revision changes, exact-revision evidence must be revalidated. Prior V1.3, V1.4, 2.0, 2.1, or other historical website evidence does not automatically transfer.
-
-## Deployment boundary
-
-A successful source build, GitHub Actions run, or Cloudflare branch preview is not production acceptance.
-
-Merge authorization, exact production deployment, deployed-byte and header verification, canonical-domain behavior, rollback readiness, and final production acceptance remain separate governed transitions.
-
-Historical Glaze website migrations remain valid only as historical evidence for their exact reviewed revisions.
+Historical V1.6 and earlier evidence remains useful provenance only for the exact bytes it reviewed.

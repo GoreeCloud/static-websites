@@ -30,11 +30,11 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
 
-      - name: Check out pinned Glaze UI V1.6.0 Stable authority
+      - name: Check out pinned Glaze V1.7.0 Stable authority
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          repository: GoreeCloud/glaze-ui
-          ref: 081527eff1c5fe5001b6b9598d60439c8fb3c5e3
+          repository: GoreeCloud/glaze
+          ref: 1a5756daed2294155be2e9972b24f580f6222b7b
           path: .glaze-ui
           persist-credentials: false
 
@@ -52,7 +52,7 @@ jobs:
           python sites/main/scripts/validate_site.py
           python sites/main/scripts/validate_public_surface.py
 
-      - name: Validate current Glaze UI target against pinned authority
+      - name: Validate current Glaze target against pinned authority
         env:
           GLAZE_UI_SOURCE: ${{ github.workspace }}/.glaze-ui
         run: python sites/main/scripts/validate_glaze_ui.py

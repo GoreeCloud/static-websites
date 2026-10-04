@@ -1,4 +1,45 @@
-# GoreeCloud Website — Human Production Review
+# GoreeCloud Website — Glaze V1.7 Human Review
+
+**Status:** PENDING — source adoption does not yet have exact-revision human acceptance.
+
+## Current source boundary
+
+- Design-system target: `1.7.0`
+- Stable authority: `GoreeCloud/glaze@1a5756daed2294155be2e9972b24f580f6222b7b`
+- Stable entrypoint: `js/glaze-v1.7.0.mjs`
+- Website state: `source-adopted-unaccepted`
+- Candidate revision: bind after the exact protected candidate is finalized
+- Canonical origin: `https://www.goreecloud.com`
+
+Glaze V1.7.0 intentionally inherits the accepted V1.6.0 runtime surface, but downstream acceptance does not transfer automatically across target versions or changed website revisions.
+
+## Required current review lanes
+
+### Visual review — PENDING
+
+Review the canonical website routes at representative desktop, tablet, modern-phone, and narrow-phone sizes in supported appearance modes. Confirm identity, composition, spacing, typography, hierarchy, material use, responsive behavior, contrast, clipping, overflow, and visual coherence.
+
+### Keyboard review — PENDING
+
+Using keyboard input only, verify Skip to content, primary navigation, theme control, mobile menu behavior, search/filter inputs, links, buttons, focus visibility, Escape handling, and focus restoration with no trap or unreachable control.
+
+### Assistive-technology review — PENDING
+
+Use a representative supported screen reader or assistive-technology environment. Confirm page titles, headings, landmarks, navigation state, control names, status announcements, links, dynamic public GitHub content, and decorative-image behavior remain understandable.
+
+### Performance and resilience review — PENDING
+
+On representative browser/device conditions, verify the presentation remains responsive, stable, and usable under normal and constrained conditions, including reduced-motion/transparency preferences and expected fallback behavior.
+
+## Machine, deployment, and rollback evidence
+
+Repository validation, browser/rendered checks, exact isolated-artifact evidence, deployment, canonical readback, and rollback evidence must be recorded for the exact V1.7 website candidate before acceptance. CI success by itself is not human review or production acceptance.
+
+## Acceptance rule
+
+Change the V1.7 consumer record to an accepted state only after all applicable machine and human lanes are complete for one exact website revision and the GoreeCloud project owner explicitly accepts that revision. Until then the website remains **source-adopted-unaccepted** for Glaze V1.7.
+
+## Historical V1.6 review record
 
 This record tracks human acceptance for the GoreeCloud Website Glaze UI V1.6 consumer surface. Acceptance is exact-revision scoped. An earlier owner acceptance does not automatically transfer to later public website bytes.
 

@@ -15,16 +15,16 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - name: Check out exact verification candidate
+      - name: Check out exact deployed-baseline source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
           persist-credentials: false
 
-      - name: Build exact isolated public artifact
+      - name: Build exact deployed-baseline artifact
         run: python sites/main/scripts/build_public_site.py
 
-      - name: Verify canonical production bytes
+      - name: Verify canonical production bytes for current main
         env:
           EXPECTED_REVISION: ${{ github.event.pull_request.base.sha || github.sha }}
         run: python sites/main/scripts/verify_production.py

@@ -133,9 +133,9 @@ def audit_page(relative: str, expected_canonical: str | None, errors: list[str])
     if contains_private_address(text):
         errors.append(f"{relative} exposes private-range address material")
     for marker in (
-        'data-glaze-version="1.6.0"',
-        'name="goreecloud-glaze-ui" content="1.6.0"',
-        'name="goreecloud-glaze-consumer-state" content="migration-candidate-unaccepted"',
+        'data-glaze-version="1.7.0"',
+        'name="goreecloud-glaze-ui" content="1.7.0"',
+        'name="goreecloud-glaze-consumer-state" content="source-adopted-unaccepted"',
     ):
         if marker not in text:
             errors.append(f"{relative} missing current Glaze migration marker: {marker}")
@@ -187,7 +187,7 @@ def main() -> int:
         "One public website",
         "45",
         "Nine cross-cutting authorities.",
-        "Glaze UI V1.6",
+        "Glaze V1.7",
         "/platform-systems/",
         "/suite/",
         "/android/",
