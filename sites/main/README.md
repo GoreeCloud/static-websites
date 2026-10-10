@@ -30,6 +30,12 @@ The website is intentionally path-based rather than a collection of separate pub
 
 Compatibility paths such as `/repositories.html`, `/privacy.html`, and `/security.html` are retained only as transition entry points and must not carry stale standalone content.
 
+## Donations: staged, not yet accepting payments
+
+The `/donations/` source page is a public contribution guide. It currently offers public-source exploration and a published contact path, **not** a financial transaction. No processor, collection form, payment URI, donation receipt, donor entitlement, or charitable/tax-deductibility claim is approved by this source change.
+
+Before connecting a verified financial payment destination, follow [Donations payment activation readiness](docs/donations-payment-readiness.md). Runtime/production publication and payment activation are separate release decisions.
+
 ## Truth and authority
 
 Public content must not manufacture current state.
