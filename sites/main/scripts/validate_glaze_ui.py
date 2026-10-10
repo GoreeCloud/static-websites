@@ -21,6 +21,7 @@ PAGES = (
     ROOT / "firefox/index.html",
     ROOT / "github/index.html",
     ROOT / "contact/index.html",
+    ROOT / "donations/index.html",
     ROOT / "design/index.html",
     ROOT / "security/index.html",
     ROOT / "privacy/index.html",

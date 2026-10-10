@@ -8,12 +8,12 @@ REPO_ROOT = ROOT.parents[1]
 NAMESPACE = json.loads((REPO_ROOT / "sites" / "url-namespace.json").read_text(encoding="utf-8"))
 EXPECTED_PATHS = [
     "/", "/platform-systems/", "/suite/", "/android/", "/office-suite/", "/firefox/",
-    "/github/", "/contact/", "/design/", "/security/", "/privacy/",
+    "/github/", "/contact/", "/donations/", "/design/", "/security/", "/privacy/",
 ]
 
 
 class CurrentSiteContractTests(unittest.TestCase):
-    def test_namespace_is_one_retained_site_with_eleven_routes(self):
+    def test_namespace_is_one_retained_site_with_twelve_routes(self):
         self.assertEqual(NAMESPACE["repository"], "GoreeCloud/static-websites")
         self.assertEqual(NAMESPACE["state"], "single-retained-website")
         self.assertEqual(NAMESPACE["canonical_origin"], "https://www.goreecloud.com")
@@ -50,7 +50,7 @@ class CurrentSiteContractTests(unittest.TestCase):
 
     def test_homepage_links_current_path_based_authority_surfaces(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
-        for href in ("/design/", "/security/", "/privacy/", "/contact/"):
+        for href in ("/design/", "/security/", "/privacy/", "/contact/", "/donations/"):
             self.assertIn(f'href="{href}"', home)
 
     def test_compatibility_routes_are_bounded(self):

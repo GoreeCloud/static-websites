@@ -25,6 +25,7 @@ PUBLIC_FILES = (
     "android/index.html",
     "css/site-v9.css",
     "contact/index.html",
+    "donations/index.html",
     "design/index.html",
     "firefox/index.html",
     "github/index.html",

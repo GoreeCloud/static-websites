@@ -55,6 +55,11 @@
       "source": "sites/main/contact/index.html"
     },
     {
+      "id": "donations",
+      "path": "/donations/",
+      "source": "sites/main/donations/index.html"
+    },
+    {
       "id": "design",
       "path": "/design/",
       "source": "sites/main/design/index.html"
