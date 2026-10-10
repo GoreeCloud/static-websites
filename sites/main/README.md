@@ -23,6 +23,7 @@ The website is intentionally path-based rather than a collection of separate pub
 - `/firefox/` — standalone extensions and application-owned Firefox clients
 - `/github/` — current public GitHub repository discovery
 - `/contact/` — approved public contact and social channels
+- `/donations/` — voluntary support and transparent funding status; no financial checkout is currently connected
 - `/design/` — Glaze design and experience system
 - `/security/` — Wardveil Security public boundary and evidence model
 - `/privacy/` — Privacy Shield public boundary and authorization model

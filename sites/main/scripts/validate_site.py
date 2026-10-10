@@ -20,6 +20,7 @@ CANONICAL = {
     "firefox/index.html": "https://www.goreecloud.com/firefox/",
     "github/index.html": "https://www.goreecloud.com/github/",
     "contact/index.html": "https://www.goreecloud.com/contact/",
+    "donations/index.html": "https://www.goreecloud.com/donations/",
     "design/index.html": "https://www.goreecloud.com/design/",
     "security/index.html": "https://www.goreecloud.com/security/",
     "privacy/index.html": "https://www.goreecloud.com/privacy/",
@@ -198,6 +199,7 @@ def main() -> int:
         "/firefox/",
         "/github/",
         "/contact/",
+        "/donations/",
         "/privacy/",
         "/security/",
         "/design/",
@@ -253,6 +255,7 @@ def main() -> int:
         "firefox/index.html": ("browser-stage", "extension-card", "/assets/firefox/advanced-tab-manager.svg", "/assets/firefox/webspaces.svg", "/assets/firefox/redirector.svg"),
         "github/index.html": ("code-stage", "story-card", "/assets/brand/goreecloud-logo.svg"),
         "contact/index.html": ("contact-stage", "social-card", "/assets/social/instagram.ico", "support@goreecloud.com", "security@goreecloud.com"),
+        "donations/index.html": ("hero-visual", "story-card", "aura-panel", "/assets/brand/goreecloud-logo.svg", "Financial donations are not yet enabled", "No payment method is currently connected"),
         "design/index.html": ("identity-stage", "design-lab", "material-grid", "/assets/systems/glaze-ui.svg", "Official Stable"),
         "security/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/wardveil-security.svg", "Version 2.0.0", "deployment remains Development", "scope-specific evidence"),
         "privacy/index.html": ("identity-stage", "authority-flow", "showcase-card", "/assets/systems/privacy-shield.svg", "Privacy Shield Version 2.0.0", "Deployment remains Development"),
@@ -321,6 +324,12 @@ def main() -> int:
     if "334-" in contact or "slickkredd@" in contact or "goreeboy@" in contact:
         errors.append("contact page must not publish private owner contact records")
 
+    donations = audited.get("donations/index.html", ("", Audit()))[0]
+    if "<form" in donations.lower() or any(
+        host in donations for host in ("buy.stripe.com/", "paypal.me/", "ko-fi.com/", "github.com/sponsors/")
+    ):
+        errors.append("donations page cannot use an unverified payment destination")
+
     github_js = (ROOT / "js/site-v8.js").read_text(encoding="utf-8")
     if "https://api.github.com/orgs/GoreeCloud/repos" not in github_js:
         errors.append("GitHub catalog must use the public GoreeCloud organization API")
@@ -352,7 +361,7 @@ def main() -> int:
         for error in errors:
             print(f"  - {error}")
         return 1
-    print("Website validation passed: one current website, eleven canonical public pages, nine platform systems, and 45 Suite products.")
+    print("Website validation passed: one current website, twelve canonical public pages, nine platform systems, and 45 Suite products.")
     return 0
 
 

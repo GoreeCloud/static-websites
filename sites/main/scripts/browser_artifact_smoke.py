@@ -21,7 +21,7 @@ DRIVER_BASE = f"http://{DRIVER_HOST}:{DRIVER_PORT}"
 WEB_HOST = "127.0.0.1"
 WEB_PORT = 8770
 WEB_BASE = f"http://{WEB_HOST}:{WEB_PORT}"
-PAGES = ("/", "/platform-systems/", "/suite/", "/android/", "/office-suite/", "/firefox/", "/github/", "/contact/", "/design/", "/security/", "/privacy/")
+PAGES = ("/", "/platform-systems/", "/suite/", "/android/", "/office-suite/", "/firefox/", "/github/", "/contact/", "/donations/", "/design/", "/security/", "/privacy/")
 VIEWPORTS = ((1180, 900), (768, 900), (390, 844), (320, 844))
 
 

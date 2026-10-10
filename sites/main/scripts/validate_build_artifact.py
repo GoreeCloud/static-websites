@@ -19,6 +19,7 @@ CANONICAL_PAGES = (
     "firefox/index.html",
     "github/index.html",
     "contact/index.html",
+    "donations/index.html",
     "design/index.html",
     "security/index.html",
     "privacy/index.html",
