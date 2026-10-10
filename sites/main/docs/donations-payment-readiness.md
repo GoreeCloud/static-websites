@@ -37,6 +37,17 @@ python sites/main/scripts/browser_artifact_smoke.py
 
 The GitHub Actions website workflow is authoritative for exact-head CI status, not for owner/human Glaze acceptance or live deployment. Do not infer published status from passing tests, provider build status or a merged pull request. Check production at the canonical domain against the deployed artifact after separately authorized deployment.
 
+## Human acceptance procedure — pending
+
+Automated Chrome validation cannot replace human evidence. A reviewer must use a trusted preview of the exact source revision and record device, browser, assistive technology, revision, date, findings and remediation in the governed acceptance record.
+
+1. **Visual:** Review Donations and the homepage entry at 1180, 768, 390 and 320 px, both themes; inspect headings, reading order, wrapping, target spacing, hero art, and zoom to 200% and 400% where supported.
+2. **Keyboard:** Use Tab and Shift+Tab to exercise the skip link, theme, mobile menu, support anchors, GitHub/contact links, status message and footer. Confirm visible focus, no keyboard trap, Enter activation, and Escape closing the mobile menu with focus restoration.
+3. **Assistive technology:** Navigate by landmarks, headings and links; verify one meaningful H1, comprehensible action labels, the unavailable-payments disclosure, and current-page announcement. Record the exact technology and version.
+4. **Adaptation:** Inspect reduced motion, increased contrast/forced colors and enlarged text. Check that decorative artwork is not noisy and that no hidden checkout affordance appears.
+5. **Representative performance and resilience:** Use an owner-accepted device and network. Record page-load behavior, navigation, outbound requests and recovery; apply established thresholds rather than inventing release criteria.
+6. **Release evidence:** Verify main protection, exact-head CI, human acceptance, rollback, governed publication, and post-release production readback. Merchant activation is a separate process.
+
 ## Unresolved release and checkout dependencies
 
 - **Website release:** Review repository protection policy, accepted visual/keyboard/assistive-technology evidence, governed merge and rollback, and the production browser/readback acceptance. Retain the existing `source-adopted-unaccepted` Glaze consumer status until its independent acceptance is complete.

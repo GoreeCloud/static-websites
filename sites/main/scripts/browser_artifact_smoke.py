@@ -271,6 +271,58 @@ def validate_page(session: str, path: str, width: int, height: int) -> None:
         if escape_state.get("expanded") != "false" or escape_state.get("open") == "true" or not escape_state.get("focused"):
             raise BrowserError(f"{path} Escape does not close mobile navigation and restore focus: {escape_state}")
 
+    if path == "/donations/":
+        donation_state = execute(session, """
+          const ways=document.getElementById('ways-to-support');
+          const funding=document.getElementById('donation-status');
+          const waysLink=document.querySelector('a[href="#ways-to-support"]');
+          const statusLink=document.querySelector('a[href="#donation-status"]');
+          const currentLink=document.querySelector('.footer-links a[href="/donations/"]');
+          const missingTargets=[...document.querySelectorAll('a[href^="#"]')]
+            .map(a=>a.getAttribute('href')).filter(href=>href.length>1&&!document.getElementById(href.slice(1)));
+          const unnamedLinks=[...document.querySelectorAll('a')]
+            .filter(a=>!(a.textContent||a.getAttribute('aria-label')||'').trim()).length;
+          const paymentControls=document.querySelectorAll(
+            'form,input,select,textarea,iframe,object,embed,[data-payment],[data-checkout]'
+          ).length;
+          const remoteScripts=[...document.scripts].filter(s=>s.src&&new URL(s.src).origin!==location.origin).length;
+          const otherExternal=[...document.querySelectorAll('a[href^="http"]')]
+            .map(a=>a.href).filter(href=>href!=='https://github.com/GoreeCloud');
+          const paymentLinks=[...document.querySelectorAll('a[href]')].map(a=>a.href)
+            .filter(href=>/paypal|stripe|checkout|sponsors|ko-fi|opencollective|bitcoin/i.test(href));
+          let focused=false,waysHash='',statusHash='';
+          if(waysLink){
+            waysLink.focus();
+            focused=document.activeElement===waysLink;
+            waysLink.click();
+            waysHash=location.hash;
+          }
+          if(statusLink){statusLink.click();statusHash=location.hash;}
+          return {
+            sections:!!ways&&!!funding,
+            message:(funding?.innerText||'').includes('GoreeCloud is not accepting financial donations'),
+            footerCurrent:currentLink?.getAttribute('aria-current')||'',
+            missingTargets,unnamedLinks,paymentControls,remoteScripts,otherExternal,paymentLinks,
+            focused,waysHash,statusHash
+          };
+        """)
+        if (
+            not isinstance(donation_state, dict)
+            or donation_state.get("sections") is not True
+            or donation_state.get("message") is not True
+            or donation_state.get("footerCurrent") != "page"
+            or donation_state.get("missingTargets")
+            or donation_state.get("unnamedLinks") != 0
+            or donation_state.get("paymentControls") != 0
+            or donation_state.get("remoteScripts") != 0
+            or donation_state.get("otherExternal")
+            or donation_state.get("paymentLinks")
+            or donation_state.get("focused") is not True
+            or donation_state.get("waysHash") != "#ways-to-support"
+            or donation_state.get("statusHash") != "#donation-status"
+        ):
+            raise BrowserError(f"Donations safety or anchor interaction failed at {width}px: {donation_state}")
+
 
 def main() -> int:
     if not DIST.is_dir() or not (DIST / "index.html").is_file():
@@ -311,7 +363,7 @@ def main() -> int:
             for path in PAGES:
                 validate_page(session, path, width, height)
 
-        print("Browser smoke passed for all eleven canonical pages at desktop, tablet, and mobile viewports.")
+        print(f"Browser smoke passed for all {len(PAGES)} canonical pages at desktop, tablet, and mobile viewports.")
         return 0
     except Exception as exc:
         print(f"Browser smoke failed: {exc}")

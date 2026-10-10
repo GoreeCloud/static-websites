@@ -96,6 +96,16 @@ class DonationsContractTests(unittest.TestCase):
             for marker in ("stripe.com/", "paypal.com/", "paypal.me/", "ko-fi.com/", "opencollective.com/", "github.com/sponsors/", "crypto:")
         ))
 
+    def test_external_links_and_page_navigation_are_explicit(self):
+        for anchor in self.parser.links:
+            if anchor.get("target") == "_blank":
+                self.assertIn("noopener", anchor.get("rel", "").split())
+                self.assertIn("noreferrer", anchor.get("rel", "").split())
+        self.assertIn('href="/donations/" aria-current="page"', self.html)
+        for target in ("ways-to-support", "donation-status"):
+            self.assertIn('href="#' + target + '"', self.html)
+            self.assertIn('id="' + target + '"', self.html)
+
     def test_csp_friendly_accessible_shell(self):
         self.assertEqual(self.parser.headings.count("h1"), 1)
         self.assertEqual(self.parser.images_without_alt, [])
