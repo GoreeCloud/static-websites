@@ -65,3 +65,50 @@ h3{font-size:1.28rem;margin:15px 0}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(forced-colors:active){.panel,.appearance,.notice,.brand-symbol{border:1px solid CanvasText}.primary-action{border:2px solid LinkText}:where(a,button):focus-visible{outline:3px solid Highlight}}
 @media(prefers-contrast:more){.panel,.appearance{border:2px solid var(--gc-v1-color-outline-strong)}}
+
+/* Large text and narrow viewport: do not clip content or force horizontal scroll. */
+.header-content,.header-content>*,.header nav,.header nav a,
+.brand,.brand>div:last-child,.brand strong,.brand small,
+.appearance,.appearance legend,.appearance button,
+.hero,.hero-actions,.hero-actions a,.eyebrow,.notice,
+.panel,.panel *, .principles,.principles *,
+.footer-content,.footer-content *{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+.appearance{width:max-content;max-width:100%;flex-wrap:wrap}
+.appearance legend{display:block;max-width:100%;overflow-wrap:anywhere}
+.appearance button{flex:1 1 100px;max-width:100%}
+.hero-actions a{flex:0 1 auto}
+.header nav a,.footer a{word-break:break-word}
+@media(max-width:650px){
+  .header-content,.header nav,.appearance{width:100%;max-width:100%}
+  .header nav a{flex:1 1 115px;justify-content:center;text-align:center}
+  .header-content{flex-direction:column;align-items:stretch}
+  .brand{width:100%}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions a{width:100%}
+}
+
+/* Extreme text scaling: every authored content region may break long labels,
+   including link text in the resource paragraph and platform descriptions. */
+main *, .footer *, .header *{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+main p,main li,main a,main span,main strong,.resource,.resource a,.section-lead{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Preserve the visible external-link arrow at 400% text without shrinking it. */
+.hero-actions .primary-action span[aria-hidden="true"]{
+  display:inline-block;
+  flex:0 0 auto;
+  width:auto;
+  max-width:100%;
+}
