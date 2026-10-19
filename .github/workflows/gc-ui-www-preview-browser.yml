@@ -1,0 +1,60 @@
+name: GC UI retained website preview browser checks
+
+on:
+  pull_request:
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-preview-browser.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-preview-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-chromium-firefox:
+    name: Chromium and Firefox isolated design preview (no deploy)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      SOURCE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Check out exact preview source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - name: Verify exact source and unchanged production paths
+        run: |
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          test "$(git rev-parse HEAD:sites/main/index.html)" = "b94ef4acd48ce518943f249596cc3eab0d89b786"
+          test "$(git rev-parse HEAD:sites/main/design/index.html)" = "ef0959914b8270530718a18aa24277512059b51c"
+          test "$(git rev-parse HEAD:sites/url-namespace.json)" = "a7829d0c5489c24df36b534619caf2909d812181"
+          test ! -e sites/main/dist
+      - name: Build and validate scoped Foundations source preview
+        run: |
+          python3 -m py_compile gc-ui-www-preview/test_browser.py gc-ui-www-preview/validate.py gc-ui-www-preview/build.py
+          python3 gc-ui-www-preview/validate.py
+          python3 gc-ui-www-preview/build.py
+          python3 gc-ui-www-preview/validate.py --dist
+      - name: Install exact Playwright release
+        run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
+      - name: Install isolated browser binaries
+        run: python3 -m playwright install --with-deps chromium firefox
+      - name: Run real Chromium and Firefox localhost-only checks
+        run: python3 gc-ui-www-preview/test_browser.py
+      - name: Preserve non-deployment gate
+        run: |
+          test ! -e sites/main/dist
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path("dist-gc-ui-www-preview/SHA256SUMS.json").read_text())
+          assert manifest["deployed"] is False
+          assert manifest["gcUiConsumerAccepted"] is False
+          assert manifest["gcUiPlatformCutoverComplete"] is False
+          PY
