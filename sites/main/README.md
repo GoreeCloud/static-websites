@@ -1,3 +1,5 @@
+> **CURRENT DESIGN AUTHORITY / MIGRATION STATUS — October 19, 2026:** **GoreeCloud UI (GC UI)** is Integral Platform System **5 of nine**, permanently replacing Glaze and Glaze UI. References below to Glaze 1.7 as the *current* authority describe **unmigrated site source and historical acceptance**, not active GoreeCloud design permission. This is still the **one retained public website**; its code, URL paths, build pipeline and deployment remain unchanged until the independent GC UI candidate qualifies. See [issue #144](https://github.com/GoreeCloud/static-websites/issues/144) and [reconciliation plan](../../docs/GC_UI_RETAINED_SITE_RECONCILIATION.md). Foundations 1.0.1 is stable only within its published scope; consumer acceptance is unverified.
+
 # GoreeCloud Main Website
 
 Canonical source for GoreeCloud's one current public website.
