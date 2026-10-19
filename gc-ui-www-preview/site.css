@@ -104,3 +104,11 @@ main p,main li,main a,main span,main strong,.resource,.resource a,.section-lead{
   overflow-wrap:anywhere;
   word-break:normal;
 }
+
+/* Preserve the visible external-link arrow at 400% text without shrinking it. */
+.hero-actions .primary-action span[aria-hidden="true"]{
+  display:inline-block;
+  flex:0 0 auto;
+  width:auto;
+  max-width:100%;
+}
