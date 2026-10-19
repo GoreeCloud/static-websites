@@ -91,3 +91,16 @@ h3{font-size:1.28rem;margin:15px 0}
   .hero-actions{flex-direction:column;align-items:stretch}
   .hero-actions a{width:100%}
 }
+
+/* Extreme text scaling: every authored content region may break long labels,
+   including link text in the resource paragraph and platform descriptions. */
+main *, .footer *, .header *{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+main p,main li,main a,main span,main strong,.resource,.resource a,.section-lead{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
