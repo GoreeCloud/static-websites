@@ -1,0 +1,63 @@
+name: Validate isolated GC UI retained-website design candidate
+
+on:
+  pull_request:
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-preview.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  isolated-design-preview:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PREVIEW_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Check out exact candidate source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PREVIEW_SHA }}
+          persist-credentials: false
+      - name: Verify source revision and one-site boundary
+        run: |
+          test "$(git rev-parse HEAD)" = "$PREVIEW_SHA"
+          test "$(git rev-parse HEAD:sites/main/index.html)" = "b94ef4acd48ce518943f249596cc3eab0d89b786"
+          test "$(git rev-parse HEAD:sites/main/design/index.html)" = "ef0959914b8270530718a18aa24277512059b51c"
+          test "$(git rev-parse HEAD:sites/url-namespace.json)" = "a7829d0c5489c24df36b534619caf2909d812181"
+          test ! -e sites/main/dist
+          test ! -e dist-gc-ui-www-preview
+      - name: Parse source scripts and browser JavaScript
+        run: |
+          python3 -m py_compile gc-ui-www-preview/build.py gc-ui-www-preview/validate.py gc-ui-www-preview/test_preview.py
+          node --check gc-ui-www-preview/site.js
+      - name: Validate original unpublished GC UI design source
+        run: python3 gc-ui-www-preview/validate.py
+      - name: Run isolated negative regression tests
+        run: python3 -m unittest discover -s gc-ui-www-preview -p test_preview.py -v
+      - name: Build deterministic no-deploy preview
+        run: python3 gc-ui-www-preview/build.py
+      - name: Verify source, exact scoped Foundations CSS and built hash manifest
+        run: python3 gc-ui-www-preview/validate.py --dist
+      - name: Confirm current website remains untouched
+        run: |
+          test ! -e sites/main/dist
+          test -f dist-gc-ui-www-preview/SHA256SUMS.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("dist-gc-ui-www-preview/SHA256SUMS.json").read_text())
+          assert x["deployed"] is False
+          assert x["gcUiConsumerAccepted"] is False
+          assert x["gcUiPlatformCutoverComplete"] is False
+          assert x["canonicalWebsiteUnchanged"] is True
+          print("GC UI design preview does not authorize any deployment")
+          PY
