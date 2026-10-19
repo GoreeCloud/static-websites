@@ -37,16 +37,20 @@ jobs:
           test ! -e sites/main/dist
       - name: Build and validate scoped Foundations source preview
         run: |
-          python3 -m py_compile gc-ui-www-preview/test_browser.py gc-ui-www-preview/validate.py gc-ui-www-preview/build.py
+          python3 -m py_compile gc-ui-www-preview/test_browser.py gc-ui-www-preview/validate.py gc-ui-www-preview/build.py gc-ui-www-preview/build_routes.py gc-ui-www-preview/test_routes.py gc-ui-www-preview/test_routes_browser.py
           python3 gc-ui-www-preview/validate.py
           python3 gc-ui-www-preview/build.py
           python3 gc-ui-www-preview/validate.py --dist
+          python3 gc-ui-www-preview/build_routes.py
+          python3 -m unittest discover -s gc-ui-www-preview -p test_routes.py -v
       - name: Install exact Playwright release
         run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
       - name: Install isolated browser binaries
         run: python3 -m playwright install --with-deps chromium firefox
       - name: Run real Chromium and Firefox localhost-only checks
-        run: python3 gc-ui-www-preview/test_browser.py
+        run: |
+          python3 gc-ui-www-preview/test_browser.py
+          python3 gc-ui-www-preview/test_routes_browser.py
       - name: Preserve non-deployment gate
         run: |
           test ! -e sites/main/dist
@@ -57,4 +61,7 @@ jobs:
           assert manifest["deployed"] is False
           assert manifest["gcUiConsumerAccepted"] is False
           assert manifest["gcUiPlatformCutoverComplete"] is False
+          routes=json.loads(Path("dist-gc-ui-routes-preview/SHA256SUMS.json").read_text())
+          assert routes["deployed"] is False
+          assert routes["productionAccepted"] is False
           PY
