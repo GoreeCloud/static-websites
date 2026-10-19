@@ -2,6 +2,12 @@
 
 This repository is the retained source authority for the GoreeCloud public website and for controlled preservation/retirement of former static-site source.
 
+## GC UI Integral Platform System succession (October 19, 2026)
+
+**GoreeCloud UI (GC UI) is Integral Platform System #5 of nine** and replaces Glaze and Glaze UI permanently as the active design authority. The sole current website, `www.goreecloud.com`, still retains **legacy Glaze 1.7 consumer source and CI**. That is tracked as an unaccepted migration in [issue #144](https://github.com/GoreeCloud/static-websites/issues/144), not as approval for new Glaze development. GC UI Foundations 1.0.1 is a scoped release; it does not certify the complete consumer or wider UI library.
+
+The [GC UI retained-site reconciliation](docs/GC_UI_RETAINED_SITE_RECONCILIATION.md) documents the safe path. In particular, preserved `sites/mesh` is **not** an authorized current public-site deployment: do not recreate retired secondary DNS or Pages projects merely to satisfy historical source checks.
+
 ## Current website state
 
 As of September 21, 2026:
