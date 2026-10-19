@@ -1,3 +1,5 @@
+> **SUPERSEDED PUBLICATION STATUS — October 19, 2026:** This document preserves the *historical Mesh Center build/deployment contract* below. GoreeCloud's [September 21 one-site retirement policy](../../README.md) governs the **current** website state: **only `www.goreecloud.com` is public**. The `mesh.goreecloud.com` site and Pages project described below are retired; do not restore DNS, Cloudflare Pages or live publication solely to satisfy this older history. The separate [Mesh GC UI source preview](https://github.com/GoreeCloud/mesh/blob/main/docs/GC_UI_WEBSITE_CANDIDATE.md) is **not deployed**, and active public-site migration belongs to [issue #144](https://github.com/GoreeCloud/static-websites/issues/144). Glaze/Glaze UI are permanently superseded as design authorities by **GoreeCloud UI (IPS 5 of nine)**. Original evidence retained below for provenance only.
+
 # GoreeCloud Mesh Center Static Website
 
 Canonical static website repository: `GoreeCloud/static-websites`
