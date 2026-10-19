@@ -1,0 +1,24 @@
+/* First-party page patterns for the isolated GC UI routes candidate.
+   Retained production CSS is never imported or modified here. */
+.candidate-header { gap: 1.25rem; flex-wrap: wrap; justify-content: space-between; }
+.candidate-brand { color: inherit; font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+.candidate-brand span { display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .72; }
+.candidate-nav { display: flex; flex-wrap: wrap; gap: .35rem; padding-block: .5rem 1rem; }
+.candidate-nav a { color: inherit; font-size: .86rem; font-weight: 650; padding: .55rem .8rem; border-radius: .85rem; text-decoration: none; border: 1px solid transparent; }
+.candidate-nav a:hover, .candidate-nav a[aria-current="page"] { background: var(--gc-v1-color-surface-container, rgba(120,120,120,.14)); border-color: currentColor; }
+.candidate-nav a:focus-visible, .candidate-brand:focus-visible { outline: 3px solid var(--gc-v1-color-primary, currentColor); outline-offset: 3px; }
+.route-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.route-grid > * { min-width: 0; overflow-wrap: anywhere; }
+.hero h1 { max-width: 23ch; overflow-wrap: anywhere; }
+main { min-width: 0; }
+@media (max-width: 780px) { .route-grid { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+  .candidate-header { align-items: flex-start; }
+  .candidate-nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; scroll-padding: 1rem; }
+  .candidate-nav a { flex: 0 0 auto; min-height: var(--gc-v1-foundation-target-touch, 44px); }
+}
+@media (prefers-reduced-motion: reduce) { .candidate-nav *, .route-grid * { animation: none !important; transition: none !important; } }
+@media (forced-colors: active) {
+  .candidate-nav a[aria-current="page"] { border: 2px solid Highlight; }
+  .candidate-nav a:focus-visible { outline-color: Highlight; }
+}
