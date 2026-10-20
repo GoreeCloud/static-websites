@@ -63,6 +63,14 @@ def smoke():
                             assert "0 of " in page.locator("#suite-filter-status").inner_text()
                             search.fill("")
                             assert cards.count() == baseline
+                        if route == "/contact/":
+                            assert page.locator("#contact-channels .contact-channel").count() == 3
+                            assert page.locator("#social .contact-channel").count() == 6
+                            assert page.get_by_role("link", name="Open Support").get_attribute("href") == "mailto:support@goreecloud.com"
+                            assert page.get_by_role("link", name="Open Security reports").get_attribute("href") == "mailto:security@goreecloud.com"
+                            assert page.get_by_role("link", name="Open Public source").get_attribute("href") == "/github/"
+                            assert page.get_by_role("link", name="Open Instagram").get_attribute("href") == "https://instagram.com/goreecloud"
+                            assert page.get_by_role("link", name="Open Pinterest").get_attribute("href") == "https://www.pinterest.com/goreecloud/"
                         if route == "/firefox/":
                             search = page.get_by_role("searchbox", name="Search Firefox tools")
                             cards = page.locator("#source-content .candidate-content-card:visible")
