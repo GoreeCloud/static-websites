@@ -38,5 +38,11 @@ def audit():
                 base=href.split("#",1)[0].split("?",1)[0]
                 if base not in PATHS.values():raise ValueError("unknown route: "+base)
         checked.append(path)
+    for src,page in pages.items():
+        for link in page.hrefs:
+            if link.startswith("/") and not link.startswith("//") and "#" in link:
+                dest,frag=link.split("#",1)
+                if not frag or frag not in pages[dest].ids:
+                    raise ValueError("missing cross-route target: "+src+" "+link)
     return {"checkedRoutes":checked,"deployed":False,"accepted":False}
 if __name__=="__main__":print(json.dumps(audit(),sort_keys=True))
