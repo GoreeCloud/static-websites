@@ -64,6 +64,11 @@ def smoke():
                             search.fill("")
                             assert cards.count() == baseline
                         if route == "/contact/":
+                            quick = page.get_by_role("navigation", name="Contact quick actions")
+                            assert quick.get_by_role("link", name="Email support").get_attribute("href") == "mailto:support@goreecloud.com"
+                            assert quick.get_by_role("link", name="Report a security issue").get_attribute("href") == "mailto:security@goreecloud.com"
+                            quick.get_by_role("link", name="Explore social accounts").click()
+                            assert page.url.endswith("/contact/#social")
                             assert page.locator("#contact-channels .contact-channel").count() == 3
                             assert page.locator("#social .contact-channel").count() == 6
                             assert page.get_by_role("link", name="Open Support").get_attribute("href") == "mailto:support@goreecloud.com"
