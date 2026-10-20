@@ -18,6 +18,7 @@ from source_cards import extract, render
 from android_lifecycle import render_android
 from public_links import render_links
 from contact_channels import render_contact
+from design_showcase import render_design_specimens
 from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
@@ -102,6 +103,7 @@ def _html(ident: str, path: str) -> str:
         '</ul></nav></section>'
     ) if related else ""
     public_section = (render_android(source) if ident == 'android' else render(public_cards, ident)) + related_section + (render_contact(source) if ident == 'contact' else render_links(source))
+    design_showcase = render_design_specimens((SOURCE / "gc-ui-foundations.css").read_text()) if ident == "design" else ""
     suite_filter = ('''<div class="shell suite-search" role="search">
       <label for="suite-filter">Search Suite products</label>
       <input id="suite-filter" type="search" data-suite-filter
@@ -198,6 +200,7 @@ def _html(ident: str, path: str) -> str:
   {suite_filter}
   {firefox_filter}
   {github_catalog}
+  {design_showcase}
   {public_section}
   <section class="section" id="source" aria-labelledby="source-title">
     <p class="eyebrow">Transparent provenance</p>
