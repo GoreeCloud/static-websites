@@ -67,19 +67,24 @@ def extract_public_metadata(source: Path, route: str, design_title: str,
         raise ValueError("unapproved published metadata for " + route)
     title = "".join(parser.title_parts).strip()
     description = meta["description"].strip()
+    og_title = meta["og:title"].strip()
+    og_description = meta["og:description"].strip()
     if route == "/design/":
         # The published site has not yet removed a permanently retired
         # design authority. The candidate must NOT perpetuate this claim.
         title = design_title + " — GoreeCloud"
         description = design_description
+        og_title, og_description = title, description
     elif (not title or "glaze" in title.lower() or
-          "glaze" in description.lower() or
-          meta["og:title"] != title or meta["og:description"] != description):
+          "glaze" in description.lower() or "glaze" in og_title.lower()
+          or "glaze" in og_description.lower()):
         raise ValueError("inconsistent or obsolete source metadata for " + route)
     if (not 10 <= len(title) <= 130 or not 30 <= len(description) <= 350
+            or not 10 <= len(og_title) <= 130 or not 30 <= len(og_description) <= 350
             or "\x00" in title + description):
         raise ValueError("source metadata outside bounds")
     return {"title": title, "description": description,
+            "og_title": og_title, "og_description": og_description,
             "canonical": canonical, "social_image": SOCIAL_IMAGE}
 
 
@@ -95,7 +100,7 @@ def render_preview_metadata(metadata: dict) -> str:
         '  <link rel="canonical" href="' + url + '">\n'
         '  <meta property="og:type" content="website">\n'
         '  <meta property="og:site_name" content="GoreeCloud">\n'
-        '  <meta property="og:title" content="' + escape(metadata["title"], quote=True) + '">\n'
+        '  <meta property="og:title" content="' + escape(metadata["og_title"], quote=True) + '">\n'
         '  <meta property="og:description" content="' + description + '">\n'
         '  <meta property="og:url" content="' + url + '">\n'
         '  <meta property="og:image" content="' + social + '">\n'
