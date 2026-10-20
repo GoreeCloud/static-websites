@@ -62,7 +62,7 @@ jobs:
           assert manifest["deployed"] is False
           assert manifest["consumerAccepted"] is False
           assert manifest["sourceHead"] == __import__("os").environ["SOURCE_SHA"]
-          assert len(manifest["captures"]) == 22
+          assert len(manifest["captures"]) == 24
           assert len({r["route"] for r in manifest["captures"]}) == 11
           PY
       - name: Upload isolated visual review and source artifact (never deploy)
