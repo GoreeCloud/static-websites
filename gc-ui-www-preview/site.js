@@ -26,5 +26,23 @@
   }
   try { media?.addEventListener('change', () => { if (choice === 'system') render(); }); }
   catch (_) { /* old browser without change subscriptions */ }
+  // Suite filtering only: this is local DOM text search, never remote retrieval.
+  const suiteFilter = document.querySelector('[data-suite-filter]');
+  if (suiteFilter) {
+    const products = [...document.querySelectorAll('#source-content .candidate-content-card')];
+    const status = document.getElementById('suite-filter-status');
+    const update = () => {
+      const query = suiteFilter.value.trim().toLocaleLowerCase();
+      let shown = 0;
+      for (const product of products) {
+        const matches = product.textContent.toLocaleLowerCase().includes(query);
+        product.hidden = !matches;
+        if (matches) shown++;
+      }
+      if (status) status.textContent = shown + ' of ' + products.length + ' products shown';
+    };
+    suiteFilter.addEventListener('input', update);
+    update();
+  }
   render();
 })();

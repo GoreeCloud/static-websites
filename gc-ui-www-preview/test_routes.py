@@ -79,6 +79,8 @@ def verify(folder: Path):
         content_cards = value.count("candidate-content-card")
         if content_cards < (40 if ident == "suite" else 9 if ident == "platform-systems" else 3):
             raise ValueError("unreviewed source-content coverage " + route)
+        if (ident == "suite") != ("data-suite-filter" in value):
+            raise ValueError("Suite filter not scoped to its approved route")
         page = Page()
         page.feed(value)
         prefix = "assets/" if route == "/" else "../assets/"

@@ -85,6 +85,12 @@ def _html(ident: str, path: str) -> str:
     if len(public_cards) < 3:
         raise ValueError("missing reviewed public-source cards")
     public_section = render(public_cards) + render_links(source)
+    suite_filter = ('''<div class="shell suite-search" role="search">
+      <label for="suite-filter">Search Suite products</label>
+      <input id="suite-filter" type="search" data-suite-filter
+             aria-controls="source-content" autocomplete="off">
+      <output id="suite-filter-status" role="status" aria-live="polite"></output>
+    </div>''' if ident == "suite" else "")
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
@@ -138,6 +144,7 @@ def _html(ident: str, path: str) -> str:
       <article class="panel"><h3>Release boundary</h3><p>All existing URLs are retained in the candidate. Live content parity, browser accessibility, and production cutover still require independent review.</p></article>
     </div>
   </section>
+  {suite_filter}
   {public_section}
   <section class="section" id="source" aria-labelledby="source-title">
     <p class="eyebrow">Transparent provenance</p>

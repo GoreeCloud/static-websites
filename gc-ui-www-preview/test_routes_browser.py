@@ -49,6 +49,20 @@ def smoke():
                             page.set_viewport_size({"width": width, "height": 900})
                             overflow = page.evaluate("document.documentElement.scrollWidth - innerWidth")
                             assert overflow <= 1, (browser_name, route, width, "overflow", overflow)
+                        if route == "/suite/":
+                            search = page.get_by_role("searchbox", name="Search Suite products")
+                            assert search.count() == 1
+                            cards = page.locator("#source-content .candidate-content-card:visible")
+                            baseline = cards.count()
+                            assert baseline >= 40, (browser_name, "missing Suite inventory")
+                            search.fill("Memos")
+                            assert 0 < cards.count() < baseline
+                            assert "Memos" in cards.first.inner_text()
+                            search.fill("unmatched-product-identifier")
+                            assert cards.count() == 0
+                            assert "0 of " in page.locator("#suite-filter-status").inner_text()
+                            search.fill("")
+                            assert cards.count() == baseline
                         page.set_viewport_size({"width": 375, "height": 900})
                         page.evaluate("document.documentElement.style.fontSize='200%'")
                         overflow = page.evaluate("document.documentElement.scrollWidth - innerWidth")
