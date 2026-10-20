@@ -99,7 +99,7 @@ def smoke():
                                     return new Response("{}", {status:429});
                                 };
                             }""")
-                            retry = page.get_by_role("button", name="Load public repositories")
+                            retry = page.locator("[data-gc-load-repos]")
                             retry.click()
                             page.wait_for_function("document.getElementById('github-live-status').textContent.includes('limited')")
                             assert retry.is_enabled()
