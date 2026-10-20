@@ -113,6 +113,23 @@ class GCUIRouteCandidateTests(unittest.TestCase):
     def test_all_retained_routes_have_safe_preview(self):
         self.assertEqual(verify(OUT), 11)
 
+    def test_android_lifecycle_source_parity(self):
+        from android_lifecycle import extract_lifecycles
+        from build_routes import REPOSITORY
+        source = REPOSITORY / "sites/main/android/index.html"
+        groups = extract_lifecycles(source)
+        self.assertEqual([(name, len(cards)) for name, _, cards in groups],
+                         [("planned", 4), ("active-development", 16),
+                          ("release-candidate", 1), ("stable", 1)])
+        rendered = (OUT / "android/index.html").read_text(encoding="utf-8")
+        for name, _, cards in groups:
+            self.assertIn('id="' + name + '"', rendered)
+            self.assertIn('href="#' + name + '"', rendered)
+            self.assertIn('aria-labelledby="' + name + '-title"', rendered)
+            for label, _ in cards:
+                self.assertIn(label, rendered)
+        self.assertIn('aria-label="Android lifecycle sections"', rendered)
+
     def test_catalog_source_boundaries(self):
         from build_routes import SOURCE
         source = (SOURCE / "github-catalog.js").read_text()
