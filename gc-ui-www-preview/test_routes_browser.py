@@ -63,6 +63,34 @@ def smoke():
                             assert "0 of " in page.locator("#suite-filter-status").inner_text()
                             search.fill("")
                             assert cards.count() == baseline
+                        if route == "/github/":
+                            assert page.locator("#github-live-results .github-repo-card").count() == 0
+                            page.evaluate("""() => {
+                                window.previewGithubCalls = [];
+                                window.fetch = async (url, options) => {
+                                    window.previewGithubCalls.push({url, options});
+                                    return new Response(JSON.stringify([
+                                      {name:"Memos", full_name:"GoreeCloud/Memos",
+                                       owner:{login:"GoreeCloud"}, private:false,
+                                       description:"Public repository", language:"Python",
+                                       default_branch:"main", archived:false},
+                                      {name:"Hidden", full_name:"GoreeCloud/Hidden",
+                                       owner:{login:"GoreeCloud"}, private:true}
+                                    ]), {status:200, headers:{"Content-Type":"application/json"}});
+                                };
+                            }""")
+                            assert page.evaluate("window.previewGithubCalls.length") == 0
+                            page.get_by_role("button", name="Load public repositories").click()
+                            cards = page.locator("#github-live-results .github-repo-card")
+                            cards.first.wait_for()
+                            assert cards.count() == 1
+                            assert page.evaluate("window.previewGithubCalls.length") == 1
+                            assert cards.first.locator("a").get_attribute("href") == "https://github.com/GoreeCloud/Memos"
+                            search = page.get_by_role("searchbox", name="Filter loaded repositories")
+                            search.fill("missing")
+                            assert cards.count() == 0
+                            search.fill("")
+                            assert cards.count() == 1
                         page.set_viewport_size({"width": 375, "height": 900})
                         page.evaluate("document.documentElement.style.fontSize='200%'")
                         overflow = page.evaluate("document.documentElement.scrollWidth - innerWidth")
