@@ -107,6 +107,13 @@ def _html(ident: str, path: str) -> str:
              aria-controls="source-content" autocomplete="off">
       <output id="suite-filter-status" role="status" aria-live="polite"></output>
     </div>''' if ident == "suite" else "")
+    firefox_filter = ('''<div class="shell suite-search" role="search">
+      <label for="firefox-filter">Search Firefox tools</label>
+      <input id="firefox-filter" type="search" data-firefox-filter
+             aria-controls="source-content" aria-describedby="firefox-filter-status"
+             autocomplete="off">
+      <output id="firefox-filter-status" role="status" aria-live="polite"></output>
+    </div>''' if ident == "firefox" else "")
     github_catalog = ('''<section class="section" id="github-catalog" aria-labelledby="github-catalog-title">
       <h2 id="github-catalog-title">Public GitHub repositories on demand</h2>
       <p class="section-lead">Privacy notice: loading this directory contacts GitHub directly
@@ -175,6 +182,7 @@ def _html(ident: str, path: str) -> str:
     </div>
   </section>
   {suite_filter}
+  {firefox_filter}
   {github_catalog}
   {public_section}
   <section class="section" id="source" aria-labelledby="source-title">
