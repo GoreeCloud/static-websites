@@ -17,6 +17,7 @@ from build import SOURCE, REPOSITORY
 from source_cards import extract, render
 from android_lifecycle import render_android
 from public_links import render_links
+from contact_channels import render_contact
 from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
@@ -100,7 +101,7 @@ def _html(ident: str, path: str) -> str:
                 '</a></li>' for url, label in related) +
         '</ul></nav></section>'
     ) if related else ""
-    public_section = (render_android(source) if ident == 'android' else render(public_cards, ident)) + related_section + render_links(source)
+    public_section = (render_android(source) if ident == 'android' else render(public_cards, ident)) + related_section + (render_contact(source) if ident == 'contact' else render_links(source))
     suite_filter = ('''<div class="shell suite-search" role="search">
       <label for="suite-filter">Search Suite products</label>
       <input id="suite-filter" type="search" data-suite-filter
