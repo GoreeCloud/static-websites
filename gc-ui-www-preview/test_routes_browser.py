@@ -63,6 +63,9 @@ def smoke():
                             assert "0 of " in page.locator("#suite-filter-status").inner_text()
                             search.fill("")
                             assert cards.count() == baseline
+                        if route == "/design/":
+                            assert page.locator(".gc-ui-identity img").count() == 1
+                            assert page.locator(".gc-ui-identity img").evaluate("(img) => img.naturalWidth > 0")
                         if route == "/contact/":
                             quick = page.get_by_role("navigation", name="Contact quick actions")
                             assert quick.get_by_role("link", name="Email support").get_attribute("href") == "mailto:support@goreecloud.com"
