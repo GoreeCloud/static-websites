@@ -15,6 +15,7 @@ import sys
 
 from build import SOURCE, REPOSITORY
 from source_cards import extract, render
+from android_lifecycle import render_android
 from public_links import render_links
 from validate import validate as validate_foundations
 
@@ -84,7 +85,7 @@ def _html(ident: str, path: str) -> str:
     public_cards = extract(source, ident)
     if len(public_cards) < 3:
         raise ValueError("missing reviewed public-source cards")
-    public_section = render(public_cards) + render_links(source)
+    public_section = (render_android(source) if ident == 'android' else render(public_cards)) + render_links(source)
     suite_filter = ('''<div class="shell suite-search" role="search">
       <label for="suite-filter">Search Suite products</label>
       <input id="suite-filter" type="search" data-suite-filter
