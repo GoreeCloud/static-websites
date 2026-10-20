@@ -79,6 +79,8 @@ def verify(folder: Path):
         content_cards = value.count("candidate-content-card")
         if content_cards < (40 if ident == "suite" else 9 if ident == "platform-systems" else 3):
             raise ValueError("unreviewed source-content coverage " + route)
+        if (ident == "firefox") != ("data-firefox-filter" in value):
+            raise ValueError("Firefox search must be route-specific")
         if (ident == "suite") != ("data-suite-filter" in value):
             raise ValueError("Suite filter not scoped to its approved route")
         if ident == "github" and 'for="github-repo-filter" hidden' not in value:
