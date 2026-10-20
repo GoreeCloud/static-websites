@@ -34,3 +34,24 @@ The isolated `/github/` preview now has an explicit visitor-initiated public rep
 ### Verified API account type
 
 GoreeCloud is a GitHub user account, not an organization. A read-only network probe on October 19/20, 2026 returned HTTP 404 for the organization repositories endpoint and HTTP 200 for the public user repositories endpoint. The candidate now calls the public user-account endpoint (`/users/GoreeCloud/repos`) and leaves provider data/permissions untrusted. This correction is distinct from the production legacy JavaScript hotfix and is not a deployment.
+
+
+## Route metadata reconciliation (not SEO publication acceptance)
+
+The isolated preview now validates and retains each published route's canonical URL,
+document title, description, Open Graph title and description, and first-party
+social-preview image reference. OG titles/descriptions may legitimately differ from
+browser titles/descriptions; the importer preserves them independently. The
+`/design/` source page still describes the permanently retired predecessor:
+this one route deliberately receives GC UI metadata instead and is **not** claimed
+as source-copy parity.
+
+The source parser rejects unknown canonical URLs, missing or duplicate relevant
+metadata, unexpected site identities/images, and retired design claims on other
+routes. All eleven generated pages keep `noindex,nofollow,noarchive` and the
+candidate source has **not** been deployed. Canonical links identify the retained
+live URLs, not a new staging domain. These checks do not certify discoverability,
+indexing behavior, sitemap correctness, Core Web Vitals, or social preview fidelity
+after cutover. The downloadable screenshot review includes
+`content-seo-gap-audit.json` showing outstanding structural/content gaps and
+false SEO/consumer-acceptance flags.
