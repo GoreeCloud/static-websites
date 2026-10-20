@@ -33,3 +33,10 @@ main { min-width: 0; }
 .suite-search input:focus-visible { outline: 3px solid var(--gc-v1-color-primary, currentColor); outline-offset: 3px; }
 .suite-search output { flex: 1 1 100%; font-size: .875rem; }
 .candidate-content-card[hidden] { display: none !important; }
+
+/* Opt-in public catalog controls. */
+#github-catalog button {min-height:44px;cursor:pointer}
+#github-live-status {overflow-wrap:anywhere}
+#github-repo-filter {width:min(100%,35rem);min-height:44px;background:transparent;color:inherit;border:1px solid currentColor;border-radius:.85rem;padding:.7rem}
+#github-repo-filter[hidden] {display:none}
+.github-repo-card {min-width:0;overflow-wrap:anywhere}
