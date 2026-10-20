@@ -101,7 +101,7 @@ def render_preview_metadata(metadata: dict) -> str:
         '  <meta property="og:type" content="website">\n'
         '  <meta property="og:site_name" content="GoreeCloud">\n'
         '  <meta property="og:title" content="' + escape(metadata["og_title"], quote=True) + '">\n'
-        '  <meta property="og:description" content="' + description + '">\n'
+        '  <meta property="og:description" content="' + escape(metadata["og_description"], quote=True) + '">\n'
         '  <meta property="og:url" content="' + url + '">\n'
         '  <meta property="og:image" content="' + social + '">\n'
         '  <meta name="twitter:card" content="summary_large_image">'
