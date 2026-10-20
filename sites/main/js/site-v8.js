@@ -67,7 +67,9 @@
       try {
         const repositories = [];
         for (let page = 1; page <= 3; page += 1) {
-          const response = await fetch("https://api.github.com/orgs/GoreeCloud/repos?type=public&sort=full_name&direction=asc&per_page=100&page=" + page, {
+          const response = await fetch("https://api.github.com/users/GoreeCloud/repos?type=owner&sort=full_name&direction=asc&per_page=100&page=" + page, {
+            credentials: "omit",
+            redirect: "error",
             headers: { "Accept": "application/vnd.github+json" }
           });
           if (!response.ok) throw new Error("GitHub returned HTTP " + response.status);
@@ -97,7 +99,7 @@
         const filter = document.querySelector("[data-github-filter]");
         if (filter) filter.hidden = false;
       } catch (error) {
-        status.textContent = "GitHub could not be reached. Use the organization link below for the live repository list.";
+        status.textContent = "GitHub could not be reached. Use the GoreeCloud account link below for the live repository list.";
         load.disabled = false;
       }
     });
