@@ -96,10 +96,10 @@ def _html(ident: str, path: str) -> str:
       <p class="section-lead">Privacy notice: loading this directory contacts GitHub directly
         from your browser. No GitHub request is sent until you activate the button.</p>
       <button class="primary-action" type="button" data-gc-load-repos
-        aria-controls="github-live-results">Load public repositories</button>
+        aria-controls="github-live-results" aria-describedby="github-live-status">Load public repositories</button>
       <p id="github-live-status" role="status" aria-live="polite">Not loaded. Choose the button to connect to GitHub.</p>
       <label class="gc-repo-filter-label" for="github-repo-filter" hidden>Filter loaded repositories</label>
-      <input id="github-repo-filter" type="search" data-gc-repo-filter hidden
+      <input id="github-repo-filter" type="search" data-gc-repo-filter hidden aria-describedby="github-live-status"
              placeholder="Filter by name, description or language">
       <div id="github-live-results" class="route-grid" aria-live="off"></div>
       <p><a href="https://github.com/GoreeCloud">View the GoreeCloud GitHub organization</a></p>
