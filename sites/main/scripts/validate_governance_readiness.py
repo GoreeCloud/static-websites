@@ -75,7 +75,7 @@ def main() -> int:
     ):
         require_regular_file(errors, validator, label)
 
-    if "GoreeCloud UI (GC UI)" not in migration or "no public GC UI cutover accepted" not in migration.lower():
+    if "GoreeCloud UI (GC UI)" not in migration or "no public gc ui cutover accepted" not in migration.lower():
         fail(errors, "GC UI authority and unaccepted website consumer state must remain documented")
     if "GoreeCloud/glaze" in workflow or "validate_glaze_ui.py" in workflow:
         fail(errors, "website validation workflow must not depend on the deleted predecessor")
