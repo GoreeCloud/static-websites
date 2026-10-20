@@ -151,6 +151,14 @@ class GCUIRouteCandidateTests(unittest.TestCase):
         self.assertFalse(acceptable("/retired/"))
         self.assertFalse(acceptable("http://example.invalid"))
 
+    def test_public_github_account_labels(self):
+        from public_links import render_links
+        from build_routes import REPOSITORY
+        for section in ("suite", "android", "firefox"):
+            links = render_links(REPOSITORY / "sites/main" / section / "index.html")
+            self.assertNotIn("GitHub organization", links)
+            self.assertIn("GoreeCloud GitHub account", links)
+
     def test_contact_social_links(self):
         from public_links import render_links
         from build_routes import REPOSITORY
