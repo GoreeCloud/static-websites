@@ -108,6 +108,7 @@ def smoke():
                             retry.click()
                             page.wait_for_function("document.getElementById('github-live-status').textContent.includes('limited')")
                             assert retry.is_enabled()
+                            assert filter_label.is_hidden()
                             assert page.evaluate("window.previewGithubCalls.length") == 1
                             page.evaluate("""() => {
                                 window.previewGithubCalls = [];
