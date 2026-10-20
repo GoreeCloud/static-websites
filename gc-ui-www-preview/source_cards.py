@@ -4,7 +4,7 @@ from html import escape
 from pathlib import Path
 import re
 
-RETIRED = re.compile(r"\\bglaze\\b", re.I)
+RETIRED = re.compile("glaze", re.I)
 GC_UI_CARD = ("GoreeCloud UI (GC UI)",
     "Integral Platform System five of nine. Foundations 1.0.1 is a scoped stable release; "
     "broader original UI components and consumer migration are not yet accepted.")
