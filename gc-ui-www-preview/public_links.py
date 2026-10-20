@@ -55,7 +55,8 @@ def acceptable(href):
     if url.scheme == "https":
         return bool(url.hostname in ALLOWED_HOSTS and not url.username and not url.password)
     if url.scheme == "mailto":
-        return bool(url.path and "@" in url.path and not url.query and not url.fragment)
+        return bool(url.path in ("support@goreecloud.com", "security@goreecloud.com")
+                    and not url.netloc and not url.query and not url.fragment)
     return False
 
 def render_links(source: Path):
