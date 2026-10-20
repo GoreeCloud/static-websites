@@ -36,6 +36,8 @@ class Links(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "a" and self.href is not None:
             label = " ".join(x for x in self.label if x)
+            if self.href == "https://github.com/GoreeCloud" and "organization" in label.lower():
+                label = "GoreeCloud GitHub account"
             if label and "glaze" not in label.lower() and acceptable(self.href):
                 value = (self.href, label[:140])
                 if value not in self.found:
