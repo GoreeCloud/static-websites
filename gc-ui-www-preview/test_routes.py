@@ -117,7 +117,7 @@ class GCUIRouteCandidateTests(unittest.TestCase):
 
     def test_pinned_official_gc_ui_icon_is_scoped(self):
         raw = (OUT / "assets/gc-ui-symbol.svg").read_bytes()
-        git_blob = sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+        git_blob = sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
         self.assertEqual(git_blob, "613dfb1747f251d86a1faa6e12c83836b2a950b7")
         self.assertNotIn(b"<script", raw.lower())
         for ident, route in PATHS.items():
