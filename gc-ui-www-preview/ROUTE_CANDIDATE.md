@@ -24,3 +24,9 @@ Completion requires review of the existing eleven pages and features, original b
 The isolated candidate now extracts public source article **text only** and presents it in original GC UI patterns; it does not import legacy HTML, scripts or CSS. It excludes predecessor design claims and uses original GC UI copy for /design/. Source page SHA-256 values are included in the generated artifact manifest.
 
 Run `python3 gc-ui-www-preview/audit_source.py` after `build_routes.py` to see conservative per-route content, controls and main-link gaps. The report is diagnostic and leaves every production/content/accessibility acceptance flag false.
+
+## Opt-in GitHub repository directory
+
+The isolated `/github/` preview now has an explicit visitor-initiated public repository directory. It uses a fixed GitHub organization endpoint, no credentials, a five-page maximum, bounded request timeout, and safe DOM text rendering. Private or malformed records are excluded, duplicates are ignored, and provider URLs are not trusted for navigation. Filtering operates locally once public metadata is loaded. No GitHub request occurs merely because the page loads.
+
+**Test scope:** Existing Chromium/Firefox preview smoke verifies the unloaded state and prevents unsolicited requests. Source and syntax checks pass. A separate browser interaction test using mocked GitHub responses (pagination, private entries, errors, and retries) remains to be added before this new feature can be called browser-verified. Live provider integration, CSP acceptance, and production cutover also remain unverified.
