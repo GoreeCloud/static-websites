@@ -63,6 +63,18 @@ def smoke():
                             assert "0 of " in page.locator("#suite-filter-status").inner_text()
                             search.fill("")
                             assert cards.count() == baseline
+                        if route == "/firefox/":
+                            search = page.get_by_role("searchbox", name="Search Firefox tools")
+                            cards = page.locator("#source-content .candidate-content-card:visible")
+                            assert cards.count() == 9
+                            search.fill("Webspaces")
+                            assert cards.count() == 1
+                            assert "Webspaces" in cards.first.inner_text()
+                            search.fill("never-a-real-addon-123")
+                            assert cards.count() == 0
+                            assert "0 of 9 Firefox tools shown" in page.locator("#firefox-filter-status").inner_text()
+                            search.fill("")
+                            assert cards.count() == 9
                         if route == "/android/":
                             lifecycle = page.get_by_role("navigation", name="Android lifecycle sections")
                             assert lifecycle.locator("a").count() == 4
