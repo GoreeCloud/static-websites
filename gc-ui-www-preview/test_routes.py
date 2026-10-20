@@ -168,6 +168,47 @@ class GCUIRouteCandidateTests(unittest.TestCase):
         self.assertNotIn("/orgs/GoreeCloud/repos", source)
         self.assertIn("?type=owner", source)
 
+    def test_metadata_parity_and_preview_noindex(self):
+        from seo_metadata import Head, extract_public_metadata, ORIGIN
+        from build_routes import REPOSITORY, PAGES
+        for ident, route in PATHS.items():
+            original = REPOSITORY / ("sites/main/index.html" if route == "/"
+                                     else "sites/main/" + ident + "/index.html")
+            meta = extract_public_metadata(original, route, PAGES[ident][0],
+                                           PAGES[ident][2])
+            target = OUT / ("index.html" if route == "/" else ident + "/index.html")
+            parsed = Head()
+            parsed.feed(target.read_text(encoding="utf-8"))
+            self.assertEqual(parsed.canonicals, [ORIGIN + route])
+            self.assertIn("noindex", parsed.meta["robots"])
+            self.assertEqual("".join(parsed.title_parts), meta["title"])
+            self.assertEqual(parsed.meta["description"], meta["description"])
+            self.assertEqual(parsed.meta["og:title"], meta["og_title"])
+            self.assertEqual(parsed.meta["og:description"], meta["og_description"])
+            self.assertEqual(parsed.meta["og:url"], ORIGIN + route)
+            self.assertEqual(parsed.meta["og:image"], meta["social_image"])
+            if ident == "design":
+                self.assertIn("GoreeCloud UI", meta["title"])
+                self.assertNotIn("Glaze", target.read_text(encoding="utf-8"))
+
+    def test_metadata_rejects_tampering_and_missing_canonical(self):
+        from seo_metadata import extract_public_metadata
+        from build_routes import REPOSITORY, PAGES
+        source = (REPOSITORY / "sites/main/android/index.html").read_text(encoding="utf-8")
+        with tempfile.TemporaryDirectory() as temp:
+            p = Path(temp) / "source.html"
+            for changed in (
+                source.replace('rel="canonical"', 'rel="alternate"'),
+                source.replace("https://www.goreecloud.com/android/",
+                               "https://example.invalid/android/"),
+                source.replace('content="summary_large_image"',
+                               'content="unsafe"')
+            ):
+                p.write_text(changed, encoding="utf-8")
+                with self.assertRaises(ValueError):
+                    extract_public_metadata(p, "/android/", PAGES["android"][0],
+                                            PAGES["android"][2])
+
     def test_public_link_allowlist(self):
         from public_links import acceptable
         self.assertTrue(acceptable("/privacy/"))
