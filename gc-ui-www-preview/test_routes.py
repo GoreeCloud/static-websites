@@ -106,6 +106,20 @@ class GCUIRouteCandidateTests(unittest.TestCase):
     def test_all_retained_routes_have_safe_preview(self):
         self.assertEqual(verify(OUT), 11)
 
+    def test_public_link_allowlist(self):
+        from public_links import acceptable
+        self.assertTrue(acceptable("/privacy/"))
+        self.assertTrue(acceptable("https://github.com/GoreeCloud"))
+        self.assertFalse(acceptable("/retired/"))
+        self.assertFalse(acceptable("http://example.invalid"))
+
+    def test_contact_social_links(self):
+        from public_links import render_links
+        from build_routes import REPOSITORY
+        value = render_links(REPOSITORY / "sites/main/contact/index.html")
+        self.assertIn("instagram.com", value)
+        self.assertIn("www.pinterest.com", value)
+
     def test_tampered_route_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             copy = Path(tmp) / "artifact"

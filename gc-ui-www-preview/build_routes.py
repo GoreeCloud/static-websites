@@ -15,6 +15,7 @@ import sys
 
 from build import SOURCE, REPOSITORY
 from source_cards import extract, render
+from public_links import render_links
 from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
@@ -83,7 +84,7 @@ def _html(ident: str, path: str) -> str:
     public_cards = extract(source, ident)
     if len(public_cards) < 3:
         raise ValueError("missing reviewed public-source cards")
-    public_section = render(public_cards)
+    public_section = render(public_cards) + render_links(source)
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
