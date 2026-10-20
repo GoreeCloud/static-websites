@@ -22,7 +22,7 @@ from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
 OUT = REPOSITORY / "dist-gc-ui-routes-preview"
-FILES = ("gc-ui-foundations.css", "site.css", "site.js", "routes.css", "github-catalog.js")
+FILES = ("gc-ui-foundations.css", "site.css", "site.js", "routes.css", "github-catalog.js", "gc-ui-symbol.svg")
 PAGES = {
     "home": ("GoreeCloud", "Software and systems under your control.",
              "GoreeCloud develops privacy-first, self-hosted software for people who want control of their digital lives."),
@@ -134,6 +134,12 @@ def _html(ident: str, path: str) -> str:
       <a href="#social">Explore social accounts</a>
     </nav>''' if ident == "contact" else "")
     asset = "assets/" if path == "/" else "../assets/"
+    design_identity = (
+        '<div class="gc-ui-identity"><img src="' + asset + 'gc-ui-symbol.svg" alt=""'
+        ' width="74" height="74"><span>Official GoreeCloud UI symbol'
+        '<small>Integral Platform System 5 of 9</small></span></div>'
+        if ident == "design" else ""
+    )
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
         + escape(PAGES[key][0]) + "</a>"
@@ -172,6 +178,7 @@ def _html(ident: str, path: str) -> str:
 </header>
 <main class="shell" id="main" tabindex="-1">
   <section class="hero" aria-labelledby="page-title">
+    {design_identity}
     <p class="eyebrow">GoreeCloud / Original GC UI candidate / {escape(path)}</p>
     <h1 id="page-title">{escape(heading)}</h1>
     <p class="intro">{escape(summary)}</p>
