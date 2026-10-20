@@ -72,12 +72,17 @@ def extract(path: Path, route: str):
         cards.append(GC_UI_CARD)
     return cards
 
-def render(cards):
+def render(cards, route=""):
+    anchors = {"Privacy Shield": "privacy-shield",
+               "Wardveil Security": "wardveil-security",
+               "GoreeCloud UI (GC UI)": "gc-ui"} if route == "platform-systems" else {}
     return ('<section class="section" id="source-content" aria-labelledby="source-content-title">'
        '<p class="eyebrow">Public-source text reconciliation</p>'
        '<h2 id="source-content-title">Existing product information</h2>'
        '<p class="section-lead">Extracted public text, with superseded design claims omitted. '
        'Not functional or content-parity acceptance.</p><div class="route-grid">' +
-       "".join('<article class="panel candidate-content-card"><h3>' + escape(title) +
+       "".join('<article class="panel candidate-content-card"' +
+               (' id="' + anchors[title] + '"' if title in anchors else '') +
+               '><h3>' + escape(title) +
                '</h3><p>' + escape(text) + '</p></article>' for title,text in cards) +
        '</div></section>')
