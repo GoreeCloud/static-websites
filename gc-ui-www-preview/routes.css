@@ -60,3 +60,8 @@ main { min-width: 0; }
 .contact-channel-link:hover {background:var(--gc-v1-color-surface-container,rgba(120,120,120,.14))}
 .contact-channel-link:focus-visible {outline:3px solid var(--gc-v1-color-primary,currentColor);outline-offset:3px}
 @media(max-width:650px){.contact-channel-link{align-self:stretch}}
+
+.contact-quick{display:flex;flex-wrap:wrap;gap:.65rem;margin-block:1rem 2rem}
+.contact-quick a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.7rem 1rem;border:1px solid currentColor;border-radius:.9rem;color:inherit;text-decoration:none;font-weight:700}
+.contact-quick a:focus-visible{outline:3px solid var(--gc-v1-color-primary,currentColor);outline-offset:3px}
+@media(max-width:650px){.contact-quick a{flex:1 1 100%;text-align:center}}
