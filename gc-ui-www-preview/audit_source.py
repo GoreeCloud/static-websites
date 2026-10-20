@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 from build_routes import OUT, REPOSITORY, _namespace
+from seo_metadata import Head
 
 class Content(HTMLParser):
     def __init__(self):
@@ -41,18 +42,36 @@ def audit():
         target = OUT / ("index.html" if entry["path"] == "/"
                         else entry["id"] + "/index.html")
         candidate = inspect(target)
+        source_head = Head()
+        source_head.feed((REPOSITORY / entry["source"]).read_text(encoding="utf-8"))
+        candidate_head = Head()
+        candidate_head.feed(target.read_text(encoding="utf-8"))
+        metadata = {
+            "canonicalPreserved": candidate_head.canonicals == source_head.canonicals,
+            "titlePreserved": candidate_head.title_parts == source_head.title_parts,
+            "descriptionPreserved":
+                candidate_head.meta.get("description") == source_head.meta.get("description"),
+            "openGraphDescriptionPreserved":
+                candidate_head.meta.get("og:description") == source_head.meta.get("og:description"),
+            "previewNoindex": "noindex" in candidate_head.meta.get("robots", ""),
+            "productionSeoAccepted": False
+        }
+        if not metadata["canonicalPreserved"] or not metadata["previewNoindex"]:
+            raise ValueError("candidate canonical/noindex metadata regression")
         missing = sorted(source.links - candidate.links)
         gaps = {tag: max(0, count - candidate.tags[tag])
                 for tag, count in source.tags.items()}
         rows.append({"route": entry["path"], "source": source.tags,
-                     "candidate": candidate.tags, "missingMainContentLinks": missing,
+                     "candidate": candidate.tags, "metadata": metadata,
+                     "missingMainContentLinks": missing,
                      "unrepresentedElements": gaps,
                      "sourceArticleCount": source.tags["article"],
                      "candidateArticleCount": candidate.tags["article"],
                      "featureParityVerified": False})
     return {"schema": "gc-ui-public-source-gap-audit.v1",
             "productionChanged": False, "contentParityVerified": False,
-            "browserAccessibilityAccepted": False, "routes": rows}
+            "browserAccessibilityAccepted": False, "seoParityVerified": False,
+            "routes": rows}
 
 if __name__ == "__main__":
     report = audit()
