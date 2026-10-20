@@ -322,8 +322,8 @@ def main() -> int:
         errors.append("contact page must not publish private owner contact records")
 
     github_js = (ROOT / "js/site-v8.js").read_text(encoding="utf-8")
-    if "https://api.github.com/orgs/GoreeCloud/repos" not in github_js:
-        errors.append("GitHub catalog must use the public GoreeCloud organization API")
+    if "https://api.github.com/users/GoreeCloud/repos" not in github_js:
+        errors.append("GitHub catalog must use the public GoreeCloud account API")
     if "data-load-github" not in github or "addEventListener(\"click\"" not in github_js:
         errors.append("GitHub public catalog must remain visitor-triggered rather than automatic")
 
