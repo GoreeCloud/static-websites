@@ -85,7 +85,22 @@ def _html(ident: str, path: str) -> str:
     public_cards = extract(source, ident)
     if len(public_cards) < 3:
         raise ValueError("missing reviewed public-source cards")
-    public_section = (render_android(source) if ident == 'android' else render(public_cards)) + render_links(source)
+    related = {
+        "home": [("/design/", "Explore the GC UI design authority")],
+        "platform-systems": [("/design/", "About GoreeCloud UI")],
+        "security": [("/design/", "GC UI presentation"), ("/platform-systems/#wardveil-security", "Wardveil platform authority")],
+        "privacy": [("/platform-systems/#privacy-shield", "Privacy Shield platform authority")],
+        "design": [("/platform-systems/#gc-ui", "GC UI platform authority")],
+    }.get(ident, [])
+    related_section = (
+        '<section class="section" id="related" aria-labelledby="related-title">'
+        '<h2 id="related-title">Related GoreeCloud authorities</h2>'
+        '<nav aria-label="Related public sections"><ul class="public-link-list">' +
+        "".join('<li><a href="' + escape(url, quote=True) + '">' + escape(label) +
+                '</a></li>' for url, label in related) +
+        '</ul></nav></section>'
+    ) if related else ""
+    public_section = (render_android(source) if ident == 'android' else render(public_cards, ident)) + related_section + render_links(source)
     suite_filter = ('''<div class="shell suite-search" role="search">
       <label for="suite-filter">Search Suite products</label>
       <input id="suite-filter" type="search" data-suite-filter
@@ -103,7 +118,7 @@ def _html(ident: str, path: str) -> str:
       <input id="github-repo-filter" type="search" data-gc-repo-filter hidden aria-describedby="github-live-status"
              placeholder="Filter by name, description or language">
       <div id="github-live-results" class="route-grid" aria-live="off"></div>
-      <p><a href="https://github.com/GoreeCloud">View the GoreeCloud GitHub organization</a></p>
+      <p><a href="https://github.com/GoreeCloud">View the GoreeCloud GitHub account</a></p>
     </section>''' if ident == "github" else "")
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
