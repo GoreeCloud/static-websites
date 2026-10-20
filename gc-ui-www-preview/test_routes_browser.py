@@ -65,6 +65,8 @@ def smoke():
                             assert cards.count() == baseline
                         if route == "/github/":
                             assert page.locator("#github-live-results .github-repo-card").count() == 0
+                            filter_label = page.locator("label[for=github-repo-filter]")
+                            assert filter_label.is_hidden()
                             page.evaluate("""() => {
                                 window.previewGithubCalls = [];
                                 window.fetch = async (url, options) => {
@@ -85,6 +87,7 @@ def smoke():
                             cards = page.locator("#github-live-results .github-repo-card")
                             cards.first.wait_for()
                             assert cards.count() == 1
+                            assert filter_label.is_visible()
                             assert page.evaluate("window.previewGithubCalls.length") == 1
                             assert cards.first.locator("a").get_attribute("href") == "https://github.com/GoreeCloud/Memos"
                             search = page.get_by_role("searchbox", name="Filter loaded repositories")
