@@ -81,6 +81,8 @@ def verify(folder: Path):
             raise ValueError("unreviewed source-content coverage " + route)
         if (ident == "suite") != ("data-suite-filter" in value):
             raise ValueError("Suite filter not scoped to its approved route")
+        if ident == "github" and 'for="github-repo-filter" hidden' not in value:
+            raise ValueError("GitHub filter label must start hidden")
         if (ident == "github") != ("data-gc-load-repos" in value):
             raise ValueError("catalog must be explicitly loaded only on GitHub route")
         page = Page()
