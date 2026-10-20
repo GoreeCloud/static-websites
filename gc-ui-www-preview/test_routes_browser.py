@@ -43,6 +43,10 @@ def smoke():
                         assert page.locator('nav[aria-label="Retained website routes"] a').count() == 11
                         assert page.locator('nav[aria-label="Retained website routes"] a[aria-current="page"]').count() == 1
                         assert page.locator('meta[name="robots"]').get_attribute("content").startswith("noindex")
+                        assert page.locator('link[rel="canonical"]').get_attribute("href") == "https://www.goreecloud.com" + route
+                        assert page.locator('meta[property="og:url"]').get_attribute("content") == "https://www.goreecloud.com" + route
+                        assert page.locator('meta[name="description"]').get_attribute("content")
+                        assert page.locator('meta[property="og:image"]').get_attribute("content") == "https://www.goreecloud.com/assets/social-preview.png"
                         assert page.locator("html").get_attribute("data-gc-candidate") == "not-deployed"
                         assert "Not deployed" in page.locator("main").inner_text()
                         for width in (320, 375, 768, 1280):
