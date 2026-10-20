@@ -66,6 +66,17 @@ def capture():
                         records.append({"route": route, "width": width,
                                         "image": "screenshots/" + filename,
                                         "sha256": sha256(output.read_bytes()).hexdigest()})
+                        if ident == "design":
+                            page.get_by_role("button", name="Dark", exact=True).click()
+                            assert page.locator("html").get_attribute("data-gc-mode") == "dark"
+                            dark_name = f"{ident}-{screen}-dark.png"
+                            dark_output = images / dark_name
+                            page.screenshot(path=str(dark_output), full_page=True,
+                                            animations="disabled")
+                            records.append({"route": route, "width": width,
+                                            "mode": "dark", "image": "screenshots/" + dark_name,
+                                            "sha256": sha256(dark_output.read_bytes()).hexdigest()})
+                            page.get_by_role("button", name="Light", exact=True).click()
                 if external:
                     raise RuntimeError("review unexpectedly requested an external origin")
                 context.close()
