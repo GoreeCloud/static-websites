@@ -1,0 +1,37 @@
+name: Audit isolated GC UI website routes and controls
+on:
+  pull_request:
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-accessibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-accessibility-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Generate nondeployed candidate
+        run: python3 gc-ui-www-preview/build_routes.py
+      - name: Verify accessible references and approved routes
+        run: python3 gc-ui-www-preview/audit_navigation.py
+      - name: Verify public content and metadata gaps without claiming acceptance
+        run: |
+          python3 gc-ui-www-preview/audit_source.py > "$RUNNER_TEMP/gc-ui-gap-audit.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          report=json.loads((Path(os.environ["RUNNER_TEMP"]) / "gc-ui-gap-audit.json").read_text())
+          assert len(report["routes"]) == 11
+          assert report["seoParityVerified"] is False
+          assert report["contentParityVerified"] is False
+          assert all(r["metadata"]["canonicalPreserved"]
+                     and r["metadata"]["previewNoindex"] for r in report["routes"])
+          print("11 canonical paths and preview noindex verified; full parity NOT accepted")
+          PY
+      - name: Protect production boundary
+        run: test ! -e sites/main/dist

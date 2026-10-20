@@ -1,0 +1,78 @@
+/* First-party page patterns for the isolated GC UI routes candidate.
+   Retained production CSS is never imported or modified here. */
+.candidate-header { gap: 1.25rem; flex-wrap: wrap; justify-content: space-between; }
+.candidate-brand { color: inherit; font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+.candidate-brand span { display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .72; }
+.candidate-nav { display: flex; flex-wrap: wrap; gap: .35rem; padding-block: .5rem 1rem; }
+.candidate-nav a { color: inherit; font-size: .86rem; font-weight: 650; padding: .55rem .8rem; border-radius: .85rem; text-decoration: none; border: 1px solid transparent; }
+.candidate-nav a:hover, .candidate-nav a[aria-current="page"] { background: var(--gc-v1-color-surface-container, rgba(120,120,120,.14)); border-color: currentColor; }
+.candidate-nav a:focus-visible, .candidate-brand:focus-visible { outline: 3px solid var(--gc-v1-color-primary, currentColor); outline-offset: 3px; }
+.route-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.route-grid > * { min-width: 0; overflow-wrap: anywhere; }
+.hero h1 { max-width: 23ch; overflow-wrap: anywhere; }
+main { min-width: 0; }
+@media (max-width: 780px) { .route-grid { grid-template-columns: 1fr; } }
+@media (max-width: 650px) {
+  .candidate-header { align-items: flex-start; }
+  .candidate-nav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; scroll-padding: 1rem; }
+  .candidate-nav a { flex: 0 0 auto; min-height: var(--gc-v1-foundation-target-touch, 44px); }
+}
+@media (prefers-reduced-motion: reduce) { .candidate-nav *, .route-grid * { animation: none !important; transition: none !important; } }
+@media (forced-colors: active) {
+  .candidate-nav a[aria-current="page"] { border: 2px solid Highlight; }
+  .candidate-nav a:focus-visible { outline-color: Highlight; }
+}
+
+.candidate-content-card { min-width: 0; overflow-wrap: anywhere; }
+.candidate-content-card p { line-height: 1.55; }
+.candidate-content-card h3 { font-size: clamp(1rem, 1.4vw, 1.25rem); }
+
+.suite-search { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; padding-block: 1rem; }
+.suite-search label { font-weight: 700; }
+.suite-search input { flex: 1 1 14rem; min-height: var(--gc-v1-foundation-target-touch, 44px); border-radius: .8rem; background: transparent; color: inherit; border: 1px solid currentColor; padding: .55rem .9rem; }
+.suite-search input:focus-visible { outline: 3px solid var(--gc-v1-color-primary, currentColor); outline-offset: 3px; }
+.suite-search output { flex: 1 1 100%; font-size: .875rem; }
+.candidate-content-card[hidden] { display: none !important; }
+
+/* Opt-in public catalog controls. */
+#github-catalog button {min-height:44px;cursor:pointer}
+#github-live-status {overflow-wrap:anywhere}
+#github-repo-filter {width:min(100%,35rem);min-height:44px;background:transparent;color:inherit;border:1px solid currentColor;border-radius:.85rem;padding:.7rem}
+#github-repo-filter[hidden] {display:none}
+.github-repo-card {min-width:0;overflow-wrap:anywhere}
+
+/* Filter label and input both remain hidden until the visitor requests the catalog. */
+.gc-repo-filter-label[hidden] { display: none; }
+
+.lifecycle-nav{display:flex;flex-wrap:wrap;gap:.7rem;margin-block:1rem 2rem}
+.lifecycle-nav a{display:inline-flex;align-items:center;min-height:44px;padding:.65rem .9rem;border:1px solid currentColor;border-radius:1rem;color:inherit;text-decoration:none;font-weight:650}
+.lifecycle-nav a:focus-visible{outline:3px solid var(--gc-v1-color-primary,currentColor);outline-offset:3px}
+.android-lifecycle{margin-block:1.5rem 3rem;scroll-margin-top:1rem}
+.lifecycle-heading{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.75rem;margin-bottom:1rem}
+.lifecycle-heading h3{margin:0;font-size:clamp(1.15rem,2vw,1.5rem)}
+.lifecycle-count{font-size:.875rem;opacity:.8}
+@media(max-width:650px){.lifecycle-nav a{flex:1 1 44%;justify-content:center;text-align:center}}
+
+/* Verified contact and community: local markup, external navigation only on activation. */
+.contact-channel {display:flex;flex-direction:column;gap:.65rem;min-width:0}
+.contact-channel h3,.contact-channel p {margin:0}
+.contact-channel-link {display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:44px;margin-top:auto;padding:.6rem .95rem;border-radius:.85rem;border:1px solid currentColor;color:inherit;text-decoration:none;font-weight:700}
+.contact-channel-link:hover {background:var(--gc-v1-color-surface-container,rgba(120,120,120,.14))}
+.contact-channel-link:focus-visible {outline:3px solid var(--gc-v1-color-primary,currentColor);outline-offset:3px}
+@media(max-width:650px){.contact-channel-link{align-self:stretch}}
+
+.contact-quick{display:flex;flex-wrap:wrap;gap:.65rem;margin-block:1rem 2rem}
+.contact-quick a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.7rem 1rem;border:1px solid currentColor;border-radius:.9rem;color:inherit;text-decoration:none;font-weight:700}
+.contact-quick a:focus-visible{outline:3px solid var(--gc-v1-color-primary,currentColor);outline-offset:3px}
+@media(max-width:650px){.contact-quick a{flex:1 1 100%;text-align:center}}
+
+.gc-ui-identity{display:inline-flex;align-items:center;flex-wrap:wrap;gap:1rem;padding:1rem;border:1px solid var(--gc-v1-color-outline,currentColor);border-radius:26px;background:var(--gc-v1-color-surface-raised,transparent);max-width:100%}
+.gc-ui-identity img{display:block;width:74px;height:74px;object-fit:contain}
+.gc-ui-identity span{display:flex;flex-direction:column;gap:.3rem;font-weight:700}
+.gc-ui-identity small{font-weight:500;font-size:.8rem}
+
+.gc-specimen-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-block:1rem}.gc-specimen-item{min-width:0;overflow:hidden;border:1px solid var(--gc-v1-color-outline);border-radius:18px}.gc-specimen-color{padding:2rem 1rem;min-height:110px;font-weight:700}.gc-role-canvas .gc-specimen-color{background:var(--gc-v1-color-canvas);color:var(--gc-v1-color-on-canvas)}.gc-role-surface .gc-specimen-color{background:var(--gc-v1-color-surface-raised);color:var(--gc-v1-color-on-surface)}.gc-role-primary .gc-specimen-color{background:var(--gc-v1-color-primary);color:var(--gc-v1-color-on-primary)}.gc-role-tonal .gc-specimen-color{background:var(--gc-v1-color-surface-tonal);color:var(--gc-v1-color-on-surface)}
+
+.gc-specimen-description{padding:1rem;color:var(--gc-v1-color-on-surface);background:var(--gc-v1-color-surface-raised)}.gc-specimen-description h3{font-size:1rem;margin:0 0 .4rem}.gc-specimen-description p{margin:0 0 .7rem;font-size:.85rem}.gc-specimen-description code{overflow-wrap:anywhere;font-size:.75rem}.gc-specimen-interaction{padding:1.5rem;border-radius:26px;background:var(--gc-v1-color-surface-tonal);color:var(--gc-v1-color-on-surface)}
+
+.gc-specimen-actions{display:flex;flex-wrap:wrap;gap:.75rem}.gc-specimen-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.75rem 1rem;text-decoration:none;border-radius:18px;font-weight:700}.gc-specimen-secondary{border:1px solid var(--gc-v1-color-outline);color:inherit}@media(max-width:540px){.gc-specimen-grid{grid-template-columns:minmax(0,1fr)}.gc-specimen-actions a{width:100%}}

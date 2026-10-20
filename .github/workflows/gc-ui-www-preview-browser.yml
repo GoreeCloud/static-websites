@@ -37,16 +37,43 @@ jobs:
           test ! -e sites/main/dist
       - name: Build and validate scoped Foundations source preview
         run: |
-          python3 -m py_compile gc-ui-www-preview/test_browser.py gc-ui-www-preview/validate.py gc-ui-www-preview/build.py
+          python3 -m py_compile gc-ui-www-preview/test_browser.py gc-ui-www-preview/validate.py gc-ui-www-preview/build.py gc-ui-www-preview/build_routes.py gc-ui-www-preview/test_routes.py gc-ui-www-preview/test_routes_browser.py
           python3 gc-ui-www-preview/validate.py
           python3 gc-ui-www-preview/build.py
           python3 gc-ui-www-preview/validate.py --dist
+          python3 gc-ui-www-preview/build_routes.py
+          node --check gc-ui-www-preview/github-catalog.js
+          python3 -m unittest discover -s gc-ui-www-preview -p test_routes.py -v
       - name: Install exact Playwright release
         run: python3 -m pip install --disable-pip-version-check playwright==1.56.0
       - name: Install isolated browser binaries
         run: python3 -m playwright install --with-deps chromium firefox
       - name: Run real Chromium and Firefox localhost-only checks
-        run: python3 gc-ui-www-preview/test_browser.py
+        run: |
+          python3 gc-ui-www-preview/test_browser.py
+          python3 gc-ui-www-preview/test_routes_browser.py
+      - name: Capture desktop and mobile review for all eleven routes
+        run: |
+          python3 gc-ui-www-preview/capture_review.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path("dist-gc-ui-review/manifest.json").read_text())
+          assert manifest["deployed"] is False
+          assert manifest["consumerAccepted"] is False
+          assert manifest["sourceHead"] == __import__("os").environ["SOURCE_SHA"]
+          assert len(manifest["captures"]) == 24
+          assert len({r["route"] for r in manifest["captures"]}) == 11
+          PY
+      - name: Upload isolated visual review and source artifact (never deploy)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: gc-ui-eleven-routes-review
+          path: |
+            dist-gc-ui-review/
+            dist-gc-ui-routes-preview/
+          if-no-files-found: error
+          retention-days: 14
       - name: Preserve non-deployment gate
         run: |
           test ! -e sites/main/dist
@@ -57,4 +84,7 @@ jobs:
           assert manifest["deployed"] is False
           assert manifest["gcUiConsumerAccepted"] is False
           assert manifest["gcUiPlatformCutoverComplete"] is False
+          routes=json.loads(Path("dist-gc-ui-routes-preview/SHA256SUMS.json").read_text())
+          assert routes["deployed"] is False
+          assert routes["productionAccepted"] is False
           PY
