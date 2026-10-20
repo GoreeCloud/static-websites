@@ -63,6 +63,15 @@ def smoke():
                             assert "0 of " in page.locator("#suite-filter-status").inner_text()
                             search.fill("")
                             assert cards.count() == baseline
+                        if route == "/android/":
+                            lifecycle = page.get_by_role("navigation", name="Android lifecycle sections")
+                            assert lifecycle.locator("a").count() == 4
+                            assert page.locator("#planned .candidate-content-card").count() == 4
+                            assert page.locator("#active-development .candidate-content-card").count() == 16
+                            assert page.locator("#release-candidate .candidate-content-card").count() == 1
+                            assert page.locator("#stable .candidate-content-card").count() == 1
+                            lifecycle.get_by_role("link", name="Active development").click()
+                            assert page.url.endswith("/android/#active-development")
                         if route == "/github/":
                             assert page.locator("#github-live-results .github-repo-card").count() == 0
                             filter_label = page.locator("label[for=github-repo-filter]")
