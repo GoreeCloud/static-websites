@@ -159,6 +159,27 @@ class GCUIRouteCandidateTests(unittest.TestCase):
             self.assertNotIn("GitHub organization", links)
             self.assertNotIn("GitHub organization", links)
 
+    def test_verified_contact_sections_and_no_private_channels(self):
+        from contact_channels import verified, CHANNELS, SOCIAL
+        from build_routes import REPOSITORY
+        source = REPOSITORY / "sites/main/contact/index.html"
+        channels, social = verified(source)
+        self.assertEqual(len(channels), 3)
+        self.assertEqual(len(social), 6)
+        markup = (OUT / "contact/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="contact-channels"', markup)
+        self.assertIn('id="social"', markup)
+        self.assertEqual(markup.count('class="panel contact-channel"'), 9)
+        for _, href, _ in CHANNELS + SOCIAL:
+            self.assertIn('href="' + href + '"', markup)
+        self.assertNotIn("mailto:goreecloud@gmail.com", markup)
+        with tempfile.TemporaryDirectory() as temp:
+            changed = Path(temp) / "contact.html"
+            changed.write_text(source.read_text().replace(
+                "https://instagram.com/goreecloud", "https://example.invalid"))
+            with self.assertRaisesRegex(ValueError, "inventory changed"):
+                verified(changed)
+
     def test_contact_social_links(self):
         from public_links import render_links
         from build_routes import REPOSITORY
