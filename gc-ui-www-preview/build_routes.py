@@ -19,6 +19,7 @@ from android_lifecycle import render_android
 from public_links import render_links
 from contact_channels import render_contact
 from design_showcase import render_design_specimens
+from seo_metadata import extract_public_metadata, render_preview_metadata
 from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
@@ -84,6 +85,7 @@ def _namespace() -> list[dict]:
 def _html(ident: str, path: str) -> str:
     title, heading, summary = PAGES[ident]
     source = REPOSITORY / ("sites/main/index.html" if ident == "home" else "sites/main/" + ident + "/index.html")
+    seo_head = render_preview_metadata(extract_public_metadata(source, path, title, summary))
     public_cards = extract(source, ident)
     if len(public_cards) < 3:
         raise ValueError("missing reviewed public-source cards")
@@ -155,8 +157,7 @@ def _html(ident: str, path: str) -> str:
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="Isolated GC UI candidate for GoreeCloud's {escape(title, quote=True)} section. Not deployed or accepted.">
-  <title>{escape(title)} — GC UI isolated candidate</title>
+  {seo_head}
   <link rel="stylesheet" href="{asset}gc-ui-foundations.css">
   <link rel="stylesheet" href="{asset}site.css">
   <link rel="stylesheet" href="{asset}routes.css">
