@@ -6,7 +6,7 @@
   const status = document.getElementById('github-live-status');
   const filter = document.querySelector('[data-gc-repo-filter]');
   if (!button || !results || !status || !filter) return;
-  const endpoint = 'https://api.github.com/orgs/GoreeCloud/repos';
+  const endpoint = 'https://api.github.com/users/GoreeCloud/repos';
   const MAX_PAGES = 5;
   const PAGE_SIZE = 100;
   const TIMEOUT_MS = 9000;
@@ -62,7 +62,7 @@
   async function getPage(page) {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
-    const url = endpoint + '?type=public&sort=full_name&direction=asc&per_page=' +
+    const url = endpoint + '?type=owner&sort=full_name&direction=asc&per_page=' +
       PAGE_SIZE + '&page=' + page;
     try {
       const response = await fetch(url, {method: 'GET', mode: 'cors', credentials: 'omit',

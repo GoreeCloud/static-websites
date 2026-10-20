@@ -115,11 +115,13 @@ class GCUIRouteCandidateTests(unittest.TestCase):
         from build_routes import SOURCE
         source = (SOURCE / "github-catalog.js").read_text()
         for required in ("data-gc-load-repos", "addEventListener('click'",
-                         "https://api.github.com/orgs/GoreeCloud/repos",
+                         "https://api.github.com/users/GoreeCloud/repos",
                          "credentials: 'omit'", "redirect: 'error'",
                          "item.private !== false", "MAX_PAGES = 5"):
             self.assertIn(required, source)
         self.assertNotIn("innerHTML", source)
+        self.assertNotIn("/orgs/GoreeCloud/repos", source)
+        self.assertIn("?type=owner", source)
 
     def test_public_link_allowlist(self):
         from public_links import acceptable

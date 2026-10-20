@@ -35,7 +35,7 @@ PAGES = {
     "firefox": ("Firefox", "Browser tools with clear boundaries.",
              "GoreeCloud's browser integrations retain independent permission, privacy, compatibility, and release requirements."),
     "github": ("GitHub repositories", "Source you can review.",
-             "GoreeCloud maintains public project sources and provider-native development records under its GitHub account."),
+             "GoreeCloud maintains publicly visible repositories and provider-native project records under its GitHub user account."),
     "contact": ("Contact GoreeCloud", "Get in touch through verified channels.",
              "The official GoreeCloud repository and existing published contact information remain the authoritative routes for project communication."),
     "design": ("GoreeCloud UI", "One coherent experience, distinct platform authorities.",

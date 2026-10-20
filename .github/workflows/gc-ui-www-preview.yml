@@ -40,6 +40,7 @@ jobs:
         run: |
           python3 -m py_compile gc-ui-www-preview/build.py gc-ui-www-preview/validate.py gc-ui-www-preview/test_preview.py gc-ui-www-preview/build_routes.py gc-ui-www-preview/test_routes.py
           node --check gc-ui-www-preview/site.js
+          node --check gc-ui-www-preview/github-catalog.js
       - name: Validate original unpublished GC UI design source
         run: python3 gc-ui-www-preview/validate.py
       - name: Run isolated negative regression tests

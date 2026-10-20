@@ -27,6 +27,10 @@ Run `python3 gc-ui-www-preview/audit_source.py` after `build_routes.py` to see c
 
 ## Opt-in GitHub repository directory
 
-The isolated `/github/` preview now has an explicit visitor-initiated public repository directory. It uses a fixed GitHub organization endpoint, no credentials, a five-page maximum, bounded request timeout, and safe DOM text rendering. Private or malformed records are excluded, duplicates are ignored, and provider URLs are not trusted for navigation. Filtering operates locally once public metadata is loaded. No GitHub request occurs merely because the page loads.
+The isolated `/github/` preview now has an explicit visitor-initiated public repository directory. It uses a fixed GitHub user-account endpoint, no credentials, a five-page maximum, bounded request timeout, and safe DOM text rendering. Private or malformed records are excluded, duplicates are ignored, and provider URLs are not trusted for navigation. Filtering operates locally once public metadata is loaded. No GitHub request occurs merely because the page loads.
 
 **Test scope:** The Chromium/Firefox isolated browser workflow now checks consent-only loading, private-result exclusion, local filtering, HTTP rate-limit retry, bounded pagination, and duplicate exclusion using synthetic GitHub responses. Browser run `39367086949` passed at implementation head `43826d561d3642f5edfd2386cfc123960dcc168f`. Actual GitHub provider integration, deployment CSP, production accessibility acceptance and cutover remain unverified.
+
+### Verified API account type
+
+GoreeCloud is a GitHub user account, not an organization. A read-only network probe on October 19/20, 2026 returned HTTP 404 for the organization repositories endpoint and HTTP 200 for the public user repositories endpoint. The candidate now calls the public user-account endpoint (`/users/GoreeCloud/repos`) and leaves provider data/permissions untrusted. This correction is distinct from the production legacy JavaScript hotfix and is not a deployment.

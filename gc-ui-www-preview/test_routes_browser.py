@@ -69,6 +69,7 @@ def smoke():
                                 window.previewGithubCalls = [];
                                 window.fetch = async (url, options) => {
                                     window.previewGithubCalls.push({url, options});
+                                    if (!url.startsWith("https://api.github.com/users/GoreeCloud/repos?type=owner")) throw new Error("incorrect GitHub account endpoint");
                                     return new Response(JSON.stringify([
                                       {name:"Memos", full_name:"GoreeCloud/Memos",
                                        owner:{login:"GoreeCloud"}, private:false,
@@ -96,6 +97,7 @@ def smoke():
                                 window.previewGithubCalls = [];
                                 window.fetch = async url => {
                                     window.previewGithubCalls.push(url);
+                                    if (!url.startsWith("https://api.github.com/users/GoreeCloud/repos?type=owner")) throw new Error("incorrect GitHub account endpoint");
                                     return new Response("{}", {status:429});
                                 };
                             }""")
@@ -108,6 +110,7 @@ def smoke():
                                 window.previewGithubCalls = [];
                                 window.fetch = async url => {
                                     window.previewGithubCalls.push(url);
+                                    if (!url.startsWith("https://api.github.com/users/GoreeCloud/repos?type=owner")) throw new Error("incorrect GitHub account endpoint");
                                     const number = new URL(url).searchParams.get('page');
                                     const record = name => ({
                                       name, full_name: "GoreeCloud/" + name,
