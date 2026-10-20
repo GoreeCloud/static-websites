@@ -33,5 +33,17 @@ jobs:
         run: |
           python3 scripts/validate_url_namespace.py
           python3 sites/main/scripts/validate_site.py
+      - name: Run current-site regression suite
+        run: python3 -m unittest discover -s sites/main/tests -p 'test_*.py'
+      - name: Build isolated public-site artifact
+        run: python3 sites/main/scripts/build_public_site.py
+      - name: Validate public-site artifact allowlist
+        run: python3 sites/main/scripts/validate_build_artifact.py
+      - name: Exercise retained pages in Chrome
+        run: python3 sites/main/scripts/browser_artifact_smoke.py
       - name: Preserve no-deploy contract
-        run: test ! -e sites/main/dist
+        run: |
+          test -f sites/main/dist/index.html
+          test -f sites/main/dist/github/index.html
+          echo "Local CI artifact only; nothing published"
+
