@@ -81,12 +81,15 @@ def verify(folder: Path):
             raise ValueError("unreviewed source-content coverage " + route)
         if (ident == "suite") != ("data-suite-filter" in value):
             raise ValueError("Suite filter not scoped to its approved route")
+        if (ident == "github") != ("data-gc-load-repos" in value):
+            raise ValueError("catalog must be explicitly loaded only on GitHub route")
         page = Page()
         page.feed(value)
         prefix = "assets/" if route == "/" else "../assets/"
         if (page.mains != 1 or not page.skip or not page.noindex or page.current != 1
                 or page.styles != [prefix + "gc-ui-foundations.css", prefix + "site.css", prefix + "routes.css"]
-                or page.scripts != [prefix + "site.js"]
+                or page.scripts != ([prefix + "site.js", prefix + "github-catalog.js"]
+                                    if ident == "github" else [prefix + "site.js"])
                 or page.modes != {"system": "true", "light": "false", "dark": "false"}
                 or not {"main", "overview", "source"} <= page.ids):
             raise ValueError("broken route semantics or source boundary " + route)

@@ -20,7 +20,7 @@ from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
 OUT = REPOSITORY / "dist-gc-ui-routes-preview"
-FILES = ("gc-ui-foundations.css", "site.css", "site.js", "routes.css")
+FILES = ("gc-ui-foundations.css", "site.css", "site.js", "routes.css", "github-catalog.js")
 PAGES = {
     "home": ("GoreeCloud", "Software and systems under your control.",
              "GoreeCloud develops privacy-first, self-hosted software for people who want control of their digital lives."),
@@ -91,6 +91,19 @@ def _html(ident: str, path: str) -> str:
              aria-controls="source-content" autocomplete="off">
       <output id="suite-filter-status" role="status" aria-live="polite"></output>
     </div>''' if ident == "suite" else "")
+    github_catalog = ('''<section class="section" id="github-catalog" aria-labelledby="github-catalog-title">
+      <h2 id="github-catalog-title">Public GitHub repositories on demand</h2>
+      <p class="section-lead">Privacy notice: loading this directory contacts GitHub directly
+        from your browser. No GitHub request is sent until you activate the button.</p>
+      <button class="primary-action" type="button" data-gc-load-repos
+        aria-controls="github-live-results">Load public repositories</button>
+      <p id="github-live-status" role="status" aria-live="polite">Not loaded. Choose the button to connect to GitHub.</p>
+      <label class="gc-repo-filter-label" for="github-repo-filter">Filter loaded repositories</label>
+      <input id="github-repo-filter" type="search" data-gc-repo-filter hidden
+             placeholder="Filter by name, description or language">
+      <div id="github-live-results" class="route-grid" aria-live="off"></div>
+      <p><a href="https://github.com/GoreeCloud">View the GoreeCloud GitHub organization</a></p>
+    </section>''' if ident == "github" else "")
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
@@ -111,6 +124,7 @@ def _html(ident: str, path: str) -> str:
   <link rel="stylesheet" href="{asset}site.css">
   <link rel="stylesheet" href="{asset}routes.css">
   <script defer src="{asset}site.js"></script>
+  {'<script defer src="' + asset + 'github-catalog.js"></script>' if ident == "github" else ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -145,6 +159,7 @@ def _html(ident: str, path: str) -> str:
     </div>
   </section>
   {suite_filter}
+  {github_catalog}
   {public_section}
   <section class="section" id="source" aria-labelledby="source-title">
     <p class="eyebrow">Transparent provenance</p>
