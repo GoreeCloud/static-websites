@@ -157,7 +157,7 @@ class GCUIRouteCandidateTests(unittest.TestCase):
         for section in ("suite", "android", "firefox"):
             links = render_links(REPOSITORY / "sites/main" / section / "index.html")
             self.assertNotIn("GitHub organization", links)
-            self.assertIn("GoreeCloud GitHub account", links)
+            self.assertNotIn("GitHub organization", links)
 
     def test_contact_social_links(self):
         from public_links import render_links
