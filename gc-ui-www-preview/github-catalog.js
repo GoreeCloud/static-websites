@@ -5,7 +5,8 @@
   const results = document.getElementById('github-live-results');
   const status = document.getElementById('github-live-status');
   const filter = document.querySelector('[data-gc-repo-filter]');
-  if (!button || !results || !status || !filter) return;
+  const filterLabel = document.querySelector('label[for="github-repo-filter"]');
+  if (!button || !results || !status || !filter || !filterLabel) return;
   const endpoint = 'https://api.github.com/users/GoreeCloud/repos';
   const MAX_PAGES = 5;
   const PAGE_SIZE = 100;
@@ -106,6 +107,7 @@
       all = collection.sort((a, b) => a.name.toLocaleLowerCase().localeCompare(b.name.toLocaleLowerCase()));
       loaded = true;
       filter.hidden = false;
+      filterLabel.hidden = false;
       button.textContent = 'Public repositories loaded';
       render();
     } catch (error) {
