@@ -24,9 +24,11 @@ class Page(HTMLParser):
         if tag=="input": self.inputs.append((a.get("id"),a.get("aria-label")))
 def audit():
     checked=[]
+    pages={}
     for ident,path in PATHS.items():
         target=OUT/("index.html" if path=="/" else ident+"/index.html")
         p=Page();p.feed(target.read_text(encoding="utf-8"))
+        pages[path]=p
         if set(p.uses)-p.ids:raise ValueError("broken ARIA reference: "+path)
         if any(not name and identity not in p.labels for identity,name in p.inputs):
             raise ValueError("unlabeled field: "+path)
