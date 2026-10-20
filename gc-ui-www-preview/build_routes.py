@@ -128,6 +128,11 @@ def _html(ident: str, path: str) -> str:
       <div id="github-live-results" class="route-grid" aria-live="off"></div>
       <p><a href="https://github.com/GoreeCloud">View the GoreeCloud GitHub account</a></p>
     </section>''' if ident == "github" else "")
+    contact_actions = ('''<nav class="contact-quick" aria-label="Contact quick actions">
+      <a href="mailto:support@goreecloud.com">Email support</a>
+      <a href="mailto:security@goreecloud.com">Report a security issue</a>
+      <a href="#social">Explore social accounts</a>
+    </nav>''' if ident == "contact" else "")
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
@@ -172,6 +177,7 @@ def _html(ident: str, path: str) -> str:
     <p class="intro">{escape(summary)}</p>
     <p class="notice"><strong>Not deployed.</strong> This is a structure and design preview for an existing public URL, not a replacement of the current site. Feature parity, security, accessibility, and rollback acceptance remain pending.</p>
     <p><a class="primary-action" href="#overview">Explore this section</a></p>
+    {contact_actions}
   </section>
   <section class="section" id="overview" aria-labelledby="overview-title">
     <p class="eyebrow">One current website / eleven preserved routes</p>
