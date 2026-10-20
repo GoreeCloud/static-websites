@@ -111,6 +111,16 @@ class GCUIRouteCandidateTests(unittest.TestCase):
     def test_all_retained_routes_have_safe_preview(self):
         self.assertEqual(verify(OUT), 11)
 
+    def test_catalog_source_boundaries(self):
+        from build_routes import SOURCE
+        source = (SOURCE / "github-catalog.js").read_text()
+        for required in ("data-gc-load-repos", "addEventListener('click'",
+                         "https://api.github.com/orgs/GoreeCloud/repos",
+                         "credentials: 'omit'", "redirect: 'error'",
+                         "item.private !== false", "MAX_PAGES = 5"):
+            self.assertIn(required, source)
+        self.assertNotIn("innerHTML", source)
+
     def test_public_link_allowlist(self):
         from public_links import acceptable
         self.assertTrue(acceptable("/privacy/"))
