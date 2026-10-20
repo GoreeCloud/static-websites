@@ -17,7 +17,7 @@ class Page(HTMLParser):
         if a.get("id"):
             if a["id"] in self.ids: raise ValueError("duplicate ID")
             self.ids.add(a["id"])
-        for key in ("aria-controls","aria-labelledby"):
+        for key in ("aria-controls","aria-labelledby","aria-describedby"):
             self.uses.extend(a.get(key,"").split())
         if tag=="a": self.hrefs.append(a.get("href",""))
         if tag=="label" and a.get("for"):self.labels.add(a["for"])
