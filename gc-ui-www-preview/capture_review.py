@@ -12,6 +12,7 @@ import os
 from playwright.sync_api import sync_playwright
 from build_routes import OUT, PATHS
 from test_routes import verify
+from audit_source import audit as audit_content_gaps
 
 REVIEW = OUT.parent / "dist-gc-ui-review"
 WIDTHS = (("desktop", 1280), ("mobile", 375))
@@ -91,6 +92,8 @@ def capture():
                 "deployed": False, "consumerAccepted": False,
                 "noExternalRequests": True, "captures": records}
     (REVIEW / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (REVIEW / "content-seo-gap-audit.json").write_text(
+        json.dumps(audit_content_gaps(), indent=2) + "\n", encoding="utf-8")
     sections = "".join(
         '<article><h2>' + escape(row["route"]) + " — " +
         ("Desktop" if row["width"] == 1280 else "Mobile") + (" — Dark" if row.get("mode") == "dark" else " — Light") +
@@ -117,7 +120,7 @@ def capture():
         "To browse that site locally, from its parent directory run:\n"
         "  python3 -m http.server 4173 --directory dist-gc-ui-routes-preview\n"
         "Then visit http://127.0.0.1:4173/ . Never point it at production.\n"
-        "Manifest: manifest.json. All screenshots use synthetic/local assets only.\n")
+        "Manifest: manifest.json. Content/SEO gaps: content-seo-gap-audit.json.\n")
     return manifest
 
 
