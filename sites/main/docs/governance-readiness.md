@@ -26,7 +26,7 @@ Security and safe operation apply fully to the public website. The current repos
 
 - an exact per-file public deployment allowlist and isolated `dist/` artifact;
 - origin-local browser render resources;
-- no analytics, advertising, behavioral tracking, third-party browser runtime, or networked public JavaScript;
+- no analytics, advertising, behavioral tracking, third-party browser runtime, or automatic third-party requests; the GitHub repository directory contacts its public API only after visitor opt-in;
 - restrictive browser security and privacy headers;
 - responsible security-reporting surfaces and `security.txt` freshness checks;
 - repository current-tree hygiene and reachable-history publication preflight;
