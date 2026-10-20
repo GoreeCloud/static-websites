@@ -91,6 +91,40 @@ def smoke():
                             assert cards.count() == 0
                             search.fill("")
                             assert cards.count() == 1
+                            page.reload(wait_until="networkidle")
+                            page.evaluate("""() => {
+                                window.previewGithubCalls = [];
+                                window.fetch = async url => {
+                                    window.previewGithubCalls.push(url);
+                                    return new Response("{}", {status:429});
+                                };
+                            }""")
+                            retry = page.get_by_role("button", name="Load public repositories")
+                            retry.click()
+                            page.wait_for_function("document.getElementById('github-live-status').textContent.includes('limited')")
+                            assert retry.is_enabled()
+                            assert page.evaluate("window.previewGithubCalls.length") == 1
+                            page.evaluate("""() => {
+                                window.previewGithubCalls = [];
+                                window.fetch = async url => {
+                                    window.previewGithubCalls.push(url);
+                                    const number = new URL(url).searchParams.get('page');
+                                    const record = name => ({
+                                      name, full_name: "GoreeCloud/" + name,
+                                      owner:{login:"GoreeCloud"}, private:false,
+                                      description:"Public", language:"Python",
+                                      default_branch:"main", archived:false
+                                    });
+                                    const rows = number === "1"
+                                      ? Array.from({length:100}, (_, i) => record("Repo-" + i))
+                                      : [record("Memos"), record("Repo-0")];
+                                    return new Response(JSON.stringify(rows), {status:200});
+                                };
+                            }""")
+                            retry.click()
+                            page.wait_for_function("document.querySelectorAll('#github-live-results .github-repo-card').length === 101")
+                            assert page.evaluate("window.previewGithubCalls.length") == 2
+                            assert not retry.is_enabled()
                         page.set_viewport_size({"width": 375, "height": 900})
                         page.evaluate("document.documentElement.style.fontSize='200%'")
                         overflow = page.evaluate("document.documentElement.scrollWidth - innerWidth")
