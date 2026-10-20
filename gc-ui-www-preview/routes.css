@@ -70,3 +70,5 @@ main { min-width: 0; }
 .gc-ui-identity img{display:block;width:74px;height:74px;object-fit:contain}
 .gc-ui-identity span{display:flex;flex-direction:column;gap:.3rem;font-weight:700}
 .gc-ui-identity small{font-weight:500;font-size:.8rem}
+
+.gc-specimen-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-block:1rem}.gc-specimen-item{min-width:0;overflow:hidden;border:1px solid var(--gc-v1-color-outline);border-radius:18px}.gc-specimen-color{padding:2rem 1rem;min-height:110px;font-weight:700}.gc-role-canvas .gc-specimen-color{background:var(--gc-v1-color-canvas);color:var(--gc-v1-color-on-canvas)}.gc-role-surface .gc-specimen-color{background:var(--gc-v1-color-surface-raised);color:var(--gc-v1-color-on-surface)}.gc-role-primary .gc-specimen-color{background:var(--gc-v1-color-primary);color:var(--gc-v1-color-on-primary)}.gc-role-tonal .gc-specimen-color{background:var(--gc-v1-color-surface-tonal);color:var(--gc-v1-color-on-surface)}
