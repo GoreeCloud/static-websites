@@ -1,0 +1,49 @@
+name: Verify current website public GitHub directory hotfix
+on:
+  pull_request:
+    paths:
+      - 'sites/main/**'
+      - '.github/workflows/validate-public-github-directory.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-directory-contract:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - name: Checkout exact proposed website
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.SOURCE_SHA }}
+          persist-credentials: false
+      - name: Verify exact head and unchanged production boundary
+        run: |
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          test ! -e sites/main/dist
+      - name: Compile browser source and test validators
+        run: |
+          node --check sites/main/js/site-v8.js
+          python3 -m py_compile sites/main/scripts/test_public_github_directory.py
+      - name: Run negative repository identity and privacy tests
+        run: python3 -m unittest discover -s sites/main/scripts -p test_public_github_directory.py -v
+      - name: Validate URL namespace and current website source
+        run: |
+          python3 scripts/validate_url_namespace.py
+          python3 sites/main/scripts/validate_site.py
+      - name: Run current-site regression suite
+        run: python3 -m unittest discover -s sites/main/tests -p 'test_*.py'
+      - name: Build isolated public-site artifact
+        run: python3 sites/main/scripts/build_public_site.py
+      - name: Validate public-site artifact allowlist
+        run: python3 sites/main/scripts/validate_build_artifact.py
+      - name: Exercise retained pages in Chrome
+        run: python3 sites/main/scripts/browser_artifact_smoke.py
+      - name: Preserve no-deploy contract
+        run: |
+          test -f sites/main/dist/index.html
+          test -f sites/main/dist/github/index.html
+          echo "Local CI artifact only; nothing published"
+

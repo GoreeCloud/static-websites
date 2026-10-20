@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Validate GoreeCloud production-readiness governance for the public website.
 
-The website is currently an anonymous static publication surface. The multi-user
-baseline is therefore explicitly Not Applicable to the current architecture, while
-security readiness and Glaze remain mandatory. This validator makes that scope
-classification reviewable and fails if the implementation or CI stops carrying the
-controls that justify it.
+The website is currently an anonymous static publication surface. Multi-user
+readiness is Not Applicable for this architecture, while security, accessibility,
+and GC UI migration boundaries remain mandatory. This validator fails closed if
+the repository drops those currently executable controls.
 """
 
 from __future__ import annotations
@@ -20,14 +19,15 @@ BUILD = ROOT / "scripts" / "build_public_site.py"
 WORKFLOW = REPO_ROOT / ".github" / "workflows" / "validate-main-site.yml"
 DEPLOYMENT_VALIDATOR = ROOT / "scripts" / "validate_deployment_contract.py"
 ORIGIN_VALIDATOR = ROOT / "scripts" / "validate_browser_origin_integrity.py"
-GLAZE_VALIDATOR = ROOT / "scripts" / "validate_glaze_ui.py"
+ADAPTIVE_VALIDATOR = ROOT / "scripts" / "validate_adaptive_presentation.py"
+MIGRATION_RECORD = REPO_ROOT / "docs" / "GC_UI_RETAINED_SITE_RECONCILIATION.md"
 ACCESSIBILITY_VALIDATOR = ROOT / "scripts" / "validate_accessibility.py"
 INDEX = ROOT / "index.html"
 
 REQUIRED_GOVERNANCE_MARKERS = (
     "Multi-user readiness: Not applicable to the current static public website",
     "Security readiness: Applicable",
-    "Glaze compliance: Applicable",
+    "GC UI design authority: Applicable",
     "If the website adds authentication",
     "this Not Applicable determination expires",
     "successful isolated `dist/` artifact and public-boundary validation",
@@ -62,6 +62,7 @@ def main() -> int:
     errors: list[str] = []
 
     governance = require_regular_file(errors, GOVERNANCE, "Governance readiness record")
+    migration = require_regular_file(errors, MIGRATION_RECORD, "GC UI migration authority record")
     build = require_regular_file(errors, BUILD, "Public artifact builder")
     workflow = require_regular_file(errors, WORKFLOW, "Validation workflow")
     index = require_regular_file(errors, INDEX, "Homepage")
@@ -69,10 +70,17 @@ def main() -> int:
     for validator, label in (
         (DEPLOYMENT_VALIDATOR, "deployment-contract validator"),
         (ORIGIN_VALIDATOR, "browser-origin validator"),
-        (GLAZE_VALIDATOR, "Glaze validator"),
+        (ADAPTIVE_VALIDATOR, "adaptive presentation validator"),
         (ACCESSIBILITY_VALIDATOR, "accessibility validator"),
     ):
         require_regular_file(errors, validator, label)
+
+    if "GoreeCloud UI (GC UI)" not in migration or "no public gc ui cutover accepted" not in migration.lower():
+        fail(errors, "GC UI authority and unaccepted website consumer state must remain documented")
+    if "GoreeCloud/glaze" in workflow or "validate_glaze_ui.py" in workflow:
+        fail(errors, "website validation workflow must not depend on the deleted predecessor")
+    if "python sites/main/scripts/validate_adaptive_presentation.py" not in workflow:
+        fail(errors, "website CI must retain the adaptive presentation gate")
 
     for marker in REQUIRED_GOVERNANCE_MARKERS:
         if marker not in governance:
@@ -94,7 +102,7 @@ def main() -> int:
         "python sites/main/scripts/validate_governance_readiness.py",
         "python sites/main/scripts/validate_site.py",
         "python sites/main/scripts/validate_public_surface.py",
-        "python sites/main/scripts/validate_glaze_ui.py",
+        "python sites/main/scripts/validate_adaptive_presentation.py",
         "python sites/main/scripts/build_public_site.py",
         "python sites/main/scripts/validate_build_artifact.py",
         "python sites/main/scripts/browser_artifact_smoke.py",
@@ -110,7 +118,7 @@ def main() -> int:
         return 1
 
     print(
-        "GoreeCloud governance readiness validation passed: multi-user N/A for the current anonymous static site; security and Glaze gates remain applicable."
+        "GoreeCloud governance readiness passed: current anonymous-static user scope, security, adaptive presentation, and unaccepted GC UI migration boundary."
     )
     return 0
 
