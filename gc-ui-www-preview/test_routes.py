@@ -1,7 +1,7 @@
 """Fail-closed tests for the undeployed 11-route GC UI candidate."""
 from __future__ import annotations
 
-from hashlib import sha256
+from hashlib import sha1, sha256
 from html.parser import HTMLParser
 from pathlib import Path
 import json
@@ -114,6 +114,15 @@ class GCUIRouteCandidateTests(unittest.TestCase):
 
     def test_all_retained_routes_have_safe_preview(self):
         self.assertEqual(verify(OUT), 11)
+
+    def test_pinned_official_gc_ui_icon_is_scoped(self):
+        raw = (OUT / "assets/gc-ui-symbol.svg").read_bytes()
+        git_blob = sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+        self.assertEqual(git_blob, "613dfb1747f251d86a1faa6e12c83836b2a950b7")
+        self.assertNotIn(b"<script", raw.lower())
+        for ident, route in PATHS.items():
+            page = (OUT / ("index.html" if route == "/" else ident + "/index.html")).read_text()
+            self.assertEqual("gc-ui-symbol.svg" in page, ident == "design")
 
     def test_android_lifecycle_source_parity(self):
         from android_lifecycle import extract_lifecycles
