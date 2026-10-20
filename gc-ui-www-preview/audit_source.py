@@ -45,8 +45,10 @@ def audit():
         gaps = {tag: max(0, count - candidate.tags[tag])
                 for tag, count in source.tags.items()}
         rows.append({"route": entry["path"], "source": source.tags,
-                     "candidate": candidate.tags, "missingInternalLinks": missing,
+                     "candidate": candidate.tags, "missingMainContentLinks": missing,
                      "unrepresentedElements": gaps,
+                     "sourceArticleCount": source.tags["article"],
+                     "candidateArticleCount": candidate.tags["article"],
                      "featureParityVerified": False})
     return {"schema": "gc-ui-public-source-gap-audit.v1",
             "productionChanged": False, "contentParityVerified": False,

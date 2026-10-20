@@ -66,11 +66,19 @@ def verify(folder: Path):
             files[path.relative_to(folder).as_posix()] = sha256(path.read_bytes()).hexdigest()
     if files != evidence["files"]:
         raise ValueError("artifact missing, changed or contains unexpected files")
+    source = json.loads((folder / "SHA256SUMS.json").read_text()).get("sourceSha256")
+    expected = {entry["source"]: sha256((OUT.parent / entry["source"]).read_bytes()).hexdigest()
+                for entry in __import__("build_routes")._namespace()}
+    if source != expected:
+        raise ValueError("source provenance digest mismatch")
     for ident, route in PATHS.items():
         file = folder / ("index.html" if route == "/" else ident + "/index.html")
         value = file.read_text(encoding="utf-8")
         if "glaze" in value.lower() or "<style" in value or "<script>" in value:
             raise ValueError("unsafe predecessor or inline content")
+        content_cards = value.count("candidate-content-card")
+        if content_cards < (40 if ident == "suite" else 9 if ident == "platform-systems" else 3):
+            raise ValueError("unreviewed source-content coverage " + route)
         page = Page()
         page.feed(value)
         prefix = "assets/" if route == "/" else "../assets/"

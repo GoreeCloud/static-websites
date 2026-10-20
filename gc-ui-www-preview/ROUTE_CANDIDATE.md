@@ -18,3 +18,9 @@ python3 -m http.server 4173 --directory dist-gc-ui-routes-preview
 The generated output is \`dist-gc-ui-routes-preview/\`, which must **not** be pointed at a production Pages project. It carries \`SHA256SUMS.json\` with all acceptance booleans false. Do not create a Cloudflare Pages project or publish a new hostname for this isolated proof-of-structure.
 
 Completion requires review of the existing eleven pages and features, original brand assets, real-browser/assistive-technology behavior, production-level headers and route semantics, and a proven rollback plan. See [retained site migration issue #144](https://github.com/GoreeCloud/static-websites/issues/144).
+
+## Public-copy reconciliation
+
+The isolated candidate now extracts public source article **text only** and presents it in original GC UI patterns; it does not import legacy HTML, scripts or CSS. It excludes predecessor design claims and uses original GC UI copy for /design/. Source page SHA-256 values are included in the generated artifact manifest.
+
+Run `python3 gc-ui-www-preview/audit_source.py` after `build_routes.py` to see conservative per-route content, controls and main-link gaps. The report is diagnostic and leaves every production/content/accessibility acceptance flag false.
