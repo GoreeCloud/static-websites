@@ -22,3 +22,7 @@ main { min-width: 0; }
   .candidate-nav a[aria-current="page"] { border: 2px solid Highlight; }
   .candidate-nav a:focus-visible { outline-color: Highlight; }
 }
+
+.candidate-content-card { min-width: 0; overflow-wrap: anywhere; }
+.candidate-content-card p { line-height: 1.55; }
+.candidate-content-card h3 { font-size: clamp(1rem, 1.4vw, 1.25rem); }

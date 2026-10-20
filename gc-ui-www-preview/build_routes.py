@@ -14,6 +14,7 @@ import shutil
 import sys
 
 from build import SOURCE, REPOSITORY
+from source_cards import extract, render
 from validate import validate as validate_foundations
 
 NAMESPACE = REPOSITORY / "sites/url-namespace.json"
@@ -78,6 +79,11 @@ def _namespace() -> list[dict]:
 
 def _html(ident: str, path: str) -> str:
     title, heading, summary = PAGES[ident]
+    source = REPOSITORY / ("sites/main/index.html" if ident == "home" else "sites/main/" + ident + "/index.html")
+    public_cards = extract(source, ident)
+    if len(public_cards) < 3:
+        raise ValueError("missing reviewed public-source cards")
+    public_section = render(public_cards)
     asset = "assets/" if path == "/" else "../assets/"
     navigation = "\n".join(
         '<a href="' + href + '"' + (' aria-current="page"' if key == ident else '') + '>'
@@ -131,6 +137,7 @@ def _html(ident: str, path: str) -> str:
       <article class="panel"><h3>Release boundary</h3><p>All existing URLs are retained in the candidate. Live content parity, browser accessibility, and production cutover still require independent review.</p></article>
     </div>
   </section>
+  {public_section}
   <section class="section" id="source" aria-labelledby="source-title">
     <p class="eyebrow">Transparent provenance</p>
     <h2 id="source-title">Track source and migration</h2>
@@ -161,6 +168,10 @@ def build():
     OUT.mkdir()
     (OUT / "assets").mkdir()
     digests = {}
+    source_digests = {}
+    for entry in entries:
+        page = REPOSITORY / entry["source"]
+        source_digests[entry["source"]] = sha256(page.read_bytes()).hexdigest()
     for name in FILES:
         origin = SOURCE / name
         if origin.is_symlink() or not origin.is_file():
@@ -192,6 +203,7 @@ def build():
         "a11yBrowserAccepted": False,
         "routes": [entry["path"] for entry in entries],
         "files": dict(sorted(digests.items())),
+        "sourceSha256": dict(sorted(source_digests.items())),
     }
     (OUT / "SHA256SUMS.json").write_text(json.dumps(report, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     return report
