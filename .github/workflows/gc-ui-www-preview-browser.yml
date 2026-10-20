@@ -52,6 +52,28 @@ jobs:
         run: |
           python3 gc-ui-www-preview/test_browser.py
           python3 gc-ui-www-preview/test_routes_browser.py
+      - name: Capture desktop and mobile review for all eleven routes
+        run: |
+          python3 gc-ui-www-preview/capture_review.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path("dist-gc-ui-review/manifest.json").read_text())
+          assert manifest["deployed"] is False
+          assert manifest["consumerAccepted"] is False
+          assert manifest["sourceHead"] == "$"+"{"+"SOURCE_SHA"+"}"
+          assert len(manifest["captures"]) == 22
+          assert len({r["route"] for r in manifest["captures"]}) == 11
+          PY
+      - name: Upload isolated visual review and source artifact (never deploy)
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: gc-ui-eleven-routes-review
+          path: |
+            dist-gc-ui-review/
+            dist-gc-ui-routes-preview/
+          if-no-files-found: error
+          retention-days: 14
       - name: Preserve non-deployment gate
         run: |
           test ! -e sites/main/dist
