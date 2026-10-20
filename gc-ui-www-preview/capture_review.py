@@ -93,7 +93,7 @@ def capture():
     (REVIEW / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
     sections = "".join(
         '<article><h2>' + escape(row["route"]) + " — " +
-        ("Desktop" if row["width"] == 1280 else "Mobile") +
+        ("Desktop" if row["width"] == 1280 else "Mobile") + (" — Dark" if row.get("mode") == "dark" else " — Light") +
         '</h2><img loading="lazy" src="' + escape(row["image"], quote=True) +
         '" alt="Isolated, undeployed GC UI route at ' + str(row["width"]) +
         ' pixels"></article>' for row in records)
@@ -112,7 +112,7 @@ def capture():
     (REVIEW / "index.html").write_text(gallery)
     (REVIEW / "README.txt").write_text(
         "GC UI isolated visual review — NOT DEPLOYED OR ACCEPTED\n"
-        "Open index.html locally for the 22 screenshots.\n"
+        "Open index.html locally for the 24 screenshots.\n"
         "The separate dist-gc-ui-routes-preview/ folder contains the HTML.\n"
         "To browse that site locally, from its parent directory run:\n"
         "  python3 -m http.server 4173 --directory dist-gc-ui-routes-preview\n"
