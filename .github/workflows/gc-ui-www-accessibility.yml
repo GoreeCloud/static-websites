@@ -1,0 +1,23 @@
+name: Audit isolated GC UI website routes and controls
+on:
+  pull_request:
+    paths:
+      - 'gc-ui-www-preview/**'
+      - '.github/workflows/gc-ui-www-accessibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static-accessibility-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Generate nondeployed candidate
+        run: python3 gc-ui-www-preview/build_routes.py
+      - name: Verify accessible references and approved routes
+        run: python3 gc-ui-www-preview/audit_navigation.py
+      - name: Protect production boundary
+        run: test ! -e sites/main/dist
