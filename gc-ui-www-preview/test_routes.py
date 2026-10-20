@@ -115,6 +115,21 @@ class GCUIRouteCandidateTests(unittest.TestCase):
     def test_all_retained_routes_have_safe_preview(self):
         self.assertEqual(verify(OUT), 11)
 
+    def test_design_showcase_uses_pinned_semantic_roles(self):
+        from design_showcase import SPECIMENS, render_design_specimens
+        from build_routes import SOURCE
+        tokens = (SOURCE / "gc-ui-foundations.css").read_text(encoding="utf-8")
+        rendered = render_design_specimens(tokens)
+        self.assertEqual(len(SPECIMENS), 4)
+        self.assertEqual(rendered.count('class="gc-specimen-item '), 4)
+        self.assertIn('href="/platform-systems/#gc-ui"', rendered)
+        self.assertIn("not full", rendered.lower())
+        with self.assertRaisesRegex(ValueError, "Missing pinned"):
+            render_design_specimens("")
+        for ident, route in PATHS.items():
+            markup = (OUT / ("index.html" if route == "/" else ident + "/index.html")).read_text()
+            self.assertEqual('id="specimens"' in markup, ident == "design")
+
     def test_pinned_official_gc_ui_icon_is_scoped(self):
         raw = (OUT / "assets/gc-ui-symbol.svg").read_bytes()
         git_blob = sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
