@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import json
 from build_routes import OUT, PATHS
+from public_links import acceptable
 
 class Page(HTMLParser):
     def __init__(self):
@@ -33,6 +34,8 @@ def audit():
         if any(not name and identity not in p.labels for identity,name in p.inputs):
             raise ValueError("unlabeled field: "+path)
         for href in p.hrefs:
+            if href.startswith("mailto:") and not acceptable(href):
+                raise ValueError("unapproved public mail recipient: "+path)
             if href.startswith("#") and href[1:] not in p.ids:raise ValueError("broken anchor: "+path)
             if href.startswith("/") and not href.startswith("//"):
                 base=href.split("#",1)[0].split("?",1)[0]
