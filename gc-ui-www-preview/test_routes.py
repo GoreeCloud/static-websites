@@ -150,6 +150,8 @@ class GCUIRouteCandidateTests(unittest.TestCase):
         self.assertTrue(acceptable("https://github.com/GoreeCloud"))
         self.assertFalse(acceptable("/retired/"))
         self.assertFalse(acceptable("http://example.invalid"))
+        self.assertTrue(acceptable("mailto:support@goreecloud.com"))
+        self.assertFalse(acceptable("mailto:other@goreecloud.com"))
 
     def test_public_github_account_labels(self):
         from public_links import render_links
