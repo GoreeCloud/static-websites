@@ -98,7 +98,7 @@ def _html(ident: str, path: str) -> str:
       <button class="primary-action" type="button" data-gc-load-repos
         aria-controls="github-live-results">Load public repositories</button>
       <p id="github-live-status" role="status" aria-live="polite">Not loaded. Choose the button to connect to GitHub.</p>
-      <label class="gc-repo-filter-label" for="github-repo-filter">Filter loaded repositories</label>
+      <label class="gc-repo-filter-label" for="github-repo-filter" hidden>Filter loaded repositories</label>
       <input id="github-repo-filter" type="search" data-gc-repo-filter hidden
              placeholder="Filter by name, description or language">
       <div id="github-live-results" class="route-grid" aria-live="off"></div>
