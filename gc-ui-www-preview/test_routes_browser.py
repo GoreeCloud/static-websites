@@ -64,6 +64,12 @@ def smoke():
                             search.fill("")
                             assert cards.count() == baseline
                         if route == "/design/":
+                            assert page.locator("#specimens .gc-specimen-item").count() == 4
+                            swatch = page.locator(".gc-role-primary .gc-specimen-color")
+                            before = swatch.evaluate("(e) => getComputedStyle(e).backgroundColor")
+                            page.get_by_role("button", name="Dark", exact=True).click()
+                            assert swatch.evaluate("(e) => getComputedStyle(e).backgroundColor") != before
+                            page.get_by_role("button", name="Light", exact=True).click()
                             assert page.locator(".gc-ui-identity img").count() == 1
                             assert page.locator(".gc-ui-identity img").evaluate("(img) => img.naturalWidth > 0")
                         if route == "/contact/":
