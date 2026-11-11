@@ -22,20 +22,20 @@ for(const [route,width,height,theme]of tests){
  page.on('request',req=>{if(!req.url().startsWith(url+'/'))external.push(req.url())});
  const response=await page.goto(url+route,{waitUntil:'networkidle0',timeout:18000});
  await page.evaluate(x=>document.documentElement.dataset.theme=x,theme);
- await page.evaluate(async()=>{ const imgs=[...document.querySelectorAll('img[src*="/assets/gc-ui/"]')].filter(x=>getComputedStyle(x).display!=='none'); await Promise.all(imgs.map(async x=>{x.loading='eager';try{await x.decode();}catch(e){}})); });
+ await page.evaluate(async()=>{ const imgs=[...document.querySelectorAll('img[src*="/assets/gc-ui/"], img[src*="/assets/goreecloud/"]')].filter(x=>getComputedStyle(x).display!=='none'); await Promise.all(imgs.map(async x=>{x.loading='eager';try{await x.decode();}catch(e){}})); });
  const m=await page.evaluate(()=>{
- const assets=[...document.querySelectorAll('img[src*="/assets/gc-ui/"]')].filter(x=>getComputedStyle(x).display!=='none').map(x=>({src:x.getAttribute('src'),naturalWidth:x.naturalWidth,complete:x.complete}));
+ const assets=[...document.querySelectorAll('img[src*="/assets/gc-ui/"], img[src*="/assets/goreecloud/"]')].filter(x=>getComputedStyle(x).display!=='none').map(x=>({src:x.getAttribute('src'),naturalWidth:x.naturalWidth,complete:x.complete}));
  const style=getComputedStyle(document.documentElement);
  return {scroll:document.documentElement.scrollWidth,viewport:innerWidth,assets,
     logoVisible:!!document.querySelector('.gcui-brand-heading img'),
-    favicon:!!document.querySelector('link[rel=icon][href*="gc-ui"]'),
+    favicon:!!document.querySelector('link[rel=icon][href*="goreecloud"]'),
     bodyFont:getComputedStyle(document.body).fontSize,
     colorScheme:style.colorScheme};
  });
  if(response.status()!=200||errors.length||failed.length||external.length||m.scroll>m.viewport+2||
  m.assets.some(a=>!a.complete||a.naturalWidth===0))report.errors.push({route,width,theme,status:response.status(),errors,failed,external,metrics:m});
- if(route==='/design/'&&!m.favicon)report.errors.push('design missing GC UI favicon');
- if(route==='/'&&m.favicon)report.errors.push('global GoreeCloud site incorrectly using GC UI favicon');
+ if(!m.favicon)report.errors.push(route+' missing official GoreeCloud umbrella favicon');
+ if(route==='/'&&!m.assets.some(x=>x.src.includes('/assets/goreecloud/')))report.errors.push('global logo is not displayed');
  if((route==='/design/'&&width===1440)||(route==='/design/'&&width===390)||(route==='/'&&width===1440)){
     const name=(route==='/design/'?'design':'home')+'-'+width+'-'+theme+'.png';
     await page.screenshot({path:path.join(destination,name),fullPage:false});

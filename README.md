@@ -67,3 +67,25 @@ source asset license and brand-mark rights remain governed by the
 GoreeCloud repository and per-product terms. Exact original files are
 not AI recolored or regenerated. Consumer browser tests and typography
 zoom checks are independent release gates.
+
+
+## November 11 — permanent GoreeCloud G + experimental new GC UI design
+
+This **separate site review branch** displays the exact uploaded GoreeCloud
+permanent master PNG in global navigation, footer and homepage illustration,
+and loads its brand-assets source-mapped SVG/ICO favicons on all 15 HTML files.
+The uploaded PNG remains source-of-truth, not the SVG trace.
+
+For the **GoreeCloud UI** product presentation only, the site shows a
+clearly labeled **Flowframe v2 candidate** from
+`GoreeCloud/brand-assets` [draft PR #22](https://github.com/GoreeCloud/brand-assets/pull/22).
+The previous founder-approved Aperture Weave master remains published and
+unchanged; this experimental website iteration does not select the candidate.
+
+This branch is based on the existing **review-only website PR #2**, not on the
+historical Cloudflare Git repository or the production source. All 29 site
+assets and brand identities are SHA-256 pinned; the standalone validator
+enforces noindex/CSP and flags any generic umbrella mark. This iteration must
+pass hosted Pages and real-browser checks separately before visual acceptance.
+No production deployment, DNS change, indexing launch or historical source
+reconciliation is implied.

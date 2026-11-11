@@ -365,3 +365,14 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
 @media(forced-colors:active){
   .gcui-feature-panel,.gcui-hero-art {border:2px solid CanvasText;}
 }
+
+
+/* Permanent umbrella G and experimental Flowframe review */
+.brand-icon { width:28px;height:28px;flex:none;display:block;object-fit:contain;border-radius:8px; }
+.stage-core { border:none;background:none;backdrop-filter:none;box-shadow:0 22px 80px rgba(59,130,246,.2);border-radius:33%;transform:none; }
+.stage-core::before,.stage-core::after {content:none;}
+.stage-core img { width:100%;height:100%;display:block;object-fit:contain;border-radius:33%; }
+.gcui-review-note { max-width:65ch;color:var(--gc-text-soft);font-size:15px;line-height:1.65;margin-top:18px; }
+.gcui-review-note a { text-decoration:underline;text-underline-offset:3px; }
+.gcui-review-note a:focus-visible {outline:3px solid var(--gc-focus);outline-offset:3px;}
+@media(max-width:640px){.brand-icon{width:25px;height:25px;}}
