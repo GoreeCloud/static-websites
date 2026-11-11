@@ -17,3 +17,4 @@ qa_hosted_catalog.py
 catalog-accessibility-evidence.json
 catalog-hosted-browser-evidence.json
 catalog-hosted-evidence.json
+qa_density_compare.js
