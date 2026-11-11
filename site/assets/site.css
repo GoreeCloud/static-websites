@@ -472,3 +472,51 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
   max-width:125px; color:var(--gc-text-soft); }
 .identity-disclosure { color:var(--gc-text-soft); max-width:79ch;
   font-size:14px; line-height:1.65; margin:0 0 18px; }
+
+
+/* Original GoreeCloud Foundation v1 image review — unapproved identity sandbox. */
+.identity-review-intro {padding-bottom:26px;}
+.identity-review-intro h1 {max-width:940px;}
+.identity-review-warning {max-width:840px;padding:18px 22px;margin:24px 0 15px;
+  background:var(--gc-surface-tonal);border:1px solid var(--gc-outline);border-radius:var(--radius-md);
+  color:var(--gc-text-soft);font-size:15px;line-height:1.65;}
+.identity-review-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
+.identity-review-card {min-width:0;background:var(--gc-surface);border:1px solid var(--gc-divider);
+  border-radius:var(--radius-lg);overflow:hidden;display:flex;flex-direction:column;}
+.identity-review-art {background:#e6eaf6;overflow:hidden;}
+.identity-review-art img {display:block;width:100%;height:auto;aspect-ratio:1280/720;object-fit:cover;}
+.identity-review-copy {padding:24px;display:grid;gap:16px;}
+.identity-review-heading {display:flex;align-items:center;gap:16px;}
+.identity-review-heading>img {width:58px;height:58px;object-fit:contain;border-radius:15px;flex:none;}
+.identity-review-heading h2 {font-size:clamp(20px,2.1vw,30px);margin:3px 0;}
+.identity-review-role {display:block;color:var(--gc-text-faint);font-size:11px;letter-spacing:.12em;font-weight:760;}
+.identity-review-copy>p {font-size:15px;color:var(--gc-text-soft);line-height:1.55;margin:0;}
+.identity-review-wordmark {background:#fff;border:1px solid var(--gc-divider);border-radius:14px;
+  min-height:76px;display:grid;align-items:center;padding:13px 16px;}
+.identity-review-wordmark img {width:100%;height:auto;max-height:58px;object-fit:contain;object-position:left;}
+.review-wordmark-for-dark {display:none!important;}
+:root[data-theme="dark"] .identity-review-wordmark {background:#15203b;}
+:root[data-theme="dark"] .review-wordmark-for-light {display:none!important;}
+:root[data-theme="dark"] .review-wordmark-for-dark {display:block!important;}
+.identity-review-size-row {display:flex;align-items:center;flex-wrap:wrap;gap:13px;
+  padding:12px 0;border-top:1px solid var(--gc-divider);border-bottom:1px solid var(--gc-divider);}
+.identity-review-size-row span {font-size:12px;color:var(--gc-text-faint);}
+.identity-review-size-row img {flex:none;object-fit:contain;}
+.identity-review-size-row img[width="16"] {width:16px;height:16px;}
+.identity-review-size-row img[width="32"] {width:32px;height:32px;}
+.identity-review-size-row img[width="42"] {width:42px;height:42px;}
+.identity-review-source {display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+.identity-review-source .text-link {font-size:13px;}
+.identity-review-state {font-size:12px;color:var(--gc-text-soft);}
+.identity-review-next {margin-top:32px;padding:clamp(24px,4vw,46px);border-radius:var(--radius-xl);
+  background:var(--gc-surface-tonal);border:1px solid var(--gc-divider);}
+.identity-review-next h2 {font-size:clamp(24px,3.4vw,43px);}
+.identity-review-next p {max-width:75ch;color:var(--gc-text-soft);}
+@media(max-width:840px){.identity-review-grid{grid-template-columns:1fr;gap:16px;}}
+@media(max-width:520px){.identity-review-copy{padding:18px;gap:13px;}
+  .identity-review-heading>img{width:52px;height:52px;}
+  .identity-review-size-row{gap:9px;}
+  .identity-review-warning{padding:15px;}
+}
+@media(prefers-contrast:more){.identity-review-card,.identity-review-wordmark {border-width:2px;}}
+@media(forced-colors:active){.identity-review-card,.identity-review-wordmark,.identity-review-warning{border:2px solid CanvasText;}}
