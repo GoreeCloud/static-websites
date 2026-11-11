@@ -105,7 +105,9 @@ nonproduction Pages preview.
 The offline source audit checks all 15 HTML pages, local link targets and
 fragments, external-tab rel protection, first-party-only assets, noindex
 metadata and CSP-sensitive inline scripts. It is supplemented by nine
-negative/positive unit tests. GitHub Actions runs those gates and checks
+negative/positive Python unit tests and five dependency-free Node tests
+for URL restoration, search bounding, safe fallback, keyboard reset and
+back/forward restoration. GitHub Actions runs those gates, behavior tests, and checks
 both first-party scripts; **no CI deployment credentials or Cloudflare
 mutation are added**. Actual local Chromium exercised nine filtered-link
 restoration, reset, share fallback and responsive scenarios successfully.

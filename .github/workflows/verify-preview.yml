@@ -26,3 +26,5 @@ jobs:
         run: |
           node --check site/assets/site.js
           node --check site/assets/catalog-tools.js
+      - name: Test share/reset URL behavior without network or browser dependencies
+        run: node --test tests/catalog-tools.test.mjs

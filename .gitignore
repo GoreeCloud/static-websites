@@ -11,3 +11,9 @@ evidence/
 
 qa_catalog_browser.js
 catalog-browser-evidence.json
+qa_catalog_hosted_browser.js
+qa_catalog_accessibility.js
+qa_hosted_catalog.py
+catalog-accessibility-evidence.json
+catalog-hosted-browser-evidence.json
+catalog-hosted-evidence.json
