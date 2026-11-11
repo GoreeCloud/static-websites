@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 26:
-        fail("Expected exactly 26 reviewed iteration assets")
+    if len(actual) != 29:
+        fail("Expected exactly 29 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -81,23 +81,38 @@ def main() -> int:
         if '<script src="/assets/site.js" defer></script>' not in html:
             fail("Missing expected first-party script: " + route)
     pins = {
-        "app-icon.svg": "a1bf6370761f247a56666c0d61ba615dce3e5789c6e7845c630caecf6d9de418",
-        "symbol.svg": "78794bc48907ddd822b42d96cd0be0061bd1b1b4fe168384e5a3818afef50078",
-        "logo-light.svg": "4e40c93337c84de16560b26d701a3334d3b448bc7e04a2efe189944eac680682",
-        "logo-dark.svg": "dcdd57b18d94673973f1771f91752ece56d93737679b56bed4b8339719d1eb66",
-        "favicon.ico": "874fe939d8ce7a3958d11b7d1655daa22389beeb6a903c87eb17590e57a94313",
-        "interface-constellation.svg": "50661cf8d84818240ac7ac5e273123e041f9471ef4aa953d2be05019e4aef6aa",
+        'app-icon.svg': '0b16beadbb8a9aa27baf912bfc5c6b40f30cf22c00b156e35c748e909a50a1a8',
+        'symbol.svg': 'b4eb6b2e7185cd5a0ecb7d06513f3e5731ae0e3dd950d23fc4fabb8ba8eb9acd',
+        'logo-light.svg': '8364d2d74a2a0874f109c2c015193e524104ba3be0a6998bb3f1e41b7442aecb',
+        'logo-dark.svg': 'b3f7823cb6cce5fcaa68198a917d8c72e11db32901071f5afee2ad221a111906',
+        'favicon.ico': '574ff31eeaa9fe6e155c2e555430a80a87748574dcc590fc9958318a044c1a08',
+        'interface-constellation.svg': '695391d4c4b3360abb5979e73593ca2ed50794dca2ad3ee8b66f12ff4eba4ae2',
     }
     for name,digest in pins.items():
         candidate = SITE / "assets/gc-ui" / name
         if not candidate.is_file() or hashlib.sha256(candidate.read_bytes()).hexdigest() != digest:
             fail("Official asset pin mismatch: "+name)
+    permanent = SITE / "assets/goreecloud"
+    for name,digest in {
+        "official-profile-logo-1024.png": "ac5c76fda60abbf5fc65957b18a3b4053dccb4b3cb42687dcd0bb428709c69e8",
+        "logo.svg": '544e1e83ea4d8c67314286d7cc637b5cfc7c78d122c9595eba259c7075f654c6',
+        "favicon.ico": 'e038e993e53a274b52abf246a649e21f6066553b51e89bb777126ea47325fcc3'
+    }.items():
+        if not (permanent/name).is_file() or hashlib.sha256((permanent/name).read_bytes()).hexdigest()!=digest:
+            fail("GoreeCloud umbrella master pin mismatch: "+name)
+    for html in SITE.rglob("*.html"):
+        body=html.read_text("utf-8")
+        if '/assets/goreecloud/favicon.ico' not in body or '/assets/goreecloud/logo.svg' not in body:
+            fail("Missing umbrella site favicon: "+str(html))
+        if 'brand-glyph' in body:
+            fail("Unapproved generic umbrella identity survives: "+str(html))
+    if 'Flowframe v2 concept · Under review' not in (SITE/"design/index.html").read_text("utf-8"):
+        fail("New GC UI candidate missing approval boundary")
     gcui_page = (SITE / "design/index.html").read_text("utf-8")
-    for marker in ('/assets/gc-ui/app-icon.svg', '/assets/gc-ui/favicon.ico',
-                   '/assets/gc-ui/logo-light.svg','/assets/gc-ui/logo-dark.svg',
+    for marker in ('/assets/gc-ui/logo-light.svg','/assets/gc-ui/logo-dark.svg',
                    '/assets/gc-ui/interface-constellation.svg'):
         if marker not in gcui_page:
-            fail("GoreeCloud UI page missing official identity: "+marker)
+            fail("GoreeCloud UI review page missing candidate artwork: "+marker)
     if not (SITE / "404.html").is_file():
         fail("Missing 404 asset")
     if "<" in redirects.splitlines()[-1]:
