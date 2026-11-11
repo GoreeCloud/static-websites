@@ -376,3 +376,21 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
 .gcui-review-note a { text-decoration:underline;text-underline-offset:3px; }
 .gcui-review-note a:focus-visible {outline:3px solid var(--gc-focus);outline-offset:3px;}
 @media(max-width:640px){.brand-icon{width:25px;height:25px;}}
+
+
+/* Catalog action controls — nontracking shareable views */
+.catalog-tools { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin: 12px 0 24px; }
+.catalog-tool { min-height:44px; min-width:120px; padding:10px 17px; font-size:14px;
+  border:1px solid var(--gc-outline); border-radius:var(--radius-md);
+  background:var(--gc-surface); color:var(--gc-text); font-weight:650; }
+.catalog-tool:hover { background:var(--gc-surface-tonal); }
+.catalog-tool:focus-visible { outline:3px solid var(--gc-focus); outline-offset:3px; }
+.catalog-tool-status { color:var(--gc-text-soft); font-size:14px; line-height:1.6; }
+.catalog-tool-link { flex-basis:100%; display:block; font-size:14px; line-height:1.6;
+  overflow-wrap:anywhere; padding:13px 16px; border:1px solid var(--gc-divider);
+  border-radius:var(--radius-md); background:var(--gc-surface); user-select:text; }
+.catalog-tool-link[hidden] { display:none; }
+@media (max-width:480px) {
+  .catalog-tool { flex:1; }
+  .catalog-tool-status { flex-basis:100%; }
+}
