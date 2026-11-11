@@ -1,0 +1,20 @@
+name: Verify recovered Pages preview
+on:
+  push:
+    branches:
+      - recovery/**
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview-integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout pinned action
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify SHA-256 and preview security posture
+        run: python3 scripts/verify_preview_snapshot.py

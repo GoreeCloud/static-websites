@@ -1,0 +1,3 @@
+# Preview-only compatibility fallback for a non-sitemap legacy URL.
+# No 301 or production SEO migration is approved.
+/social/ /contact/ 302

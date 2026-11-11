@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# Draft build: remove this gate only after production SEO approval.
