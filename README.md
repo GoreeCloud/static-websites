@@ -113,3 +113,39 @@ mutation are added**. Actual local Chromium exercised nine filtered-link
 restoration, reset, share fallback and responsive scenarios successfully.
 Human AT, actual touch, translation, editorial parity and production
 approval remain separate gates.
+
+
+## November 11 — more compact layout and verified first-party product marks
+
+This follow-up branch is **still review-only**, layered on top of the prior
+catalog sharing branch. The founder likes the current visual language but
+identified excess size and missing official product icons.
+
+Spacing changes reduce oversized hero/section padding, pillar row rhythm,
+CTA proportions, editorial card and footer space, and the Flowframe artwork
+panel without changing route copy or token semantics. A read-only paired
+Chromium measurement at 1440px compared unchanged base to revised source
+and reported page-height reductions of 508px (home), 438px (ecosystem),
+168px (products), 264px (principles), 204px (contact), and 275px (design).
+These initial measurements precede the small follow-on search-spacing
+refinement. Comparison tests covered 12 desktop/mobile route cases and
+reported zero browser errors, broken images, external requests or overflow.
+
+Existing source assets now used on the Products page:
+**Browser** and **Browser Mobile** share one approved Prism Tabs v5 master;
+**Search** uses its recovered canonical first-party favicon;
+**Drive** uses first-party GoreeCloud-specific theme artwork that still
+requires central brand approval; and **GC UI** displays the *unapproved*
+Flowframe v2 visual proposal from a separate design review. Seven other
+products keep explicitly identified neutral pending slots, not fake official
+icons. The source and approval states are documented in
+[BRAND-COVERAGE-BACKLOG.md](BRAND-COVERAGE-BACKLOG.md)
+and [PRODUCT-ICON-SOURCES.json](PRODUCT-ICON-SOURCES.json),
+and backed by SHA-256 and negative tests. New central master work is
+tracked in [brand-assets issue #24](https://github.com/GoreeCloud/brand-assets/issues/24).
+
+**No generator images were produced in chat.** All new site icons are
+byte-identical to verified existing first-party SVGs. The founder's permanent
+GoreeCloud umbrella PNG remains unchanged; production deployment, DNS, Cloudflare
+Git integration and indexing are untouched. The preview is publicly reachable
+by URL but noindex, and full human visual/AT/release acceptance remains open.

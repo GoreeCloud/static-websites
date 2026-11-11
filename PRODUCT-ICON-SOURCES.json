@@ -1,0 +1,20 @@
+{
+  "browser-family": {
+    "status": "central-approved",
+    "source": "products/browser-mobile/app-icon.svg",
+    "sha256": "d99784423ac237a01b520153953842cbfecf1a838f2d2fcfaa9a0d2eff704769",
+    "notes": "GoreeCloud Browser and Browser Mobile share founder-approved Prism Tabs v5"
+  },
+  "search": {
+    "status": "central-existing",
+    "source": "products/search/app-icon.svg",
+    "sha256": "74db42cf6b20c9527614471b6cc6cea004c39c28f385ad7c499f374161406dc0",
+    "notes": "Recovered first-party Search favicon; central source and existing consumer match"
+  },
+  "drive-existing-consumer": {
+    "status": "existing-consumer-not-centrally-approved",
+    "source": "GoreeCloud/drive/services/web/assets/themes/goreecloud/assets/icon.svg",
+    "sha256": "c04f6525f08ba351163b62450acab28731bb85f0eb1aa42fd42defadf3ce2bdc",
+    "notes": "GoreeCloud-specific first-party theme; NOT the OpenCloud upstream logo; official central review pending"
+  }
+}

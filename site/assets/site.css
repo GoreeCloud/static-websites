@@ -394,3 +394,81 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
   .catalog-tool { flex:1; }
   .catalog-tool-status { flex-basis:100%; }
 }
+
+
+/* Spacing refinement — preserves GC UI semantic tokens and 44px controls.
+   Reduces oversized blank surfaces without hiding content. */
+:root { --gc-section-compact: 65px; }
+@media(min-width:641px){
+  .hero { padding:clamp(56px,6vw,85px) 0 60px; }
+  .visual-stage { min-height:430px; }
+  .stage-core { max-width:272px; }
+  .section { padding:var(--gc-section-compact) 0; }
+  .section-tight { padding:41px 0; }
+  .section-head { margin-bottom:30px; }
+  .card { min-height:232px; padding:22px; }
+  .card .symbol { margin:18px 0 19px; width:50px; height:50px; }
+  .split { gap:clamp(28px,4vw,66px); }
+  .editorial-article { min-height:250px; padding:30px; }
+  .cta { padding:clamp(34px,4vw,54px); }
+  .page-hero { padding:76px 0 44px; }
+  .pillar-detail { padding:32px 0; gap:25px; }
+  .pillar-detail .scope { margin-bottom:14px; }
+  .product-card { min-height:218px; padding:23px; }
+  .product-card h3 { margin:12px 0 8px; }
+  .footer { margin-top:50px; padding:44px 0 26px; }
+  .footer-bottom { margin-top:38px; padding-top:19px; }
+  h2 { font-size:clamp(2.35rem,3.8vw,3.65rem); }
+  .page-hero h1 { font-size:clamp(3.25rem,5.4vw,5.4rem); }
+}
+.gcui-feature-art { aspect-ratio:1440/900; object-fit:contain; }
+.gcui-feature-head { padding:14px 18px; }
+.gcui-feature-caption { padding:12px 18px 17px; }
+.gcui-feature-caption-copy { line-height:1.55; }
+.gcui-wordmark-pair { max-width:235px; }
+.gcui-hero-art img { aspect-ratio:1440/900; object-fit:contain; }
+.product-identity { margin:13px 0 2px; width:52px; height:52px; flex:none; }
+.product-identity-mark { display:block; width:52px; height:52px; border-radius:15px; object-fit:contain; }
+.product-identity-pending { width:52px; height:52px; display:grid; place-items:center;
+  border:1px dashed var(--gc-outline); border-radius:15px; color:var(--gc-text-faint);
+  background:var(--gc-surface-tonal); font-size:24px; font-weight:500; }
+.product-identity[data-identity-status="missing"] { opacity:.62; }
+@media(max-width:640px){
+  .hero { padding:40px 0 44px; }
+  .visual-stage { min-height:315px; }
+  .stage-core { max-width:235px; }
+  .section { padding:47px 0; }
+  .section-tight { padding:34px 0; }
+  .section-head { margin-bottom:24px; }
+  .page-hero { padding:54px 0 33px; }
+  .pillar-detail { padding:25px 0; gap:12px; }
+  .cta { padding:29px 23px; }
+  .editorial-article { min-height:220px; padding:25px; }
+  .product-card { min-height:0; padding:21px; }
+  .product-card h3 { margin:9px 0; }
+  .footer { margin-top:32px; padding:38px 0 20px; }
+  .footer-bottom { margin-top:25px; padding-top:16px; }
+  .card { padding:22px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .card:hover, .button:hover, .icon-button:hover { transform:none; }
+}
+@media(forced-colors:active) {
+ .product-identity-pending { border:1px dashed CanvasText; }
+}
+
+
+/* Further reduce redundant hero-to-catalog whitespace and clarify provenance. */
+@media(min-width:641px) {
+  .page-hero { padding-bottom:22px; }
+  .page-hero + .section-tight { padding-top:23px; }
+}
+@media(max-width:640px) {
+  .page-hero { padding-bottom:15px; }
+  .page-hero + .section-tight { padding-top:24px; }
+}
+.product-identity { width:auto; min-width:52px; display:flex; align-items:center; gap:12px; }
+.product-identity-context { font-size:12px; font-weight:600; line-height:1.45;
+  max-width:125px; color:var(--gc-text-soft); }
+.identity-disclosure { color:var(--gc-text-soft); max-width:79ch;
+  font-size:14px; line-height:1.65; margin:0 0 18px; }
