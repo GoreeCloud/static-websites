@@ -304,3 +304,64 @@ h3 { font-size: 24px; font-weight: 680; margin: 0 0 12px; }
 .suite-item { min-height: 48px; display: flex; align-items: center; gap: 10px; padding: 9px 11px; background: var(--gc-surface-tonal); border-radius: 13px; font-size: 14px; font-weight: 620; }
 .suite-marker { display: grid; place-items: center; border-radius: 10px; background: var(--gc-surface-raised); color: var(--gc-brand); font-weight: 800; width: 28px; height: 28px; flex: 0 0 28px; }
 @media(max-width:640px) { .suite-search-controls { grid-template-columns: 1fr; } .suite-group { padding: 18px; } .suite-group-heading h3 { font-size: 19px; } .suite-group-heading { flex-wrap: wrap; } }
+
+
+/* GC UI branded polish, verified art assets; no new UI semantic palette. */
+body { font-size:17px; }
+.eyebrow { font-size:12px; letter-spacing:.15em; }
+.micro-note,.footer-bottom { font-size:13px; line-height:1.6; }
+.card p,.product-card p { font-size:16px; line-height:1.7; }
+.card { min-height:272px; }
+.section { padding:84px 0; }
+.section-tight { padding:52px 0; }
+.hero { padding:clamp(62px,7vw,108px) 0 82px; }
+h1 { font-size:clamp(3.7rem,6.4vw,6.7rem); }
+h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
+.hero .lead { max-width:600px; }
+.section-head p { font-size:18px; }
+.footer { margin-top:65px; }
+.footer nav a,.footer p { font-size:15px; }
+.card .symbol img { width:32px;height:32px;display:block;object-fit:contain; }
+.gcui-product-mark { display:block; width:58px;height:58px; margin:0 0 20px;border-radius:16px; }
+.gcui-ecosystem-mark { width:54px;height:54px;display:block;margin:0 0 18px;object-fit:contain; }
+.gcui-feature-panel { margin:0;position:relative;min-width:0; border:1px solid var(--gc-divider);border-radius:var(--radius-xl);background:var(--gc-surface);overflow:hidden;box-shadow:var(--gc-shadow); }
+.gcui-feature-head { padding:20px 24px;display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;color:var(--gc-text-soft);font-size:11px;font-weight:750;letter-spacing:.1em; }
+.gcui-feature-overline {text-transform:uppercase;}
+.gcui-feature-status {font-size:11px;letter-spacing:.04em;opacity:.85;}
+.gcui-feature-art {width:100%;aspect-ratio:1440/880;object-fit:cover;display:block;background:#10182f; }
+.gcui-feature-caption {padding:19px 24px 24px;display:grid;gap:7px;background:var(--gc-surface);}
+.gcui-wordmark-pair {display:block;max-width:265px;}
+.gcui-wordmark-pair img,.gcui-brand-heading img {display:block;width:100%;height:auto;object-fit:contain;}
+.gcui-wordmark-for-light {display:none!important;}
+:root[data-theme="light"] .gcui-wordmark-for-light {display:block!important;}
+:root[data-theme="light"] .gcui-wordmark-for-dark {display:none!important;}
+.gcui-feature-caption-copy {font-size:15px;color:var(--gc-text-soft);line-height:1.6;max-width:55ch;}
+.gcui-brand-heading {max-width:340px;min-width:0;margin-bottom:26px;}
+.gcui-hero-art {margin:0;border:1px solid var(--gc-divider);border-radius:var(--radius-xl);overflow:hidden;background:#10182f;box-shadow:var(--gc-shadow);min-width:0;}
+.gcui-hero-art img {width:100%;height:auto;aspect-ratio:1440/980;display:block;}
+.gcui-hero-art figcaption {padding:13px 20px;font-size:13px;line-height:1.5;color:#e3e9ff;background:#151d39;}
+.story-hero .story-grid:has(.gcui-hero-art) {grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);}
+.story-hero .story-grid:has(.gcui-hero-art) h1 {font-size:clamp(3.3rem,5vw,5.3rem);}
+@media(max-width:860px){
+  .story-hero .story-grid:has(.gcui-hero-art){grid-template-columns:1fr;}
+  .gcui-hero-art{max-width:760px;}
+}
+@media(max-width:640px){
+  body {font-size:16px;}
+  .section {padding:61px 0;}
+  .hero {padding:54px 0 58px;}
+  .card {min-height:0;}
+  .micro-note,.footer-bottom {font-size:13px;}
+  .eyebrow {font-size:11px;}
+  .mobile-nav a {font-size:11px;}
+  .gcui-feature-head {padding:15px;}
+  .gcui-feature-caption {padding:14px 17px 19px;}
+  .gcui-feature-caption-copy {font-size:14px;}
+  .gcui-brand-heading {max-width:275px;}
+}
+@media(prefers-contrast:more){
+  .gcui-feature-panel,.gcui-hero-art {box-shadow:none;border-width:2px;}
+}
+@media(forced-colors:active){
+  .gcui-feature-panel,.gcui-hero-art {border:2px solid CanvasText;}
+}

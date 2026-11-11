@@ -5,3 +5,6 @@ dist/
 .env
 .env.*
 *.log
+
+# Browser-rendered evidence: retained on authorized laptop, not website source
+evidence/

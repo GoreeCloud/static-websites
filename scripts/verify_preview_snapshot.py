@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 20:
-        fail("Expected exactly 20 recovered static assets")
+    if len(actual) != 26:
+        fail("Expected exactly 26 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -80,6 +80,24 @@ def main() -> int:
             fail("Unapproved refresh redirect: " + route)
         if '<script src="/assets/site.js" defer></script>' not in html:
             fail("Missing expected first-party script: " + route)
+    pins = {
+        "app-icon.svg": "a1bf6370761f247a56666c0d61ba615dce3e5789c6e7845c630caecf6d9de418",
+        "symbol.svg": "78794bc48907ddd822b42d96cd0be0061bd1b1b4fe168384e5a3818afef50078",
+        "logo-light.svg": "4e40c93337c84de16560b26d701a3334d3b448bc7e04a2efe189944eac680682",
+        "logo-dark.svg": "dcdd57b18d94673973f1771f91752ece56d93737679b56bed4b8339719d1eb66",
+        "favicon.ico": "874fe939d8ce7a3958d11b7d1655daa22389beeb6a903c87eb17590e57a94313",
+        "interface-constellation.svg": "50661cf8d84818240ac7ac5e273123e041f9471ef4aa953d2be05019e4aef6aa",
+    }
+    for name,digest in pins.items():
+        candidate = SITE / "assets/gc-ui" / name
+        if not candidate.is_file() or hashlib.sha256(candidate.read_bytes()).hexdigest() != digest:
+            fail("Official asset pin mismatch: "+name)
+    gcui_page = (SITE / "design/index.html").read_text("utf-8")
+    for marker in ('/assets/gc-ui/app-icon.svg', '/assets/gc-ui/favicon.ico',
+                   '/assets/gc-ui/logo-light.svg','/assets/gc-ui/logo-dark.svg',
+                   '/assets/gc-ui/interface-constellation.svg'):
+        if marker not in gcui_page:
+            fail("GoreeCloud UI page missing official identity: "+marker)
     if not (SITE / "404.html").is_file():
         fail("Missing 404 asset")
     if "<" in redirects.splitlines()[-1]:
