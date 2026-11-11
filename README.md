@@ -149,3 +149,34 @@ byte-identical to verified existing first-party SVGs. The founder's permanent
 GoreeCloud umbrella PNG remains unchanged; production deployment, DNS, Cloudflare
 Git integration and indexing are untouched. The preview is publicly reachable
 by URL but noindex, and full human visual/AT/release acceptance remains open.
+
+
+## November 11 — isolated Foundation v1 identity review gallery
+
+The new **/identity-review/** route presents seven *unapproved* GoreeCloud
+product identity candidates from [brand-assets draft PR #25](https://github.com/GoreeCloud/brand-assets/pull/25)
+in a compact, accessible review interface. The review presents app icons
+at 16px/32px actual resolution, transparent standalone symbols, adaptive
+light/dark wordmarks, and conceptual artwork. The visual identities remain
+proposals; the current Products page continues to mark them **missing**
+until a canonical owner-approved logo is published and actually consumed.
+The fixed reference commit is
+`c48ebf7e9a098184e879445e6fe4aec9171fa7c3`.
+
+All 49 web assets are exact byte-identical copies of the source branch,
+with immutable SHA-256 records in `IDENTITY-REVIEW-SOURCES.json`.
+The `scripts/verify_identity_review_gallery.py` gate checks candidate
+status, local-only/parseable SVG and PNG content, seven distinct 16px marks,
+all source hashes, navigation and visual-review disclaimers.
+Seven mutation tests confirm it rejects a falsely official candidate,
+asset tampering, commit drift, missing disclaimers and manifest anomalies.
+These gates run in GitHub Actions. Rebuilding requires an authorized
+source checkout and explicit `GOREECLOUD_BRAND_ASSETS_DIR`, not a download
+at deploy time; the review site is wholly static.
+
+**This is a preview-only route.** It is intentionally disallowed from
+search indexing but is public by direct URL. It does not replace official
+icons in the site catalog, production domain, favicon, native packages,
+or identity master library. It does not assert that the depicted services
+are live. Manual true-size, forced-colors, human screen-reader and founder
+art-direction acceptance are still required.

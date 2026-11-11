@@ -15,7 +15,7 @@ MANIFEST = ROOT / "SITE-MANIFEST.sha256"
 REQUIRED = [
     "/", "/platform-systems/", "/suite/", "/android/", "/office-suite/",
     "/firefox/", "/github/", "/contact/", "/design/", "/security/",
-    "/privacy/", "/ecosystem/", "/products/", "/principles/"
+    "/privacy/", "/ecosystem/", "/products/", "/principles/", "/identity-review/"
 ]
 PROBLEMS: list[str] = []
 
@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 33:
-        fail("Expected exactly 33 reviewed iteration assets")
+    if len(actual) != 83:
+        fail("Expected exactly 83 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -122,6 +122,10 @@ def main() -> int:
                 fail(f"Catalog controls missing {element} on {page}")
     if not (SITE / "assets/catalog-tools.js").is_file():
         fail("Missing first-party catalog enhancement script")
+    # No unapproved mark may silently replace an approved product identity.
+    from verify_identity_review_gallery import audit as audit_identity_review
+    for problem in audit_identity_review():
+        fail("Identity gallery: "+problem)
     if not (SITE / "404.html").is_file():
         fail("Missing 404 asset")
     if "<" in redirects.splitlines()[-1]:
