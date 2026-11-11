@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 29:
-        fail("Expected exactly 29 reviewed iteration assets")
+    if len(actual) != 30:
+        fail("Expected exactly 30 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -113,6 +113,15 @@ def main() -> int:
                    '/assets/gc-ui/interface-constellation.svg'):
         if marker not in gcui_page:
             fail("GoreeCloud UI review page missing candidate artwork: "+marker)
+    for page in ("products/index.html", "github/index.html", "suite/index.html"):
+        html = (SITE / page).read_text("utf-8")
+        for element in ('/assets/catalog-tools.js', 'data-catalog-actions=',
+                        'data-catalog-share', 'data-catalog-reset',
+                        'data-catalog-status', 'data-catalog-link'):
+            if element not in html:
+                fail(f"Catalog controls missing {element} on {page}")
+    if not (SITE / "assets/catalog-tools.js").is_file():
+        fail("Missing first-party catalog enhancement script")
     if not (SITE / "404.html").is_file():
         fail("Missing 404 asset")
     if "<" in redirects.splitlines()[-1]:

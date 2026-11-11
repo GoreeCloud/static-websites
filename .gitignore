@@ -8,3 +8,6 @@ dist/
 
 # Browser-rendered evidence: retained on authorized laptop, not website source
 evidence/
+
+qa_catalog_browser.js
+catalog-browser-evidence.json

@@ -18,3 +18,11 @@ jobs:
           persist-credentials: false
       - name: Verify SHA-256 and preview security posture
         run: python3 scripts/verify_preview_snapshot.py
+      - name: Audit internal links, resources, metadata and safe external navigation
+        run: python3 scripts/audit_site_links.py
+      - name: Verify the auditor rejects unsafe and broken fixtures
+        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Verify first-party JavaScript parses
+        run: |
+          node --check site/assets/site.js
+          node --check site/assets/catalog-tools.js

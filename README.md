@@ -89,3 +89,25 @@ enforces noindex/CSP and flags any generic umbrella mark. This iteration must
 pass hosted Pages and real-browser checks separately before visual acceptance.
 No production deployment, DNS change, indexing launch or historical source
 reconciliation is implied.
+
+
+## November 11 — private-by-default catalog-sharing capabilities (draft)
+
+This feature branch adds **share filtered link** and **reset filters** actions
+for Products, the dated GitHub directory, and the historical Suite index.
+The share control explicitly creates a same-origin, bounded (120-character)
+URL query; ordinary typing is not stored, transmitted or placed in the
+address bar. The browser's clipboard API is optional; a selectable link
+is rendered on the page as a fallback. Escape resets search and selection.
+The link is intentionally noindex because this remains a public but
+nonproduction Pages preview.
+
+The offline source audit checks all 15 HTML pages, local link targets and
+fragments, external-tab rel protection, first-party-only assets, noindex
+metadata and CSP-sensitive inline scripts. It is supplemented by nine
+negative/positive unit tests. GitHub Actions runs those gates and checks
+both first-party scripts; **no CI deployment credentials or Cloudflare
+mutation are added**. Actual local Chromium exercised nine filtered-link
+restoration, reset, share fallback and responsive scenarios successfully.
+Human AT, actual touch, translation, editorial parity and production
+approval remain separate gates.
