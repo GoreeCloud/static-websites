@@ -520,3 +520,32 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
 }
 @media(prefers-contrast:more){.identity-review-card,.identity-review-wordmark {border-width:2px;}}
 @media(forced-colors:active){.identity-review-card,.identity-review-wordmark,.identity-review-warning{border:2px solid CanvasText;}}
+
+
+/* Identity candidate review workbench (nontracking, release-isolated). */
+.identity-workbench {display:flex;gap:12px 16px;flex-wrap:wrap;align-items:end;
+ padding:19px 22px;margin:0 0 24px;background:var(--gc-surface);
+ border:1px solid var(--gc-divider);border-radius:var(--radius-lg);}
+.identity-review-filter-label {display:flex;flex-direction:column;gap:8px;font-size:13px;font-weight:720;
+ color:var(--gc-text-soft);min-width:min(100%,280px);flex:1;}
+.identity-review-filter-label select {appearance:auto;min-height:44px;padding:10px 14px;
+ border:1px solid var(--gc-outline);border-radius:var(--radius-md);
+ background:var(--gc-surface);color:var(--gc-text);font:inherit;}
+.identity-review-filter-label select:focus-visible,.identity-workbench button:focus-visible {
+ outline:3px solid var(--gc-focus);outline-offset:3px;}
+.identity-review-count {font-size:13px;color:var(--gc-text-soft);flex-basis:100%;line-height:1.5;}
+.identity-review-card[hidden] {display:none!important;}
+.identity-review-card {scroll-margin-top:90px;}
+.identity-review-grid[data-review-compare="true"] .identity-review-wordmark {
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0;
+ background:transparent!important;border:0;}
+.identity-review-grid[data-review-compare="true"] .identity-review-wordmark img {
+ display:block!important;width:100%;height:auto;max-height:none;min-height:64px;
+ padding:8px;border:1px solid var(--gc-divider);border-radius:12px;object-fit:contain;}
+.identity-review-grid[data-review-compare="true"] .review-wordmark-for-light {background:#fff;}
+.identity-review-grid[data-review-compare="true"] .review-wordmark-for-dark {background:#15203b;}
+@media(max-width:520px){
+ .identity-workbench{padding:16px;}
+ .identity-workbench button{flex:1;}
+ .identity-review-grid[data-review-compare="true"] .identity-review-wordmark {grid-template-columns:1fr;}
+}
