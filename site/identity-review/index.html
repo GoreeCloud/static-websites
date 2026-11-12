@@ -16,7 +16,7 @@
   <link rel="icon" type="image/x-icon" href="/assets/goreecloud/favicon.ico" sizes="any">
   <link rel="stylesheet" href="/assets/site.css">
   <script src="/assets/site.js" defer></script>
-  <script src="/assets/catalog-tools.js" defer></script>
+  <script src="/assets/identity-workbench.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -42,8 +42,21 @@
 </section>
 <section class="section-tight">
   <div class="container">
-    <div class="identity-review-grid">
-<article class="identity-review-card" data-review-product="goreeshield" data-review-status="candidate">
+    <div class="identity-workbench" role="group" aria-label="Identity candidate review controls" data-review-workbench>
+  <label class="identity-review-filter-label" for="identity-review-filter">Filter candidate designs
+    <select id="identity-review-filter" data-review-filter>
+      <option value="all">All seven designs</option>
+      <option value="pillars">Privacy, cybersecurity and integration</option>
+      <option value="applications">Applications: Maps, Projects and Analytics</option>
+      <option value="infrastructure">Infrastructure: Gateway</option>
+    </select>
+  </label>
+  <button class="catalog-tool" type="button" data-review-compare aria-pressed="false">Compare light and dark wordmarks</button>
+  <button class="catalog-tool" type="button" data-review-reset>Reset review</button>
+  <span class="identity-review-count" data-review-count role="status" aria-live="polite" aria-atomic="true">Showing all 7 proposed designs.</span>
+</div>
+<div class="identity-review-grid" data-review-grid>
+<article class="identity-review-card" data-review-product="goreeshield" data-review-category="pillars" id="identity-goreeshield" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/goreeshield/artwork.svg" alt="Conceptual GoreeShield Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -65,12 +78,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-goreeshield">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/goreeshield/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="wardveil" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="wardveil" data-review-category="pillars" id="identity-wardveil" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/wardveil/artwork.svg" alt="Conceptual Wardveil Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -92,12 +106,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-wardveil">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/wardveil/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="mesh" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="mesh" data-review-category="pillars" id="identity-mesh" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/mesh/artwork.svg" alt="Conceptual GoreeCloud Mesh Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -119,12 +134,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-mesh">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/mesh/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="maps" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="maps" data-review-category="applications" id="identity-maps" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/maps/artwork.svg" alt="Conceptual GoreeCloud Maps Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -146,12 +162,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-maps">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/maps/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="projects" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="projects" data-review-category="applications" id="identity-projects" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/projects/artwork.svg" alt="Conceptual GoreeCloud Projects Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -173,12 +190,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-projects">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/projects/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="analytics" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="analytics" data-review-category="applications" id="identity-analytics" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/analytics/artwork.svg" alt="Conceptual GoreeCloud Analytics Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -200,12 +218,13 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-analytics">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/analytics/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>
   </div>
 </article>
-<article class="identity-review-card" data-review-product="gateway" data-review-status="candidate">
+<article class="identity-review-card" data-review-product="gateway" data-review-category="infrastructure" id="identity-gateway" data-review-status="candidate">
   <div class="identity-review-art">
     <img src="/assets/identity-review/gateway/artwork.svg" alt="Conceptual GoreeCloud Gateway Foundation v1 artwork, not an application screenshot" width="1280" height="720" loading="lazy" decoding="async">
   </div>
@@ -227,6 +246,7 @@
       <span>16 / 32 / symbol</span>
     </div>
     <div class="identity-review-source">
+      <a class="text-link" href="#identity-gateway">Link to this design</a>
       <span class="identity-review-state">Proposed · not approved</span>
       <a class="text-link" href="https://github.com/GoreeCloud/brand-assets/blob/c48ebf7e9a098184e879445e6fe4aec9171fa7c3/products/gateway/candidates/foundation-v1/app-icon.svg" target="_blank" rel="noopener noreferrer">View source SVG <span aria-hidden="true">↗</span></a>
     </div>

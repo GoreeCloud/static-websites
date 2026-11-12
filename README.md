@@ -180,3 +180,31 @@ icons in the site catalog, production domain, favicon, native packages,
 or identity master library. It does not assert that the depicted services
 are live. Manual true-size, forced-colors, human screen-reader and founder
 art-direction acceptance are still required.
+
+
+## November 12 — candidate review workbench (additive draft)
+
+The existing **/identity-review/** review-only route now offers three native,
+keyboard-usable controls: a role/category filter, a **side-by-side comparison
+of light and dark wordmarks** that does not require changing the whole
+website theme, and an explicit reset. Per-product fragment permalinks enable
+direct review without transmitting or storing query state. The displayed
+filter count is announced in an accessible status region. Ordinary review
+does not write cookies, local storage, analytics, clipboard or network
+requests. All seven graphics remain *candidate-only* in both data and labels.
+
+The workbench is applied by `scripts/upgrade_identity_workbench.py` after
+the gallery-source build, without editing any of the 49 pinned candidate
+asset files. `scripts/verify_identity_workbench.py` and six mutation tests
+guard against unknown group assignments, candidate-to-official promotion,
+broken anchors, loss of live status, or a network-capable review script.
+The full static-site manifest now contains 84 files. A real Chromium run
+confirmed 8/8 combinations (light/dark × 320/390/834/1440): filter,
+comparison, reset, and fragment restore; no reported script errors,
+broken images or horizontal overflow.
+
+This is a *publicly accessible by URL*, noindex, isolated Pages draft
+workflow; it is neither a brand approval portal with authenticated votes
+nor a production deployment. Founder review, contrast/forced-colors/AT
+assessment, accepted canonical master promotion and consuming-app rollout
+remain separate gated work.

@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 83:
-        fail("Expected exactly 83 reviewed iteration assets")
+    if len(actual) != 84:
+        fail("Expected exactly 84 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -122,6 +122,11 @@ def main() -> int:
                 fail(f"Catalog controls missing {element} on {page}")
     if not (SITE / "assets/catalog-tools.js").is_file():
         fail("Missing first-party catalog enhancement script")
+    # The local, nontracking interactive workbench must remain on the
+    # experimental gallery route, not on public catalog pages.
+    from verify_identity_workbench import audit as audit_workbench
+    for problem in audit_workbench():
+        fail("Review workbench: "+problem)
     # No unapproved mark may silently replace an approved product identity.
     from verify_identity_review_gallery import audit as audit_identity_review
     for problem in audit_identity_review():
