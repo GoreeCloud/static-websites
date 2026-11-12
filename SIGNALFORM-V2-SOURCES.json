@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "brand_repo": "GoreeCloud/brand-assets",
+  "source_commit": "0807d8719b13858394ba62637629c85d314bdf7a",
+  "status": "review-only, unapproved, not official",
+  "products": [
+    "goreeshield",
+    "wardveil",
+    "mesh",
+    "maps",
+    "projects",
+    "analytics",
+    "gateway"
+  ],
+  "files": [
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/app-icon.svg",
+      "sha256": "e8e5ab0ad716ce38b928e5667d8afcc1550847656e0af5edd2b54f6463f46abc",
+      "source": "products/goreeshield/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/symbol.svg",
+      "sha256": "bff5595ebc9bef83e3d2039ec957529a8d3bc818b4970d69d42d36542440933f",
+      "source": "products/goreeshield/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/logo.svg",
+      "sha256": "07b3fc4da4d2afc03f343481158600b9cfc228b7d7fa8435f53ed090383f4318",
+      "source": "products/goreeshield/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/logo-dark.svg",
+      "sha256": "027a745703f40d06ade7bc3c4a01e8905b519840473693562e50bb4240a324be",
+      "source": "products/goreeshield/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/artwork.svg",
+      "sha256": "36b979a85e94ba5087a479e1c1c0b2033160ca2ebeeccd9653c02d52c6e11303",
+      "source": "products/goreeshield/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/icon-16.png",
+      "sha256": "886382dca27412d446f4fa8e7af7a2e5553a8067d3f2e4b51b73e250a7dc8888",
+      "source": "products/goreeshield/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/goreeshield/icon-32.png",
+      "sha256": "bb2fcff83e75e0a733d4d4d54976e2f010b50a272b096c5a6691656fb0a6bd59",
+      "source": "products/goreeshield/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/app-icon.svg",
+      "sha256": "79dfc51109c9c2356f96f32b2c28cf9832e7c19b8928a8441af8672356a82366",
+      "source": "products/wardveil/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/symbol.svg",
+      "sha256": "dd6a8f81f84f9b7fb4fa4e5cdc65361a8abcf18ee419af4a396abf4b17c5bcc9",
+      "source": "products/wardveil/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/logo.svg",
+      "sha256": "97b82f9428c0cae697a6b2552994a24754c634629b6aadec244df070930f5f12",
+      "source": "products/wardveil/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/logo-dark.svg",
+      "sha256": "76b3aa99ab01ccb8d664b40ca04fa484f7d0b8118a6154332882d5ed783777bc",
+      "source": "products/wardveil/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/artwork.svg",
+      "sha256": "a087ae7067fc8dd2de2ff8f07e4a1860d285a733e12f974d5512f40e0e8b212c",
+      "source": "products/wardveil/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/icon-16.png",
+      "sha256": "7c41e2776d75de96fb8d1a72c5434d438739104083820475a92a98b671aa4d79",
+      "source": "products/wardveil/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/wardveil/icon-32.png",
+      "sha256": "beb082e9ec5e75e290c8af0e50e95f9d970bcbdb1869d71047055df827e877cd",
+      "source": "products/wardveil/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/app-icon.svg",
+      "sha256": "e1454701ecfcc165000072ca5afba913bdbd92bfdd28d604b453f1ebf4e4ac18",
+      "source": "products/mesh/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/symbol.svg",
+      "sha256": "c9781d0592e9155957795e476038210cc496cbb0f886872497bd0b2563528553",
+      "source": "products/mesh/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/logo.svg",
+      "sha256": "5a846c7c976eff5d69bbf4dfbbc4cb7608afef28ed15b8366d5c6f976c45505c",
+      "source": "products/mesh/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/logo-dark.svg",
+      "sha256": "564931ba32eef927339a2e6c58a011c85f5dec6203638dcf00196c2ee868f478",
+      "source": "products/mesh/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/artwork.svg",
+      "sha256": "2ba18d26719fd6221c8c2994ca84e241ab424d2ebbcb6596664e6d25b5c2956a",
+      "source": "products/mesh/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/icon-16.png",
+      "sha256": "de213411a4313d14a2cc95ec88eb5bb938039334efc8fd1935e72c0bd056dc0b",
+      "source": "products/mesh/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/mesh/icon-32.png",
+      "sha256": "c96b360554acefe3f1579ce9b83230d32d4f4806dc58baf43466d5a9e93f01dc",
+      "source": "products/mesh/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/app-icon.svg",
+      "sha256": "85c8b05c8e987dbbae6f44489bbeb9d9f9bbaeb4c41d1f0405982e710f8df855",
+      "source": "products/maps/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/symbol.svg",
+      "sha256": "e064585f7f491ed7d9810442368ee2f56ed11c5f78a0a0d109df9bfd5c823f44",
+      "source": "products/maps/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/logo.svg",
+      "sha256": "6eb4590d5aa5d7ed7fa5036ab1f52508374807a3ea7cc307240008ceb7c8c80b",
+      "source": "products/maps/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/logo-dark.svg",
+      "sha256": "9616ce2bf84579f3559ca873730c339a4c40be315785b68ebcb1a7d2d36a124f",
+      "source": "products/maps/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/artwork.svg",
+      "sha256": "a6e3a310b90d328d8a13a21a0e10bec63379446ab576408687877eb9f85a22cd",
+      "source": "products/maps/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/icon-16.png",
+      "sha256": "c5918571f8d350ade83f8f00ab0182ae87eb475590213c21f858c6e5e0ef6e42",
+      "source": "products/maps/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/maps/icon-32.png",
+      "sha256": "4f44ff2103cc7fb82b3ce956754a2d656b7950ccc6f83ab69e60295679a6c9d5",
+      "source": "products/maps/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/app-icon.svg",
+      "sha256": "86a88733bd432b01642028cedca31bba6b6828bf2cdb7d0680495561e7c2cfe2",
+      "source": "products/projects/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/symbol.svg",
+      "sha256": "34e7097be3529d3da13dfddcc7767a56fc10ee5513bc512ece6710a2b0a5a0bb",
+      "source": "products/projects/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/logo.svg",
+      "sha256": "b65ca3d37dec3a4709527bb2defe60c2cd9c020221b0888f6ba1a646a0f9fa6b",
+      "source": "products/projects/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/logo-dark.svg",
+      "sha256": "7b83920e015c02e6df1295370b5c557a100aed255d2384a8cde5c3cc5c497ac1",
+      "source": "products/projects/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/artwork.svg",
+      "sha256": "0ccda4fd79e180361d27a4241e515c93eb66e2fd51abd57cbbc0a1ae8162e03f",
+      "source": "products/projects/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/icon-16.png",
+      "sha256": "4e77b49d46a718e0f7f4cbd797da10ce4e559494a9f7729ac92549e11d8327ad",
+      "source": "products/projects/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/projects/icon-32.png",
+      "sha256": "9c2ceb0ac22c66abb8b10172697cf9e3b2b5079940aff4f3de84096d4cde6517",
+      "source": "products/projects/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/app-icon.svg",
+      "sha256": "98721d4f6b664dd294edcf3b9c2541f6039d342a463b56c92c1b4edfda0d2315",
+      "source": "products/analytics/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/symbol.svg",
+      "sha256": "4580f73561afca5fa9b65879d3b664690e6a6b7cf05ebe01ff1fb714a1e973c1",
+      "source": "products/analytics/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/logo.svg",
+      "sha256": "1fd75f575a07166d794664a49a2aedda1d52627b38fff874001d0c2d2e94407a",
+      "source": "products/analytics/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/logo-dark.svg",
+      "sha256": "29b4f9d277a2234aa2bfd558655a2ce18515862bbbbf07988f916873983c847b",
+      "source": "products/analytics/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/artwork.svg",
+      "sha256": "2fc7bea9a6db98881bb3c614e7067898dd89320ce232be516d8a85b8a1287746",
+      "source": "products/analytics/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/icon-16.png",
+      "sha256": "5cd6f4a4fe05cc503886579818bc59e75681dea3849a48278dd548b6c2e00803",
+      "source": "products/analytics/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/analytics/icon-32.png",
+      "sha256": "cdd49ba64cbb8b983bdb4b45895c546571ae44629d2d6f2eae1d056582eb3ae8",
+      "source": "products/analytics/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/app-icon.svg",
+      "sha256": "7afc94ecaf36a79c8682ffe491a2cc093f4c511abeb754264afd5ee6ac1b3eb6",
+      "source": "products/gateway/candidates/signalform-v2/app-icon.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/symbol.svg",
+      "sha256": "fb2278d6980ec8d528908b2fdcacd855379f55a28c3c3341efec2d6e43e15703",
+      "source": "products/gateway/candidates/signalform-v2/symbol.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/logo.svg",
+      "sha256": "03981ced7ea0ff2225a34d4076497027b1927d015c003be80133711ed055e4a8",
+      "source": "products/gateway/candidates/signalform-v2/logo.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/logo-dark.svg",
+      "sha256": "792e4e7ef223e39a02ef815d378753be8f1a008fe2f805e622cd203b4e83f62c",
+      "source": "products/gateway/candidates/signalform-v2/logo-dark.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/artwork.svg",
+      "sha256": "80c769423d0c404c1e80f02d6bbde2ed83d6ff7de75eadbdffe5137e35fa64e5",
+      "source": "products/gateway/candidates/signalform-v2/artwork.svg",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/icon-16.png",
+      "sha256": "321293e55cec40d2310292c497caef66a547277cb2d0c919f3b5a8aff15202e0",
+      "source": "products/gateway/candidates/signalform-v2/raster/icon-16.png",
+      "status": "unapproved-candidate"
+    },
+    {
+      "path": "assets/identity-signalform-v2/gateway/icon-32.png",
+      "sha256": "69d2bd9a6164c9159a26f67fb1f4c122a7df88ea94fe0272653c2537aff23f6f",
+      "source": "products/gateway/candidates/signalform-v2/raster/icon-32.png",
+      "status": "unapproved-candidate"
+    }
+  ]
+}

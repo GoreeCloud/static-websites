@@ -15,7 +15,7 @@ MANIFEST = ROOT / "SITE-MANIFEST.sha256"
 REQUIRED = [
     "/", "/platform-systems/", "/suite/", "/android/", "/office-suite/",
     "/firefox/", "/github/", "/contact/", "/design/", "/security/",
-    "/privacy/", "/ecosystem/", "/products/", "/principles/", "/identity-review/"
+    "/privacy/", "/ecosystem/", "/products/", "/principles/", "/identity-review/", "/identity-review-v2/"
 ]
 PROBLEMS: list[str] = []
 
@@ -50,8 +50,8 @@ def main() -> int:
     actual = {"site/" + str(p.relative_to(SITE)) for p in SITE.rglob("*") if p.is_file()}
     if actual != checked:
         fail("Manifest does not exactly cover all site files")
-    if len(actual) != 84:
-        fail("Expected exactly 84 reviewed iteration assets")
+    if len(actual) != 134:
+        fail("Expected exactly 134 reviewed iteration assets")
     headers = (SITE / "_headers").read_text("utf-8")
     robots = (SITE / "robots.txt").read_text("utf-8")
     redirects = (SITE / "_redirects").read_text("utf-8")
@@ -127,6 +127,9 @@ def main() -> int:
     from verify_identity_workbench import audit as audit_workbench
     for problem in audit_workbench():
         fail("Review workbench: "+problem)
+    from verify_signalform_v2_review import audit as audit_signalform_v2
+    for problem in audit_signalform_v2():
+        fail("Signalform v2 review: "+problem)
     # No unapproved mark may silently replace an approved product identity.
     from verify_identity_review_gallery import audit as audit_identity_review
     for problem in audit_identity_review():

@@ -549,3 +549,60 @@ h2 { font-size:clamp(2.5rem,4.1vw,4rem); }
  .identity-workbench button{flex:1;}
  .identity-review-grid[data-review-compare="true"] .identity-review-wordmark {grid-template-columns:1fr;}
 }
+
+
+/* Signalform v2 review comparison — never canonical product branding. */
+.sf-intro {padding-bottom:23px;}
+.sf-intro h1 {max-width:950px;}
+.sf-warning {max-width:82ch;background:var(--gc-surface-tonal);border:1px solid var(--gc-outline);
+ border-radius:var(--radius-md);padding:16px 20px;line-height:1.65;color:var(--gc-text-soft);font-size:15px;}
+.sf-section-nav {display:flex;gap:8px;flex-wrap:wrap;margin:0 0 25px;}
+.sf-section-nav a {padding:10px 14px;min-height:44px;display:flex;align-items:center;
+ border:1px solid var(--gc-divider);border-radius:999px;color:var(--gc-text);background:var(--gc-surface);font-size:13px;font-weight:670;text-decoration:none;}
+.sf-section-nav a:focus-visible {outline:3px solid var(--gc-focus);outline-offset:3px;}
+.sf-product-list {display:grid;gap:26px;}
+.sf-product {padding:clamp(16px,2.8vw,32px);background:var(--gc-surface);border:1px solid var(--gc-divider);
+ border-radius:var(--radius-xl);scroll-margin-top:90px;min-width:0;}
+.sf-product-head {display:flex;justify-content:space-between;align-items:start;gap:18px;margin-bottom:19px;}
+.sf-product-head h2 {font-size:clamp(24px,3vw,43px);margin:10px 0 8px;}
+.sf-product-head p {max-width:66ch;line-height:1.6;color:var(--gc-text-soft);}
+.sf-product-head .text-link {flex:none;font-size:13px;}
+.sf-comparison {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.sf-version {min-width:0;border:1px solid var(--gc-divider);border-radius:var(--radius-lg);overflow:hidden;}
+.sf-version h3 {padding:15px 17px;margin:0;font-size:17px;display:flex;align-items:start;gap:5px;flex-direction:column;}
+.sf-version h3 span {font-size:12px;color:var(--gc-text-soft);font-weight:530;}
+.sf-icon-frame {min-height:0;background:#e5eaf6;display:flex;align-items:center;justify-content:center;padding:23px;}
+.sf-icon-frame img {display:block;width:min(100%,230px);height:auto;aspect-ratio:1;object-fit:contain;}
+.sf-size-line {min-height:56px;padding:10px 16px;display:flex;align-items:center;gap:15px;}
+.sf-size-line span {font-size:12px;color:var(--gc-text-soft);}
+.sf-size-line img {object-fit:contain;flex:none;image-rendering:auto;}
+.sf-wordmarks {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px;}
+.sf-wordmarks>div {padding:16px;min-width:0;border-radius:var(--radius-md);border:1px solid var(--gc-divider);}
+.sf-wordmarks span {font-size:12px;font-weight:710;display:block;margin-bottom:10px;}
+.sf-wordmarks img {width:100%;height:auto;max-height:90px;object-fit:contain;object-position:left;}
+.sf-wordmark-light {background:#fff;color:#273857;}
+.sf-wordmark-dark {background:#14213d;color:#f3f6ff;}
+.sf-more {border-top:1px solid var(--gc-divider);margin-top:20px;padding-top:13px;}
+.sf-more summary {cursor:pointer;min-height:44px;font-weight:660;display:flex;align-items:center;color:var(--gc-text);}
+.sf-more summary:focus-visible {outline:3px solid var(--gc-focus);}
+.sf-more-content {display:grid;grid-template-columns:1fr 2fr;gap:18px;align-items:center;}
+.sf-more-content img {max-width:100%;height:auto;object-fit:contain;}
+.sf-more-content .sf-symbol {max-height:240px;object-fit:contain;}
+.sf-final {margin:34px 0 0;max-width:80ch;color:var(--gc-text-soft);line-height:1.7;}
+@media(max-width:760px){
+ .sf-product-head {display:block;}
+ .sf-comparison {gap:9px;}
+ .sf-icon-frame {padding:13px;}
+ .sf-version h3 {padding:12px;font-size:15px;}
+ .sf-size-line {padding:10px;gap:9px;flex-wrap:wrap;}
+ .sf-wordmarks {grid-template-columns:1fr;}
+ .sf-more-content {grid-template-columns:1fr;}
+}
+@media(max-width:390px){
+ .sf-product {padding:12px;}
+ .sf-comparison {grid-template-columns:1fr;}
+ .sf-icon-frame img {width:min(100%,168px);}
+}
+@media(forced-colors:active){
+ .sf-product,.sf-version,.sf-wordmarks>div,.sf-warning {border:2px solid CanvasText;}
+}
