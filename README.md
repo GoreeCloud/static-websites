@@ -208,3 +208,28 @@ workflow; it is neither a brand approval portal with authenticated votes
 nor a production deployment. Founder review, contrast/forced-colors/AT
 assessment, accepted canonical master promotion and consuming-app rollout
 remain separate gated work.
+
+
+## November 12 — Signalform v2 proposed identity comparison
+
+The founder requested a more distinctive coordinated family after the
+original visual review. A **new, opt-in** `/identity-review-v2/` route
+compares the retained Foundation v1 icon and redesigned Signalform v2 icon
+for each of seven products at actual 16px/32px sizes and readable larger
+tiles. Below the comparison are the v2 wordmarks in both light and dark
+backgrounds, and optionally expanded original conceptual artwork.
+
+The route uses exactly 49 V2 files copied byte-for-byte from the
+authoritative [brand-assets Signalform v2 draft PR #27](https://github.com/GoreeCloud/brand-assets/pull/27)
+source revision `0807d8719b13858394ba62637629c85d314bdf7a`.
+The source/manifest pins are in `SIGNALFORM-V2-SOURCES.json`.
+`scripts/verify_signalform_v2_review.py` and eight local mutation tests
+assert identity status stays **pending**, v1 stays visible, all source files
+match SHA-256, and the official Products catalog cannot adopt unapproved
+V2 artwork silently. All 134 static site files are independently pinned.
+The review is statically served, noindex, accessible by direct URL, and
+has no analytics, third-party assets, embedded scripts or submission forms.
+
+This comparison preview is neither a brand-approval action nor a live
+production deployment. The founder's permanent GoreeCloud G, all
+approved app marks and original v1 concepts remain unchanged.

@@ -20,3 +20,7 @@ catalog-hosted-evidence.json
 qa_density_compare.js
 qa_gallery_browser.js
 qa_identity_workbench_browser.js
+
+qa_signalform_comparison_browser.js
+qa_signalform_hosted_browser.js
+qa_signalform_hosted_exact.py

@@ -102,8 +102,8 @@ def audit(site: Path = SITE) -> list[str]:
     errors: list[str] = []
     pages = sorted(site.rglob("*.html"))
     docs: dict[str, Document] = {}
-    if len(pages) != 16:
-        errors.append(f"expected 16 static HTML pages, found {len(pages)}")
+    if len(pages) != 17:
+        errors.append(f"expected 17 static HTML pages, found {len(pages)}")
     for page in pages:
         name = str(page.relative_to(site))
         doc = Document(name)
@@ -149,7 +149,7 @@ def main() -> int:
         for error in errors[:80]:
             print(" - " + error)
         return 1
-    print("PASS: 16 pages, internal resources, fragment targets, noindex, and CSP-safe source references")
+    print("PASS: 17 pages, internal resources, fragment targets, noindex, and CSP-safe source references")
     return 0
 
 
