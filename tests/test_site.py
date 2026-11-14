@@ -114,5 +114,23 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertIn("forced-colors", self.css)
 
 
+    def test_container_delivery_is_scoped_and_hardened(self):
+        dockerfile = (ROOT / "Dockerfile").read_text()
+        compose = (ROOT / "compose.yaml").read_text()
+        nginx = (ROOT / "docker/site.conf").read_text()
+        self.assertIn("nginx-unprivileged@sha256:", dockerfile)
+        self.assertIn("USER 101:101", dockerfile)
+        self.assertIn("COPY assets/", dockerfile)
+        self.assertNotIn("COPY . ", dockerfile)
+        for text in ("127.0.0.1:18080:8080", "user: \"101:101\"", "read_only: true",
+                     "cap_drop:", "no-new-privileges:true", "tmpfs:"):
+            self.assertIn(text, compose)
+        self.assertIn("try_files $uri =404;", nginx)
+        self.assertIn("error_page 404 /404.html;", nginx)
+        self.assertIn("script-src 'none'", nginx)
+        # HTTP loopback must not instruct browsers to upgrade CSS/image requests to HTTPS.
+        self.assertNotIn("upgrade-insecure-requests", nginx)
+
+
 if __name__ == "__main__":
     unittest.main()

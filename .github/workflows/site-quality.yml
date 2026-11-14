@@ -22,5 +22,46 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Run dependency-free homepage acceptance tests
         run: python3 -m unittest discover -s tests -v
-      - name: Check whitespace and changeset integrity
+      - name: Check changeset integrity
         run: git diff --check HEAD
+
+  compose:
+    name: Build and smoke-test optional self-host container
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - name: Read exact source without retaining credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Validate Docker Compose configuration
+        run: docker compose config --quiet
+      - name: Build pinned non-root image without publishing
+        run: docker compose build --pull
+      - name: Start isolated localhost service and verify health
+        run: docker compose up -d --no-build --wait --wait-timeout 60
+      - name: Verify hosted routes and security
+        run: |
+          python3 - <<'PY'
+          import urllib.request
+          import urllib.error
+          root = "http://127.0.0.1:18080"
+          for path, expected in (("/", 200), ("/assets/site.css", 200),
+                                 ("/assets/logo.svg", 200), ("/robots.txt", 200),
+                                 ("/sitemap.xml", 200), ("/suite/", 404),
+                                 ("/android/", 404), ("/missing", 404)):
+              try:
+                  with urllib.request.urlopen(root + path, timeout=10) as result:
+                      status, headers = result.status, result.headers
+              except urllib.error.HTTPError as exc:
+                  status, headers = exc.code, exc.headers
+              assert status == expected, (path, status, expected)
+              assert "script-src 'none'" in headers.get("Content-Security-Policy", "")
+              assert headers.get("X-Content-Type-Options") == "nosniff"
+              print(path, status)
+          print("Docker Compose smoke checks passed")
+          PY
+      - name: Remove ephemeral test containers and images
+        if: always()
+        run: docker compose down --remove-orphans --rmi local
