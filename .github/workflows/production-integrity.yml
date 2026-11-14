@@ -1,0 +1,23 @@
+name: Verify production homepage integrity
+on:
+  schedule:
+    - cron: '17 3,9,15,21 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: goreecloud-website-production-integrity
+  cancel-in-progress: false
+jobs:
+  live-source-parity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout current reviewed homepage source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify checker contracts without network access
+        run: python3 -m unittest discover -s tests -v
+      - name: Verify public HTTPS domain, headers, routes and exact site bytes
+        run: python3 scripts/verify_live.py

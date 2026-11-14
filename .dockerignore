@@ -7,3 +7,5 @@ __pycache__
 *.log
 *.zip
 .DS_Store
+.wrangler/
+scripts/
