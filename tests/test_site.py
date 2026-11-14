@@ -112,6 +112,8 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertIn(".orbit-one { width: 80%; }", self.css)
         self.assertIn("prefers-reduced-motion", self.css)
         self.assertIn("forced-colors", self.css)
+        self.assertIn(".footer-links a { display: inline-flex; align-items: center; min-height: 44px; }", self.css)
+        self.assertIn("@media (max-width: 360px)", self.css)
 
 
     def test_container_delivery_is_scoped_and_hardened(self):
