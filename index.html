@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-gc-theme="light" data-gc-accent="lagoon">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="color-scheme" content="dark light">
-  <meta name="theme-color" content="#091324">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f7fb">
   <meta name="description" content="GoreeCloud is a privacy-first software ecosystem focused on digital ownership, thoughtful design, security, and connected systems.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="GoreeCloud — Technology should feel yours">
@@ -14,6 +14,7 @@
   <link rel="canonical" href="https://www.goreecloud.com/">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/theme.js" defer></script>
   <title>GoreeCloud — Technology should feel yours</title>
 </head>
 <body>
@@ -32,62 +33,89 @@
         <a href="#approach">Our approach</a>
         <a href="#source">Open source</a>
       </nav>
-      <a class="nav-action" href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">Explore GitHub <span aria-hidden="true">↗</span></a>
+      <div class="nav-tools">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme" aria-pressed="false" hidden>
+          <span class="theme-icon" data-theme-symbol aria-hidden="true">☾</span>
+          <span class="theme-label" data-theme-label>Dark mode</span>
+        </button>
+        <a class="nav-action" href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">
+          Explore GitHub <span aria-hidden="true">↗</span>
+        </a>
+        <details class="mobile-menu">
+          <summary><span>Menu</span><span class="menu-symbol" aria-hidden="true">☰</span></summary>
+          <nav class="mobile-nav lens" aria-label="Mobile navigation">
+            <a href="#pillars">Our pillars <span aria-hidden="true">↘</span></a>
+            <a href="#approach">Our approach <span aria-hidden="true">↘</span></a>
+            <a href="#source">Open source <span aria-hidden="true">↘</span></a>
+            <a href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">Explore GitHub <span aria-hidden="true">↗</span></a>
+          </nav>
+        </details>
+      </div>
     </div>
   </header>
 
   <main id="content">
     <section class="hero container" id="top" aria-labelledby="hero-title">
       <div class="hero-content">
-        <div class="eyebrow"><span class="pulse" aria-hidden="true"></span> Independent software. Connected by design.</div>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> Independent software. Connected by design.</p>
         <h1 id="hero-title">Technology<br>should feel <span class="hero-emphasis">yours.</span></h1>
-        <p class="hero-lead">Your data. Your choices. Your digital future. GoreeCloud is building a more personal, private-first ecosystem where thoughtful software and meaningful ownership belong together.</p>
+        <p class="hero-lead">Your data. Your choices. Your digital future. GoreeCloud is building a more personal, privacy-first ecosystem where thoughtful software and meaningful ownership belong together.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#pillars">Discover GoreeCloud <span aria-hidden="true">↘</span></a>
           <a class="button button-outline" href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">View our work <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-footnote"><span class="footnote-line" aria-hidden="true"></span> Private-first by intention. Open about progress.</div>
+        <p class="hero-footnote"><span class="footnote-line" aria-hidden="true"></span> Privacy-first by intention. Open about progress.</p>
       </div>
 
-      <div class="hero-visual" aria-label="GoreeCloud's connected ecosystem illustration">
-        <div class="orbit orbit-one" aria-hidden="true"></div>
-        <div class="orbit orbit-two" aria-hidden="true"></div>
-        <div class="hero-illustration"><img src="/assets/connected-world.svg" alt="GoreeCloud connected-world artwork representing its four distinct pillars" width="660" height="660"></div>
+      <div class="hero-visual">
+        <div class="hero-art-frame">
+          <div class="orbit orbit-one" aria-hidden="true"></div>
+          <div class="orbit orbit-two" aria-hidden="true"></div>
+          <div class="hero-art-badge"><span class="status-dot" aria-hidden="true"></span> THE CONNECTED ECOSYSTEM</div>
+          <img src="/assets/connected-world.svg" alt="Official GoreeCloud connected-world artwork showing GoreeShield, Wardveil, GoreeCloud Mesh and GoreeCloud UI" width="660" height="660" fetchpriority="high">
+          <div class="art-corner" aria-hidden="true">GC — 01</div>
+        </div>
         <div class="floating-note lens">
           <div class="note-symbol" aria-hidden="true">✦</div>
           <div><span class="note-overline">A DIFFERENT DIRECTION</span><strong>Built around ownership.</strong></div>
         </div>
-        <div class="visual-caption"><span class="caption-dot" aria-hidden="true"></span> ONE ECOSYSTEM <span class="caption-separator" aria-hidden="true"></span> DISTINCT RESPONSIBILITIES</div>
       </div>
     </section>
 
-    <div class="section-rule container" aria-hidden="true"><span>CLARITY</span><span>INDEPENDENCE</span><span>CONNECTION</span><span>CARE</span></div>
+    <div class="principle-strip container" aria-label="Our values">
+      <span><b>01</b> Clarity in every layer</span>
+      <span><b>02</b> Independence by design</span>
+      <span><b>03</b> Connected on your terms</span>
+    </div>
 
     <section class="section container pillars-section" id="pillars" aria-labelledby="pillars-title">
       <div class="section-heading">
-        <div><p class="kicker">01 / THE FOUNDATIONS</p><h2 id="pillars-title">One ecosystem.<br><span>Four distinct pillars.</span></h2></div>
-        <p>Each layer has a clear job. Together, they express what GoreeCloud is working toward—without confusing privacy, security, connectivity, or design.</p>
+        <div>
+          <p class="kicker">01 <span aria-hidden="true">/</span> THE FOUNDATIONS</p>
+          <h2 id="pillars-title">One ecosystem.<br><span>Four distinct pillars.</span></h2>
+        </div>
+        <p>Each layer has a clear role. Together, they define what GoreeCloud is working toward—without confusing privacy, security, connectivity, or design.</p>
       </div>
       <div class="pillar-grid">
         <article class="pillar-card pillar-privacy">
-          <div class="card-top"><span class="card-index">01 — PRIVACY</span><span class="card-glyph" aria-hidden="true">◈</span></div>
-          <div><h3>GoreeShield</h3><p>Privacy on your terms. Consent, data minimization, transparency, tracking preferences, and personal information governance.</p></div>
-          <span class="card-tag">Your information. Your choice.</span>
+          <div class="card-top"><span class="card-index">01 / PRIVACY</span><span class="card-glyph" aria-hidden="true">◈</span></div>
+          <div class="card-body"><h3>GoreeShield</h3><p>Privacy on your terms. Consent, data minimization, transparency, tracking preferences, and personal information governance.</p></div>
+          <p class="card-tag"><span aria-hidden="true">↗</span> Your information. Your choice.</p>
         </article>
         <article class="pillar-card pillar-security">
-          <div class="card-top"><span class="card-index">02 — CYBERSECURITY</span><span class="card-glyph" aria-hidden="true">⌘</span></div>
-          <div><h3>Wardveil</h3><p>Cybersecurity with purpose. Threat defense, vulnerability management, monitoring, and responsible incident response.</p></div>
-          <span class="card-tag">Protection with clear boundaries.</span>
+          <div class="card-top"><span class="card-index">02 / CYBERSECURITY</span><span class="card-glyph" aria-hidden="true">⌘</span></div>
+          <div class="card-body"><h3>Wardveil</h3><p>Cybersecurity with purpose. Threat defense, vulnerability management, monitoring, and responsible incident response.</p></div>
+          <p class="card-tag"><span aria-hidden="true">↗</span> Protection with clear boundaries.</p>
         </article>
         <article class="pillar-card pillar-mesh">
-          <div class="card-top"><span class="card-index">03 — INTEGRATION</span><span class="card-glyph" aria-hidden="true">⌁</span></div>
-          <div><h3>GoreeCloud Mesh</h3><p>Connection without confusion. Interoperability, service coordination, synchronization, and controlled data exchange.</p></div>
-          <span class="card-tag">Better together. Intentionally.</span>
+          <div class="card-top"><span class="card-index">03 / INTEGRATION</span><span class="card-glyph" aria-hidden="true">⌁</span></div>
+          <div class="card-body"><h3>GoreeCloud Mesh</h3><p>Connection without confusion. Interoperability, service coordination, synchronization, and controlled data exchange.</p></div>
+          <p class="card-tag"><span aria-hidden="true">↗</span> Better together. Intentionally.</p>
         </article>
         <article class="pillar-card pillar-ui">
-          <div class="card-top"><span class="card-index">04 — DESIGN LANGUAGE</span><span class="card-glyph" aria-hidden="true">✳</span></div>
-          <div><h3>GoreeCloud UI</h3><p>One recognizable experience. Accessible interfaces, purposeful depth, thoughtful interactions, and consistent design foundations.</p></div>
-          <span class="card-tag">Clear. Fluid. Distinctly GoreeCloud.</span>
+          <div class="card-top"><span class="card-index">04 / DESIGN LANGUAGE</span><span class="card-glyph" aria-hidden="true">✳</span></div>
+          <div class="card-body"><h3>GoreeCloud UI</h3><p>One recognizable experience. Accessible interfaces, purposeful depth, thoughtful interactions, and consistent design foundations.</p></div>
+          <p class="card-tag"><span aria-hidden="true">↗</span> Clear. Fluid. Distinctly GoreeCloud.</p>
         </article>
       </div>
       <p class="pillar-note">GoreeCloud Identity supplies a distinct authentication and authorization layer across the mandatory integrated platform systems. Product maturity and deployment status vary.</p>
@@ -96,9 +124,10 @@
     <section class="section container approach-section" id="approach" aria-labelledby="approach-title">
       <div class="approach-panel">
         <div class="approach-intro">
-          <p class="kicker">02 / THE PHILOSOPHY</p>
+          <p class="kicker">02 <span aria-hidden="true">/</span> THE PHILOSOPHY</p>
           <h2 id="approach-title">Your digital life<br>shouldn't be on loan.</h2>
           <p>We're building toward technology that respects the people who use it—software shaped by independence, long-term care, and the freedom to choose how it runs.</p>
+          <span class="approach-signoff"><span class="status-dot" aria-hidden="true"></span> A different kind of digital foundation</span>
         </div>
         <div class="approach-list">
           <div class="approach-item"><span class="approach-no">01</span><div><h3>Ownership first</h3><p>Your information and tools should remain understandable, portable, and under your control.</p></div></div>
@@ -111,7 +140,7 @@
     <section class="section container source-section" id="source" aria-labelledby="source-title">
       <div class="source-glow" aria-hidden="true"></div>
       <div class="source-content">
-        <p class="kicker">03 / BUILDING IN THE OPEN</p>
+        <p class="kicker">03 <span aria-hidden="true">/</span> BUILDING IN THE OPEN</p>
         <h2 id="source-title">A more personal cloud<br><span>starts with a different idea.</span></h2>
         <p>Explore GoreeCloud's public repositories, see what's taking shape, and follow the evolution of a growing software ecosystem.</p>
         <a class="button button-light" href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">Explore the public source <span aria-hidden="true">↗</span></a>
@@ -122,10 +151,12 @@
   </main>
 
   <footer class="site-footer container">
-    <div class="footer-brand"><img src="/assets/logo.svg" alt="" width="38" height="38"><div><strong>GoreeCloud</strong><span>Own your digital world.</span></div></div>
-    <p>Designed around people, privacy, and possibility.</p>
-    <div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
-    <small>© 2026 GoreeCloud. All rights reserved.</small>
+    <div class="footer-main">
+      <div class="footer-brand"><img src="/assets/logo.svg" alt="" width="42" height="42"><div><strong>GoreeCloud</strong><span>Own your digital world.</span></div></div>
+      <p>Designed around people, privacy, and possibility.</p>
+      <nav class="footer-links" aria-label="Footer"><a href="#top">Back to top ↑</a><a href="https://github.com/GoreeCloud" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 GoreeCloud. All rights reserved.</span><span>Independent software. Connected by design.</span></div>
   </footer>
 </body>
 </html>

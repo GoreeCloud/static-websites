@@ -27,6 +27,7 @@ FILES = (
     ("assets/favicon.svg", "/assets/favicon.svg"),
     ("assets/connected-world.svg", "/assets/connected-world.svg"),
     ("assets/site.css", "/assets/site.css"),
+    ("assets/theme.js", "/assets/theme.js"),
 )
 REMOVED_ROUTES = (
     "/suite/",
@@ -88,7 +89,7 @@ def fetch(url: str):
 
 def validate_headers(headers, path: str) -> None:
     csp = headers.get("Content-Security-Policy", "")
-    for directive in ("default-src 'self'", "script-src 'none'", "object-src 'none'",
+    for directive in ("default-src 'self'", "script-src 'self'", "object-src 'none'",
                       "frame-ancestors 'none'", "connect-src 'none'"):
         if directive not in csp:
             raise AssertionError(f"{path}: missing CSP directive {directive!r}")

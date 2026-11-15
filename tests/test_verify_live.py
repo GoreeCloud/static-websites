@@ -9,15 +9,15 @@ class LiveCheckerContract(unittest.TestCase):
     def test_fixed_targets(self):
         self.assertEqual(verify_live.HOST, "https://www.goreecloud.com")
         self.assertEqual(verify_live.APEX, "https://goreecloud.com/")
-        self.assertEqual(len(verify_live.FILES), 8)
+        self.assertEqual(len(verify_live.FILES), 9)
         self.assertEqual(len(verify_live.REMOVED_ROUTES), 9)
-        self.assertEqual(len(set(path for _, path in verify_live.FILES)), 8)
+        self.assertEqual(len(set(path for _, path in verify_live.FILES)), 9)
         self.assertEqual(len(set(verify_live.REMOVED_ROUTES)), 9)
         self.assertNotIn("/", verify_live.REMOVED_ROUTES)
 
     def test_security_headers_mandatory(self):
         headers = {
-            "Content-Security-Policy": "default-src 'self'; script-src 'none'; object-src 'none'; frame-ancestors 'none'; connect-src 'none'",
+            "Content-Security-Policy": "default-src 'self'; script-src 'self'; object-src 'none'; frame-ancestors 'none'; connect-src 'none'",
             "X-Content-Type-Options": "nosniff",
             "Referrer-Policy": "no-referrer",
             "X-Frame-Options": "DENY",

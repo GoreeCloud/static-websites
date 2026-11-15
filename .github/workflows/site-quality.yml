@@ -22,6 +22,10 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Run dependency-free homepage acceptance tests
         run: python3 -m unittest discover -s tests -v
+      - name: Verify appearance behavior and no network side effects
+        run: |
+          node --check assets/theme.js
+          node --test tests/theme.test.cjs
       - name: Check changeset integrity
         run: git diff --check HEAD
 
@@ -48,7 +52,7 @@ jobs:
           import urllib.error
           root = "http://127.0.0.1:18080"
           for path, expected in (("/", 200), ("/assets/site.css", 200),
-                                 ("/assets/logo.svg", 200), ("/robots.txt", 200),
+                                 ("/assets/logo.svg", 200), ("/assets/theme.js", 200), ("/robots.txt", 200),
                                  ("/sitemap.xml", 200), ("/suite/", 404),
                                  ("/android/", 404), ("/missing", 404)):
               try:
@@ -57,7 +61,7 @@ jobs:
               except urllib.error.HTTPError as exc:
                   status, headers = exc.code, exc.headers
               assert status == expected, (path, status, expected)
-              assert "script-src 'none'" in headers.get("Content-Security-Policy", "")
+              assert "script-src 'self'" in headers.get("Content-Security-Policy", "")
               assert headers.get("X-Content-Type-Options") == "nosniff"
               print(path, status)
           print("Docker Compose smoke checks passed")

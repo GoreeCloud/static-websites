@@ -17,6 +17,7 @@ class Markup(HTMLParser):
         self.h1_count = 0
         self.has_lang = False
         self.scripts = 0
+        self.script_sources = []
 
     def handle_starttag(self, tag, attributes):
         attrs = dict(attributes)
@@ -32,6 +33,7 @@ class Markup(HTMLParser):
             self.h1_count += 1
         if tag == "script":
             self.scripts += 1
+            self.script_sources.append(attrs.get("src"))
 
 
 class HomepageAcceptance(unittest.TestCase):
@@ -47,11 +49,22 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertIn('name="robots" content="noindex"', (ROOT / "404.html").read_text())
         self.assertIn("GoreeCloud", self.html)
         self.assertNotIn('data-glaze-version=', self.html)
+        self.assertIn('data-gc-theme="light"', self.html)
+        self.assertIn('data-gc-theme="light"', (ROOT / "404.html").read_text())
+        self.assertIn('class="mobile-menu"', self.html)
+        self.assertIn('data-theme-toggle', self.html)
+        for filename in ("index.html", "404.html"):
+            page = (ROOT / filename).read_text()
+            self.assertNotIn("<style", page)
+            self.assertNotIn(" style=", page)
+            self.assertIn('<script src="/assets/theme.js" defer></script>', page)
 
     def test_semantics_and_single_heading(self):
         self.assertTrue(self.markup.has_lang)
         self.assertEqual(self.markup.h1_count, 1)
-        self.assertEqual(self.markup.scripts, 0)
+        self.assertEqual(self.markup.scripts, 1)
+        self.assertEqual(self.markup.script_sources, ["/assets/theme.js"])
+        self.assertIn('data-gc-theme="light"', self.html)
         self.assertEqual(len(self.markup.ids), len(set(self.markup.ids)))
         self.assertIn('href="#content"', self.html)
 
@@ -77,6 +90,11 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertNotIn("url(", self.css)
         self.assertNotIn("https://", self.css)
         self.assertNotIn("http://", self.css)
+        theme_js = (ROOT / "assets/theme.js").read_text()
+        self.assertIn("goreecloud.website.appearance", theme_js)
+        self.assertIn("localStorage", theme_js)
+        self.assertNotIn("fetch(", theme_js)
+        self.assertNotIn("XMLHttpRequest", theme_js)
         for svg in (ROOT / "assets").glob("*.svg"):
             markup = svg.read_text(encoding="utf-8")
             self.assertTrue(ET.fromstring(markup).tag.endswith("svg"))
@@ -93,7 +111,7 @@ class HomepageAcceptance(unittest.TestCase):
 
     def test_hardened_static_headers(self):
         headers = (ROOT / "_headers").read_text()
-        for rule in ("default-src 'self'", "script-src 'none'", "object-src 'none'",
+        for rule in ("default-src 'self'", "script-src 'self'", "object-src 'none'",
                      "frame-ancestors 'none'", "connect-src 'none'",
                      "X-Content-Type-Options: nosniff", "Referrer-Policy: no-referrer"):
             self.assertIn(rule, headers)
@@ -109,11 +127,14 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertIsNotNone(section)
         self.assertRegex(section.group(1), r"\bright:\s*0\s*;")
         self.assertNotRegex(section.group(1), r"right:\s*-")
-        self.assertIn(".orbit-one { width: 80%; }", self.css)
+        self.assertIn(".orbit-one { width: 76%;", self.css)
         self.assertIn("prefers-reduced-motion", self.css)
         self.assertIn("forced-colors", self.css)
-        self.assertIn(".footer-links a { display: inline-flex; align-items: center; min-height: 44px; }", self.css)
+        self.assertIn(".footer-links a { display: inline-flex; align-items: center; min-height: 44px;", self.css)
         self.assertIn("@media (max-width: 360px)", self.css)
+        self.assertIn("prefers-reduced-transparency", self.css)
+        self.assertIn('data-gc-theme="dark"', self.css)
+        self.assertNotIn("transition: background-color", self.css)
 
 
     def test_container_delivery_is_scoped_and_hardened(self):
@@ -129,7 +150,7 @@ class HomepageAcceptance(unittest.TestCase):
             self.assertIn(text, compose)
         self.assertIn("try_files $uri =404;", nginx)
         self.assertIn("error_page 404 /404.html;", nginx)
-        self.assertIn("script-src 'none'", nginx)
+        self.assertIn("script-src 'self'", nginx)
         # HTTP loopback must not instruct browsers to upgrade CSS/image requests to HTTPS.
         self.assertNotIn("upgrade-insecure-requests", nginx)
 

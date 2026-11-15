@@ -8,7 +8,7 @@ Source for the new single-page public website at https://www.goreecloud.com/.
 - `_headers` defines production security headers.
 - `robots.txt` and `sitemap.xml` list the one public content URL.
 
-The homepage describes ecosystem intentions and distinct pillars; it does not claim that unreleased services are deployed. The official logo and connected-world artwork originate from `GoreeCloud/brand-assets`. GoreeCloud UI design language supplies the Canvas / Surface / Lens material principles.
+The homepage defaults to GoreeCloud UI light Canvas/Surface/Lens materials. This site deliberately uses the optional Lagoon accent family; GoreeCloud UI does not prescribe a global brand hue. A visitor can opt into dark appearance using the header control; only the selected appearance is stored in browser-local storage, with no analytics or remote account link. The 404 utility shares the same appearance and has no inline scripts or styles. The homepage describes ecosystem intentions and distinct pillars; it does not claim that unreleased services are deployed. The official logo and connected-world artwork originate from `GoreeCloud/brand-assets`. GoreeCloud UI design language supplies the Canvas / Surface / Lens material principles.
 
 ## Hosting
 
@@ -42,7 +42,7 @@ The same `Dockerfile` builds as a Podman OCI image (`podman build -t goreecloud-
 
 ## Live website integrity checks
 
-The separate `.github/workflows/production-integrity.yml` workflow is read-only and runs at 03:17, 09:17, 15:17 and 21:17 UTC (subject to GitHub Actions scheduling), with manual `workflow_dispatch` available. It compares all eight publicly served site files byte-for-byte with the current `main` source; it also checks the HTTPS canonical redirect, the expected obsolete-route 404 responses, and essential response security headers.
+The separate `.github/workflows/production-integrity.yml` workflow is read-only and runs at 03:17, 09:17, 15:17 and 21:17 UTC (subject to GitHub Actions scheduling), with manual `workflow_dispatch` available. It compares all nine publicly served site files byte-for-byte with the current `main` source; it also checks the HTTPS canonical redirect, the expected obsolete-route 404 responses, and essential response security headers.
 
 Run the same check manually:
 
