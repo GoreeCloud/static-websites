@@ -137,6 +137,38 @@ class HomepageAcceptance(unittest.TestCase):
         self.assertNotIn("transition: background-color", self.css)
 
 
+    def test_supporting_copy_remains_readable_at_standard_sizes(self):
+        rules = {
+            ".pillar-card .card-body p": "15px",
+            ".card-index": "11px",
+            ".card-tag": "12px",
+            ".pillar-note": "13px",
+            ".approach-item p": "15px",
+            ".hero-footnote": "13px",
+        }
+        for selector, min_size in rules.items():
+            match = re.search(r"(?m)^" + re.escape(selector) + r"\s*\{([^}]+)\}", self.css)
+            self.assertIsNotNone(match, selector)
+            self.assertIn("font-size: " + min_size + ";", match.group(1), selector)
+
+    def test_light_dark_semantic_text_contrast(self):
+        def luminance(h):
+            vals = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+            rgb = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in vals]
+            return 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]
+
+        tested_pairs = {
+            "light canvas text": ("#1B2030", "#F6F7FB"),
+            "light supporting copy": ("#505B70", "#FFFFFF"),
+            "light primary button": ("#FFFFFF", "#00697A"),
+            "dark canvas text": ("#F2F4FB", "#0D121D"),
+            "dark supporting copy": ("#CED5E5", "#171D2A"),
+            "dark primary button": ("#003A42", "#8BE7F1"),
+        }
+        for name, (fg, bg) in tested_pairs.items():
+            values = sorted((luminance(fg), luminance(bg)))
+            self.assertGreaterEqual((values[1] + 0.05) / (values[0] + 0.05), 4.5, name)
+
     def test_container_delivery_is_scoped_and_hardened(self):
         dockerfile = (ROOT / "Dockerfile").read_text()
         compose = (ROOT / "compose.yaml").read_text()
