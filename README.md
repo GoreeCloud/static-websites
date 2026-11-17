@@ -52,6 +52,10 @@ python3 scripts/verify_live.py
 
 These checks do **not** deploy, collect visitor information, create website backups, write to Cloudflare, or store production copies. After a source change that affects public site bytes, the check will intentionally fail until the verified new release is deployed; source CI success is **not** a production deployment. GitHub-hosted scheduled runs are best-effort, not an uptime guarantee or a substitute for a deployment source integration.
 
-## Repository licensing status
+## License, artwork provenance and trademark boundaries
 
-No repository-level open-source license is currently committed to this source tree. Public GitHub visibility alone does not grant redistribution or derivative-work rights. Original GoreeCloud artwork and other design assets have separate provenance and rights to verify before any future repository-wide license selection. The current CI and deployment claims above do not certify licensing compliance; legal review and a compatible explicit root license remain open.
+The first-party GoreeCloud homepage source, documentation and original supporting SVG illustrations in this repository are provided under the [Apache License, Version 2.0](LICENSE), copyright (c) 2026 GoreeCloud. The two local SVG assets are **byte-identical to the independently recorded first-party masters** in [GoreeCloud Brand Assets](https://github.com/GoreeCloud/brand-assets/tree/main/brand/goreecloud): the permanent owner-supplied G-logo vector and the original connected-world illustration. Their original SVG blobs and provenance were checked before this license selection.
+
+**Trademark rights are separate.** Apache-2.0 does not grant permission to use the GoreeCloud brand name, official mark or any other service/product trademark to imply endorsement or impersonate the project. See Apache-2.0 section 6 and the [founder-owned identity source record](https://github.com/GoreeCloud/brand-assets/blob/main/brand/goreecloud/README.md). This website-specific license does not automatically relicense **all** artwork in the separate Brand Assets repository.
+
+The digest-pinned upstream NGINX unprivileged OCI base image is **referenced but not vendored** and remains governed by its own distribution terms and notices. Any new icons, fonts, packages or imported assets need a separate rights and attribution review. Publishing these source files under Apache-2.0 does **not** establish Cloudflare deployment equivalence, production provenance, or permission to change infrastructure.
