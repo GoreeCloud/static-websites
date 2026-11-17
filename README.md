@@ -51,3 +51,7 @@ python3 scripts/verify_live.py
 ```
 
 These checks do **not** deploy, collect visitor information, create website backups, write to Cloudflare, or store production copies. After a source change that affects public site bytes, the check will intentionally fail until the verified new release is deployed; source CI success is **not** a production deployment. GitHub-hosted scheduled runs are best-effort, not an uptime guarantee or a substitute for a deployment source integration.
+
+## Repository licensing status
+
+No repository-level open-source license is currently committed to this source tree. Public GitHub visibility alone does not grant redistribution or derivative-work rights. Original GoreeCloud artwork and other design assets have separate provenance and rights to verify before any future repository-wide license selection. The current CI and deployment claims above do not certify licensing compliance; legal review and a compatible explicit root license remain open.
